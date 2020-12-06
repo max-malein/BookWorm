@@ -45,7 +45,7 @@ namespace GoogleDocs
             get
             {
                 //Return a string representing your preferred contact details.
-                return "max@mln.one";
+                return @"https://github.com/max-malein/BookWorm";
             }
         }
     }
