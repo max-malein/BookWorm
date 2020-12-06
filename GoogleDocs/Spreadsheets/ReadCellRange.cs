@@ -13,18 +13,13 @@ using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
 using System.Linq;
 
-// In order to load the result of this wizard, you will also need to
-// add the output bin/ folder of this project to the list of loaded
-// folder in Grasshopper.
-// You can use the _GrasshopperDeveloperSettings Rhino command for that.
-
-namespace GoogleDocs
+namespace GoogleDocs.Spreadsheets
 {
     public class ReadCellRange : GH_Component
     {
         // If modifying these scopes, delete your previously saved credentials
         // at ~/.credentials/sheets.googleapis.com-dotnet-quickstart.json
-        static string[] Scopes = { SheetsService.Scope.SpreadsheetsReadonly };
+        static string[] Scopes = { SheetsService.Scope.Spreadsheets };
         static string ApplicationName = "Google Sheets reader";
 
         /// <summary>
@@ -37,7 +32,7 @@ namespace GoogleDocs
         public ReadCellRange()
           : base("ReadCellRange", "ReadCell",
               "Reads a range of cells",
-              "GoogleDocs", "Spreadsheet")
+              "BookWorm", "Spreadsheet")
         {
         }
 

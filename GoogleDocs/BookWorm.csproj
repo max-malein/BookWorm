@@ -90,9 +90,10 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ReadCellRange.cs" />
+    <Compile Include="Spreadsheets\ReadCellRange.cs" />
     <Compile Include="BookWormInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spreadsheets\WriteCellRange.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="credentials.json">
