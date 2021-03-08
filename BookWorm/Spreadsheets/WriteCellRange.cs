@@ -43,7 +43,7 @@ namespace GoogleDocs.Spreadsheets
         {
             pManager.AddTextParameter("SpreadsheetId", "Id", "Spreadsheet Id", GH_ParamAccess.item);
             pManager.AddTextParameter("SheetName", "N", "Sheet Name", GH_ParamAccess.item);
-            pManager.AddTextParameter("CellRange", "C", "Range of cells", GH_ParamAccess.item);
+            pManager.AddTextParameter("CellRange", "C", "Starting cell", GH_ParamAccess.item);
             pManager.AddTextParameter("Values", "V", "Values", GH_ParamAccess.list);            
             pManager.AddBooleanParameter("Append", "A", "If true, values will be added to the next possible empty row", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Write", "W", "Write data from spreadsheet", GH_ParamAccess.item, false);
@@ -82,19 +82,21 @@ namespace GoogleDocs.Spreadsheets
 
             UserCredential credential;
 
+            GH_AssemblyInfo info = Grasshopper.Instances.ComponentServer.FindAssembly(new Guid("56dfe1a3-4e7b-425f-b169-965c0d1f7977"));
+            string assemblyLocation = Path.GetDirectoryName(info.Location);
+
             using (var stream =
-                new FileStream("credentials.json", FileMode.Open, FileAccess.Read))
+                new FileStream(Path.Combine(assemblyLocation, "credentials.json"), FileMode.Open, FileAccess.Read))
             {
                 // The file token.json stores the user's access and refresh tokens, and is created
                 // automatically when the authorization flow completes for the first time.
-                string credPath = "token.json";
+                string credPath = Path.Combine(assemblyLocation, "token.json");
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.Load(stream).Secrets,
                     Scopes,
                     "user",
                     CancellationToken.None,
                     new FileDataStore(credPath, true)).Result;
-                Console.WriteLine("Credential file saved to: " + credPath);
             }
 
             // Create Google Sheets API service.
