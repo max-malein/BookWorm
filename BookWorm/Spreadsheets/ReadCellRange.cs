@@ -20,7 +20,7 @@ namespace GoogleDocs.Spreadsheets
         // If modifying these scopes, delete your previously saved credentials
         // at ~/.credentials/sheets.googleapis.com-dotnet-quickstart.json
         static string[] Scopes = { SheetsService.Scope.Spreadsheets };
-        static string ApplicationName = "Google Sheets reader";
+        static string ApplicationName = "Bookworm";
 
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
