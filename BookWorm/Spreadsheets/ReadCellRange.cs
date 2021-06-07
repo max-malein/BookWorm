@@ -12,6 +12,7 @@ using System.Threading;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
 using System.Linq;
+using BookWorm.Goo;
 
 namespace GoogleDocs.Spreadsheets
 {
@@ -30,52 +31,55 @@ namespace GoogleDocs.Spreadsheets
         /// new tabs/panels will automatically be created.
         /// </summary>
         public ReadCellRange()
-          : base("ReadCellRange", "ReadCell",
-              "Reads a range of cells",
-              "BookWorm", "Spreadsheet")
+          : base(
+                "ReadCellRange",
+                "ReadCell",
+                "Reads a range of cells",
+                "BookWorm",
+                "Spreadsheet")
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("SpreadsheetId", "Id", "Spreadsheet Id", GH_ParamAccess.item);
+
             pManager.AddTextParameter("SheetName", "N", "Sheet Name", GH_ParamAccess.item);
+
             pManager.AddTextParameter("CellRange", "C", "Range of cells", GH_ParamAccess.item);
+
             pManager.AddBooleanParameter("Read", "R", "Read data from spreadsheet", GH_ParamAccess.item, false);
+
             pManager.AddBooleanParameter("SameLength", "S", "All output rows will be the same length", GH_ParamAccess.item, false);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddTextParameter("Values", "V", "Values", GH_ParamAccess.tree);
+
+            pManager.AddGenericParameter("Cells", "C", "Cells", GH_ParamAccess.tree);
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object can be used to retrieve data from input parameters and 
-        /// to store data in output parameters.</param>
+        /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             string spreadsheetId = string.Empty;
-            string sheet = string.Empty;
+            string sheetName = string.Empty;
             string range = string.Empty;
             bool read = false;
             bool sameLength = false;
 
             if (!DA.GetData(0, ref spreadsheetId)) return;
-            if (!DA.GetData(1, ref sheet)) return;
+            if (!DA.GetData(1, ref sheetName)) return;
             if (!DA.GetData(2, ref range)) return;
             DA.GetData(3, ref read);
             DA.GetData(4, ref sameLength);
 
             if (!read) return;
+
+
 
             GH_AssemblyInfo info = Grasshopper.Instances.ComponentServer.FindAssembly(new Guid("56dfe1a3-4e7b-425f-b169-965c0d1f7977"));
             string assemblyLocation = Path.GetDirectoryName(info.Location);
@@ -102,21 +106,79 @@ namespace GoogleDocs.Spreadsheets
                 HttpClientInitializer = credential,
                 ApplicationName = ApplicationName,
             });
+            // _______________________________________________________________________________
 
-            // Define request parameters.            
-            String requestRange = $"{sheet}!{range}";
+            // Define request parameters.
+            // Одинарные кавычки используются на случай пробелов в имени листа.
+            string requestRange = $"'{sheetName}'!{range}";
+
+            var req = service.Spreadsheets.Get(spreadsheetId);
+            req.Ranges = requestRange;
+            req.IncludeGridData = true;
+
+            var spreadsheet = req.Execute();
+            // запрос возвращает спредщит, но докапываться нужно до внутреней фигни всё-равно
+            var sheets = spreadsheet.Sheets.ToList();
+
+            Sheet choosenSheet = sheets[0];
+
+            if (choosenSheet.Properties.SheetType != "GRID")
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Sheet type is not \"GRID\"");
+                return;
+            }
+
+            var rowDataPerRequest = choosenSheet.Data.Select(d => d.RowData.ToList()).ToList();
+
+            //В компоненте используется поэлементный range.
+            var rowData = rowDataPerRequest[0];
+
+            var outputGhCells = new GH_Structure<GH_CellData>();
+
+            for (int i = 0; i < rowData.Count; i++)
+            {
+                var path = new GH_Path(i);
+                var ghCells = rowData[i].Values.Select(cd => new GH_CellData(cd)).ToList();
+
+                outputGhCells.AppendRange(ghCells, path);
+            }
+
+
+            //foreach (var row in rowData)
+            //{
+            //    for (int i = 0; i < length; i++)
+            //    {
+
+            //    }
+            //    var cellsData = row.Values.ToList();
+            //    outputCells.Add(cellsData);
+
+            //    //var cellData = cellsData[0];
+            //    //var cellEffectiiveFormatColor = cellData.EffectiveFormat.BackgroundColor;
+            //}
+
+            DA.SetDataTree(1, outputGhCells);
+            //______________________________________________________________________________________
+
+
+
+            // где-то тут
             SpreadsheetsResource.ValuesResource.GetRequest request =
                     service.Spreadsheets.Values.Get(spreadsheetId, requestRange);
-                        
+
             ValueRange response = request.Execute();
-            IList<IList<Object>> values = response.Values;
+
+            IList<IList<object>> values = response.Values;
             if (values != null && values.Count > 0)
             {
+
+
                 var data = new GH_Structure<GH_String>();
                 for (int i = 0; i < values.Count; i++)
                 {
                     var path = new GH_Path(i);
                     var ghStrings = values[i].Select(s => new GH_String(s.ToString()));
+
                     data.AppendRange(ghStrings, path);
                 }
 
@@ -144,24 +206,20 @@ namespace GoogleDocs.Spreadsheets
         }
 
 
-
-        /// <summary>
-        /// Provides an Icon for every component that will be visible in the User Interface.
-        /// Icons need to be 24x24 pixels.
-        /// </summary>
+        /// <inheritdoc/>
         protected override System.Drawing.Bitmap Icon
         {
             get
             {
                 // You can add image files to your project resources and access them like this:
-                //return Resources.IconForThisComponent;
+                // return Resources.IconForThisComponent;
                 return null;
             }
         }
 
         /// <summary>
-        /// Each component must have a unique Guid to identify it. 
-        /// It is vital this Guid doesn't change otherwise old ghx files 
+        /// Each component must have a unique Guid to identify it.
+        /// It is vital this Guid doesn't change otherwise old ghx files
         /// that use the old ID will partially fail during loading.
         /// </summary>
         public override Guid ComponentGuid
