@@ -1,5 +1,4 @@
 ﻿using Grasshopper.Kernel;
-using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
 using Google.Apis.Auth.OAuth2;
@@ -9,9 +8,6 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System.IO;
 using System.Threading;
-using Grasshopper.Kernel.Data;
-using Grasshopper.Kernel.Types;
-using System.Linq;
 
 namespace GoogleDocs.Spreadsheets
 {
@@ -44,7 +40,7 @@ namespace GoogleDocs.Spreadsheets
             pManager.AddTextParameter("SpreadsheetId", "Id", "Spreadsheet Id", GH_ParamAccess.item);
             pManager.AddTextParameter("SheetName", "N", "Sheet Name", GH_ParamAccess.item);
             pManager.AddTextParameter("CellRange", "C", "Starting cell", GH_ParamAccess.item);
-            pManager.AddTextParameter("Values", "V", "Values", GH_ParamAccess.list);            
+            pManager.AddTextParameter("Values", "V", "Values", GH_ParamAccess.list);
             pManager.AddBooleanParameter("Append", "A", "If true, values will be added to the next possible empty row", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Write", "W", "Write data from spreadsheet", GH_ParamAccess.item, false);
         }
@@ -76,7 +72,7 @@ namespace GoogleDocs.Spreadsheets
             if (!DA.GetData(2, ref range)) return;
             if (!DA.GetDataList(3, inputData)) return;
             DA.GetData(4, ref append);
-            DA.GetData(5, ref write);           
+            DA.GetData(5, ref write);
 
             if (!write) return;
 
@@ -103,7 +99,7 @@ namespace GoogleDocs.Spreadsheets
             var service = new SheetsService(new BaseClientService.Initializer()
             {
                 HttpClientInitializer = credential,
-                ApplicationName = ApplicationName,                
+                ApplicationName = ApplicationName,
             });
 
             // Define request parameters.            
@@ -113,7 +109,7 @@ namespace GoogleDocs.Spreadsheets
             {
                 MajorDimension = "ROWS",
                 Range = requestRange,
-                Values = new List<IList<object>>() { new List<object>()}
+                Values = new List<IList<object>>() { new List<object>() }
             };
 
             //WTF???
@@ -124,7 +120,7 @@ namespace GoogleDocs.Spreadsheets
             }
 
             if (append)
-            {                
+            {
                 var request = service.Spreadsheets.Values.Append(valueRange, spreadsheetId, requestRange);
                 request.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.RAW;
                 var result = request.Execute();

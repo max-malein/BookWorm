@@ -1,11 +1,6 @@
 ﻿using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel.Types;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookWorm.Goo
 {
@@ -60,7 +55,7 @@ namespace BookWorm.Goo
             if (Value != null)
             {
                 var str = Value.FormattedValue;
-                return $"Cell: {str}";
+                return $@"Cell: {str}";
             }
 
             return string.Empty;

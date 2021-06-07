@@ -1,5 +1,4 @@
 ﻿using Grasshopper.Kernel;
-using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
 using Google.Apis.Auth.OAuth2;
@@ -12,7 +11,6 @@ using System.Threading;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
 using System.Linq;
-using BookWorm.Goo;
 
 namespace GoogleDocs.Spreadsheets
 {
@@ -58,8 +56,6 @@ namespace GoogleDocs.Spreadsheets
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddTextParameter("Values", "V", "Values", GH_ParamAccess.tree);
-
-            pManager.AddGenericParameter("Cells", "C", "Cells", GH_ParamAccess.tree);
         }
 
         /// <inheritdoc/>
@@ -78,8 +74,6 @@ namespace GoogleDocs.Spreadsheets
             DA.GetData(4, ref sameLength);
 
             if (!read) return;
-
-
 
             GH_AssemblyInfo info = Grasshopper.Instances.ComponentServer.FindAssembly(new Guid("56dfe1a3-4e7b-425f-b169-965c0d1f7977"));
             string assemblyLocation = Path.GetDirectoryName(info.Location);
@@ -106,73 +100,20 @@ namespace GoogleDocs.Spreadsheets
                 HttpClientInitializer = credential,
                 ApplicationName = ApplicationName,
             });
-            // _______________________________________________________________________________
 
             // Define request parameters.
-            // Одинарные кавычки используются на случай пробелов в имени листа.
+            // Single quotes for cases with space between sheet name parts.
             string requestRange = $"'{sheetName}'!{range}";
 
-            var req = service.Spreadsheets.Get(spreadsheetId);
-            req.Ranges = requestRange;
-            req.IncludeGridData = true;
-
-            var spreadsheet = req.Execute();
-            // запрос возвращает спредщит, но докапываться нужно до внутреней фигни всё-равно
-            var sheets = spreadsheet.Sheets.ToList();
-
-            Sheet choosenSheet = sheets[0];
-
-            if (choosenSheet.Properties.SheetType != "GRID")
-            {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Sheet type is not \"GRID\"");
-                return;
-            }
-
-            var rowDataPerRequest = choosenSheet.Data.Select(d => d.RowData.ToList()).ToList();
-
-            //В компоненте используется поэлементный range.
-            var rowData = rowDataPerRequest[0];
-
-            var outputGhCells = new GH_Structure<GH_CellData>();
-
-            for (int i = 0; i < rowData.Count; i++)
-            {
-                var path = new GH_Path(i);
-                var ghCells = rowData[i].Values.Select(cd => new GH_CellData(cd)).ToList();
-
-                outputGhCells.AppendRange(ghCells, path);
-            }
-
-
-            //foreach (var row in rowData)
-            //{
-            //    for (int i = 0; i < length; i++)
-            //    {
-
-            //    }
-            //    var cellsData = row.Values.ToList();
-            //    outputCells.Add(cellsData);
-
-            //    //var cellData = cellsData[0];
-            //    //var cellEffectiiveFormatColor = cellData.EffectiveFormat.BackgroundColor;
-            //}
-
-            DA.SetDataTree(1, outputGhCells);
-            //______________________________________________________________________________________
-
-
-
-            // где-то тут
             SpreadsheetsResource.ValuesResource.GetRequest request =
                     service.Spreadsheets.Values.Get(spreadsheetId, requestRange);
 
             ValueRange response = request.Execute();
 
             IList<IList<object>> values = response.Values;
+
             if (values != null && values.Count > 0)
             {
-
-
                 var data = new GH_Structure<GH_String>();
                 for (int i = 0; i < values.Count; i++)
                 {
@@ -204,7 +145,6 @@ namespace GoogleDocs.Spreadsheets
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "No data found.");
             }
         }
-
 
         /// <inheritdoc/>
         protected override System.Drawing.Bitmap Icon
