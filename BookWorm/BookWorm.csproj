@@ -91,6 +91,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Construct\ConstructCellBorder.cs" />
+    <Compile Include="Construct\ConstructCellBorders.cs" />
     <Compile Include="Goo\GH_CellData.cs" />
     <Compile Include="Spreadsheets\ReadCellRange.cs" />
     <Compile Include="BookWormInfo.cs" />
@@ -104,13 +106,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="stylecop.json" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Construct\" />
     <Folder Include="Deconstruct\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
