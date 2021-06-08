@@ -1,7 +1,6 @@
-﻿using Grasshopper.Kernel;
-using Rhino.Geometry;
+﻿using Google.Apis.Sheets.v4.Data;
+using Grasshopper.Kernel;
 using System;
-using System.Collections.Generic;
 
 namespace BookWorm.Construct
 {
@@ -11,24 +10,28 @@ namespace BookWorm.Construct
         /// Initializes a new instance of the ConstructPadding class.
         /// </summary>
         public ConstructPadding()
-          : base("ConstructPadding", "Nickname",
-              "Description",
-              "Category", "Subcategory")
+          : base(
+                "ConstructPadding",
+                "ConPadding",
+                "Construct padding",
+                "BookWorm",
+                "Construct")
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddIntegerParameter("Top", "Top", "Top", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Bottom", "Bottom", "Bottom", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Left", "Left", "Left", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Right", "Right", "Right", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddGenericParameter("Padding", "P", "Padding", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -37,6 +40,34 @@ namespace BookWorm.Construct
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            var padding = new Padding();
+
+            var bTop = 0;
+            var bBottom = 0;
+            var bLeft = 0;
+            var bRight = 0;
+
+            if (DA.GetData(0, ref bTop))
+            {
+                padding.Top = bTop;
+            }
+
+            if (DA.GetData(1, ref bBottom))
+            {
+                padding.Bottom = bBottom;
+            }
+
+            if (DA.GetData(0, ref bLeft))
+            {
+                padding.Left = bLeft;
+            }
+
+            if (DA.GetData(1, ref bRight))
+            {
+                padding.Right = bRight;
+            }
+
+            DA.SetData(0, padding);
         }
 
         /// <summary>
@@ -46,7 +77,7 @@ namespace BookWorm.Construct
         {
             get
             {
-                //You can add image files to your project resources and access them like this:
+                // You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
                 return null;
             }
