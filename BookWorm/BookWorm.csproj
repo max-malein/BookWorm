@@ -94,6 +94,8 @@
     <Compile Include="Construct\ConstructCellBorder.cs" />
     <Compile Include="Construct\ConstructCellBorders.cs" />
     <Compile Include="Construct\ConstructPadding.cs" />
+    <Compile Include="Construct\ConstructTextFormat.cs" />
+    <Compile Include="Construct\ConstructTextRotation.cs" />
     <Compile Include="Goo\GH_CellData.cs" />
     <Compile Include="Spreadsheets\ReadCellRange.cs" />
     <Compile Include="BookWormInfo.cs" />
