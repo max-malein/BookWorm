@@ -65,7 +65,7 @@ namespace BookWorm.Construct
 
             var cellDataGoo = new GH_CellData(cellData);
 
-            DA.SetData(0, cellDataGoo);
+            DA.SetData(0, cellData);
         }
 
         /// <inheritdoc/>
