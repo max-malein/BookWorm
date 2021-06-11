@@ -3,6 +3,7 @@ using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BookWorm.Spreadsheets
@@ -108,7 +109,16 @@ namespace BookWorm.Spreadsheets
             for (int i = 0; i < rowData.Count; i++)
             {
                 var path = new GH_Path(runCountIndex, i);
-                var ghCells = rowData[i].Values.Select(cd => new GH_CellData(cd)).ToList();
+
+                // Null-cell as the only cell in a row returns null-row, i.e. null instead of list of cells.
+                // So you can get null-exeption if user requests column.
+                var ghCells = rowData[i].Values?.Select(cd => new GH_CellData(cd)).ToList();
+
+                // That stuff and "Values?" solve it.
+                if (ghCells == null)
+                {
+                    ghCells = new List<GH_CellData>();
+                }
 
                 outputGhCells.AppendRange(ghCells, path);
             }
