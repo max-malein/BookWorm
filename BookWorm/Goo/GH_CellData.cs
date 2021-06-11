@@ -52,11 +52,55 @@ namespace BookWorm.Goo
         /// <inheritdoc/>
         public override string ToString()
         {
-            if (Value != null)
+            if (Value == null)
             {
-                var str = Value.FormattedValue;
-                return $@"Cell: {str}";
+                return string.Empty;
             }
+
+            // Only requested from spreadsheet cells got formatted value.
+            else if (Value.FormattedValue != null)
+            {
+                return $@"Cell: {Value.FormattedValue}";
+            }
+
+            // Manually created cell have only user entered value
+            else if (Value.UserEnteredValue != null)
+            {
+                var userValue = Value.UserEnteredValue;
+
+                var userValueAsString = string.Empty;
+
+                if (userValue.NumberValue != null)
+                {
+                    userValueAsString = $@"User double: {userValue.NumberValue}";
+                }
+                else if (userValue.StringValue != null)
+                {
+                    userValueAsString = $@"User string: {userValue.StringValue}";
+                }
+                else if (userValue.BoolValue != null)
+                {
+                    userValueAsString = $@"User bool: {userValue.BoolValue}";
+                }
+                else if (userValue.FormulaValue != null)
+                {
+                    userValueAsString = $@"User formula: {userValue.FormulaValue}";
+                }
+                else if (userValue.ErrorValue != null)
+                {
+                    userValueAsString = $@"Error: {userValue.ErrorValue.Type}. {userValue.ErrorValue.Message}";
+                }
+
+                return $@"Cell: {userValueAsString}";
+            }
+
+
+            //if (Value != null)
+            //{
+            //    // probleme with formatted
+            //    var str = Value.FormattedValue;
+            //    return $@"Cell: {str}";
+            //}
 
             return string.Empty;
         }
