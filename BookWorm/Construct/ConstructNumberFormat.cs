@@ -13,9 +13,9 @@ namespace BookWorm.Construct
         /// </summary>
         public ConstructNumberFormat()
           : base(
-                "ConstructPadding",
-                "ConPadding",
-                "Construct padding",
+                "ConstructNumberFormat",
+                "ConNumberFormat",
+                "Construct number format",
                 "BookWorm",
                 "Construct")
         {
@@ -28,6 +28,8 @@ namespace BookWorm.Construct
         {
             pManager.AddIntegerParameter("NumberFormatType", "NumberFormatType", "The number format is not specified and is based on the contents of the cell. Do not explicitly use this. 0-TEXT, 1-NUMBER, 2-PERCENT, 3-CURRENCY, 4-DATE, 5-TIME, 6-DATE_TIME, 7-SCIENTIFIC", GH_ParamAccess.item);
             pManager.AddTextParameter("Pattern", "Pattern", "Pattern", GH_ParamAccess.item);
+
+            pManager[1].Optional = true;
         }
 
         /// <summary>
@@ -44,17 +46,16 @@ namespace BookWorm.Construct
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var numberFormatType = NumberFormatType.TEXT;
+            var numberFormatType = 0;
             var pattern = string.Empty;
 
             if (!DA.GetData(0, ref numberFormatType))
             {
                 return;
             }
-            if (!DA.GetData(1, ref pattern))
-            {
-                return;
-            }
+
+            DA.GetData(1, ref pattern);
+
 
             var numberFormat = new NumberFormat()
             {

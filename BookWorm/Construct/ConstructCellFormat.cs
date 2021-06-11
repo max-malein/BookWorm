@@ -27,7 +27,7 @@ namespace BookWorm.Construct
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddGenericParameter("NumberFormat", "NumberFormat", "Number format", GH_ParamAccess.item);
-            pManager.AddColourParameter("Color", "Color", "Color", GH_ParamAccess.item);
+            pManager.AddTextParameter("Color", "Color", "Color", GH_ParamAccess.item);
             pManager.AddGenericParameter("Borders", "Borders", "Borders", GH_ParamAccess.item);
             pManager.AddGenericParameter("Padding", "Padding", "Padding", GH_ParamAccess.item);
             pManager.AddTextParameter("HorizontalAligment", "HorizontalAligment", "Horizontal aligment", GH_ParamAccess.item);
@@ -54,7 +54,7 @@ namespace BookWorm.Construct
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var numberFormat =new NumberFormat();
-            var color = new Color();
+            var color = string.Empty;
             var borders = new Borders();
             var padding = new Padding();
             var horizontalAligment = string.Empty;
@@ -108,7 +108,13 @@ namespace BookWorm.Construct
             var cellFormat = new CellFormat()
             {
                 NumberFormat=numberFormat,
-                BackgroundColor=color,
+                BackgroundColor= new Color
+                {
+                    Alpha = (float)255,
+                    Red = float.Parse(color.Split(',')[0]),
+                    Green = float.Parse(color.Split(',')[1]),
+                    Blue = float.Parse(color.Split(',')[2]),
+                },
                 Borders=borders,
                 Padding=padding,
                 HorizontalAlignment=horizontalAligment,

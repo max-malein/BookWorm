@@ -29,13 +29,13 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddColourParameter("foregroundColor", "foregroundColor", "foreground color", GH_ParamAccess.item);
+            pManager.AddTextParameter("foregroundColor", "foregroundColor", "foreground color", GH_ParamAccess.item);
             pManager.AddTextParameter("fontFamily", "fontFamily", "Font family", GH_ParamAccess.item);
             pManager.AddIntegerParameter("fontSize", "fontSize", "Font size", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("bold", "bold", "bold", GH_ParamAccess.item, false);
-            pManager.AddBooleanParameter("italic", "italic", "italic", GH_ParamAccess.item, false);
-            pManager.AddBooleanParameter("strikethrought", "strikethrought", "strikethrought", GH_ParamAccess.item, false);
-            pManager.AddBooleanParameter("underline", "underline", "underline", GH_ParamAccess.item, false);
+            pManager.AddBooleanParameter("bold", "bold", "bold", GH_ParamAccess.item);
+            pManager.AddBooleanParameter("italic", "italic", "italic", GH_ParamAccess.item);
+            pManager.AddBooleanParameter("strikethrought", "strikethrought", "strikethrought", GH_ParamAccess.item);
+            pManager.AddBooleanParameter("underline", "underline", "underline", GH_ParamAccess.item);
             pManager.AddTextParameter("link", "link", "link", GH_ParamAccess.item, "http://parametrica.team");
         }
 
@@ -52,27 +52,35 @@ namespace BookWorm.Construct
         protected override void SolveInstance(IGH_DataAccess DA)
         {
 
-
-            var foregroundColor = new Color();
+            var color = string.Empty;
             var fontFamily = "Arial";
-            var fontSize = 14;
-            var bold = false;
-            var italic = false;
-            var strikethrought = false;
-            var underLine = false;
+            int fontSize = 14;
+            bool bold = false;
+            bool italic = false;
+            bool strikethrought = false;
+            bool underLine = false;
             var link= "http://parametrica.team";
 
-            DA.GetData(0, ref foregroundColor);
+            DA.GetData(0, ref color);
             DA.GetData(1, ref fontFamily);
             DA.GetData(2, ref fontSize);
             DA.GetData(3, ref bold);
             DA.GetData(4, ref italic);
-            DA.GetData(5, ref underLine);
-            DA.GetData(6, ref link);
+            DA.GetData(5, ref strikethrought);
+            DA.GetData(6, ref underLine);
+            DA.GetData(7, ref link);
 
+
+            
             var textFormat = new TextFormat()
             {
-                ForegroundColor = foregroundColor,
+                ForegroundColor = new Color
+                {
+                    Alpha = 255F,
+                    Red = float.Parse(color.Split(',')[0]),
+                    Green = float.Parse(color.Split(',')[1]),
+                    Blue = float.Parse(color.Split(',')[2]),
+                },
                 FontFamily = fontFamily,
                 FontSize = fontSize,
                 Bold = bold,
@@ -80,7 +88,6 @@ namespace BookWorm.Construct
                 Strikethrough = strikethrought,
                 Underline = underLine,
                 ETag = link,
-
             };
 
             DA.SetData(0, textFormat);

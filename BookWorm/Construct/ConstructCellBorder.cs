@@ -30,7 +30,7 @@ namespace BookWorm.Construct
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddIntegerParameter("Style", "S", "0 - STYLE_UNSPECIFIED, 1  -DOTTED, 2 - DASHED, 3 - SOLID, 4 - SOLID_MEDIUM, 5 - SOLID_THICK, 6 - NONE, 7 - DOUBLE", GH_ParamAccess.item);
-            pManager.AddColourParameter("Color", "C", "Border color", GH_ParamAccess.item);
+            pManager.AddTextParameter("Color", "C", "Border color", GH_ParamAccess.item);
         }
 
         /// <inheritdoc/>
@@ -45,8 +45,9 @@ namespace BookWorm.Construct
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var style = Style.NONE;
-            var color = new Color();
+            
+            var style = 0;
+            var color = string.Empty;
 
             if (!DA.GetData(0, ref style))
             {
@@ -61,7 +62,12 @@ namespace BookWorm.Construct
             var border = new Border()
             {
                 Style = style.ToString(),
-                Color = color,
+                Color = new Color { 
+                    Alpha=(float)255,
+                    Red = float.Parse(color.Split(',')[0]),
+                    Green = float.Parse(color.Split(',')[1]),
+                    Blue = float.Parse(color.Split(',')[2]),
+                },
             };
 
             DA.SetData(0, border);
