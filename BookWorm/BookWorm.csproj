@@ -94,6 +94,8 @@
     <Compile Include="Construct\GhConstructCell.cs" />
     <Compile Include="Deconstruct\GhDeconstructCell.cs" />
     <Compile Include="Goo\GH_CellData.cs" />
+    <Compile Include="Goo\GH_CellFormat.cs" />
+    <Compile Include="Goo\GH_ExtendedValue.cs" />
     <Compile Include="Spreadsheets\ReadCellRange.cs" />
     <Compile Include="BookWormInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -5,24 +5,30 @@ using Newtonsoft.Json;
 namespace BookWorm.Goo
 {
     /// <summary>
-    /// Goo для 
+    /// CellData Goo.
     /// </summary>
     public class GH_CellData : GH_Goo<CellData>
     {
-        // constructors
+        /// <summary>
+        /// Default.
+        /// </summary>
         public GH_CellData()
         {
         }
 
+        /// <summary>
+        /// CellData Goo.
+        /// </summary>
+        /// <param name="cellData">CellData.</param>
         public GH_CellData(CellData cellData)
         {
             Value = cellData;
         }
 
         /// <summary>
-        /// Копия goo ячейки.
+        /// Deep copy of Goo.
         /// </summary>
-        /// <param name="cellDataGoo">Goo ячейки.</param>
+        /// <param name="cellDataGoo">CellData Goo.</param>
         public GH_CellData(GH_CellData cellDataGoo)
         {
             if (cellDataGoo != null)
@@ -41,7 +47,7 @@ namespace BookWorm.Goo
         public override string TypeName => "CellData";
 
         /// <inheritdoc/>
-        public override string TypeDescription => "Google Sheets Cell Data";
+        public override string TypeDescription => "Data about a specific Google Sheets Cell";
 
         /// <inheritdoc/>
         public override IGH_Goo Duplicate()
@@ -57,52 +63,31 @@ namespace BookWorm.Goo
                 return string.Empty;
             }
 
+            var cellStringValue = string.Empty;
+
             // Only requested from spreadsheet cells got formatted value.
-            else if (Value.FormattedValue != null)
+            if (Value.FormattedValue != null)
             {
-                return $@"Cell: {Value.FormattedValue}";
+                cellStringValue = $@"Formatted value: {Value.FormattedValue}";
             }
 
             // Manually created cell have only user entered value
             else if (Value.UserEnteredValue != null)
             {
-                var userValue = Value.UserEnteredValue;
+                var userValueGoo = new GH_ExtendedValue(Value.UserEnteredValue);
 
-                var userValueAsString = string.Empty;
-
-                if (userValue.NumberValue != null)
-                {
-                    userValueAsString = $@"User double: {userValue.NumberValue}";
-                }
-                else if (userValue.StringValue != null)
-                {
-                    userValueAsString = $@"User string: {userValue.StringValue}";
-                }
-                else if (userValue.BoolValue != null)
-                {
-                    userValueAsString = $@"User bool: {userValue.BoolValue}";
-                }
-                else if (userValue.FormulaValue != null)
-                {
-                    userValueAsString = $@"User formula: {userValue.FormulaValue}";
-                }
-                else if (userValue.ErrorValue != null)
-                {
-                    userValueAsString = $@"Error: {userValue.ErrorValue.Type}. {userValue.ErrorValue.Message}";
-                }
-
-                return $@"Cell: {userValueAsString}";
+                cellStringValue = $@"{userValueGoo}";
             }
 
+            var cellFormatString = string.Empty;
 
-            //if (Value != null)
-            //{
-            //    // probleme with formatted
-            //    var str = Value.FormattedValue;
-            //    return $@"Cell: {str}";
-            //}
+            if (Value.UserEnteredFormat != null)
+            {
+                var cellFormatGoo = new GH_CellFormat(Value.UserEnteredFormat);
+                cellFormatString = $@"{cellFormatGoo}";
+            }
 
-            return string.Empty;
+            return $"{cellStringValue} \n{cellFormatString}";
         }
     }
 }
