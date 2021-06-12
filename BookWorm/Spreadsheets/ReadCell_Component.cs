@@ -11,15 +11,15 @@ namespace BookWorm.Spreadsheets
     /// <summary>
     /// 
     /// </summary>
-    public class ReadCellsRange : GH_Component
+    public class ReadCell_Component : GH_Component
     {
         /// <summary>
         /// Initializes a new instance of the ReadCells class.
         /// </summary>
-        public ReadCellsRange()
+        public ReadCell_Component()
           : base(
-                "Read Cells Range",
-                "ReadCells",
+                "Read Cell",
+                "ReadCell",
                 "Reads a range of cells",
                 "BookWorm",
                 "Spreadsheet")
@@ -88,19 +88,22 @@ namespace BookWorm.Spreadsheets
             request.IncludeGridData = true;
 
             var spreadsheet = request.Execute();
-            var sheets = spreadsheet.Sheets.ToList();
+            Sheet sheet = spreadsheet.Sheets.FirstOrDefault();
 
-            // Range already with sheet name.
-            Sheet choosenSheet = sheets[0];
+            if (sheet == null)
+            {
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Can't read this sheet");
+                return;
+            }
 
-            if (choosenSheet.Properties.SheetType != "GRID")
+            if (sheet.Properties.SheetType != "GRID")
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Sheet type is not \"GRID\"");
                 return;
             }
 
             // Solver uses request range as item.
-            var rowDataPerRequest = choosenSheet.Data.Select(d => d.RowData.ToList()).ToList();
+            var rowDataPerRequest = sheet.Data.Select(d => d.RowData.ToList()).ToList();
             var rowData = rowDataPerRequest[0];
 
             var outputGhCells = new GH_Structure<GH_CellData>();
