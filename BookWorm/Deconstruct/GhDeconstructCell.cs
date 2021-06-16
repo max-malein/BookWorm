@@ -25,7 +25,7 @@ namespace BookWorm.Deconstruct
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("Cell", "C", "Cell", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Cell", "C", "Data about the specific cell", GH_ParamAccess.item);
         }
 
         /// <inheritdoc/>
@@ -40,7 +40,7 @@ namespace BookWorm.Deconstruct
                 + "\n Note: Dates, Times and DateTimes are represented as doubles in serial number format.",
                 GH_ParamAccess.item);
 
-            pManager.AddGenericParameter("Cell Format", "CF", "Cell Format", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Cell Format", "CF", "The format of the cell", GH_ParamAccess.item);
         }
 
         /// <inheritdoc/>
@@ -57,8 +57,8 @@ namespace BookWorm.Deconstruct
             var cellData = cellDataGoo.Value;
 
             var formattedValue = cellData.FormattedValue;
-            var userEnteredValue = cellData.UserEnteredValue;
-            var cellFormat = cellData.UserEnteredFormat;
+            var userEnteredValue = new GH_ExtendedValue(cellData.UserEnteredValue);
+            var cellFormat = new GH_CellFormat(cellData.UserEnteredFormat);
 
             DA.SetData(0, formattedValue);
             DA.SetData(1, userEnteredValue);

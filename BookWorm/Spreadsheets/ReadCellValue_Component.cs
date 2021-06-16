@@ -14,7 +14,7 @@ using System.Linq;
 
 namespace GoogleDocs.Spreadsheets
 {
-    public class ReadCellRange : GH_Component
+    public class ReadCellValue_Component : GH_Component
     {
         // If modifying these scopes, delete your previously saved credentials
         // at ~/.credentials/sheets.googleapis.com-dotnet-quickstart.json
@@ -28,11 +28,11 @@ namespace GoogleDocs.Spreadsheets
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public ReadCellRange()
+        public ReadCellValue_Component()
           : base(
-                "ReadCellRange",
-                "ReadCell",
-                "Reads a range of cells",
+                "Read Cell Value",
+                "ReadCellValue",
+                "Reads values from a range of cells",
                 "BookWorm",
                 "Spreadsheet")
         {
