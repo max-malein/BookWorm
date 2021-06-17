@@ -2,6 +2,7 @@
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
+using Grasshopper.Kernel.Types;
 using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,7 @@ namespace BookWorm.Request
         /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var cells = new GH_Structure<GH_CellData>();
+            var cells = new GH_Structure<IGH_Goo>();
 
             var rows = new List<RowData>();
 
@@ -80,8 +81,8 @@ namespace BookWorm.Request
 
             foreach (var branch in cells.Branches)
             {
-                RowData row = null;
-                var cellsData = branch.Select(ghCell => ghCell.Value).ToList();
+                RowData row = new RowData();
+                var cellsData = branch.Select(ghCell => (ghCell as GH_CellData).Value).ToList();
                 row.Values = cellsData;
                 rows.Add(row);
             }
