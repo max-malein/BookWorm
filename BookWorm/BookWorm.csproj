@@ -98,6 +98,7 @@
     <Compile Include="Goo\GH_CellData.cs" />
     <Compile Include="Goo\GH_CellFormat.cs" />
     <Compile Include="Goo\GH_ExtendedValue.cs" />
+    <Compile Include="Request\UpdateCells.cs" />
     <Compile Include="Spreadsheets\ReadCellValue_Component.cs" />
     <Compile Include="BookWormInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,9 +117,7 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Deconstruct\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
