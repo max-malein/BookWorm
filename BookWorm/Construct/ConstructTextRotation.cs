@@ -1,4 +1,5 @@
-﻿using Google.Apis.Sheets.v4.Data;
+﻿using BookWorm.Goo;
+using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 using System;
@@ -27,6 +28,11 @@ namespace BookWorm.Construct
         {
             pManager.AddIntegerParameter("angle", "angle", "angle", GH_ParamAccess.item);
             pManager.AddBooleanParameter("vertical", "vertical", "vertical", GH_ParamAccess.item);
+
+            for (int i = 0; i < pManager.ParamCount; i++)
+            {
+                pManager[i].Optional = true;
+            }
         }
 
         /// <summary>
@@ -46,15 +52,20 @@ namespace BookWorm.Construct
             var angle = 90;
             var vertical = false;
 
-            DA.GetData(0, ref angle);
-            DA.GetData(1, ref vertical);
+            var textRotation = new TextRotation();
 
-            var textRotation = new TextRotation()
+            if (DA.GetData(0, ref angle))
             {
-                Angle = angle,
-                Vertical = vertical,
-            };
-            DA.SetData(0, textRotation);
+                textRotation.Angle = angle;
+            }
+
+            if (DA.GetData(1, ref vertical))
+            {
+                textRotation.Vertical = vertical;
+            }
+
+            var textRotationGoo = new GH_TextRotation(textRotation);
+            DA.SetData(0, textRotationGoo);
         }
 
         /// <summary>

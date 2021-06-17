@@ -1,4 +1,5 @@
-﻿using Google.Apis.Sheets.v4.Data;
+﻿using BookWorm.Goo;
+using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 using System;
@@ -29,7 +30,10 @@ namespace BookWorm.Construct
             pManager.AddIntegerParameter("NumberFormatType", "NumberFormatType", "The number format is not specified and is based on the contents of the cell. Do not explicitly use this. 0-TEXT, 1-NUMBER, 2-PERCENT, 3-CURRENCY, 4-DATE, 5-TIME, 6-DATE_TIME, 7-SCIENTIFIC", GH_ParamAccess.item);
             pManager.AddTextParameter("Pattern", "Pattern", "Pattern", GH_ParamAccess.item);
 
-            pManager[1].Optional = true;
+            for (int i = 0; i < pManager.ParamCount; i++)
+            {
+                pManager[i].Optional = true;
+            }
         }
 
         /// <summary>
@@ -48,21 +52,20 @@ namespace BookWorm.Construct
         {
             var numberFormatType = 0;
             var pattern = string.Empty;
+            var numberFormat = new NumberFormat();
 
-            if (!DA.GetData(0, ref numberFormatType))
+            if (DA.GetData(0, ref numberFormatType))
             {
-                return;
+                numberFormat.Type = numberFormatType.ToString();
             }
 
-            DA.GetData(1, ref pattern);
-
-
-            var numberFormat = new NumberFormat()
+            if (DA.GetData(1, ref pattern))
             {
-                Type = numberFormatType.ToString(),
-                Pattern = pattern,
-            };
-            DA.SetData(0, numberFormat);
+                numberFormat.Type = pattern;
+            }
+
+            var numberFormatGoo = new GH_NumberFormat(numberFormat);
+            DA.SetData(0, numberFormatGoo);
         }
 
         /// <summary>

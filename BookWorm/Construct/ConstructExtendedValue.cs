@@ -1,4 +1,5 @@
-﻿using Google.Apis.Sheets.v4.Data;
+﻿using BookWorm.Goo;
+using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 using System;
@@ -26,11 +27,8 @@ namespace BookWorm.Construct
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddNumberParameter("NumberValue", "NumberValue", "Number value", GH_ParamAccess.item);
-            pManager.AddTextParameter("StringValue", "StringValue", "String value", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("BoolValue", "BoolValue", "Bool value", GH_ParamAccess.item);
-            pManager.AddTextParameter("FormulaValue", "FormulaValue", "Formula value", GH_ParamAccess.item);
-
+            pManager.AddTextParameter("Value", "Value", "Value", GH_ParamAccess.item);
+           
             for (int i = 0; i < pManager.ParamCount; i++)
             {
                 pManager[i].Optional = true;
@@ -51,24 +49,35 @@ namespace BookWorm.Construct
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var numberValue = 0.0;
-            var stringValue = string.Empty;
-            var boolValue = false;
-            var formulaValue = string.Empty;
+            var ext = new ExtendedValue();
+            var enterString = string.Empty;
 
-            DA.GetData(0, ref numberValue);
-            DA.GetData(1, ref stringValue);
-            DA.GetData(2, ref boolValue);
-            DA.GetData(3, ref formulaValue);
+            DA.GetData(0, ref enterString);
 
-            var ext = new ExtendedValue()
+            if(enterString==string.Empty)
             {
-                NumberValue=numberValue,
-                StringValue=stringValue,
-                BoolValue=boolValue,
-                FormulaValue=formulaValue,
-            };
-            DA.SetData(0, ext);
+                ext.StringValue = enterString;
+            }
+            else if(enterString.ToLower()=="false")
+            {
+                ext.BoolValue = false;
+            }
+            else if (enterString.ToLower() == "true")
+            {
+                ext.BoolValue = true;
+            } else if (double.TryParse(enterString, out double number))
+            {
+                ext.NumberValue = number;
+            }else if(enterString.ToCharArray()[0]=='=')
+            {
+                ext.FormulaValue = enterString;
+            }else 
+            {
+                ext.StringValue = enterString;
+            }
+ 
+            var extGoo = new GH_ExtendedValue(ext);
+            DA.SetData(0, extGoo);
         }
 
         /// <summary>
@@ -78,7 +87,7 @@ namespace BookWorm.Construct
         {
             get
             {
-                //You can add image files to your project resources and access them like this:
+                // You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
                 return null;
             }

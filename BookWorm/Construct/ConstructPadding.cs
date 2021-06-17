@@ -1,4 +1,5 @@
-﻿using Google.Apis.Sheets.v4.Data;
+﻿using BookWorm.Goo;
+using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
 using System;
 
@@ -22,16 +23,21 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddIntegerParameter("Top", "Top", "Top", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Bottom", "Bottom", "Bottom", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Left", "Left", "Left", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Right", "Right", "Right", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Top", "Top", "Top (int)", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Bottom", "Bottom", "Bottom (int)", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Left", "Left", "Left (int)", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Right", "Right", "Right (int)", GH_ParamAccess.item);
+
+            for (int i = 0; i < pManager.ParamCount; i++)
+            {
+                pManager[i].Optional = true;
+            }
         }
 
         /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("Padding", "P", "Padding", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Padding", "Padding", "Padding", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -67,7 +73,8 @@ namespace BookWorm.Construct
                 padding.Right = bRight;
             }
 
-            DA.SetData(0, padding);
+            var paddingGoo = new GH_Padding(padding);
+            DA.SetData(0, paddingGoo);
         }
 
         /// <summary>

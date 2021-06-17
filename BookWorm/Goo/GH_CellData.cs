@@ -76,7 +76,7 @@ namespace BookWorm.Goo
             {
                 var userValueGoo = new GH_ExtendedValue(Value.UserEnteredValue);
 
-                cellStringValue = $@"{userValueGoo}";
+               cellStringValue = $@"{userValueGoo}";
             }
 
             var cellFormatString = string.Empty;

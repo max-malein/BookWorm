@@ -5,6 +5,7 @@
 namespace BookWorm.Construct
 {
     using System;
+    using BookWorm.Goo;
     using Google.Apis.Sheets.v4.Data;
     using Grasshopper.Kernel;
 
@@ -36,12 +37,17 @@ namespace BookWorm.Construct
             pManager.AddGenericParameter("BorderLeft", "BLeft", "Border", GH_ParamAccess.item);
 
             pManager.AddGenericParameter("BorderRight", "BRight", "Border", GH_ParamAccess.item);
+
+            for (int i = 0; i < pManager.ParamCount; i++)
+            {
+                pManager[i].Optional = true;
+            }
         }
 
         /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("Borders", "Bs", "Borders", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Borders", "Borders", "Borders", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -52,32 +58,33 @@ namespace BookWorm.Construct
         {
             var borders = new Borders();
 
-            var bTop = new Border();
-            var bBottom = new Border();
-            var bLeft = new Border();
-            var bRight = new Border();
+            var bTop = new GH_CellBorder();
+            var bBottom = new GH_CellBorder();
+            var bLeft = new GH_CellBorder();
+            var bRight = new GH_CellBorder();
 
             if (DA.GetData(0, ref bTop))
             {
-                borders.Top = bTop;
+                borders.Top = bTop.Value;
             }
 
             if (DA.GetData(1, ref bBottom))
             {
-                borders.Bottom = bBottom;
+                borders.Bottom = bBottom.Value;
             }
 
-            if (DA.GetData(0, ref bLeft))
+            if (DA.GetData(2, ref bLeft))
             {
-                borders.Left = bLeft;
+                borders.Left = bLeft.Value;
             }
 
-            if (DA.GetData(1, ref bRight))
+            if (DA.GetData(3, ref bRight))
             {
-                borders.Right = bRight;
+                borders.Right = bRight.Value;
             }
 
-            DA.SetData(0, borders);
+            var borderGoo = new GH_CellBorders(borders);
+            DA.SetData(0, borderGoo);
         }
 
         /// <summary>
