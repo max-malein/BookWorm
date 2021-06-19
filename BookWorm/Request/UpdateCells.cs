@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using Data = Google.Apis.Sheets.v4.Data;
+
 namespace BookWorm.Request
 {
     public class UpdateCells : GH_Component
@@ -51,7 +53,15 @@ namespace BookWorm.Request
 
             var a1NotatonRange = string.Empty;
 
-            GridRange gridRange = null;
+            var gridRange = new GridRange();
+
+            // Нужен метод, переводящий а1-нотацию ренджа в грид рендж. И метод, что получает щит айди.
+            // это пример для листа "Лист лист" (его айди 420837689) тыблицы 1jbaOPPZVP5nyDE-QCvQtBNV5eBMV6PDvZfyrDdtQ9xg
+            gridRange.SheetId = 420837689;
+            gridRange.StartRowIndex = 2;
+            gridRange.EndRowIndex = 5;
+            gridRange.StartColumnIndex = 2;
+            gridRange.EndColumnIndex = 5;
 
             string fieldMask = string.Empty;
 
@@ -86,6 +96,40 @@ namespace BookWorm.Request
                 row.Values = cellsData;
                 rows.Add(row);
             }
+
+            // айди листа для запроса
+            var spreadsheetId = string.Empty;
+            spreadsheetId = "1jbaOPPZVP5nyDE-QCvQtBNV5eBMV6PDvZfyrDdtQ9xg";
+
+            // A list of updates to apply to the spreadsheet.
+            // Requests will be applied in the order they are specified.
+            // If any request is not valid, no requests will be applied.
+            var requests = new List<Data.Request>();
+
+            // Задаётся сам запрос, а потом запрос и запрос вставляется в запрос, запросом погоняет, по фазам лун юпитера с учётом силы кориолиса
+            // UUUUUUSOOOOQQUUUAAAA
+            var updateCellRequest = new Data.Request();
+
+            // UUUUUUSOOOOQQUUUAAAA
+            var updCellReq = new UpdateCellsRequest
+            {
+                Rows = rows,
+                Fields = fieldMask,
+                Range = gridRange,
+            };
+
+            updateCellRequest.UpdateCells = updCellReq;
+            
+
+            requests.Add(updateCellRequest);
+
+            // Главный запрос, в который встраивается список нужных запросов
+            var requestBody = new BatchUpdateSpreadsheetRequest();
+            requestBody.Requests = requests;
+
+            var request = Utilities.Credentials.Service.Spreadsheets.BatchUpdate(requestBody, spreadsheetId);
+
+            var response = request.Execute();
 
             DA.SetDataList(0, rows);
         }
