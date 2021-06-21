@@ -11,7 +11,7 @@ namespace BookWorm.Construct
     public class GhConstructCell : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the GhConstructCell class.
+        /// Initializes a new instance of the <see cref="GhConstructCell"/> class.
         /// </summary>
         public GhConstructCell()
           : base(
@@ -68,7 +68,7 @@ namespace BookWorm.Construct
             var cellDataGoo = new GH_CellData(cellData);
 
             DA.SetData(0, cellDataGoo);
-            
+
         }
 
         /// <inheritdoc/>

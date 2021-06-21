@@ -10,6 +10,7 @@ namespace BookWorm.Goo
     public class GH_CellBorders : GH_Goo<Borders>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_CellBorders"/> class.
         /// Default.
         /// </summary>
         public GH_CellBorders()
@@ -17,6 +18,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_CellBorders"/> class.
         /// CellData Goo.
         /// </summary>
         /// <param name="cellData">CellData.</param>
@@ -26,6 +28,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_CellBorders"/> class.
         /// Deep copy of Goo.
         /// </summary>
         /// <param name="cellDataGoo">CellData Goo.</param>

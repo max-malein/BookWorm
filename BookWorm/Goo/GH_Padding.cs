@@ -10,6 +10,7 @@ namespace BookWorm.Goo
     public class GH_Padding : GH_Goo<Padding>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_Padding"/> class.
         /// Default.
         /// </summary>
         public GH_Padding()
@@ -17,6 +18,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_Padding"/> class.
         /// CellData Goo.
         /// </summary>
         /// <param name="padding">CellData.</param>
@@ -26,6 +28,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_Padding"/> class.
         /// Deep copy of Goo.
         /// </summary>
         /// <param name="paddingGoo">CellData Goo.</param>
@@ -69,6 +72,7 @@ namespace BookWorm.Goo
             {
                 bottom = $@"Formatted value: {Value.Bottom.Value}";
             }
+
             var top = string.Empty;
 
             if (Value.Bottom != null)
@@ -89,8 +93,6 @@ namespace BookWorm.Goo
             {
                 left = $@"Formatted value: {Value.Left.Value}";
             }
-
-
 
             return $"{bottom} \n{top} \n{right} \n{left}";
         }

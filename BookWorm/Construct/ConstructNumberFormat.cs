@@ -10,7 +10,7 @@ namespace BookWorm.Construct
     public class ConstructNumberFormat : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the ConstructNumberFormat class.
+        /// Initializes a new instance of the <see cref="ConstructNumberFormat"/> class.
         /// </summary>
         public ConstructNumberFormat()
           : base(

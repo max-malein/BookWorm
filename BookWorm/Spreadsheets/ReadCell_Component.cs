@@ -14,7 +14,7 @@ namespace BookWorm.Spreadsheets
     public class ReadCell_Component : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the ReadCells class.
+        /// Initializes a new instance of the <see cref="ReadCell_Component"/> class.
         /// </summary>
         public ReadCell_Component()
           : base(

@@ -8,7 +8,7 @@ namespace BookWorm.Construct
     public class ConstructPadding : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the ConstructPadding class.
+        /// Initializes a new instance of the <see cref="ConstructPadding"/> class.
         /// </summary>
         public ConstructPadding()
           : base(

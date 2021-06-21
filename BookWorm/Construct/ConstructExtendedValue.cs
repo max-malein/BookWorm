@@ -10,15 +10,15 @@ namespace BookWorm.Construct
     public class ConstructExtendedValue : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the ConstructExtendedValue class.
+        /// Initializes a new instance of the <see cref="ConstructExtendedValue"/> class.
         /// </summary>
         public ConstructExtendedValue()
           : base(
                 "ConstructExtendedValue",
                 "ConExtendedValue",
-                 "Construct extended value",
-                 "BookWorm",
-                 "Construct")
+                "Construct extended value",
+                "BookWorm",
+                "Construct")
         {
         }
 
@@ -28,7 +28,7 @@ namespace BookWorm.Construct
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("Value", "Value", "Value", GH_ParamAccess.item);
-           
+
             for (int i = 0; i < pManager.ParamCount; i++)
             {
                 pManager[i].Optional = true;
@@ -54,28 +54,31 @@ namespace BookWorm.Construct
 
             DA.GetData(0, ref enterString);
 
-            if(enterString==string.Empty)
+            if (enterString == string.Empty)
             {
                 ext.StringValue = enterString;
             }
-            else if(enterString.ToLower()=="false")
+            else if (enterString.ToLower() == "false")
             {
                 ext.BoolValue = false;
             }
             else if (enterString.ToLower() == "true")
             {
                 ext.BoolValue = true;
-            } else if (double.TryParse(enterString, out double number))
+            }
+            else if (double.TryParse(enterString, out double number))
             {
                 ext.NumberValue = number;
-            }else if(enterString.ToCharArray()[0]=='=')
+            }
+            else if (enterString.ToCharArray()[0] == '=')
             {
                 ext.FormulaValue = enterString;
-            }else 
+            }
+            else
             {
                 ext.StringValue = enterString;
             }
- 
+
             var extGoo = new GH_ExtendedValue(ext);
             DA.SetData(0, extGoo);
         }

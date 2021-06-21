@@ -10,6 +10,7 @@ namespace BookWorm.Goo
     public class GH_NumberFormat : GH_Goo<NumberFormat>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_NumberFormat"/> class.
         /// Default.
         /// </summary>
         public GH_NumberFormat()
@@ -17,6 +18,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_NumberFormat"/> class.
         /// CellData Goo.
         /// </summary>
         /// <param name="cellData">CellData.</param>
@@ -26,6 +28,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_NumberFormat"/> class.
         /// Deep copy of Goo.
         /// </summary>
         /// <param name="cellDataGoo">CellData Goo.</param>
@@ -70,8 +73,6 @@ namespace BookWorm.Goo
             {
                 typeStringValue = $@" Number format type: {Value.Type}";
             }
-
-            
 
             return $"{typeStringValue}";
         }

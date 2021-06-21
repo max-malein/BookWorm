@@ -10,7 +10,7 @@ namespace BookWorm.Construct
     public class ConstructTextRotation : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the ConstructTextRotation class.
+        /// Initializes a new instance of the <see cref="ConstructTextRotation"/> class.
         /// </summary>
         public ConstructTextRotation()
           : base("ConstructTextRotation",

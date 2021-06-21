@@ -11,6 +11,7 @@ namespace BookWorm.Goo
     public class GH_TextFormat : GH_Goo<TextFormat>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_TextFormat"/> class.
         /// Default.
         /// </summary>
         public GH_TextFormat()
@@ -18,6 +19,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_TextFormat"/> class.
         /// CellFormat Goo.
         /// </summary>
         /// <param name="cellFormat">CellFormat.</param>
@@ -27,6 +29,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_TextFormat"/> class.
         /// Deep copy of Goo.
         /// </summary>
         /// <param name="cellFormatGoo">CellFormat Goo.</param>
@@ -82,7 +85,7 @@ namespace BookWorm.Goo
 
             if (Value.Bold != null)
             {
-                 boldString = $@"Bold: {Value.Bold}"; 
+                boldString = $@"Bold: {Value.Bold}";
             }
 
             var fontString = string.Empty;

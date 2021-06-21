@@ -1,16 +1,14 @@
 ﻿using BookWorm.Goo;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
 using System;
-using System.Collections.Generic;
 
 namespace BookWorm.Construct
 {
     public class ConstructCellFormat : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the ConstructCellFormat class.
+        /// Initializes a new instance of the <see cref="ConstructCellFormat"/> class.
         /// </summary>
         public ConstructCellFormat()
           : base(
@@ -22,9 +20,7 @@ namespace BookWorm.Construct
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddGenericParameter("NumberFormat", "NumberFormat", "Number format", GH_ParamAccess.item);
@@ -44,9 +40,7 @@ namespace BookWorm.Construct
             }
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddGenericParameter("CellFormat", "CellFormat", "Cell format", GH_ParamAccess.item);
@@ -58,7 +52,7 @@ namespace BookWorm.Construct
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var numberFormat =new GH_NumberFormat();
+            var numberFormat = new GH_NumberFormat();
             var color = string.Empty;
             var borders = new GH_CellBorders();
             var padding = new GH_Padding();
@@ -80,7 +74,7 @@ namespace BookWorm.Construct
             {
                 cellFormat.BackgroundColor = new Color
                 {
-                    Alpha = (float)255,
+                    Alpha = 255,
                     Red = float.Parse(color.Split(',')[0]),
                     Green = float.Parse(color.Split(',')[1]),
                     Blue = float.Parse(color.Split(',')[2]),
@@ -91,30 +85,37 @@ namespace BookWorm.Construct
             {
                 cellFormat.Borders = borders.Value;
             }
+
             if (DA.GetData(3, ref padding))
             {
                 cellFormat.Padding = padding.Value;
             }
+
             if (DA.GetData(4, ref horizontalAligment))
             {
                 cellFormat.HorizontalAlignment = horizontalAligment;
             }
+
             if (DA.GetData(5, ref verticalAligment))
             {
                 cellFormat.VerticalAlignment = verticalAligment;
             }
+
             if (DA.GetData(6, ref wrap))
             {
                 cellFormat.WrapStrategy = wrap;
             }
+
             if (DA.GetData(7, ref textDirection))
             {
                 cellFormat.TextDirection = textDirection;
             }
+
             if (DA.GetData(8, ref textFormat))
             {
                 cellFormat.TextFormat = textFormat.Value;
             }
+
             if (DA.GetData(9, ref textRotation))
             {
                 cellFormat.TextRotation = textRotation.Value;

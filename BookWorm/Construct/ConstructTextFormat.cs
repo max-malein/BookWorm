@@ -57,7 +57,6 @@ namespace BookWorm.Construct
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-
             var color = string.Empty;
             var fontFamily = "Arial";
             int fontSize = 14;
@@ -65,7 +64,7 @@ namespace BookWorm.Construct
             bool italic = false;
             bool strikethrought = false;
             bool underLine = false;
-            var link= "http://parametrica.team";
+            var link = "http://parametrica.team";
 
             var textFormat = new TextFormat();
 
@@ -114,8 +113,6 @@ namespace BookWorm.Construct
             {
                 textFormat.ETag = link;
             }
-
-            
 
             var textFormatGoo = new GH_TextFormat(textFormat);
             DA.SetData(0, textFormatGoo);

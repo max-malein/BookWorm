@@ -10,6 +10,7 @@ namespace BookWorm.Goo
     public class GH_TextRotation : GH_Goo<TextRotation>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_TextRotation"/> class.
         /// Default.
         /// </summary>
         public GH_TextRotation()
@@ -17,6 +18,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_TextRotation"/> class.
         /// CellData Goo.
         /// </summary>
         /// <param name="textRotation">CellData.</param>
@@ -26,6 +28,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_TextRotation"/> class.
         /// Deep copy of Goo.
         /// </summary>
         /// <param name="textRotationGoo">CellData Goo.</param>
@@ -76,10 +79,6 @@ namespace BookWorm.Goo
             {
                 verticalString = $@"Formatted value: {Value.Vertical}";
             }
-
-
-
-
 
             return $"{angleString} \n{verticalString}";
         }

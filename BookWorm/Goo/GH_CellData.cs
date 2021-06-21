@@ -10,6 +10,7 @@ namespace BookWorm.Goo
     public class GH_CellData : GH_Goo<CellData>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_CellData"/> class.
         /// Default.
         /// </summary>
         public GH_CellData()
@@ -17,6 +18,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_CellData"/> class.
         /// CellData Goo.
         /// </summary>
         /// <param name="cellData">CellData.</param>
@@ -26,6 +28,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_CellData"/> class.
         /// Deep copy of Goo.
         /// </summary>
         /// <param name="cellDataGoo">CellData Goo.</param>
@@ -76,7 +79,7 @@ namespace BookWorm.Goo
             {
                 var userValueGoo = new GH_ExtendedValue(Value.UserEnteredValue);
 
-               cellStringValue = $@"{userValueGoo}";
+                cellStringValue = $@"{userValueGoo}";
             }
 
             var cellFormatString = string.Empty;
