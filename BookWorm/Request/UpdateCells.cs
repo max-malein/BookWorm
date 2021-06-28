@@ -29,9 +29,11 @@ namespace BookWorm.Request
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("Cells", "C", "Cells in a Rows", GH_ParamAccess.tree);
+            pManager.AddTextParameter("SpreadsheetId", "Id", "Spreadsheet Id or spreadsheet url.", GH_ParamAccess.item);
+            pManager.AddTextParameter("SheetName", "N", "Sheet name. If such sheet doesn't exist it will be created.", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Cells", "C", "Cells in a Rows", GH_ParamAccess.list);
             pManager.AddTextParameter("Range", "Rng", "Grid Range in a1 notation", GH_ParamAccess.item);
-            pManager.AddTextParameter("Fields", "F", "Field Mask", GH_ParamAccess.item);
+            pManager.AddTextParameter("Fields", "F", "Field Mask", GH_ParamAccess.item, "*");
             pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item);
 
         }
@@ -47,7 +49,7 @@ namespace BookWorm.Request
         /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var cells = new GH_Structure<IGH_Goo>();
+            var cellsGoo = new List<GH_CellData>();
 
             var rows = new List<RowData>();
 
@@ -55,50 +57,41 @@ namespace BookWorm.Request
 
             var gridRange = new GridRange();
 
-            // Нужен метод, переводящий а1-нотацию ренджа в грид рендж. И метод, что получает щит айди.
-            // это пример для листа "Лист лист" (его айди 420837689) тыблицы 1jbaOPPZVP5nyDE-QCvQtBNV5eBMV6PDvZfyrDdtQ9xg
-            gridRange.SheetId = 420837689;
-            gridRange.StartRowIndex = 2;
-            gridRange.EndRowIndex = 5;
-            gridRange.StartColumnIndex = 2;
-            gridRange.EndColumnIndex = 5;
-
+            string spreadsheetId = string.Empty;
+            string sheetName = string.Empty;
             string fieldMask = string.Empty;
 
             var run = false;
 
-            if (!DA.GetDataTree(0, out cells))
-            {
-                return;
-            }
+            if (DA.GetData(0, ref spreadsheetId)) return;
 
-            if (!DA.GetData(1, ref a1NotatonRange))
-            {
-                return;
-            }
+            if (DA.GetData(1, ref sheetName)) return;
 
-            if (!DA.GetData(2, ref fieldMask))
-            {
-                return;
-            }
+            if (!DA.GetDataList(2, cellsGoo)) return;
 
-            DA.GetData(3, ref run);
+            if (!DA.GetData(3, ref a1NotatonRange)) return;
+
+            DA.GetData(4, ref fieldMask);
+
+            DA.GetData(5, ref run);
 
             if (!run)
             {
                 return;
             }
 
-            foreach (var branch in cells.Branches)
+            var cells = cellsGoo.Select(c => c.Value).ToList();
+
+            int sheetId = GetSheetId(spreadsheetId, sheetName);
+            if (sheetId == -1)
             {
-                RowData row = new RowData();
-                var cellsData = branch.Select(ghCell => (ghCell as GH_CellData).Value).ToList();
-                row.Values = cellsData;
-                rows.Add(row);
+                sheetId = CreateNewSheet(sheetName);
             }
 
-            // айди листа для запроса
-            var spreadsheetId = string.Empty;
+            gridRange = GridRangeFromA1(a1NotatonRange, sheetId, cells.Count);
+            rows = GetRows(cells, gridRange);
+
+            // для теста - потом убрать.
             spreadsheetId = "1jbaOPPZVP5nyDE-QCvQtBNV5eBMV6PDvZfyrDdtQ9xg";
 
             // A list of updates to apply to the spreadsheet.
@@ -119,7 +112,6 @@ namespace BookWorm.Request
             };
 
             updateCellRequest.UpdateCells = updCellReq;
-            
 
             requests.Add(updateCellRequest);
 
@@ -132,6 +124,57 @@ namespace BookWorm.Request
             var response = request.Execute();
 
             DA.SetDataList(0, rows);
+        }
+
+        private int CreateNewSheet(string sheetName)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Находит номер листа по его имени.
+        /// </summary>
+        /// <param name="spreadsheetId">Id документа.</param>
+        /// <param name="sheetName">Название листа.</param>
+        /// <returns>Номер листа или -1, если такого листа нет.</returns>
+        private int GetSheetId(string spreadsheetId, string sheetName)
+        {
+
+        }
+
+        private GridRange GridRangeFromA1(string a1NotatonRange, int sheetId, int numberOfCells)
+        {
+
+
+
+            // это пример для листа "Лист лист" (его айди 420837689) тыблицы 1jbaOPPZVP5nyDE-QCvQtBNV5eBMV6PDvZfyrDdtQ9xg
+            gridRange.SheetId = sheetId;
+            gridRange.StartRowIndex = 2;
+            gridRange.EndRowIndex = 5;
+            gridRange.StartColumnIndex = 2;
+            gridRange.EndColumnIndex = 5;
+        }
+
+        private List<RowData> GetRows(List<CellData> cells, GridRange gridRange)
+        {
+            if (gridRange == null)
+                return null;
+
+            // Y:AB - 4 значения в ряду
+            var rowLength = gridRange.EndRowIndex - gridRange.StartRowIndex + 1;
+            var rows = new List<RowData>();
+            var row = new RowData();
+            for (int i = 0; i < cells.Count; i++)
+            {
+                row.Values.Add(cells[i]);
+                if ((i + 1) % rowLength == 0)
+                {
+                    rows.Add(row);
+                    row = new RowData();
+                }
+            }
+
+            return rows;
         }
 
         /// <inheritdoc/>
