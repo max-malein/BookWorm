@@ -11,6 +11,7 @@ namespace BookWorm.Goo
     public class GH_ExtendedValue : GH_Goo<ExtendedValue>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_ExtendedValue"/> class.
         /// Default.
         /// </summary>
         public GH_ExtendedValue()
@@ -18,6 +19,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_ExtendedValue"/> class.
         /// ExtendedValue Goo.
         /// </summary>
         /// <param name="extendedValue">ExtendedValue.</param>
@@ -27,6 +29,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_ExtendedValue"/> class.
         /// Deep copy of Goo.
         /// </summary>
         /// <param name="extendedValueGoo">ExtendedValue Goo.</param>

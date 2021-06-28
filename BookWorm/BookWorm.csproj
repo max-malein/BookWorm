@@ -93,15 +93,26 @@
   <ItemGroup>
     <Compile Include="Construct\ConstructCellBorder.cs" />
     <Compile Include="Construct\ConstructCellBorders.cs" />
+    <Compile Include="Construct\ConstructCellFormat.cs" />
+    <Compile Include="Construct\ConstructExtendedValue.cs" />
+    <Compile Include="Construct\ConstructNumberFormat.cs" />
+    <Compile Include="Construct\ConstructPadding.cs" />
+    <Compile Include="Construct\ConstructTextFormat.cs" />
+    <Compile Include="Construct\ConstructTextRotation.cs" />
     <Compile Include="Construct\GhConstructCell.cs" />
-    <Compile Include="Deconstruct\GhDeconstructCell.cs" />
+    <Compile Include="Goo\GH_CellBorder.cs" />
+    <Compile Include="Goo\GH_CellBorders.cs" />
     <Compile Include="Goo\GH_CellData.cs" />
+    <Compile Include="BookWormInfo.cs" />
     <Compile Include="Goo\GH_CellFormat.cs" />
     <Compile Include="Goo\GH_ExtendedValue.cs" />
+    <Compile Include="Goo\GH_NumberFormat.cs" />
+    <Compile Include="Goo\GH_Padding.cs" />
+    <Compile Include="Goo\GH_TextFormat.cs" />
+    <Compile Include="Goo\GH_TextRotation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\UpdateCells.cs" />
     <Compile Include="Spreadsheets\ReadCellValue_Component.cs" />
-    <Compile Include="BookWormInfo.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spreadsheets\ReadCell_Component.cs" />
     <Compile Include="Spreadsheets\WriteCellRange.cs" />
     <Compile Include="Utilities\Credentials.cs" />
@@ -117,8 +128,9 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Deconstruct\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -128,16 +140,9 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>set version=0.6.2
-set destination="%25appdata%25\McNeel\Rhinoceros\packages\7.0\$(ProjectName)\"
-
-copy $(TargetPath) $(TargetDir)$(ProjectName).gha
-del $(TargetPath)
-
-xcopy $(TargetDir) "%25destination%25%25version%25" /i /y
-
-del "%25destination%25manifest.txt"
-echo %25version%25 &gt; "%25destination%25manifest.txt"
+    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
+Copy "$(TargetDir)$(ProjectName).gha" "%25appdata%25\McNeel\Rhinoceros\packages\7.0\bookworm\0.6.2\$(ProjectName).gha"
+Copy "$(TargetDir)credentials.json" "%25appdata%25\McNeel\Rhinoceros\packages\7.0\bookworm\0.6.2\credentials.json"
 
 if $(ConfigurationName) NEQ Yak Exit
 yak build</PostBuildEvent>

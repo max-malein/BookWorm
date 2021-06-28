@@ -19,6 +19,7 @@ namespace GoogleDocs.Spreadsheets
         static string ApplicationName = "Google Sheets reader";
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="WriteCellRange"/> class.
         /// Each implementation of GH_Component must provide a public 
         /// constructor without any arguments.
         /// Category represents the Tab in which the component will appear, 

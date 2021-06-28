@@ -13,6 +13,7 @@ namespace GoogleDocs
                 return "Bookworm";
             }
         }
+
         public override Bitmap Icon
         {
             get
@@ -21,6 +22,7 @@ namespace GoogleDocs
                 return null;
             }
         }
+
         public override string Description => "GoogleDocs connector. The description is really long and thorough";
         public override string Version => "0.6.2";
 
@@ -40,6 +42,7 @@ namespace GoogleDocs
                 return "Max Malein";
             }
         }
+
         public override string AuthorContact
         {
             get

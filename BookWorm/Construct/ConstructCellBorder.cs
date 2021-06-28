@@ -5,6 +5,7 @@
 namespace BookWorm.Construct
 {
     using System;
+    using BookWorm.Goo;
     using Google.Apis.Sheets.v4.Data;
     using Grasshopper.Kernel;
 
@@ -29,14 +30,19 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddIntegerParameter("Style", "S", "0 - STYLE_UNSPECIFIED, 1  -DOTTED, 2 - DASHED, 3 - SOLID, 4 - SOLID_MEDIUM, 5 - SOLID_THICK, 6 - NONE, 7 - DOUBLE", GH_ParamAccess.item);
-            pManager.AddColourParameter("Color", "C", "Border color", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Style", "Style", "0 - STYLE_UNSPECIFIED, 1  -DOTTED, 2 - DASHED, 3 - SOLID, 4 - SOLID_MEDIUM, 5 - SOLID_THICK, 6 - NONE, 7 - DOUBLE", GH_ParamAccess.item);
+            pManager.AddTextParameter("Color", "Color", "Border color", GH_ParamAccess.item);
+
+            for (int i = 0; i < pManager.ParamCount; i++)
+            {
+                pManager[i].Optional = true;
+            }
         }
 
         /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("Border", "B", "Border", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Border", "Border", "Border", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -45,31 +51,34 @@ namespace BookWorm.Construct
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var style = Style.NONE;
-            var color = new Color();
+            var style = 0;
+            var color = string.Empty;
+            var border = new Border();
 
-            if (!DA.GetData(0, ref style))
+            if (DA.GetData(0, ref style))
             {
-                return;
+                border.Style = style.ToString();
             }
 
-            if (!DA.GetData(1, ref color))
+            if (DA.GetData(1, ref color))
             {
-                return;
+                border.Color = new Color
+                {
+                    Alpha = 255,
+                    Red = float.Parse(color.Split(',')[0]),
+                    Green = float.Parse(color.Split(',')[1]),
+                    Blue = float.Parse(color.Split(',')[2]),
+                };
             }
 
-            var border = new Border()
-            {
-                Style = style.ToString(),
-                Color = color,
-            };
-
-            DA.SetData(0, border);
+            var borderGoo = new GH_CellBorder(border);
+            DA.SetData(0, borderGoo);
         }
 
         /// <summary>
         /// Gets provides an Icon for the component.
         /// </summary>
+
         protected override System.Drawing.Bitmap Icon
         {
             get

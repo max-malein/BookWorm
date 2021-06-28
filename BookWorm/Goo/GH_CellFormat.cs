@@ -11,6 +11,7 @@ namespace BookWorm.Goo
     public class GH_CellFormat : GH_Goo<CellFormat>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_CellFormat"/> class.
         /// Default.
         /// </summary>
         public GH_CellFormat()
@@ -18,6 +19,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_CellFormat"/> class.
         /// CellFormat Goo.
         /// </summary>
         /// <param name="cellFormat">CellFormat.</param>
@@ -27,6 +29,7 @@ namespace BookWorm.Goo
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GH_CellFormat"/> class.
         /// Deep copy of Goo.
         /// </summary>
         /// <param name="cellFormatGoo">CellFormat Goo.</param>
