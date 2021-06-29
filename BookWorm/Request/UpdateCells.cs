@@ -18,7 +18,8 @@ namespace BookWorm.Request
         /// Initializes a new instance of the UpdateCells class.
         /// </summary>
         public UpdateCells()
-          : base("UpdateCells",
+          : base(
+                "UpdateCells",
                 "Nickname",
                 "Description",
                 "BookWorm",
@@ -30,11 +31,16 @@ namespace BookWorm.Request
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("SpreadsheetId", "Id", "Spreadsheet Id or spreadsheet url.", GH_ParamAccess.item);
+
             pManager.AddTextParameter("SheetName", "N", "Sheet name. If such sheet doesn't exist it will be created.", GH_ParamAccess.item);
+
             pManager.AddGenericParameter("Cells", "C", "Cells in a Rows", GH_ParamAccess.list);
+
             pManager.AddTextParameter("Range", "Rng", "Grid Range in a1 notation", GH_ParamAccess.item);
+
             pManager.AddTextParameter("Fields", "F", "Field Mask", GH_ParamAccess.item, "*");
-            pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item);
+
+            pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item, false);
 
         }
 
@@ -63,9 +69,9 @@ namespace BookWorm.Request
 
             var run = false;
 
-            if (DA.GetData(0, ref spreadsheetId)) return;
+            if (!DA.GetData(0, ref spreadsheetId)) return;
 
-            if (DA.GetData(1, ref sheetName)) return;
+            if (!DA.GetData(1, ref sheetName)) return;
 
             if (!DA.GetDataList(2, cellsGoo)) return;
 
@@ -82,13 +88,15 @@ namespace BookWorm.Request
 
             var cells = cellsGoo.Select(c => c.Value).ToList();
 
-            int sheetId = GetSheetId(spreadsheetId, sheetName);
-            if (sheetId == -1)
+            var sheetId = GetSheetId(spreadsheetId, sheetName);
+
+            if (sheetId == null)
             {
-                sheetId = CreateNewSheet(sheetName);
+                sheetId = CreateNewSheet(spreadsheetId, sheetName);
             }
 
             gridRange = GridRangeFromA1(a1NotatonRange, sheetId, cells.Count);
+
             rows = GetRows(cells, gridRange);
 
             // для теста - потом убрать.
@@ -104,14 +112,14 @@ namespace BookWorm.Request
             var updateCellRequest = new Data.Request();
 
             // UUUUUUSOOOOQQUUUAAAA
-            var updCellReq = new UpdateCellsRequest
+            var updateCell = new UpdateCellsRequest
             {
                 Rows = rows,
                 Fields = fieldMask,
                 Range = gridRange,
             };
 
-            updateCellRequest.UpdateCells = updCellReq;
+            updateCellRequest.UpdateCells = updateCell;
 
             requests.Add(updateCellRequest);
 
@@ -126,26 +134,79 @@ namespace BookWorm.Request
             DA.SetDataList(0, rows);
         }
 
-        private int CreateNewSheet(string sheetName)
+        /// <summary>
+        /// Add new sheet to the spreadsheet.
+        /// </summary>
+        /// <param name="spreadsheetId">Spreadsheet Id.</param>
+        /// <param name="sheetName">Sheet Name.</param>
+        /// <returns>Sheet Id of created sheet.</returns>
+        private int? CreateNewSheet(string spreadsheetId, string sheetName)
         {
-            throw new NotImplementedException();
+            var requests = new List<Data.Request>();
+
+            var addSheetRequest = new Data.Request();
+
+            var sheetProperties = new SheetProperties
+            {
+                Title = sheetName,
+            };
+
+            var addSheet = new AddSheetRequest
+            {
+                Properties = sheetProperties,
+            };
+
+            addSheetRequest.AddSheet = addSheet;
+
+            requests.Add(addSheetRequest);
+
+            var requestBody = new BatchUpdateSpreadsheetRequest();
+            requestBody.Requests = requests;
+
+            var request = Utilities.Credentials.Service.Spreadsheets.BatchUpdate(requestBody, spreadsheetId);
+
+            var response = request.Execute();
+            var sheetId = response.Replies.FirstOrDefault().AddSheet.Properties.SheetId;
+
+            return sheetId;
         }
 
         /// <summary>
-        /// Находит номер листа по его имени.
+        /// Get sheet Id by it's name.
         /// </summary>
-        /// <param name="spreadsheetId">Id документа.</param>
-        /// <param name="sheetName">Название листа.</param>
-        /// <returns>Номер листа или -1, если такого листа нет.</returns>
-        private int GetSheetId(string spreadsheetId, string sheetName)
+        /// <param name="spreadsheetId">Spreadsheet Id.</param>
+        /// <param name="sheetName">Sheet Name.</param>
+        /// <returns>Sheet Id or null if sheet doesn't exist.</returns>
+        private int? GetSheetId(string spreadsheetId, string sheetName)
         {
+            var request = Utilities.Credentials.Service.Spreadsheets.Get(spreadsheetId);
 
+            // For partial response. Multiple different fields are comma separated and subfields are dot-separated.
+            // But if 403 error has happen use slashes.
+            // Field names can be specified in camelCase or separated_by_underscores.
+            // For convenience, multiple subfields from the same type can be listed within parentheses.
+            // And without whitespaces.
+            request.Fields = "sheets.properties(title,sheetId)";
+
+            var spreadsheet = request.Execute();
+
+            var sheets = spreadsheet.Sheets;
+
+            foreach (var sheet in sheets)
+            {
+                if (sheet.Properties.Title == sheetName)
+                {
+                    return sheet.Properties.SheetId;
+                }
+            }
+
+            return null;
         }
 
-        private GridRange GridRangeFromA1(string a1NotatonRange, int sheetId, int numberOfCells)
+        private GridRange GridRangeFromA1(string a1NotatonRange, int? sheetId, int numberOfCells)
         {
 
-
+            var gridRange = new GridRange();
 
             // это пример для листа "Лист лист" (его айди 420837689) тыблицы 1jbaOPPZVP5nyDE-QCvQtBNV5eBMV6PDvZfyrDdtQ9xg
             gridRange.SheetId = sheetId;
@@ -153,6 +214,8 @@ namespace BookWorm.Request
             gridRange.EndRowIndex = 5;
             gridRange.StartColumnIndex = 2;
             gridRange.EndColumnIndex = 5;
+
+            return gridRange;
         }
 
         private List<RowData> GetRows(List<CellData> cells, GridRange gridRange)
