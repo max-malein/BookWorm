@@ -269,8 +269,8 @@ namespace BookWorm.Request
                 var secondColName = Regex.Match(spl[1], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
                 gridRange.EndColumnIndex = ColumnNameToNumber(secondColName) - 1;
 
-                gridRange.StartRowIndex = Convert.ToInt32(Regex.Match(spl[0], @"\d+", RegexOptions.IgnoreCase).Value);
-                gridRange.EndRowIndex = Convert.ToInt32(Regex.Match(spl[1], @"\d+", RegexOptions.IgnoreCase).Value);
+                gridRange.StartRowIndex = Convert.ToInt32(Regex.Match(spl[0], @"\d+", RegexOptions.IgnoreCase).Value) -1;
+                gridRange.EndRowIndex = Convert.ToInt32(Regex.Match(spl[1], @"\d+", RegexOptions.IgnoreCase).Value) -1;
 
             }
             return gridRange;
