@@ -7,7 +7,7 @@ using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Text.RegularExpressions;
 using Data = Google.Apis.Sheets.v4.Data;
 
 namespace BookWorm.Request
@@ -142,17 +142,78 @@ namespace BookWorm.Request
 
         }
 
+        private int ColumnNameToNumber(string colName)
+        {
+            // Return the column number for this column name.
+            int result = 0;
+            // Process each letter.
+            for (int i = 0; i < colName.Length; i++)
+            {
+                result *= 26;
+                char letter = colName[i];
+
+                // See if it's out of bounds.
+                if (letter < 'A') letter = 'A';
+                if (letter > 'Z') letter = 'Z';
+
+                // Add in the value of this letter.
+                result += (int)letter - (int)'A' + 1;
+            }
+            return result;
+        }
         private GridRange GridRangeFromA1(string a1NotatonRange, int sheetId, int numberOfCells)
         {
-
-
-
             // это пример для листа "Лист лист" (его айди 420837689) тыблицы 1jbaOPPZVP5nyDE-QCvQtBNV5eBMV6PDvZfyrDdtQ9xg
+            var gridRange = new GridRange();
             gridRange.SheetId = sheetId;
-            gridRange.StartRowIndex = 2;
-            gridRange.EndRowIndex = 5;
-            gridRange.StartColumnIndex = 2;
-            gridRange.EndColumnIndex = 5;
+
+            bool letters = Regex.Matches(a1NotatonRange, @"[a-zA-Z]").Count>0;
+            bool numbers = a1NotatonRange.Any(c=>Char.IsDigit(c));
+
+            var spl = a1NotatonRange.Split(':');
+
+            if (letters && !numbers)
+            {
+                List<int> colNumbers = new List<int>();
+
+                foreach (string colName in spl)
+                {
+                    colNumbers.Add(ColumnNameToNumber(colName));
+                }
+
+                gridRange.StartColumnIndex = colNumbers[0]-1;
+                gridRange.EndColumnIndex = colNumbers[1]-1;
+
+                var colCount = colNumbers[1] - colNumbers[0]+1;
+                gridRange.StartRowIndex = 0;
+                gridRange.EndRowIndex = numberOfCells / colCount - 1;
+            }
+            else if(numbers && !letters)
+            {
+                var startRow = Convert.ToInt32(spl[0]);
+                var endRow = Convert.ToInt32(spl[1]);
+                gridRange.StartRowIndex = startRow - 1;
+                gridRange.EndRowIndex = endRow - 1;
+
+                var rowCount = endRow - startRow + 1;
+                gridRange.StartColumnIndex = 0;
+                gridRange.EndColumnIndex = numberOfCells/rowCount - 1;
+            }
+
+            else
+            {
+                var firstColName = Regex.Match(spl[0], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
+                gridRange.StartColumnIndex = ColumnNameToNumber(firstColName) - 1;
+
+                var secondColName = Regex.Match(spl[1], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
+                gridRange.EndColumnIndex = ColumnNameToNumber(secondColName) - 1;
+
+                gridRange.StartRowIndex = Convert.ToInt32(Regex.Match(spl[0], @"\d+", RegexOptions.IgnoreCase).Value);
+                gridRange.EndRowIndex = Convert.ToInt32(Regex.Match(spl[1], @"\d+", RegexOptions.IgnoreCase).Value);
+
+            }
+
+
         }
 
         private List<RowData> GetRows(List<CellData> cells, GridRange gridRange)
