@@ -95,7 +95,7 @@ namespace BookWorm.Request
                 sheetId = CreateNewSheet(spreadsheetId, sheetName);
             }
 
-            gridRange = GridRangeFromA1(a1NotatonRange, sheetId, cells.Count);
+            gridRange = GridRangeFromA1(a1NotatonRange, (int)sheetId, cells.Count);
 
             rows = GetRows(cells, gridRange);
 
@@ -286,11 +286,13 @@ namespace BookWorm.Request
             var rowLength = gridRange.EndRowIndex - gridRange.StartRowIndex + 1;
             var rows = new List<RowData>();
             var row = new RowData();
+            var rowValues = new List<CellData>();
             for (int i = 0; i < cells.Count; i++)
             {
-                row.Values.Add(cells[i]);
+                rowValues.Add(cells[i]);
                 if ((i + 1) % rowLength == 0)
                 {
+                    row.Values = rowValues;
                     rows.Add(row);
                     row = new RowData();
                 }
