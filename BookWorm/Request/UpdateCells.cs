@@ -273,7 +273,7 @@ namespace BookWorm.Request
                 gridRange.EndRowIndex = Convert.ToInt32(Regex.Match(spl[1], @"\d+", RegexOptions.IgnoreCase).Value);
 
             }
-
+            return gridRange;
 
         }
 
