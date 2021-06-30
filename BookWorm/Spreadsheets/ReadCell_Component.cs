@@ -85,14 +85,19 @@ namespace BookWorm.Spreadsheets
 
             var request = Utilities.Credentials.Service.Spreadsheets.Get(spreadsheetId);
             request.Ranges = requestRange;
-            request.IncludeGridData = true;
+
+            // Filter for quicker response.
+            // If spreadsheet contains a lot of data you actually don't need data that you don't need.
+            // If fields are set InclideGridData parameter is ignored.
+            request.Fields = "sheets(properties.sheetType,data.rowData)";
+            //request.IncludeGridData = true;
 
             var spreadsheet = request.Execute();
             Sheet sheet = spreadsheet.Sheets.FirstOrDefault();
 
             if (sheet == null)
             {
-                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Can't read this sheet");
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Can't read this sheet");
                 return;
             }
 

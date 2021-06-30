@@ -100,6 +100,7 @@
     <Compile Include="Construct\ConstructTextFormat.cs" />
     <Compile Include="Construct\ConstructTextRotation.cs" />
     <Compile Include="Construct\GhConstructCell.cs" />
+    <Compile Include="Deconstruct\GhDeconstructCell.cs" />
     <Compile Include="Goo\GH_CellBorder.cs" />
     <Compile Include="Goo\GH_CellBorders.cs" />
     <Compile Include="Goo\GH_CellData.cs" />
@@ -127,9 +128,6 @@
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Deconstruct\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
