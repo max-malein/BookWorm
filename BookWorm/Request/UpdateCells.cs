@@ -243,22 +243,22 @@ namespace BookWorm.Request
                 }
 
                 gridRange.StartColumnIndex = colNumbers[0]-1;
-                gridRange.EndColumnIndex = colNumbers[1]-1;
+                gridRange.EndColumnIndex = colNumbers[1];
 
                 var colCount = colNumbers[1] - colNumbers[0]+1;
                 gridRange.StartRowIndex = 0;
-                gridRange.EndRowIndex = numberOfCells / colCount - 1;
+                gridRange.EndRowIndex = numberOfCells / colCount;
             }
             else if(numbers && !letters)
             {
                 var startRow = Convert.ToInt32(spl[0]);
                 var endRow = Convert.ToInt32(spl[1]);
                 gridRange.StartRowIndex = startRow - 1;
-                gridRange.EndRowIndex = endRow - 1;
+                gridRange.EndRowIndex = endRow;
 
                 var rowCount = endRow - startRow + 1;
                 gridRange.StartColumnIndex = 0;
-                gridRange.EndColumnIndex = numberOfCells/rowCount - 1;
+                gridRange.EndColumnIndex = numberOfCells/rowCount;
             }
 
             else
@@ -267,10 +267,10 @@ namespace BookWorm.Request
                 gridRange.StartColumnIndex = ColumnNameToNumber(firstColName) - 1;
 
                 var secondColName = Regex.Match(spl[1], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
-                gridRange.EndColumnIndex = ColumnNameToNumber(secondColName) - 1;
+                gridRange.EndColumnIndex = ColumnNameToNumber(secondColName);
 
                 gridRange.StartRowIndex = Convert.ToInt32(Regex.Match(spl[0], @"\d+", RegexOptions.IgnoreCase).Value) -1;
-                gridRange.EndRowIndex = Convert.ToInt32(Regex.Match(spl[1], @"\d+", RegexOptions.IgnoreCase).Value) -1;
+                gridRange.EndRowIndex = Convert.ToInt32(Regex.Match(spl[1], @"\d+", RegexOptions.IgnoreCase).Value);
 
             }
             return gridRange;
