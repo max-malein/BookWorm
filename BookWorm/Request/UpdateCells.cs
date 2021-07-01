@@ -1,13 +1,10 @@
-﻿using BookWorm.Goo;
-using Google.Apis.Sheets.v4.Data;
-using Grasshopper.Kernel;
-using Grasshopper.Kernel.Data;
-using Grasshopper.Kernel.Types;
-using Rhino.Geometry;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using BookWorm.Goo;
+using Google.Apis.Sheets.v4.Data;
+using Grasshopper.Kernel;
 using Data = Google.Apis.Sheets.v4.Data;
 
 namespace BookWorm.Request
@@ -38,7 +35,7 @@ namespace BookWorm.Request
 
             pManager.AddTextParameter("Range", "Rng", "Grid Range in a1 notation", GH_ParamAccess.item);
 
-            pManager.AddTextParameter("Fields", "F", "Field Mask", GH_ParamAccess.item, "*");
+            pManager.AddTextParameter("Fields", "F", "Field Mask that applies for cells update", GH_ParamAccess.item, "*");
 
             pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item, false);
 
@@ -99,19 +96,14 @@ namespace BookWorm.Request
 
             rows = GetRows(cells, gridRange);
 
-            // для теста - потом убрать.
-            spreadsheetId = "1jbaOPPZVP5nyDE-QCvQtBNV5eBMV6PDvZfyrDdtQ9xg";
-
             // A list of updates to apply to the spreadsheet.
             // Requests will be applied in the order they are specified.
             // If any request is not valid, no requests will be applied.
             var requests = new List<Data.Request>();
 
-            // Задаётся сам запрос, а потом запрос и запрос вставляется в запрос, запросом погоняет, по фазам лун юпитера с учётом силы кориолиса
-            // UUUUUUSOOOOQQUUUAAAA
+            // New and empty request instance.
             var updateCellRequest = new Data.Request();
 
-            // UUUUUUSOOOOQQUUUAAAA
             var updateCell = new UpdateCellsRequest
             {
                 Rows = rows,
@@ -123,7 +115,7 @@ namespace BookWorm.Request
 
             requests.Add(updateCellRequest);
 
-            // Главный запрос, в который встраивается список нужных запросов
+            // Main request of matrioshka-request.
             var requestBody = new BatchUpdateSpreadsheetRequest();
             requestBody.Requests = requests;
 
@@ -203,15 +195,20 @@ namespace BookWorm.Request
             return null;
         }
 
-        private int ColumnNameToNumber(string colName)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <returns>Column number for column name.</returns>
+        private int ColumnNameToNumber(string columnName)
         {
-            // Return the column number for this column name.
             int result = 0;
+
             // Process each letter.
-            for (int i = 0; i < colName.Length; i++)
+            for (int i = 0; i < columnName.Length; i++)
             {
                 result *= 26;
-                char letter = colName[i];
+                char letter = columnName[i];
 
                 // See if it's out of bounds.
                 if (letter < 'A') letter = 'A';
@@ -220,81 +217,102 @@ namespace BookWorm.Request
                 // Add in the value of this letter.
                 result += (int)letter - (int)'A' + 1;
             }
+
             return result;
         }
-        private GridRange GridRangeFromA1(string a1NotatonRange, int sheetId, int numberOfCells)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a1NotatonRange">Cells range in A1 notation.</param>
+        /// <param name="sheetId">Sheet Id.</param>
+        /// <param name="cellsCount">Cells count.</param>
+        /// <returns>new Grid Range.</returns>
+        private GridRange GridRangeFromA1(string a1NotatonRange, int sheetId, int cellsCount)
         {
-            // это пример для листа "Лист лист" (его айди 420837689) тыблицы 1jbaOPPZVP5nyDE-QCvQtBNV5eBMV6PDvZfyrDdtQ9xg
             var gridRange = new GridRange();
             gridRange.SheetId = sheetId;
 
-            bool letters = Regex.Matches(a1NotatonRange, @"[a-zA-Z]").Count>0;
-            bool numbers = a1NotatonRange.Any(c=>Char.IsDigit(c));
+            bool letters = Regex.Matches(a1NotatonRange, @"[a-zA-Z]").Count > 0;
+            bool numbers = a1NotatonRange.Any(c => char.IsDigit(c));
 
-            var spl = a1NotatonRange.Split(':');
+            var rangeBounds = a1NotatonRange.Split(':');
 
+            // Only columns case.
             if (letters && !numbers)
             {
                 List<int> colNumbers = new List<int>();
 
-                foreach (string colName in spl)
+                foreach (string colName in rangeBounds)
                 {
                     colNumbers.Add(ColumnNameToNumber(colName));
                 }
 
-                gridRange.StartColumnIndex = colNumbers[0]-1;
+                gridRange.StartColumnIndex = colNumbers[0] - 1;
                 gridRange.EndColumnIndex = colNumbers[1];
 
-                var colCount = colNumbers[1] - colNumbers[0]+1;
+                var colCount = colNumbers[1] - colNumbers[0] + 1;
                 gridRange.StartRowIndex = 0;
-                gridRange.EndRowIndex = numberOfCells / colCount;
+                gridRange.EndRowIndex = cellsCount / colCount;
             }
-            else if(numbers && !letters)
+
+            // Only rows case.
+            else if (numbers && !letters)
             {
-                var startRow = Convert.ToInt32(spl[0]);
-                var endRow = Convert.ToInt32(spl[1]);
+                var startRow = Convert.ToInt32(rangeBounds[0]);
+                var endRow = Convert.ToInt32(rangeBounds[1]);
                 gridRange.StartRowIndex = startRow - 1;
                 gridRange.EndRowIndex = endRow;
 
                 var rowCount = endRow - startRow + 1;
                 gridRange.StartColumnIndex = 0;
-                gridRange.EndColumnIndex = numberOfCells/rowCount;
+                gridRange.EndColumnIndex = cellsCount / rowCount;
             }
 
+            // Coordinate case.
             else
             {
-                var firstColName = Regex.Match(spl[0], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
+                var firstColName = Regex.Match(rangeBounds[0], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
                 gridRange.StartColumnIndex = ColumnNameToNumber(firstColName) - 1;
 
-                var secondColName = Regex.Match(spl[1], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
+                var secondColName = Regex.Match(rangeBounds[1], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
                 gridRange.EndColumnIndex = ColumnNameToNumber(secondColName);
 
-                gridRange.StartRowIndex = Convert.ToInt32(Regex.Match(spl[0], @"\d+", RegexOptions.IgnoreCase).Value) -1;
-                gridRange.EndRowIndex = Convert.ToInt32(Regex.Match(spl[1], @"\d+", RegexOptions.IgnoreCase).Value);
-
+                gridRange.StartRowIndex = Convert.ToInt32(Regex.Match(rangeBounds[0], @"\d+", RegexOptions.IgnoreCase).Value) - 1;
+                gridRange.EndRowIndex = Convert.ToInt32(Regex.Match(rangeBounds[1], @"\d+", RegexOptions.IgnoreCase).Value);
             }
-            return gridRange;
 
+            return gridRange;
         }
 
+        /// <summary>
+        /// Fits cells in rows by grid range.
+        /// </summary>
+        /// <param name="cells">Cells.</param>
+        /// <param name="gridRange">Grid range.</param>
+        /// <returns>Rows.</returns>
         private List<RowData> GetRows(List<CellData> cells, GridRange gridRange)
         {
             if (gridRange == null)
                 return null;
 
-            // Y:AB - 4 значения в ряду
-            var rowLength = gridRange.EndRowIndex - gridRange.StartRowIndex + 1;
+            var rowLength = gridRange.EndColumnIndex - gridRange.StartColumnIndex;
+
             var rows = new List<RowData>();
             var row = new RowData();
             var rowValues = new List<CellData>();
+
             for (int i = 0; i < cells.Count; i++)
             {
                 rowValues.Add(cells[i]);
+
                 if ((i + 1) % rowLength == 0)
                 {
                     row.Values = rowValues;
                     rows.Add(row);
+
                     row = new RowData();
+                    rowValues = new List<CellData>();
                 }
             }
 
