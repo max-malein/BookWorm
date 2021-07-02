@@ -100,6 +100,14 @@
     <Compile Include="Construct\ConstructTextFormat.cs" />
     <Compile Include="Construct\ConstructTextRotation.cs" />
     <Compile Include="Construct\GhConstructCell.cs" />
+    <Compile Include="Deconstruct\DeconstructCellBorder.cs" />
+    <Compile Include="Deconstruct\DeconstructCellBorders.cs" />
+    <Compile Include="Deconstruct\DeconstructCellFormat.cs" />
+    <Compile Include="Deconstruct\DeconstructExtendedValue.cs" />
+    <Compile Include="Deconstruct\DeconstructNumberFormat.cs" />
+    <Compile Include="Deconstruct\DeconstructPadding.cs" />
+    <Compile Include="Deconstruct\DeconstructTextFormat.cs" />
+    <Compile Include="Deconstruct\DeconstructTextRotation.cs" />
     <Compile Include="Deconstruct\GhDeconstructCell.cs" />
     <Compile Include="Goo\GH_CellBorder.cs" />
     <Compile Include="Goo\GH_CellBorders.cs" />

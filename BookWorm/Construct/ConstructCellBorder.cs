@@ -57,6 +57,11 @@ namespace BookWorm.Construct
 
             if (DA.GetData(0, ref style))
             {
+                if(!(style>=0 && style<= 7))
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, " The styleType can only be 0, 1, 2, 3, 4, 5, 6 or 7");
+                    return;
+                }
                 border.Style = style.ToString();
             }
 
