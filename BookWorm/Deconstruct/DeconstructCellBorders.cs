@@ -1,11 +1,9 @@
-﻿using BookWorm.Goo;
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
-
-namespace BookWorm.Deconstruct
+﻿namespace BookWorm.Deconstruct
 {
+    using System;
+    using BookWorm.Goo;
+    using Grasshopper.Kernel;
+
     public class DeconstructCellBorders : GH_Component
     {
         /// <summary>
@@ -18,17 +16,13 @@ namespace BookWorm.Deconstruct
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddGenericParameter("Borders", "Borders", "Borders", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddGenericParameter("BorderTop", "BTop", "Border", GH_ParamAccess.item);
@@ -49,7 +43,7 @@ namespace BookWorm.Deconstruct
             var bordersGoo = new GH_CellBorders();
             if (!DA.GetData(0, ref bordersGoo) || bordersGoo.Value == null)
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in Borders input");
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in Borders input");
                 return;
             }
 
@@ -69,7 +63,7 @@ namespace BookWorm.Deconstruct
         {
             get
             {
-                //You can add image files to your project resources and access them like this:
+                // You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
                 return null;
             }

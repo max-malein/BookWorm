@@ -1,34 +1,32 @@
-﻿using BookWorm.Goo;
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
-
-namespace BookWorm.Deconstruct
+﻿namespace BookWorm.Deconstruct
 {
+    using System;
+    using BookWorm.Goo;
+    using Grasshopper.Kernel;
+
     public class DeconstructTextRotation : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the DeconstructTextRotation class.
+        /// Initializes a new instance of the <see cref="DeconstructTextRotation"/> class.
+        /// Deconstruct text rotation.
         /// </summary>
         public DeconstructTextRotation()
-          : base("DeconstructTextRotation", "DecTextRotation",
-              "Deconstruct text rotation",
-              "BookWorm", "Deconstruct")
+          : base(
+                "DeconstructTextRotation",
+                "DecTextRotation",
+                "Deconstruct text rotation",
+                "BookWorm", 
+                "Deconstruct")
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddGenericParameter("TextRotation", "TextRotation", "Text rotation", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddIntegerParameter("angle", "angle", "angle", GH_ParamAccess.item);
@@ -44,7 +42,7 @@ namespace BookWorm.Deconstruct
             var textRotationGoo = new GH_TextRotation();
             if (!DA.GetData(0, ref textRotationGoo) || textRotationGoo.Value == null)
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in TextRotation input");
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in TextRotation input");
                 return;
             }
 
@@ -61,7 +59,7 @@ namespace BookWorm.Deconstruct
         {
             get
             {
-                //You can add image files to your project resources and access them like this:
+                // You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
                 return null;
             }

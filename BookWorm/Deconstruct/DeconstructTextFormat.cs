@@ -1,34 +1,32 @@
-﻿using BookWorm.Goo;
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
-
-namespace BookWorm.Deconstruct
+﻿namespace BookWorm.Deconstruct
 {
+    using System;
+    using BookWorm.Goo;
+    using Grasshopper.Kernel;
+
     public class DeconstructTextFormat : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the DeconstructTextFormat class.
+        /// Initializes a new instance of the <see cref="DeconstructTextFormat"/> class.
+        /// Deconstruct text format.
         /// </summary>
         public DeconstructTextFormat()
-          : base("DeconstructTextFormat", "DecTextFormat",
-              "Deconstruct text format",
-              "BookWorm", "Deconstruct")
+          : base(
+                "DeconstructTextFormat", 
+                "DecTextFormat",
+                "Deconstruct text format",
+                "BookWorm",
+                "Deconstruct")
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddGenericParameter("TextFormat", "TextFormat", "TextFormat", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddTextParameter("foregroundColor", "foregroundColor", "foreground color", GH_ParamAccess.item);

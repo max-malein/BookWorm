@@ -1,34 +1,32 @@
-﻿using BookWorm.Goo;
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
-
-namespace BookWorm.Deconstruct
+﻿namespace BookWorm.Deconstruct
 {
+    using System;
+    using BookWorm.Goo;
+    using Grasshopper.Kernel;
+
     public class DeconstructPadding : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the DeconstructPadding class.
+        /// Initializes a new instance of the <see cref="DeconstructPadding"/> class.
+        /// Deconstruct padding.
         /// </summary>
         public DeconstructPadding()
-          : base("DeconstructPadding", "DecPadding",
-              "Deconstruct padding",
-              "BookWorm", "Deconstruct")
+          : base(
+                "DeconstructPadding",
+                "DecPadding",
+                "Deconstruct padding",
+                "BookWorm", 
+                "Deconstruct")
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddGenericParameter("Padding", "Padding", "Padding", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddIntegerParameter("Top", "Top", "Top (int)", GH_ParamAccess.item);
@@ -46,7 +44,7 @@ namespace BookWorm.Deconstruct
             var paddingGoo = new GH_Padding();
             if (!DA.GetData(0, ref paddingGoo) || paddingGoo.Value == null)
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in Padding input");
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in Padding input");
                 return;
             }
 
@@ -65,7 +63,7 @@ namespace BookWorm.Deconstruct
         {
             get
             {
-                //You can add image files to your project resources and access them like this:
+                // You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
                 return null;
             }

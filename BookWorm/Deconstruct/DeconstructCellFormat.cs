@@ -1,34 +1,32 @@
-﻿using BookWorm.Goo;
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
-
-namespace BookWorm.Deconstruct
+﻿namespace BookWorm.Deconstruct
 {
+    using System;
+    using BookWorm.Goo;
+    using Grasshopper.Kernel;
+
     public class DeconstructCellFormat : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the DeconstructCellFormat class.
+        /// Initializes a new instance of the <see cref="DeconstructCellFormat"/> class.
+        /// Deconstruct cell format.
         /// </summary>
         public DeconstructCellFormat()
-          : base("DeconstructCellFormat", "DecCellFormat",
-              "Deconstruct cell format",
-              "BookWorm", "Deconstruct")
+          : base(
+                "DeconstructCellFormat",
+                "DecCellFormat",
+                "Deconstruct cell format",
+                "BookWorm",
+                "Deconstruct")
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddGenericParameter("CellFormat", "CellFormat", "Cell format", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddGenericParameter("NumberFormat", "NumberFormat", "Number format", GH_ParamAccess.item);
@@ -52,7 +50,7 @@ namespace BookWorm.Deconstruct
             var cellFormatGoo = new GH_CellFormat();
             if (!DA.GetData(0, ref cellFormatGoo) || cellFormatGoo.Value == null)
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in CellFormat input");
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in CellFormat input");
                 return;
             }
 
@@ -92,7 +90,7 @@ namespace BookWorm.Deconstruct
         {
             get
             {
-                //You can add image files to your project resources and access them like this:
+                // You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
                 return null;
             }

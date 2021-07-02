@@ -1,34 +1,32 @@
-﻿using BookWorm.Goo;
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
-
-namespace BookWorm.Deconstruct
+﻿namespace BookWorm.Deconstruct
 {
+    using System;
+    using BookWorm.Goo;
+    using Grasshopper.Kernel;
+
     public class DeconstructNumberFormat : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the DeconstructNumberFormat class.
+        /// Initializes a new instance of the <see cref="DeconstructNumberFormat"/> class.
+        /// Deconstruct number format.
         /// </summary>
         public DeconstructNumberFormat()
-          : base("DeconstructNumberFormat", "DecNumberFormat",
-              "Deconstruct number format",
-              "BookWorm", "Deconstruct")
+          : base(
+                "DeconstructNumberFormat", 
+                "DecNumberFormat",
+                "Deconstruct number format",
+                "BookWorm",
+                "Deconstruct")
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddGenericParameter("NumberFormat", "NumberFormat", "NumberFormat", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddIntegerParameter("NumberFormatType", "NumberFormatType", "The number format is not specified and is based on the contents of the cell. Do not explicitly use this. 0-TEXT, 1-NUMBER, 2-PERCENT, 3-CURRENCY, 4-DATE, 5-TIME, 6-DATE_TIME, 7-SCIENTIFIC", GH_ParamAccess.item);
@@ -44,7 +42,7 @@ namespace BookWorm.Deconstruct
             var numberFormatGoo = new GH_NumberFormat();
             if (!DA.GetData(0, ref numberFormatGoo) || numberFormatGoo.Value == null)
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in NumberFormat input");
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in NumberFormat input");
                 return;
             }
 
@@ -61,7 +59,7 @@ namespace BookWorm.Deconstruct
         {
             get
             {
-                //You can add image files to your project resources and access them like this:
+                // You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
                 return null;
             }

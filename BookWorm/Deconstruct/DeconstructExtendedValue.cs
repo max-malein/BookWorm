@@ -1,34 +1,32 @@
-﻿using BookWorm.Goo;
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
-
-namespace BookWorm.Deconstruct
+﻿namespace BookWorm.Deconstruct
 {
+    using System;
+    using BookWorm.Goo;
+    using Grasshopper.Kernel;
+
     public class DeconstructExtendedValue : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the DeconstructExtendedValue class.
+        /// Initializes a new instance of the <see cref="DeconstructExtendedValue"/> class.
+        /// Deconstruct extended value.
         /// </summary>
         public DeconstructExtendedValue()
-          : base("DeconstructExtendedValue", "DecExtendedValue",
-              "Deconstruct extended value",
-              "BookWorm", "Deconstruct")
+          : base(
+                "DeconstructExtendedValue", 
+                "DecExtendedValue",
+                "Deconstruct extended value",
+                "BookWorm", 
+                "Deconstruct")
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddGenericParameter("ExtendedValue", "ExtendedValue", "Extended value", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddTextParameter("Value", "Value", "Value", GH_ParamAccess.item);
@@ -43,7 +41,7 @@ namespace BookWorm.Deconstruct
             var extGoo = new GH_ExtendedValue();
             if (!DA.GetData(0, ref extGoo) || extGoo.Value == null)
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in ExtendedValue input");
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in ExtendedValue input");
                 return;
             }
 
@@ -79,7 +77,7 @@ namespace BookWorm.Deconstruct
         {
             get
             {
-                //You can add image files to your project resources and access them like this:
+                // You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
                 return null;
             }

@@ -1,39 +1,33 @@
-﻿using BookWorm.Goo;
-using Google.Apis.Sheets.v4.Data;
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
-
-namespace BookWorm.Deconstruct
+﻿namespace BookWorm.Deconstruct
 {
+    using System;
+    using BookWorm.Goo;
+    using Grasshopper.Kernel;
+
     public class DeconstructCellBorder : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the DeconstructCellBorder class.
+        /// Initializes a new instance of the <see cref="DeconstructCellBorder"/> class.
+        /// Deconstruct cell border.
         /// </summary>
         public DeconstructCellBorder()
           : base(
                 "DeconstructCellBorder",
-                 "DecCellBorder",
-                 "Deconstruct cell border",
-                 "BookWorm",
-                 "Deconstruct")
+                "DecCellBorder",
+                "Deconstruct cell border",
+                "BookWorm",
+                "Deconstruct")
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddGenericParameter("Border", "Border", "Border", GH_ParamAccess.item);
  
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddIntegerParameter("Style", "Style", "0 - STYLE_UNSPECIFIED, 1  -DOTTED, 2 - DASHED, 3 - SOLID, 4 - SOLID_MEDIUM, 5 - SOLID_THICK, 6 - NONE, 7 - DOUBLE", GH_ParamAccess.item);
@@ -50,7 +44,7 @@ namespace BookWorm.Deconstruct
             var borderGoo = new GH_CellBorder();
             if (!DA.GetData(0, ref borderGoo) || borderGoo.Value == null)
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in Border input");
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in Border input");
                 return;
             }
 
