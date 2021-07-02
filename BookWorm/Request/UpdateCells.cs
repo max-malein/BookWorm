@@ -222,7 +222,7 @@ namespace BookWorm.Request
         }
 
         /// <summary>
-        /// 
+        /// Creates GridRange object from A1 notation range.
         /// </summary>
         /// <param name="a1NotatonRange">Cells range in A1 notation.</param>
         /// <param name="sheetId">Sheet Id.</param>
@@ -239,6 +239,7 @@ namespace BookWorm.Request
             var rangeBounds = a1NotatonRange.Split(':');
 
             // Only columns case.
+            // сломается при одной колонке.
             if (letters && !numbers)
             {
                 List<int> colNumbers = new List<int>();
@@ -253,10 +254,12 @@ namespace BookWorm.Request
 
                 var colCount = colNumbers[1] - colNumbers[0] + 1;
                 gridRange.StartRowIndex = 0;
+                // ошибка при колонках? или должны заполняться поровну колонки?
                 gridRange.EndRowIndex = cellsCount / colCount;
             }
 
             // Only rows case.
+            // сломается при одной строке.
             else if (numbers && !letters)
             {
                 var startRow = Convert.ToInt32(rangeBounds[0]);
@@ -270,6 +273,7 @@ namespace BookWorm.Request
             }
 
             // Coordinate case.
+            // сломается при одной ячейке.
             else
             {
                 var firstColName = Regex.Match(rangeBounds[0], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
@@ -286,7 +290,7 @@ namespace BookWorm.Request
         }
 
         /// <summary>
-        /// Fits cells in rows by grid range.
+        /// Splits cells list in rows by grid range.
         /// </summary>
         /// <param name="cells">Cells.</param>
         /// <param name="gridRange">Grid range.</param>

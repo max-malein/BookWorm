@@ -1,8 +1,4 @@
-﻿// <copyright file="ConstructTextFormat.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
-
-namespace BookWorm.Construct
+﻿namespace BookWorm.Construct
 {
     using System;
     using BookWorm.Goo;
@@ -30,14 +26,19 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("foregroundColor", "foregroundColor", "foreground color", GH_ParamAccess.item);
-            pManager.AddTextParameter("fontFamily", "fontFamily", "Font family", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("fontSize", "fontSize", "Font size", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("bold", "bold", "bold", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("italic", "italic", "italic", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("strikethrought", "strikethrought", "strikethrought", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("underline", "underline", "underline", GH_ParamAccess.item);
-            pManager.AddTextParameter("link", "link", "link", GH_ParamAccess.item, "http://parametrica.team");
+            pManager.AddColourParameter("Foreground Colour", "Colour", "Foreground colour of text", GH_ParamAccess.item);
+
+            pManager.AddTextParameter("Font Family", "FontFamily", "Font family", GH_ParamAccess.item);
+
+            pManager.AddIntegerParameter("Font Size", "FontSize", "Font size", GH_ParamAccess.item);
+
+            pManager.AddBooleanParameter("Bold", "Bold", "Is bold", GH_ParamAccess.item);
+
+            pManager.AddBooleanParameter("Italic", "Italic", "Is italic", GH_ParamAccess.item);
+
+            pManager.AddBooleanParameter("Strikethrought", "Strikethrought", "Is strikethrought", GH_ParamAccess.item);
+
+            pManager.AddBooleanParameter("Underline", "Underline", "Is underline", GH_ParamAccess.item);
 
             for (int i = 0; i < pManager.ParamCount; i++)
             {
@@ -57,29 +58,24 @@ namespace BookWorm.Construct
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var color = string.Empty;
-            var fontFamily = "Arial";
-            int fontSize = 14;
-            bool bold = false;
-            bool italic = false;
-            bool strikethrought = false;
-            bool underLine = false;
-            var link = "http://parametrica.team";
+            var colorARGB = System.Drawing.Color.Empty;
+            var fontFamily = string.Empty;
+            int fontSize = 0;
+            bool isBold = false;
+            bool isItalic = false;
+            bool isStrikethrought = false;
+            bool isUnderline = false;
 
             var textFormat = new TextFormat();
 
-            if (DA.GetData(0, ref color))
+            if (DA.GetData(0, ref colorARGB))
             {
-                textFormat.ForegroundColor = new Color
-                {
-                    Alpha = 255F,
-                    Red = float.Parse(color.Split(',')[0]),
-                    Green = float.Parse(color.Split(',')[1]),
-                    Blue = float.Parse(color.Split(',')[2]),
-                };
+                var googleSheetsColor = new Utilities.GoogleSheetsColor();
+
+                textFormat.ForegroundColor = googleSheetsColor.GetGoogleSheetsColor(colorARGB);
             }
 
-            if (DA.GetData(1, ref fontFamily))
+            if (DA.GetData(1, ref fontFamily) && !string.IsNullOrEmpty(fontFamily))
             {
                 textFormat.FontFamily = fontFamily;
             }
@@ -89,29 +85,24 @@ namespace BookWorm.Construct
                 textFormat.FontSize = fontSize;
             }
 
-            if (DA.GetData(3, ref bold))
+            if (DA.GetData(3, ref isBold))
             {
-                textFormat.Bold = bold;
+                textFormat.Bold = isBold;
             }
 
-            if (DA.GetData(4, ref italic))
+            if (DA.GetData(4, ref isItalic))
             {
-                textFormat.Italic = italic;
+                textFormat.Italic = isItalic;
             }
 
-            if (DA.GetData(5, ref strikethrought))
+            if (DA.GetData(5, ref isStrikethrought))
             {
-                textFormat.Italic = strikethrought;
+                textFormat.Strikethrough = isStrikethrought;
             }
 
-            if (DA.GetData(6, ref underLine))
+            if (DA.GetData(6, ref isUnderline))
             {
-                textFormat.Underline = underLine;
-            }
-
-            if (DA.GetData(7, ref link))
-            {
-                textFormat.ETag = link;
+                textFormat.Underline = isUnderline;
             }
 
             var textFormatGoo = new GH_TextFormat(textFormat);

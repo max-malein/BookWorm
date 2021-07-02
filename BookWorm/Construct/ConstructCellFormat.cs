@@ -1,7 +1,7 @@
-﻿using BookWorm.Goo;
+﻿using System;
+using BookWorm.Goo;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
-using System;
 
 namespace BookWorm.Construct
 {
@@ -23,16 +23,25 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("NumberFormat", "NumberFormat", "Number format", GH_ParamAccess.item);
-            pManager.AddTextParameter("Color", "Color", "Color", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Number Format", "NumberFormat", "Number format", GH_ParamAccess.item);
+
+            pManager.AddColourParameter("Background colour", "Colour", "Background colour of the cell", GH_ParamAccess.item);
+
             pManager.AddGenericParameter("Borders", "Borders", "Borders", GH_ParamAccess.item);
+
             pManager.AddGenericParameter("Padding", "Padding", "Padding", GH_ParamAccess.item);
-            pManager.AddTextParameter("HorizontalAligment", "HorizontalAligment", "Horizontal aligment", GH_ParamAccess.item);
-            pManager.AddTextParameter("VerticalAligment", "VerticalAligment", "Vertical aligment", GH_ParamAccess.item);
+
+            pManager.AddTextParameter("Horizontal Aligment", "HorizontalAligment", "Horizontal aligment", GH_ParamAccess.item);
+
+            pManager.AddTextParameter("Vertical Aligment", "VerticalAligment", "Vertical aligment", GH_ParamAccess.item);
+
             pManager.AddTextParameter("Wrap", "Wrap", "Wrap", GH_ParamAccess.item);
-            pManager.AddTextParameter("TextDirection", "TextDirection", "Text direction", GH_ParamAccess.item);
-            pManager.AddGenericParameter("TextFormat", "TextFormat", "Text format", GH_ParamAccess.item);
-            pManager.AddGenericParameter("TextRotation", "TextRotation", "Text rotation", GH_ParamAccess.item);
+
+            pManager.AddTextParameter("Text Direction", "TextDirection", "Text direction", GH_ParamAccess.item);
+
+            pManager.AddGenericParameter("Text Format", "TextFormat", "Text format", GH_ParamAccess.item);
+
+            pManager.AddGenericParameter("Text Rotation", "TextRotation", "Text rotation", GH_ParamAccess.item);
 
             for (int i = 0; i < pManager.ParamCount; i++)
             {
@@ -53,12 +62,18 @@ namespace BookWorm.Construct
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var numberFormat = new GH_NumberFormat();
-            var color = string.Empty;
+
+            var colorARGB = System.Drawing.Color.Empty;
+
             var borders = new GH_CellBorders();
+
             var padding = new GH_Padding();
+
             var horizontalAligment = string.Empty;
             var verticalAligment = string.Empty;
+
             var wrap = string.Empty;
+
             var textDirection = string.Empty;
             var textFormat = new GH_TextFormat();
             var textRotation = new GH_TextRotation();
@@ -70,15 +85,11 @@ namespace BookWorm.Construct
                 cellFormat.NumberFormat = numberFormat.Value;
             }
 
-            if (DA.GetData(1, ref color))
+            if (DA.GetData(1, ref colorARGB))
             {
-                cellFormat.BackgroundColor = new Color
-                {
-                    Alpha = 255,
-                    Red = float.Parse(color.Split(',')[0]),
-                    Green = float.Parse(color.Split(',')[1]),
-                    Blue = float.Parse(color.Split(',')[2]),
-                };
+                var googleSheetsColor = new Utilities.GoogleSheetsColor();
+
+                cellFormat.BackgroundColor = googleSheetsColor.GetGoogleSheetsColor(colorARGB);
             }
 
             if (DA.GetData(2, ref borders))

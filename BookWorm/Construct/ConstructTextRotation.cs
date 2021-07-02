@@ -1,9 +1,7 @@
-﻿using BookWorm.Goo;
+﻿using System;
+using BookWorm.Goo;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
 
 namespace BookWorm.Construct
 {
@@ -13,9 +11,10 @@ namespace BookWorm.Construct
         /// Initializes a new instance of the <see cref="ConstructTextRotation"/> class.
         /// </summary>
         public ConstructTextRotation()
-          : base("ConstructTextRotation",
+          : base(
+                "ConstructTextRotation",
                 "ConTextRotation",
-                "Construct text rotation",
+                "Construct text rotation.\nNote: only one parameter can be set",
                 "BookWorm",
                 "Construct")
         {
@@ -26,8 +25,12 @@ namespace BookWorm.Construct
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddIntegerParameter("angle", "angle", "angle", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("vertical", "vertical", "vertical", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Angle", "Angle", "Angle in degrees between -90 and 90", GH_ParamAccess.item);
+            pManager.AddBooleanParameter(
+                "Vertical",
+                "Vertical",
+                "If true, text reads top to bottom, but the orientation of individual characters is unchanged",
+                GH_ParamAccess.item);
 
             for (int i = 0; i < pManager.ParamCount; i++)
             {
@@ -54,12 +57,13 @@ namespace BookWorm.Construct
 
             var textRotation = new TextRotation();
 
+            // Only one field can be set.
             if (DA.GetData(0, ref angle))
             {
                 textRotation.Angle = angle;
             }
 
-            if (DA.GetData(1, ref vertical))
+            else if (DA.GetData(1, ref vertical))
             {
                 textRotation.Vertical = vertical;
             }
@@ -75,7 +79,7 @@ namespace BookWorm.Construct
         {
             get
             {
-                //You can add image files to your project resources and access them like this:
+                // You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
                 return null;
             }

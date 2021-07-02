@@ -117,6 +117,7 @@
     <Compile Include="Spreadsheets\ReadCell_Component.cs" />
     <Compile Include="Spreadsheets\WriteCellRange.cs" />
     <Compile Include="Utilities\Credentials.cs" />
+    <Compile Include="Utilities\GoogleSheetsColor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="credentials.json">
