@@ -196,9 +196,9 @@ namespace BookWorm.Request
         }
 
         /// <summary>
-        /// 
+        /// Convert column letter to index.
         /// </summary>
-        /// <param name="columnName"></param>
+        /// <param name="columnName">Column name.</param>
         /// <returns>Column number for column name.</returns>
         private int ColumnNameToNumber(string columnName)
         {
@@ -239,7 +239,6 @@ namespace BookWorm.Request
             var rangeBounds = a1NotatonRange.Split(':');
 
             // Only columns case.
-            // сломается при одной колонке.
             if (letters && !numbers)
             {
                 List<int> colNumbers = new List<int>();
@@ -254,12 +253,10 @@ namespace BookWorm.Request
 
                 var colCount = colNumbers[1] - colNumbers[0] + 1;
                 gridRange.StartRowIndex = 0;
-                // ошибка при колонках? или должны заполняться поровну колонки?
-                gridRange.EndRowIndex = cellsCount / colCount;
+                gridRange.EndRowIndex = (int)Math.Ceiling((double)cellsCount / colCount);
             }
 
             // Only rows case.
-            // сломается при одной строке.
             else if (numbers && !letters)
             {
                 var startRow = Convert.ToInt32(rangeBounds[0]);
@@ -269,21 +266,27 @@ namespace BookWorm.Request
 
                 var rowCount = endRow - startRow + 1;
                 gridRange.StartColumnIndex = 0;
-                gridRange.EndColumnIndex = cellsCount / rowCount;
+                gridRange.EndColumnIndex = (int)Math.Ceiling((double)cellsCount / rowCount);
             }
 
             // Coordinate case.
-            // сломается при одной ячейке.
             else
             {
                 var firstColName = Regex.Match(rangeBounds[0], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
                 gridRange.StartColumnIndex = ColumnNameToNumber(firstColName) - 1;
-
-                var secondColName = Regex.Match(rangeBounds[1], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
-                gridRange.EndColumnIndex = ColumnNameToNumber(secondColName);
-
                 gridRange.StartRowIndex = Convert.ToInt32(Regex.Match(rangeBounds[0], @"\d+", RegexOptions.IgnoreCase).Value) - 1;
-                gridRange.EndRowIndex = Convert.ToInt32(Regex.Match(rangeBounds[1], @"\d+", RegexOptions.IgnoreCase).Value);
+
+                if (rangeBounds.Length > 1)
+                {
+                    var secondColName = Regex.Match(rangeBounds[1], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
+                    gridRange.EndColumnIndex = ColumnNameToNumber(secondColName);
+                    gridRange.EndRowIndex = Convert.ToInt32(Regex.Match(rangeBounds[1], @"\d+", RegexOptions.IgnoreCase).Value);
+                }
+                else // only one cell needed
+                {
+                    gridRange.EndColumnIndex = gridRange.StartColumnIndex + 1;
+                    gridRange.EndRowIndex = gridRange.StartRowIndex + 1;
+                }
             }
 
             return gridRange;
@@ -318,6 +321,14 @@ namespace BookWorm.Request
                     row = new RowData();
                     rowValues = new List<CellData>();
                 }
+            }
+
+            // if number of cellData is less than cells in GridRange the last row is not added in the for-loop
+            // it needs to be added manually
+            if (rowValues.Any())
+            {
+                row.Values = rowValues;
+                rows.Add(row);
             }
 
             return rows;
