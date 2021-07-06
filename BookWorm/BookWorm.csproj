@@ -127,6 +127,8 @@
     <Compile Include="Spreadsheets\ReadCellValue_Component.cs" />
     <Compile Include="Spreadsheets\ReadCell_Component.cs" />
     <Compile Include="Spreadsheets\WriteCellRange.cs" />
+    <Compile Include="Utilities\GhReadWriteBaseComponent.cs" />
+    <Compile Include="Utilities\TestComponent.cs" />
     <Compile Include="Utilities\Util.cs" />
     <Compile Include="Utilities\CellsUtilities.cs" />
     <Compile Include="Utilities\Credentials.cs" />
