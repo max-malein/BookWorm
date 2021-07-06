@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using BookWorm.Goo;
 using BookWorm.Utilities;
 using Google.Apis.Sheets.v4.Data;
@@ -11,23 +13,25 @@ namespace BookWorm.Request
 {
     public class UpdateCells : GH_Component
     {
+        private string spreadsheetId;
+
         /// <summary>
-        /// Initializes a new instance of the UpdateCells class.
+        /// Initializes a new instance of the <see cref="UpdateCells"/> class.
         /// </summary>
         public UpdateCells()
           : base(
-                "Update Cells",
-                "Nickname",
-                "Description",
+                "WriteCells",
+                "WriteCell",
+                "Updates values and format for a given range of cells",
                 "BookWorm",
-                "Request")
+                "Spreadsheet")
         {
         }
 
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Spreadsheet Id", "Id", "Spreadsheet Id or spreadsheet url", GH_ParamAccess.item);
+            pManager.AddTextParameter("Spreadsheet URL", "U", "Google spreadsheet URL or spreadsheet ID", GH_ParamAccess.item);
 
             pManager.AddTextParameter("Sheet Name", "N", "Sheet name. If such sheet doesn't exist it will be created.", GH_ParamAccess.item);
 
@@ -64,11 +68,13 @@ namespace BookWorm.Request
             var gridRange = new GridRange();
             var rows = new List<RowData>();
 
+            string sheetName = string.Empty;
             string fieldMask = string.Empty;
+            spreadsheetUrl = string.Empty;
 
             var run = false;
 
-            if (!DA.GetData(0, ref spreadsheetId)) return;
+            if (!DA.GetData(0, ref spreadsheetUrl)) return;
 
             if (!DA.GetData(1, ref sheetName)) return;
 
@@ -79,6 +85,8 @@ namespace BookWorm.Request
             DA.GetData(4, ref fieldMask);
 
             DA.GetData(5, ref run);
+
+            spreadsheetId = Util.ParseUrl(spreadsheetUrl);
 
             if (!run)
             {
@@ -130,6 +138,21 @@ namespace BookWorm.Request
             var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, spreadsheetId);
 
             var response = request.Execute();
+        }
+
+        /// <inheritdoc/>
+        public override void AppendAdditionalMenuItems(ToolStripDropDown menu)
+        {
+            Menu_AppendSeparator(menu);
+            Menu_AppendItem(menu, "Open spreadsheet in browser...", ElementClicked, true, false);
+        }
+
+        private void ElementClicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(spreadsheetId))
+            {
+                System.Diagnostics.Process.Start(@"https://docs.google.com/spreadsheets/d/" + spreadsheetId);
+            }
         }
 
         /// <inheritdoc/>

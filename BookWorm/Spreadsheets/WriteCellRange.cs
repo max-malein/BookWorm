@@ -27,8 +27,8 @@ namespace GoogleDocs.Spreadsheets
         /// new tabs/panels will automatically be created.
         /// </summary>
         public WriteCellRange()
-          : base("WriteCellRange", "WriteCell",
-              "Writes a range of cells",
+          : base("WriteCellValues", "WriteCellValues",
+              "Writes values only for a range of cells",
               "BookWorm", "Spreadsheet")
         {
         }
