@@ -109,6 +109,7 @@
     <Compile Include="Deconstruct\DeconstructTextFormat.cs" />
     <Compile Include="Deconstruct\DeconstructTextRotation.cs" />
     <Compile Include="Deconstruct\GhDeconstructCell.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Goo\GH_CellBorder.cs" />
     <Compile Include="Goo\GH_CellBorders.cs" />
     <Compile Include="Goo\GH_CellData.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Spreadsheets\ReadCellValue_Component.cs" />
     <Compile Include="Spreadsheets\ReadCell_Component.cs" />
     <Compile Include="Spreadsheets\WriteCellRange.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="Utilities\CellsUtilities.cs" />
     <Compile Include="Utilities\Credentials.cs" />
     <Compile Include="Utilities\GridRangeExtension.cs" />

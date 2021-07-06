@@ -5,6 +5,8 @@ using Grasshopper.Kernel.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace BookWorm.Spreadsheets
 {
@@ -13,6 +15,8 @@ namespace BookWorm.Spreadsheets
     /// </summary>
     public class ReadCell_Component : GH_Component
     {
+        private string spreadsheetId;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ReadCell_Component"/> class.
         /// </summary>
@@ -29,7 +33,7 @@ namespace BookWorm.Spreadsheets
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Spreadsheet Id", "Id", "Spreadsheet Id", GH_ParamAccess.item);
+            pManager.AddTextParameter("Spreadsheet URL", "U", "Google spreadsheet URL or spreadsheet ID", GH_ParamAccess.item);
 
             pManager.AddTextParameter("Sheet Name", "N", "Sheet Name", GH_ParamAccess.item);
 
@@ -50,34 +54,22 @@ namespace BookWorm.Spreadsheets
         /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            string spreadsheetId = string.Empty;
+            string spreadsheetUrl = string.Empty;
             string sheetName = string.Empty;
             string range = string.Empty;
             bool read = false;
             bool sameLength = false;
+            spreadsheetId = string.Empty;
 
-            if (!DA.GetData(0, ref spreadsheetId))
-            {
-                return;
-            }
+            if (!DA.GetData(0, ref spreadsheetUrl)) return;
+            spreadsheetId = Util.ParseUrl(spreadsheetUrl);
 
-            if (!DA.GetData(1, ref sheetName))
-            {
-                return;
-            }
-
-            if (!DA.GetData(2, ref range))
-            {
-                return;
-            }
-
+            if (!DA.GetData(1, ref sheetName)) return;
+            if (!DA.GetData(2, ref range)) return;
             DA.GetData(3, ref read);
             DA.GetData(4, ref sameLength);
 
-            if (!read)
-            {
-                return;
-            }
+            if (!read) return;
 
             // The range to retrieve from the spreadsheet.
             // Single quotes for cases with space between sheet name parts.
@@ -132,6 +124,21 @@ namespace BookWorm.Spreadsheets
             }
 
             DA.SetDataTree(0, outputGhCells);
+        }
+
+        /// <inheritdoc/>
+        public override void AppendAdditionalMenuItems(ToolStripDropDown menu)
+        {
+            Menu_AppendSeparator(menu);
+            Menu_AppendItem(menu, "Open spreadsheet in browser...", ElementClicked, true, false);
+        }
+
+        private void ElementClicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(spreadsheetId))
+            {
+                System.Diagnostics.Process.Start(@"https://docs.google.com/spreadsheets/d/" + spreadsheetId);
+            }
         }
 
         /// <inheritdoc/>
