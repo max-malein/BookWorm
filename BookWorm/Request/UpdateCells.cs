@@ -86,7 +86,7 @@ namespace BookWorm.Request
 
             DA.GetData(5, ref run);
 
-            spreadsheetId = Util.ParseUrl(spreadsheetUrl);
+            spreadsheetId = Utilities.Util.ParseUrl(spreadsheetUrl);
 
             if (!run)
             {

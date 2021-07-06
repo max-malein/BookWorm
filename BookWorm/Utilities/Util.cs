@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace BookWorm
+namespace BookWorm.Utilities
 {
     /// <summary>
     /// Utility functions.

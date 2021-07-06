@@ -62,7 +62,7 @@ namespace BookWorm.Spreadsheets
             spreadsheetId = string.Empty;
 
             if (!DA.GetData(0, ref spreadsheetUrl)) return;
-            spreadsheetId = Util.ParseUrl(spreadsheetUrl);
+            spreadsheetId = Utilities.Util.ParseUrl(spreadsheetUrl);
 
             if (!DA.GetData(1, ref sheetName)) return;
             if (!DA.GetData(2, ref range)) return;
