@@ -87,7 +87,7 @@ namespace BookWorm.Construct
 
             if (DA.GetData(1, ref colorARGB))
             {
-                var googleSheetsColor = new Utilities.GoogleSheetsColor();
+                var googleSheetsColor = new Utilities.SheetsUtilities();
 
                 cellFormat.BackgroundColor = googleSheetsColor.GetGoogleSheetsColor(colorARGB);
             }

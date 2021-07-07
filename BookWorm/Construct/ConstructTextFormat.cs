@@ -70,7 +70,7 @@
 
             if (DA.GetData(0, ref colorARGB))
             {
-                var googleSheetsColor = new Utilities.GoogleSheetsColor();
+                var googleSheetsColor = new Utilities.SheetsUtilities();
 
                 textFormat.ForegroundColor = googleSheetsColor.GetGoogleSheetsColor(colorARGB);
             }
