@@ -59,6 +59,8 @@ namespace BookWorm.Request
         /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+
+            var spreadsheetUrl = string.Empty;
             var spreadsheetId = string.Empty;
             var sheetName = string.Empty;
 
@@ -68,9 +70,7 @@ namespace BookWorm.Request
             var gridRange = new GridRange();
             var rows = new List<RowData>();
 
-            string sheetName = string.Empty;
             string fieldMask = string.Empty;
-            spreadsheetUrl = string.Empty;
 
             var run = false;
 
