@@ -21,7 +21,7 @@ namespace BookWorm.Utilities
         {
             pManager.AddTextParameter("Spreadsheet URL", "U", "Google spreadsheet URL or spreadsheet ID", GH_ParamAccess.item);
             pManager.AddTextParameter("Sheet Name", "N", "Sheet Name", GH_ParamAccess.item);
-            pManager.AddTextParameter("Cell Range", "R", "Range of cells", GH_ParamAccess.item);
+            pManager.AddTextParameter("Cell Range", "R", "Range of cells in \'a1\' notation. For example A1:B5 - range of cells, A15 - single cell, A:C - range of columns, etc.", GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
@@ -42,7 +42,7 @@ namespace BookWorm.Utilities
             SheetName = sheetName;
 
             if (!DA.GetData("Cell Range", ref range)) return;
-            Range = range;
+            Range = range.ToUpper();
         }
 
         /// <inheritdoc/>
