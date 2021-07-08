@@ -102,6 +102,7 @@ namespace BookWorm.Spreadsheets
             // Solver uses request range as item.
             var rowDataPerRequest = sheet.Data.Select(d => d.RowData.ToList()).ToList();
             var rowData = rowDataPerRequest[0];
+            List<List<string>> a1s = Utilities.Util.GetCellCoordinates(rowData, range);
 
             var outputGhCells = new GH_Structure<GH_CellData>();
             var runCountIndex = RunCount - 1;
@@ -112,7 +113,14 @@ namespace BookWorm.Spreadsheets
 
                 // Null-cell as the only cell in a row returns null-row, i.e. null instead of list of cells.
                 // So you can get null-exeption if user requests column.
-                var ghCells = rowData[i].Values?.Select(cd => new GH_CellData(cd)).ToList();
+                //var ghCells = rowData[i].Values?.Select((cd, index) => new GH_CellData(cd, a1s[i, index] )).ToList();
+                var ghCells = new List<GH_CellData>();
+                for (int j = 0; j < rowData[i].Values.Count; j++)
+                {
+                    var value = rowData[i].Values[j];
+                    var ghCell = new GH_CellData(value, a1s[i][j]);
+                    ghCells.Add(ghCell);
+                }
 
                 // That stuff and "Values?" solve it.
                 if (ghCells == null)

@@ -1,6 +1,7 @@
 ﻿using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel.Types;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace BookWorm.Goo
 {
@@ -43,6 +44,11 @@ namespace BookWorm.Goo
             }
         }
 
+        public GH_CellData(CellData cellData, string a1) : this(cellData)
+        {
+            A1 = a1;
+        }
+
         /// <inheritdoc/>
         public override bool IsValid => Value != null;
 
@@ -51,6 +57,11 @@ namespace BookWorm.Goo
 
         /// <inheritdoc/>
         public override string TypeDescription => "Data about a specific Google Sheets Cell";
+
+        /// <summary>
+        /// a1 coordinates of the cell.
+        /// </summary>
+        public string A1 { get; set; }
 
         /// <inheritdoc/>
         public override IGH_Goo Duplicate()

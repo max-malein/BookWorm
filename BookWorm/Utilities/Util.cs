@@ -1,4 +1,7 @@
-﻿using System.Text.RegularExpressions;
+﻿using Google.Apis.Sheets.v4.Data;
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace BookWorm.Utilities
 {
@@ -17,6 +20,12 @@ namespace BookWorm.Utilities
             var match = Regex.Match(spreadsheetUrl, @"(?<=docs\.google\.com\/spreadsheets\/d\/)[\w-]+");
 
             return match.Success ? match.Value : spreadsheetUrl;
+        }
+
+        internal static List<List<string>> GetCellCoordinates(List<RowData> rowData, string range)
+        {
+            return new List<List<string>>();
+            throw new NotImplementedException();
         }
     }
 }
