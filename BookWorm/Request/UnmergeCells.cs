@@ -69,11 +69,8 @@ namespace BookWorm.Request
                 return;
             }
 
-            var sheetUtilities = new SheetsUtilities();
-            var cellUtilities = new CellsUtilities();
-
-            var sheetId = sheetUtilities.GetSheetId(spreadsheetId, sheetName);
-            var gridRange = cellUtilities.GridRangeFromA1(a1NotatonRange, (int)sheetId);
+            var sheetId = SheetsUtilities.GetSheetId(spreadsheetId, sheetName);
+            var gridRange = CellsUtilities.GridRangeFromA1(a1NotatonRange, (int)sheetId);
 
             var requests = new List<Data.Request>();
 

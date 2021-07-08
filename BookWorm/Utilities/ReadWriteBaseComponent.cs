@@ -4,11 +4,13 @@ using Grasshopper.Kernel;
 
 namespace BookWorm.Utilities
 {
-    public class GhReadWriteBaseComponent : GH_Component
+    public class ReadWriteBaseComponent : GH_Component
     {
-        private string spreadsheetId;
+        public string SpreadsheetId { get; private set; }
+        public string SheetName { get; private set; }
+        public string Range { get; private set; }
 
-        public GhReadWriteBaseComponent(string name, string nick, string desc, string tab, string subTab)
+        public ReadWriteBaseComponent(string name, string nick, string desc, string tab, string subTab)
             : base(name, nick, desc, tab, subTab)
         {
         }
@@ -19,7 +21,7 @@ namespace BookWorm.Utilities
         {
             pManager.AddTextParameter("Spreadsheet URL", "U", "Google spreadsheet URL or spreadsheet ID", GH_ParamAccess.item);
             pManager.AddTextParameter("Sheet Name", "N", "Sheet Name", GH_ParamAccess.item);
-            pManager.AddTextParameter("Cell Range", "C", "Range of cells", GH_ParamAccess.item);
+            pManager.AddTextParameter("Cell Range", "R", "Range of cells", GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
@@ -29,15 +31,18 @@ namespace BookWorm.Utilities
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             string spreadsheetUrl = string.Empty;
-            string sheetName = string.Empty;
+            var sheetName = string.Empty;
             string range = string.Empty;
-            spreadsheetId = string.Empty;
+            SpreadsheetId = string.Empty;
 
-            if (!DA.GetData(0, ref spreadsheetUrl)) return;
-            spreadsheetId = Utilities.Util.ParseUrl(spreadsheetUrl);
+            if (!DA.GetData("Spreadsheet URL", ref spreadsheetUrl)) return;
+            SpreadsheetId = Utilities.Util.ParseUrl(spreadsheetUrl);
 
-            if (!DA.GetData(1, ref sheetName)) return;
-            if (!DA.GetData(2, ref range)) return;
+            if (!DA.GetData("Sheet Name", ref sheetName)) return;
+            SheetName = sheetName;
+
+            if (!DA.GetData("Cell Range", ref range)) return;
+            Range = range;
         }
 
         /// <inheritdoc/>
@@ -49,9 +54,9 @@ namespace BookWorm.Utilities
 
         private void ElementClicked(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(spreadsheetId))
+            if (!string.IsNullOrEmpty(SpreadsheetId))
             {
-                System.Diagnostics.Process.Start(@"https://docs.google.com/spreadsheets/d/" + spreadsheetId);
+                System.Diagnostics.Process.Start(@"https://docs.google.com/spreadsheets/d/" + SpreadsheetId);
             }
         }
     }

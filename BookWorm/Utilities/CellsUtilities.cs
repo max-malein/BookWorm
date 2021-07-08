@@ -9,7 +9,7 @@ namespace BookWorm.Utilities
     /// <summary>
     /// Helper operations with Google Sheets data types for cells.
     /// </summary>
-    public class CellsUtilities
+    public static class CellsUtilities
     {
         /// <summary>
         /// Splits cells list in rows by grid range.
@@ -17,7 +17,7 @@ namespace BookWorm.Utilities
         /// <param name="cells">Cells.</param>
         /// <param name="gridRange">Grid range.</param>
         /// <returns>Rows.</returns>
-        public List<RowData> GetRows(List<CellData> cells, GridRange gridRange)
+        public static List<RowData> GetRows(List<CellData> cells, GridRange gridRange)
         {
             if (gridRange == null) return null;
 
@@ -58,7 +58,7 @@ namespace BookWorm.Utilities
         /// <param name="a1NotatonRange">Cells range in A1 notation.</param>
         /// <param name="sheetId">Sheet Id.</param>
         /// <returns>new Grid Range.</returns>
-        public GridRange GridRangeFromA1(string a1NotatonRange, int sheetId)
+        public static GridRange GridRangeFromA1(string a1NotatonRange, int sheetId)
         {
             var gridRange = new GridRange();
             gridRange.SheetId = sheetId;
@@ -114,7 +114,7 @@ namespace BookWorm.Utilities
         /// </summary>
         /// <param name="columnName">Column name.</param>
         /// <returns>Column number for column name.</returns>
-        private int ColumnNameToNumber(string columnName)
+        private static int ColumnNameToNumber(string columnName)
         {
             int result = 0;
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookWorm.Utilities
 {
-    public class TestComponent : GhReadWriteBaseComponent
+    public class TestComponent : ReadWriteBaseComponent
     {
         public TestComponent()
             : base(

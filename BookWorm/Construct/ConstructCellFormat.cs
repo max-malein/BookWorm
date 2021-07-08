@@ -1,5 +1,6 @@
 ﻿using System;
 using BookWorm.Goo;
+using BookWorm.Utilities;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
 
@@ -87,9 +88,7 @@ namespace BookWorm.Construct
 
             if (DA.GetData(1, ref colorARGB))
             {
-                var googleSheetsColor = new Utilities.SheetsUtilities();
-
-                cellFormat.BackgroundColor = googleSheetsColor.GetGoogleSheetsColor(colorARGB);
+                cellFormat.BackgroundColor = SheetsUtilities.GetGoogleSheetsColor(colorARGB);
             }
 
             if (DA.GetData(2, ref borders))

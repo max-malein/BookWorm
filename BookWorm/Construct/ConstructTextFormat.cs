@@ -2,6 +2,7 @@
 {
     using System;
     using BookWorm.Goo;
+    using BookWorm.Utilities;
     using Google.Apis.Sheets.v4.Data;
     using Grasshopper.Kernel;
 
@@ -70,9 +71,7 @@
 
             if (DA.GetData(0, ref colorARGB))
             {
-                var googleSheetsColor = new Utilities.SheetsUtilities();
-
-                textFormat.ForegroundColor = googleSheetsColor.GetGoogleSheetsColor(colorARGB);
+                textFormat.ForegroundColor = SheetsUtilities.GetGoogleSheetsColor(colorARGB);
             }
 
             if (DA.GetData(1, ref fontFamily) && !string.IsNullOrEmpty(fontFamily))

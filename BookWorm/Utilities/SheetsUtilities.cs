@@ -8,14 +8,14 @@ namespace BookWorm.Utilities
     /// <summary>
     /// Helper operations with Google Sheets data types for sheets.
     /// </summary>
-    public class SheetsUtilities
+    public static class SheetsUtilities
     {
         /// <summary>
         /// Convert System.Drawing.Color-type ARGB-color into Google.Apis.Sheets.v4.Data.Color-type color.
         /// </summary>
         /// <param name="colorARGB">System.Drawing.Color-type color.</param>
         /// <returns>Google.Apis.Sheets.v4.Data.Color-type color.</returns>
-        public Color GetGoogleSheetsColor(System.Drawing.Color colorARGB)
+        public static Color GetGoogleSheetsColor(System.Drawing.Color colorARGB)
         {
             var googleSheetColor = new Color
             {
@@ -33,7 +33,7 @@ namespace BookWorm.Utilities
         /// </summary>
         /// <param name="googleSheetsColor">Google.Apis.Sheets.v4.Data.Color-type color.</param>
         /// <returns>System.Drawing.Color-type ARGB-color.</returns>
-        public System.Drawing.Color GetSystemDrawingColor(Color googleSheetsColor)
+        public static System.Drawing.Color GetSystemDrawingColor(Color googleSheetsColor)
         {
             var alpha = (int)(googleSheetsColor.Alpha * 255);
             var red = (int)(googleSheetsColor.Red * 255);
@@ -51,7 +51,7 @@ namespace BookWorm.Utilities
         /// <param name="spreadsheetId">Spreadsheet Id.</param>
         /// <param name="sheetName">Sheet Name.</param>
         /// <returns>Sheet Id of created sheet.</returns>
-        public int? CreateNewSheet(string spreadsheetId, string sheetName)
+        public static int? CreateNewSheet(string spreadsheetId, string sheetName)
         {
             var requests = new List<Data.Request>();
 
@@ -88,7 +88,7 @@ namespace BookWorm.Utilities
         /// <param name="spreadsheetId">Spreadsheet Id.</param>
         /// <param name="sheetName">Sheet Name.</param>
         /// <returns>Sheet Id or null if sheet doesn't exist.</returns>
-        public int? GetSheetId(string spreadsheetId, string sheetName)
+        public static int? GetSheetId(string spreadsheetId, string sheetName)
         {
             var request = Credentials.Service.Spreadsheets.Get(spreadsheetId);
 
