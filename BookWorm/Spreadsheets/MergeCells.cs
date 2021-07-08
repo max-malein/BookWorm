@@ -5,9 +5,9 @@ using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
 using Data = Google.Apis.Sheets.v4.Data;
 
-namespace BookWorm.Request
+namespace BookWorm.Spreadsheets
 {
-    public class MergeCells : GH_Component
+    public class MergeCells : ReadWriteBaseComponent
     {
         /// <summary>
         /// Initializes a new instance of the MergeCells class.
@@ -25,11 +25,7 @@ namespace BookWorm.Request
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Spreadsheet Id", "Id", "Spreadsheet Id or spreadsheet url", GH_ParamAccess.item);
-
-            pManager.AddTextParameter("Sheet Name", "N", "Sheet name", GH_ParamAccess.item);
-
-            pManager.AddTextParameter("Range", "Rng", "The range of cells to merge in A1 notation", GH_ParamAccess.item);
+            base.RegisterInputParams(pManager);
 
             pManager.AddTextParameter(
                 "Merge Type",
@@ -51,20 +47,11 @@ namespace BookWorm.Request
         /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var spreadsheetId = string.Empty;
-            var sheetName = string.Empty;
-
-            var a1NotatonRange = string.Empty;
+            base.SolveInstance(DA);
 
             var mergeType = string.Empty;
 
             var run = false;
-
-            if (!DA.GetData(0, ref spreadsheetId) || string.IsNullOrEmpty(spreadsheetId)) return;
-
-            if (!DA.GetData(1, ref sheetName) || string.IsNullOrEmpty(sheetName)) return;
-
-            if (!DA.GetData(2, ref a1NotatonRange) || string.IsNullOrEmpty(a1NotatonRange)) return;
 
             if (!DA.GetData(3, ref mergeType) || string.IsNullOrEmpty(mergeType)) return;
 
@@ -76,8 +63,8 @@ namespace BookWorm.Request
             }
 
 
-            var sheetId = SheetsUtilities.GetSheetId(spreadsheetId, sheetName);
-            var gridRange = CellsUtilities.GridRangeFromA1(a1NotatonRange, (int)sheetId);
+            var sheetId = SheetsUtilities.GetSheetId(SpreadsheetId, SheetName);
+            var gridRange = CellsUtilities.GridRangeFromA1(Range, (int)sheetId);
 
             var requests = new List<Data.Request>();
 
@@ -97,7 +84,7 @@ namespace BookWorm.Request
             var requestBody = new BatchUpdateSpreadsheetRequest();
             requestBody.Requests = requests;
 
-            var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, spreadsheetId);
+            var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, SpreadsheetId);
 
             var response = request.Execute();
         }

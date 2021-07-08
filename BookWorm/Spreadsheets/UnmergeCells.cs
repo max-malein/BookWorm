@@ -5,9 +5,9 @@ using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
 using Data = Google.Apis.Sheets.v4.Data;
 
-namespace BookWorm.Request
+namespace BookWorm.Spreadsheets
 {
-    public class UnmergeCells : GH_Component
+    public class UnmergeCells : ReadWriteBaseComponent
     {
         /// <summary>
         /// Initializes a new instance of the UnmergeCells class.
@@ -27,13 +27,9 @@ namespace BookWorm.Request
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Spreadsheet Id", "Id", "Spreadsheet Id or spreadsheet url", GH_ParamAccess.item);
+            base.RegisterInputParams(pManager);
 
-            pManager.AddTextParameter("Sheet Name", "N", "Sheet name", GH_ParamAccess.item);
-
-            pManager.AddTextParameter("Range", "Rng", "The range of cells to unmerge in A1 notation", GH_ParamAccess.item);
-
-            pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item, false);
+            pManager.AddBooleanParameter("Run", "R", "Run", GH_ParamAccess.item, false);
         }
 
         /// <summary>
@@ -49,28 +45,19 @@ namespace BookWorm.Request
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var spreadsheetId = string.Empty;
-            var sheetName = string.Empty;
-
-            var a1NotatonRange = string.Empty;
+            base.SolveInstance(DA);
 
             var run = false;
 
-            if (!DA.GetData(0, ref spreadsheetId) || string.IsNullOrEmpty(spreadsheetId)) return;
-
-            if (!DA.GetData(1, ref sheetName) || string.IsNullOrEmpty(sheetName)) return;
-
-            if (!DA.GetData(2, ref a1NotatonRange) || string.IsNullOrEmpty(a1NotatonRange)) return;
-
-            DA.GetData(3, ref run);
+            DA.GetData("Run", ref run);
 
             if (!run)
             {
                 return;
             }
 
-            var sheetId = SheetsUtilities.GetSheetId(spreadsheetId, sheetName);
-            var gridRange = CellsUtilities.GridRangeFromA1(a1NotatonRange, (int)sheetId);
+            var sheetId = SheetsUtilities.GetSheetId(SpreadsheetId, SheetName);
+            var gridRange = CellsUtilities.GridRangeFromA1(Range, (int)sheetId);
 
             var requests = new List<Data.Request>();
 
@@ -86,10 +73,12 @@ namespace BookWorm.Request
             requests.Add(unmergeCellRequest);
 
             // Main request of matrioshka-request.
-            var requestBody = new BatchUpdateSpreadsheetRequest();
-            requestBody.Requests = requests;
+            var requestBody = new BatchUpdateSpreadsheetRequest
+            {
+                Requests = requests,
+            };
 
-            var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, spreadsheetId);
+            var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, SpreadsheetId);
 
             var response = request.Execute();
         }

@@ -1,39 +1,25 @@
-﻿using Grasshopper.Kernel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Google.Apis.Auth.OAuth2;
+using System.Linq;
+using BookWorm.Utilities;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
-using Google.Apis.Services;
-using Google.Apis.Util.Store;
-using System.IO;
-using System.Threading;
+using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
-using System.Linq;
 
 namespace GoogleDocs.Spreadsheets
 {
-    public class ReadCellValue_Component : GH_Component
+    public class ReadCellValue_Component : ReadWriteBaseComponent
     {
-        // If modifying these scopes, delete your previously saved credentials
-        // at ~/.credentials/sheets.googleapis.com-dotnet-quickstart.json
-        static string[] Scopes = { SheetsService.Scope.Spreadsheets };
-        static string ApplicationName = "Bookworm";
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ReadCellValue_Component"/> class.
-        /// Each implementation of GH_Component must provide a public 
-        /// constructor without any arguments.
-        /// Category represents the Tab in which the component will appear, 
-        /// Subcategory the panel. If you use non-existing tab or panel names, 
-        /// new tabs/panels will automatically be created.
         /// </summary>
         public ReadCellValue_Component()
           : base(
                 "Read Cell Value",
                 "ReadCellValue",
-                "Reads values from a range of cells",
+                "Basic reader from a range of cells. For a more comprehesive solution please use ReadCells component.",
                 "BookWorm",
                 "Spreadsheet")
         {
@@ -42,14 +28,9 @@ namespace GoogleDocs.Spreadsheets
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("SpreadsheetId", "Id", "Spreadsheet Id", GH_ParamAccess.item);
-
-            pManager.AddTextParameter("SheetName", "N", "Sheet Name", GH_ParamAccess.item);
-
-            pManager.AddTextParameter("CellRange", "C", "Range of cells", GH_ParamAccess.item);
+            base.RegisterInputParams(pManager);
 
             pManager.AddBooleanParameter("Read", "R", "Read data from spreadsheet", GH_ParamAccess.item, false);
-
             pManager.AddBooleanParameter("SameLength", "S", "All output rows will be the same length", GH_ParamAccess.item, false);
         }
 
@@ -62,52 +43,17 @@ namespace GoogleDocs.Spreadsheets
         /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            string spreadsheetId = string.Empty;
-            string sheetName = string.Empty;
-            string range = string.Empty;
+            base.SolveInstance(DA);
+
             bool read = false;
             bool sameLength = false;
 
-            if (!DA.GetData(0, ref spreadsheetId)) return;
-            if (!DA.GetData(1, ref sheetName)) return;
-            if (!DA.GetData(2, ref range)) return;
             DA.GetData(3, ref read);
             DA.GetData(4, ref sameLength);
 
             if (!read) return;
 
-            GH_AssemblyInfo info = Grasshopper.Instances.ComponentServer.FindAssembly(new Guid("56dfe1a3-4e7b-425f-b169-965c0d1f7977"));
-            string assemblyLocation = Path.GetDirectoryName(info.Location);
-
-            UserCredential credential;
-
-            using (var stream =
-                new FileStream(Path.Combine(assemblyLocation, "credentials.json"), FileMode.Open, FileAccess.Read))
-            {
-                // The file token.json stores the user's access and refresh tokens, and is created
-                // automatically when the authorization flow completes for the first time.
-                string credPath = Path.Combine(assemblyLocation, "token.json");
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets,
-                    Scopes,
-                    "user",
-                    CancellationToken.None,
-                    new FileDataStore(credPath, true)).Result;
-            }
-
-            // Create Google Sheets API service.
-            var service = new SheetsService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = ApplicationName,
-            });
-
-            // Define request parameters.
-            // Single quotes for cases with space between sheet name parts.
-            string requestRange = $"'{sheetName}'!{range}";
-
-            SpreadsheetsResource.ValuesResource.GetRequest request =
-                    service.Spreadsheets.Values.Get(spreadsheetId, requestRange);
+            SpreadsheetsResource.ValuesResource.GetRequest request = Credentials.Service.Spreadsheets.Values.Get(SpreadsheetId, Range);
 
             ValueRange response = request.Execute();
 
@@ -124,7 +70,7 @@ namespace GoogleDocs.Spreadsheets
                     data.AppendRange(ghStrings, path);
                 }
 
-                //одинаковые длины для списков
+                // same lenght for each row.
                 if (sameLength)
                 {
                     var maxLength = values.Max(r => r.Count);

@@ -121,8 +121,8 @@
     <Compile Include="Goo\GH_TextFormat.cs" />
     <Compile Include="Goo\GH_TextRotation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Request\MergeCells.cs" />
-    <Compile Include="Request\UnmergeCells.cs" />
+    <Compile Include="Spreadsheets\MergeCells.cs" />
+    <Compile Include="Spreadsheets\UnmergeCells.cs" />
     <Compile Include="Spreadsheets\WriteCells.cs" />
     <Compile Include="Spreadsheets\ReadCellValue_Component.cs" />
     <Compile Include="Spreadsheets\ReadCell_Component.cs" />
@@ -145,6 +145,9 @@
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Request\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
