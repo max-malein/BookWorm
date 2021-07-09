@@ -64,7 +64,7 @@ namespace GoogleDocs.Spreadsheets
                 var data = new GH_Structure<GH_String>();
                 for (int i = 0; i < values.Count; i++)
                 {
-                    var path = new GH_Path(0, i);
+                    var path = new GH_Path(RunCount - 1, i);
                     var ghStrings = values[i].Select(s => new GH_String(s.ToString()));
 
                     data.AppendRange(ghStrings, path);
