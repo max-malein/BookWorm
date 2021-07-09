@@ -102,7 +102,7 @@ namespace BookWorm.Spreadsheets
                 for (int j = 0; j < rowData[i].Values.Count; j++)
                 {
                     var value = rowData[i].Values[j];
-                    var ghCell = new GH_CellData(value, a1s[i][j]);
+                    var ghCell = new GH_CellData(value);
                     ghCells.Add(ghCell);
                 }
 

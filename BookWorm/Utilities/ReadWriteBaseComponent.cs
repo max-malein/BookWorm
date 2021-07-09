@@ -61,7 +61,7 @@ namespace BookWorm.Utilities
             SheetName = sheetName;
 
             if (!DA.GetData("Cell Range", ref range)) return;
-            Range = range.ToUpper();
+            Range = $"\'{sheetName}\'!{range.ToUpper()}";
         }
 
         /// <inheritdoc/>
