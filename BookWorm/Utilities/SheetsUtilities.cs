@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Sheets.v4.Data;
-using Data = Google.Apis.Sheets.v4.Data;
 
 namespace BookWorm.Utilities
 {
@@ -35,14 +34,29 @@ namespace BookWorm.Utilities
         /// <returns>System.Drawing.Color-type ARGB-color.</returns>
         public static System.Drawing.Color GetSystemDrawingColor(Color googleSheetsColor)
         {
-            var alpha = (int)(googleSheetsColor.Alpha * 255);
-            var red = (int)(googleSheetsColor.Red * 255);
-            var green = (int)(googleSheetsColor.Green * 255);
-            var blue = (int)(googleSheetsColor.Blue * 255);
+            var colorARGB = System.Drawing.Color.Empty;
 
-            var colorARGB = System.Drawing.Color.FromArgb(alpha, red, green, blue);
+            if (googleSheetsColor != null)
+            {
+                var alpha = (int)(googleSheetsColor.Alpha * 255);
+                var red = (int)(googleSheetsColor.Red * 255);
+                var green = (int)(googleSheetsColor.Green * 255);
+                var blue = (int)(googleSheetsColor.Blue * 255);
+
+                colorARGB = System.Drawing.Color.FromArgb(alpha, red, green, blue);
+            }
 
             return colorARGB;
+        }
+
+        /// <summary>
+        /// Formats color for gh panel.
+        /// </summary>
+        /// <param name="colorARGB">System.Drawing.Color-type color.</param>
+        /// <returns>RGB-color as "R,G,B" string.</returns>
+        public static string GetFormattedARGB(System.Drawing.Color colorARGB)
+        {
+            return $"{colorARGB.R}, {colorARGB.G}, {colorARGB.B}";
         }
 
         /// <summary>
@@ -53,9 +67,9 @@ namespace BookWorm.Utilities
         /// <returns>Sheet Id of created sheet.</returns>
         public static int? CreateNewSheet(string spreadsheetId, string sheetName)
         {
-            var requests = new List<Data.Request>();
+            var requests = new List<Request>();
 
-            var addSheetRequest = new Data.Request();
+            var addSheetRequest = new Request();
 
             var sheetProperties = new SheetProperties
             {

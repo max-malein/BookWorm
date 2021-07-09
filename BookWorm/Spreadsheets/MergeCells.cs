@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using BookWorm.Utilities;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
-using Data = Google.Apis.Sheets.v4.Data;
 
 namespace BookWorm.Spreadsheets
 {
@@ -18,7 +17,7 @@ namespace BookWorm.Spreadsheets
                 "Nickname",
                 "Description",
                 "BookWorm",
-                "Request")
+                "Spreadsheet")
         {
         }
 
@@ -27,13 +26,13 @@ namespace BookWorm.Spreadsheets
         {
             base.RegisterInputParams(pManager);
 
-            pManager.AddTextParameter(
+            pManager.AddIntegerParameter(
                 "Merge Type",
                 "MT",
                 "How the cells should be merged.\n\n"
-                + "MERGE_ALL - сreate a single merge from the range.\n"
-                + "MERGE_COLUMNS - сreate a merge for each column in the range.\n"
-                + "MERGE_ROWS - сreate a merge for each row in the range.",
+                + "0 - MERGE_ALL - сreate a single merge from the range.\n"
+                + "1 - MERGE_COLUMNS - сreate a merge for each column in the range.\n"
+                + "2 - MERGE_ROWS - сreate a merge for each row in the range.",
                 GH_ParamAccess.item);
 
             pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item, false);
@@ -49,11 +48,15 @@ namespace BookWorm.Spreadsheets
         {
             base.SolveInstance(DA);
 
-            var mergeType = string.Empty;
+            var mergeType = 0;
 
             var run = false;
 
-            if (!DA.GetData(3, ref mergeType) || string.IsNullOrEmpty(mergeType)) return;
+            if (!DA.GetData(3, ref mergeType) || (mergeType < 0 || mergeType > 2))
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "The merge type is not exist");
+                return;
+            }
 
             DA.GetData(4, ref run);
 
@@ -62,18 +65,17 @@ namespace BookWorm.Spreadsheets
                 return;
             }
 
-
             var sheetId = SheetsUtilities.GetSheetId(SpreadsheetId, SheetName);
             var gridRange = CellsUtilities.GridRangeFromA1(Range, (int)sheetId);
 
-            var requests = new List<Data.Request>();
+            var requests = new List<Request>();
 
-            var mergeCellRequest = new Data.Request();
+            var mergeCellRequest = new Request();
 
             var mergeCells = new MergeCellsRequest
             {
                 Range = gridRange,
-                MergeType = mergeType,
+                MergeType = Enum.GetName(typeof(MergeTypes), mergeType),
             };
 
             mergeCellRequest.MergeCells = mergeCells;
@@ -87,6 +89,18 @@ namespace BookWorm.Spreadsheets
             var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, SpreadsheetId);
 
             var response = request.Execute();
+        }
+
+        /// <summary>
+        /// MERGE_ALL - сreate a single merge from the range.
+        /// MERGE_COLUMNS - сreate a merge for each column in the range.
+        /// MERGE_ROWS - сreate a merge for each row in the range.
+        /// </summary>
+        private enum MergeTypes
+        {
+            MERGE_ALL,
+            MERGE_COLUMNS,
+            MERGE_ROWS,
         }
 
         /// <inheritdoc/>

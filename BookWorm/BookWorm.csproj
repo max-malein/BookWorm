@@ -126,7 +126,7 @@
     <Compile Include="Spreadsheets\WriteCells.cs" />
     <Compile Include="Spreadsheets\ReadCellValue_Component.cs" />
     <Compile Include="Spreadsheets\ReadCell_Component.cs" />
-    <Compile Include="Spreadsheets\WriteCellRange.cs" />
+    <Compile Include="Spreadsheets\WriteCellValues.cs" />
     <Compile Include="Utilities\ReadWriteBaseComponent.cs" />
     <Compile Include="Utilities\TestComponent.cs" />
     <Compile Include="Utilities\Util.cs" />
@@ -146,9 +146,7 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Request\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,11 +1,8 @@
-﻿// <copyright file="ConstructCellBorder.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
-
-namespace BookWorm.Construct
+﻿namespace BookWorm.Construct
 {
     using System;
     using BookWorm.Goo;
+    using BookWorm.Utilities;
     using Google.Apis.Sheets.v4.Data;
     using Grasshopper.Kernel;
 
@@ -30,8 +27,19 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddIntegerParameter("Style", "Style", "0 - STYLE_UNSPECIFIED, 1  -DOTTED, 2 - DASHED, 3 - SOLID, 4 - SOLID_MEDIUM, 5 - SOLID_THICK, 6 - NONE, 7 - DOUBLE", GH_ParamAccess.item);
-            pManager.AddTextParameter("Color", "Color", "Border color", GH_ParamAccess.item);
+            pManager.AddIntegerParameter(
+                "Border Style",
+                "Style",
+                "0 - NONE (use for erase exist border)\n"
+                + "1 - DOTTED\n"
+                + "2 - DASHED\n"
+                + "3 - SOLID\n"
+                + "4 - SOLID_MEDIUM\n"
+                + "5 - SOLID_THICK\n"
+                + "6 - DOUBLE",
+                GH_ParamAccess.item);
+
+            pManager.AddColourParameter("Color", "Color", "Border color", GH_ParamAccess.item);
 
             for (int i = 0; i < pManager.ParamCount; i++)
             {
@@ -45,45 +53,31 @@ namespace BookWorm.Construct
             pManager.AddGenericParameter("Border", "Border", "Border", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var style = 0;
-            var color = string.Empty;
+            var color = System.Drawing.Color.Empty;
             var border = new Border();
 
-            if (DA.GetData(0, ref style))
+            if (!DA.GetData(0, ref style) || (style < 0 || style > 6))
             {
-                if(!(style>=0 && style<= 7))
-                {
-                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, " The styleType can only be 0, 1, 2, 3, 4, 5, 6 or 7");
-                    return;
-                }
-                border.Style = style.ToString();
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "The style type is not exist");
+                return;
             }
+
+            border.Style = Enum.GetName(typeof(BorderStyle), style);
 
             if (DA.GetData(1, ref color))
             {
-                border.Color = new Color
-                {
-                    Alpha = 255,
-                    Red = float.Parse(color.Split(',')[0]),
-                    Green = float.Parse(color.Split(',')[1]),
-                    Blue = float.Parse(color.Split(',')[2]),
-                };
+                border.Color = SheetsUtilities.GetGoogleSheetsColor(color);
             }
 
             var borderGoo = new GH_CellBorder(border);
             DA.SetData(0, borderGoo);
         }
 
-        /// <summary>
-        /// Gets provides an Icon for the component.
-        /// </summary>
-
+        /// <inheritdoc/>
         protected override System.Drawing.Bitmap Icon
         {
             get
@@ -94,29 +88,26 @@ namespace BookWorm.Construct
             }
         }
 
-        /// <summary>
-        /// Gets the unique ID for this component. Do not change this ID after release.
-        /// </summary>
+        /// <inheritdoc/>
         public override Guid ComponentGuid => new Guid("30b79fc6-f04c-4aac-9aaf-80a994e303e0");
 
         /// <summary>
-        /// DOTTED The border is dotted.
-        /// DASHED The border is dashed.
-        /// SOLID The border is a thin solid line.
-        /// SOLID_MEDIUM    The border is a medium solid line.
-        /// SOLID_THICK The border is a thick solid line.
-        /// NONE No border.Used only when updating a border in order to erase it.
-        /// DOUBLE The border is two solid lines.
+        /// NONE - No border. Used only when updating a border in order to erase it.
+        /// DOTTED - The border is dotted.
+        /// DASHED - The border is dashed.
+        /// SOLID - The border is a thin solid line.
+        /// SOLID_MEDIUM - The border is a medium solid line.
+        /// SOLID_THICK - The border is a thick solid line.
+        /// DOUBLE - The border is two solid lines.
         /// </summary>
-        private enum Style
+        private enum BorderStyle
         {
-            STYLE_UNSPECIFIED,
+            NONE,
             DOTTED,
             DASHED,
             SOLID,
             SOLID_MEDIUM,
             SOLID_THICK,
-            NONE,
             DOUBLE,
         }
     }

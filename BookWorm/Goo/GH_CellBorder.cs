@@ -1,9 +1,6 @@
-﻿// <copyright file="GH_CellBorder.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
-
-namespace BookWorm.Goo
+﻿namespace BookWorm.Goo
 {
+    using BookWorm.Utilities;
     using Google.Apis.Sheets.v4.Data;
     using Grasshopper.Kernel.Types;
     using Newtonsoft.Json;
@@ -40,7 +37,6 @@ namespace BookWorm.Goo
         {
             if (cellBorderGoo != null)
             {
-                // смекалОчка - у ячейки нет своего копирования.
                 var cellDataJson = JsonConvert.SerializeObject(cellBorderGoo.Value, Formatting.Indented);
                 var cellBorder = JsonConvert.DeserializeObject<Border>(cellDataJson);
                 this.Value = cellBorder;
@@ -70,15 +66,12 @@ namespace BookWorm.Goo
                 return string.Empty;
             }
 
-            var style = string.Empty;
+            var style = Value.Style;
+            var color = SheetsUtilities.GetSystemDrawingColor(Value.Color);
 
-            // Only requested from spreadsheet cells got formatted value.
-            if (this.Value.Style != null)
-            {
-                style = $@"Style: {this.Value.Style}";
-            }
+            var formattedColor = SheetsUtilities.GetFormattedARGB(color);
 
-            return $"{style}    ";
+            return $"Style: {style}\nColor: {formattedColor}";
         }
     }
 }

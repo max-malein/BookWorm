@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
 using BookWorm.Goo;
 using BookWorm.Utilities;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
-using Data = Google.Apis.Sheets.v4.Data;
 
 namespace BookWorm.Spreadsheets
 {
@@ -18,7 +15,7 @@ namespace BookWorm.Spreadsheets
         /// </summary>
         public WriteCells()
           : base(
-                "WriteCells",
+                "Write Cells",
                 "WriteCell",
                 "Updates values and format for a given range of cells",
                 "BookWorm",
@@ -31,7 +28,7 @@ namespace BookWorm.Spreadsheets
         {
             base.RegisterInputParams(pManager);
             pManager.AddGenericParameter("Cells", "C", "Cells", GH_ParamAccess.list);
-            pManager.AddBooleanParameter("Run", "R", "Run", GH_ParamAccess.item, false);
+            pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item, false);
         }
 
         /// <inheritdoc/>
@@ -80,10 +77,10 @@ namespace BookWorm.Spreadsheets
             // A list of updates to apply to the spreadsheet.
             // Requests will be applied in the order they are specified.
             // If any request is not valid, no requests will be applied.
-            var requests = new List<Data.Request>();
+            var requests = new List<Request>();
 
             // New and empty request instance.
-            var updateCellRequest = new Data.Request();
+            var updateCellRequest = new Request();
 
             var updateCells = new UpdateCellsRequest
             {

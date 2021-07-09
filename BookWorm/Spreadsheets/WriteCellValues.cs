@@ -1,23 +1,18 @@
-﻿using Grasshopper.Kernel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Google.Apis.Auth.OAuth2;
+using BookWorm.Utilities;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
-using Google.Apis.Services;
-using Google.Apis.Util.Store;
-using System.IO;
-using System.Threading;
-using BookWorm.Utilities;
+using Grasshopper.Kernel;
 
 namespace GoogleDocs.Spreadsheets
 {
-    public class WriteCellRange : ReadWriteBaseComponent
+    public class WriteCellValues : ReadWriteBaseComponent
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WriteCellRange"/> class.
+        /// Initializes a new instance of the <see cref="WriteCellValues"/> class.
         /// </summary>
-        public WriteCellRange()
+        public WriteCellValues()
           : base(
                 "WriteCellValues",
                 "WriteCellValues",
@@ -104,7 +99,7 @@ namespace GoogleDocs.Spreadsheets
             get
             {
                 // You can add image files to your project resources and access them like this:
-                //return Resources.IconForThisComponent;
+                // return Resources.IconForThisComponent;
                 return null;
             }
         }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using BookWorm.Utilities;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
-using Data = Google.Apis.Sheets.v4.Data;
 
 namespace BookWorm.Spreadsheets
 {
@@ -18,31 +17,24 @@ namespace BookWorm.Spreadsheets
                 "Nickname",
                 "Description",
                 "BookWorm",
-                "Request")
+                "Spreadsheet")
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             base.RegisterInputParams(pManager);
 
-            pManager.AddBooleanParameter("Run", "R", "Run", GH_ParamAccess.item, false);
+            pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item, false);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             base.SolveInstance(DA);
@@ -59,9 +51,9 @@ namespace BookWorm.Spreadsheets
             var sheetId = SheetsUtilities.GetSheetId(SpreadsheetId, SheetName);
             var gridRange = CellsUtilities.GridRangeFromA1(Range, (int)sheetId);
 
-            var requests = new List<Data.Request>();
+            var requests = new List<Request>();
 
-            var unmergeCellRequest = new Data.Request();
+            var unmergeCellRequest = new Request();
 
             var unmergeCells = new UnmergeCellsRequest
             {
@@ -83,9 +75,7 @@ namespace BookWorm.Spreadsheets
             var response = request.Execute();
         }
 
-        /// <summary>
-        /// Provides an Icon for the component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override System.Drawing.Bitmap Icon
         {
             get
@@ -96,9 +86,7 @@ namespace BookWorm.Spreadsheets
             }
         }
 
-        /// <summary>
-        /// Gets the unique ID for this component. Do not change this ID after release.
-        /// </summary>
+        /// <inheritdoc/>
         public override Guid ComponentGuid
         {
             get { return new Guid("00437ebd-fde8-4db1-80af-ae511a04b51e"); }

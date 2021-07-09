@@ -6,8 +6,19 @@ namespace BookWorm.Utilities
 {
     public class ReadWriteBaseComponent : GH_Component
     {
+        /// <summary>
+        /// Spreadsheet Id.
+        /// </summary>
         public string SpreadsheetId { get; private set; }
+
+        /// <summary>
+        /// Sheet name.
+        /// </summary>
         public string SheetName { get; private set; }
+
+        /// <summary>
+        /// Range of cells in A1 notaton.
+        /// </summary>
         public string Range { get; private set; }
 
         public ReadWriteBaseComponent(string name, string nick, string desc, string tab, string subTab)
@@ -15,19 +26,27 @@ namespace BookWorm.Utilities
         {
         }
 
+        /// <inheritdoc/>
         public override Guid ComponentGuid => throw new NotImplementedException();
 
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("Spreadsheet URL", "U", "Google spreadsheet URL or spreadsheet ID", GH_ParamAccess.item);
             pManager.AddTextParameter("Sheet Name", "N", "Sheet Name", GH_ParamAccess.item);
-            pManager.AddTextParameter("Cell Range", "R", "Range of cells in \'a1\' notation. For example A1:B5 - range of cells, A15 - single cell, A:C - range of columns, etc.", GH_ParamAccess.item);
+            pManager.AddTextParameter(
+                "Cell Range",
+                "R",
+                "Range of cells in \'a1\' notation. For example A1:B5 - range of cells, A15 - single cell, A:C - range of columns, etc.",
+                GH_ParamAccess.item);
         }
 
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
         {
         }
 
+        /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             string spreadsheetUrl = string.Empty;
@@ -36,7 +55,7 @@ namespace BookWorm.Utilities
             SpreadsheetId = string.Empty;
 
             if (!DA.GetData("Spreadsheet URL", ref spreadsheetUrl)) return;
-            SpreadsheetId = Utilities.Util.ParseUrl(spreadsheetUrl);
+            SpreadsheetId = Util.ParseUrl(spreadsheetUrl);
 
             if (!DA.GetData("Sheet Name", ref sheetName)) return;
             SheetName = sheetName;
