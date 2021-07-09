@@ -62,7 +62,7 @@
 
             if (!DA.GetData(0, ref style) || (style < 0 || style > 6))
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "The style type is not exist");
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The style type {style} does not exist");
                 return;
             }
 
