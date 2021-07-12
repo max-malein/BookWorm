@@ -19,7 +19,12 @@ namespace BookWorm.Utilities
         /// <summary>
         /// Range of cells in A1 notaton.
         /// </summary>
-        public string Range { get; private set; }
+        public string CellRange { get; private set; }
+
+        /// <summary>
+        /// Range of cells with given sheet name in A1 notation on a spreadsheet.
+        /// </summary>
+        public string SpreadsheetRange => $"\'{SheetName}\'!{CellRange}";
 
         public ReadWriteBaseComponent(string name, string nick, string desc, string tab, string subTab)
             : base(name, nick, desc, tab, subTab)
@@ -33,7 +38,9 @@ namespace BookWorm.Utilities
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("Spreadsheet URL", "U", "Google spreadsheet URL or spreadsheet ID", GH_ParamAccess.item);
+
             pManager.AddTextParameter("Sheet Name", "N", "Sheet Name", GH_ParamAccess.item);
+
             pManager.AddTextParameter(
                 "Cell Range",
                 "R",
@@ -61,7 +68,7 @@ namespace BookWorm.Utilities
             SheetName = sheetName;
 
             if (!DA.GetData("Cell Range", ref range)) return;
-            Range = $"\'{sheetName}\'!{range.ToUpper()}";
+            CellRange = range.ToUpper();
         }
 
         /// <inheritdoc/>

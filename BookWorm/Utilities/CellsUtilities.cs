@@ -55,19 +55,18 @@ namespace BookWorm.Utilities
         /// <summary>
         /// Creates GridRange object from A1 notation range.
         /// </summary>
-        /// <param name="a1NotatonRange">Cells range in A1 notation.</param>
+        /// <param name="CellRangeA1">Cells range in A1 notation.</param>
         /// <param name="sheetId">Sheet Id.</param>
         /// <returns>new Grid Range.</returns>
-        public static GridRange GridRangeFromA1(string a1NotatonRange, int sheetId)
+        public static GridRange GridRangeFromA1(string CellRangeA1, int sheetId)
         {
             var gridRange = new GridRange();
             gridRange.SheetId = sheetId;
 
-            // problems with lower-case and column name to number
-            bool letters = Regex.Matches(a1NotatonRange, @"[a-zA-Z]").Count > 0;
-            bool numbers = a1NotatonRange.Any(c => char.IsDigit(c));
+            bool letters = Regex.Matches(CellRangeA1, @"[a-zA-Z]").Count > 0;
+            bool numbers = CellRangeA1.Any(c => char.IsDigit(c));
 
-            var rangeBounds = a1NotatonRange.Split(':');
+            var rangeBounds = CellRangeA1.Split(':');
 
             // Only columns case.
             if (letters && !numbers)
@@ -107,6 +106,12 @@ namespace BookWorm.Utilities
             }
 
             return gridRange;
+        }
+
+        internal static List<List<string>> GetCellCoordinates(List<RowData> rowData, string range)
+        {
+            return new List<List<string>>();
+            throw new NotImplementedException();
         }
 
         /// <summary>

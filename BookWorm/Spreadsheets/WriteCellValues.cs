@@ -16,15 +16,15 @@ namespace GoogleDocs.Spreadsheets
           : base(
                 "WriteCellValues",
                 "WriteCellValues",
-                "A very basic google spreadsheet writer. Writes a row of values, starting from a given cell index. For a more comprehensive solution, please use WriteCell component",
+                "A very basic google spreadsheet writer. "
+                + "Writes a row of values, starting from a given cell index. "
+                + "For a more comprehensive solution, please use WriteCell component",
                 "BookWorm",
                 "Spreadsheet")
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             base.RegisterInputParams(pManager);
@@ -34,19 +34,13 @@ namespace GoogleDocs.Spreadsheets
             pManager.AddBooleanParameter("Write", "W", "Write data to spreadsheet", GH_ParamAccess.item, false);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddTextParameter("Result", "R", "Result", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object can be used to retrieve data from input parameters and 
-        /// to store data in output parameters.</param>
+        /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             base.SolveInstance(DA);
@@ -64,7 +58,7 @@ namespace GoogleDocs.Spreadsheets
             var valueRange = new ValueRange
             {
                 MajorDimension = "ROWS",
-                Range = this.Range,
+                Range = this.CellRange,
                 Values = new List<IList<object>>() { new List<object>() },
             };
 
@@ -76,24 +70,21 @@ namespace GoogleDocs.Spreadsheets
 
             if (append)
             {
-                var request = Credentials.Service.Spreadsheets.Values.Append(valueRange, SpreadsheetId, Range);
+                var request = Credentials.Service.Spreadsheets.Values.Append(valueRange, SpreadsheetId, SpreadsheetRange);
                 request.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
                 var result = request.Execute();
                 DA.SetData(0, result.Updates.ToString());
             }
             else
             {
-                var request = Credentials.Service.Spreadsheets.Values.Update(valueRange, SpreadsheetId, Range);
+                var request = Credentials.Service.Spreadsheets.Values.Update(valueRange, SpreadsheetId, SpreadsheetRange);
                 request.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED;
                 var result = request.Execute();
                 DA.SetData(0, result.ToString());
             }
         }
 
-        /// <summary>
-        /// Provides an Icon for every component that will be visible in the User Interface.
-        /// Icons need to be 24x24 pixels.
-        /// </summary>
+        /// <inheritdoc/>
         protected override System.Drawing.Bitmap Icon
         {
             get
@@ -104,11 +95,7 @@ namespace GoogleDocs.Spreadsheets
             }
         }
 
-        /// <summary>
-        /// Each component must have a unique Guid to identify it. 
-        /// It is vital this Guid doesn't change otherwise old ghx files 
-        /// that use the old ID will partially fail during loading.
-        /// </summary>
+        /// <inheritdoc/>
         public override Guid ComponentGuid
         {
             get { return new Guid("669A9C19-1370-4613-AC10-1D3264E3D290"); }

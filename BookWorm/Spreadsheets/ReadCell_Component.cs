@@ -59,13 +59,13 @@ namespace BookWorm.Spreadsheets
 
             if (!read) return;
 
-            var request = Utilities.Credentials.Service.Spreadsheets.Get(SpreadsheetId);
-            request.Ranges = Range;
+            var request = Credentials.Service.Spreadsheets.Get(SpreadsheetId);
+            request.Ranges = SpreadsheetRange;
 
             // Filter for quicker response.
             // If spreadsheet contains a lot of data you actually don't need data that you don't need.
             // If fields are set InclideGridData parameter is ignored.
-            request.Fields = "sheets(properties.sheetType,data.rowData)";
+            request.Fields = "sheets(properties.sheetType,data.rowData,merges)";
             //request.IncludeGridData = true;
 
             var spreadsheet = request.Execute();
@@ -86,7 +86,7 @@ namespace BookWorm.Spreadsheets
             // Solver uses request range as item.
             var rowDataPerRequest = sheet.Data.Select(d => d.RowData.ToList()).ToList();
             var rowData = rowDataPerRequest[0];
-            List<List<string>> a1s = Utilities.Util.GetCellCoordinates(rowData, Range);
+            List<List<string>> a1s = CellsUtilities.GetCellCoordinates(rowData, CellRange);
 
             var outputGhCells = new GH_Structure<GH_CellData>();
             var runCountIndex = RunCount - 1;

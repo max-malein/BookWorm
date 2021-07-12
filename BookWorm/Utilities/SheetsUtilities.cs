@@ -127,5 +127,32 @@ namespace BookWorm.Utilities
 
             return null;
         }
+
+        /// <summary>
+        /// Gets ranges of merged cells on the sheet.
+        /// </summary>
+        /// <param name="spreadsheetId">Spreadsheet Id.</param>
+        /// <param name="sheetName">Sheet name.</param>
+        /// <returns>The ranges that are merged together.</returns>
+        public static List<GridRange> GetMergeRanges(string spreadsheetId, string sheetName)
+        {
+            var request = Credentials.Service.Spreadsheets.Get(spreadsheetId);
+
+            request.Fields = "sheets(properties.title,merges)";
+
+            var spreadsheet = request.Execute();
+
+            var sheets = spreadsheet.Sheets;
+
+            foreach (var sheet in sheets)
+            {
+                if (sheet.Properties.Title == sheetName)
+                {
+                    return sheet.Merges.ToList();
+                }
+            }
+
+            return null;
+        }
     }
 }

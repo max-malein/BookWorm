@@ -54,7 +54,7 @@ namespace BookWorm.Spreadsheets
 
             if (!DA.GetData(3, ref mergeType) || (mergeType < 0 || mergeType > 2))
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "The merge type is not exist");
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The merge type {mergeType} does not exist");
                 return;
             }
 
@@ -66,7 +66,7 @@ namespace BookWorm.Spreadsheets
             }
 
             var sheetId = SheetsUtilities.GetSheetId(SpreadsheetId, SheetName);
-            var gridRange = CellsUtilities.GridRangeFromA1(Range, (int)sheetId);
+            var gridRange = CellsUtilities.GridRangeFromA1(CellRange, (int)sheetId);
 
             var requests = new List<Request>();
 

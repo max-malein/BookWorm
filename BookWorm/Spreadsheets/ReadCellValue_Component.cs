@@ -53,7 +53,7 @@ namespace GoogleDocs.Spreadsheets
 
             if (!read) return;
 
-            SpreadsheetsResource.ValuesResource.GetRequest request = Credentials.Service.Spreadsheets.Values.Get(SpreadsheetId, Range);
+            SpreadsheetsResource.ValuesResource.GetRequest request = Credentials.Service.Spreadsheets.Values.Get(SpreadsheetId, SpreadsheetRange);
 
             ValueRange response = request.Execute();
 

@@ -21,11 +21,5 @@ namespace BookWorm.Utilities
 
             return match.Success ? match.Value : spreadsheetUrl;
         }
-
-        internal static List<List<string>> GetCellCoordinates(List<RowData> rowData, string range)
-        {
-            return new List<List<string>>();
-            throw new NotImplementedException();
-        }
     }
 }
