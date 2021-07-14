@@ -66,7 +66,7 @@ namespace BookWorm.Spreadsheets
             // Filter for quicker response.
             // If spreadsheet contains a lot of data you actually don't need data that you don't need.
             // If fields are set InclideGridData parameter is ignored.
-            request.Fields = "sheets(properties.sheetType,data.rowData,merges)";
+            request.Fields = "sheets(properties.sheetType,data,merges)";
             //request.IncludeGridData = true;
 
             var spreadsheet = request.Execute();
@@ -103,11 +103,11 @@ namespace BookWorm.Spreadsheets
                 return;
             }
 
+            var startRowInd = Convert.ToInt32(gridData.StartRow);
+            var startColumnInd = Convert.ToInt32(gridData.StartColumn);
 
 
-            var gridRange = CellsUtilities.GridRangeFromA1(CellRange, 0);
-
-            var coord = CellsUtilities.GetCellCoordinates(rowsData, gridRange);
+            var coord = CellsUtilities.GetCellCoordinates(rowsData, startRowInd, startColumnInd);
 
 
 
@@ -122,25 +122,26 @@ namespace BookWorm.Spreadsheets
                 // So you can get null-exeption if user requests column.
                 //var ghCells = rowData[i].Values?.Select((cd, index) => new GH_CellData(cd, a1s[i, index] )).ToList();
                 var ghCells = new List<GH_CellData>();
-                for (int j = 0; j < rowData[i].Values.Count; j++)
+                for (int j = 0; j < rowsData[i].Values.Count; j++)
                 {
                     CellData value = null;
-                    if (duplicatedMerged)
-                    {
-                        Point? mergeOrigin = FindMergeOrigin(a1s[i][j].Coordinates, mergeData);
-                        if (mergeOrigin != null)
-                        {
-                            value = a1s.SelectMany(r => r.Where(v => v.Coordinates == mergeOrigin)).FirstOrDefault().Value; // needs to be tested
-                        }
-                        else
-                        {
-                            value = rowData[i].Values[j];
-                        }
-                    }
-                    else
-                    {
-                        value = rowData[i].Values[j];
-                    }
+                    //if (duplicatedMerged)
+                    //{
+                    //    Point? mergeOrigin = FindMergeOrigin(coord[i][j].Coordinates, mergeData);
+
+                    //    if (mergeOrigin != null)
+                    //    {
+                    //        value = coord.SelectMany(r => r.Where(v => v.Coordinates == mergeOrigin)).FirstOrDefault().Value; // needs to be tested
+                    //    }
+                    //    else
+                    //    {
+                    //        value = rowsData[i].Values[j];
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    value = rowsData[i].Values[j];
+                    //}
 
                     var ghCell = new GH_CellData(value);
                     ghCells.Add(ghCell);

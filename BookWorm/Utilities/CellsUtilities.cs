@@ -108,12 +108,16 @@ namespace BookWorm.Utilities
             return gridRange;
         }
 
-        internal static List<List<int[]>> GetCellCoordinates(IList<RowData> rowsData, GridRange gridRange)
+        /// <summary>
+        /// Gets the cells coordinates which represents their row and column indices.
+        /// </summary>
+        /// <param name="rowsData">Rows of cells in range.</param>
+        /// <param name="startRowInd">Index of first row in cells range.</param>
+        /// <param name="startColumnInd">Index of first column in cells range.</param>
+        /// <returns>Row and column indicies of the cells.</returns>
+        internal static List<List<int[]>> GetCellCoordinates(IList<RowData> rowsData, int startRowInd, int startColumnInd)
         {
-            var cellsIndexCoordinates = new List<List<int[]>>();
-
-            var startColumnInd = (int)gridRange.StartColumnIndex;
-            var startRowInd = (int)gridRange.StartRowIndex;
+            var coordinatesInGrid = new List<List<int[]>>();
 
             var rowInd = startRowInd;
 
@@ -125,11 +129,13 @@ namespace BookWorm.Utilities
                 // if row full of null-cells
                 if (row.Values == null)
                 {
-                    var indexCoordinates = new int[] { -1, -1 };
+                    coordinatesInRow = null;
+                    coordinatesInGrid.Add(coordinatesInRow);
                     rowInd++;
                     continue;
                 }
 
+                // null-cell with non-null-cells is ok, so it also will get coordinate
                 foreach (var cell in row.Values)
                 {
                     var indexCoordinates = new int[2];
@@ -142,12 +148,12 @@ namespace BookWorm.Utilities
                     columnInd++;
                 }
 
-                cellsIndexCoordinates.Add(coordinatesInRow);
+                coordinatesInGrid.Add(coordinatesInRow);
 
                 rowInd++;
             }
 
-            return cellsIndexCoordinates;
+            return coordinatesInGrid;
         }
 
         /// <summary>
