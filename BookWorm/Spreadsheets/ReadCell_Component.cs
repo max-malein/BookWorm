@@ -5,6 +5,7 @@ using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -35,10 +36,9 @@ namespace BookWorm.Spreadsheets
         {
             base.RegisterInputParams(pManager);
 
-            pManager.AddBooleanParameter("Read", "R", "Read data from spreadsheet", GH_ParamAccess.item, false);
-
-            // not exist yet. Just copypasted from old component as idea
+            pManager.AddBooleanParameter("Duplicate Merged", "M", "If true, all merged cells will have same value. If false, only the upper left cell will have a value", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Same Length", "S", "All output rows will be the same length", GH_ParamAccess.item, false);
+            pManager.AddBooleanParameter("Read", "R", "Read data from spreadsheet", GH_ParamAccess.item, false);
         }
 
         /// <inheritdoc/>
@@ -52,6 +52,7 @@ namespace BookWorm.Spreadsheets
         {
             base.SolveInstance(DA);
 
+            bool duplicatedMerged;
             bool read = false;
             bool sameLength = false;
             DA.GetData("Read", ref read);
@@ -119,15 +120,31 @@ namespace BookWorm.Spreadsheets
 
                 // Null-cell as the only cell in a row returns null-row, i.e. null instead of list of cells.
                 // So you can get null-exeption if user requests column.
-                var ghCells = rowsData[i].Values?.Select(cd => new GH_CellData(cd)).ToList();
+                //var ghCells = rowData[i].Values?.Select((cd, index) => new GH_CellData(cd, a1s[i, index] )).ToList();
+                var ghCells = new List<GH_CellData>();
+                for (int j = 0; j < rowData[i].Values.Count; j++)
+                {
+                    CellData value = null;
+                    if (duplicatedMerged)
+                    {
+                        Point? mergeOrigin = FindMergeOrigin(a1s[i][j].Coordinates, mergeData);
+                        if (mergeOrigin != null)
+                        {
+                            value = a1s.SelectMany(r => r.Where(v => v.Coordinates == mergeOrigin)).FirstOrDefault().Value; // needs to be tested
+                        }
+                        else
+                        {
+                            value = rowData[i].Values[j];
+                        }
+                    }
+                    else
+                    {
+                        value = rowData[i].Values[j];
+                    }
 
-                //var ghCells = new List<GH_CellData>();
-                //for (int j = 0; j < rowData[i].Values.Count; j++)
-                //{
-                //    var value = rowData[i].Values[j];
-                //    var ghCell = new GH_CellData(value);
-                //    ghCells.Add(ghCell);
-                //}
+                    var ghCell = new GH_CellData(value);
+                    ghCells.Add(ghCell);
+                }
 
                 // That stuff and "Values?" solve it.
                 if (ghCells == null)
@@ -139,6 +156,11 @@ namespace BookWorm.Spreadsheets
             }
 
             DA.SetDataTree(0, outputGhCells);
+        }
+
+        private Point? FindMergeOrigin(Point? coordinates, List<GridRange> mergeData)
+        {
+            throw new NotImplementedException();
         }
 
         /// <inheritdoc/>
