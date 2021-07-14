@@ -83,28 +83,51 @@ namespace BookWorm.Spreadsheets
                 return;
             }
 
+            // Мерж ренжи
+            List<GridRange> merges = new List<GridRange>();
+
+            if (sheet.Merges != null)
+            {
+                merges = sheet.Merges.ToList();
+            }
+
             // Solver uses request range as item.
-            var rowDataPerRequest = sheet.Data.Select(d => d.RowData.ToList()).ToList();
-            var rowData = rowDataPerRequest[0];
-            List<List<string>> a1s = CellsUtilities.GetCellCoordinates(rowData, CellRange);
+            var gridData = sheet.Data.FirstOrDefault();
+            var rowsData = gridData.RowData;
+
+            // if one tried read a range of null-cells
+            if (rowsData == null)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "The range contains only null-cells");
+                return;
+            }
+
+
+
+            var gridRange = CellsUtilities.GridRangeFromA1(CellRange, 0);
+
+            var coord = CellsUtilities.GetCellCoordinates(rowsData, gridRange);
+
+
 
             var outputGhCells = new GH_Structure<GH_CellData>();
             var runCountIndex = RunCount - 1;
 
-            for (int i = 0; i < rowData.Count; i++)
+            for (int i = 0; i < rowsData.Count; i++)
             {
                 var path = new GH_Path(runCountIndex, i);
 
                 // Null-cell as the only cell in a row returns null-row, i.e. null instead of list of cells.
                 // So you can get null-exeption if user requests column.
-                //var ghCells = rowData[i].Values?.Select((cd, index) => new GH_CellData(cd, a1s[i, index] )).ToList();
-                var ghCells = new List<GH_CellData>();
-                for (int j = 0; j < rowData[i].Values.Count; j++)
-                {
-                    var value = rowData[i].Values[j];
-                    var ghCell = new GH_CellData(value);
-                    ghCells.Add(ghCell);
-                }
+                var ghCells = rowsData[i].Values?.Select(cd => new GH_CellData(cd)).ToList();
+
+                //var ghCells = new List<GH_CellData>();
+                //for (int j = 0; j < rowData[i].Values.Count; j++)
+                //{
+                //    var value = rowData[i].Values[j];
+                //    var ghCell = new GH_CellData(value);
+                //    ghCells.Add(ghCell);
+                //}
 
                 // That stuff and "Values?" solve it.
                 if (ghCells == null)

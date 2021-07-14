@@ -108,10 +108,46 @@ namespace BookWorm.Utilities
             return gridRange;
         }
 
-        internal static List<List<string>> GetCellCoordinates(List<RowData> rowData, string range)
+        internal static List<List<int[]>> GetCellCoordinates(IList<RowData> rowsData, GridRange gridRange)
         {
-            return new List<List<string>>();
-            throw new NotImplementedException();
+            var cellsIndexCoordinates = new List<List<int[]>>();
+
+            var startColumnInd = (int)gridRange.StartColumnIndex;
+            var startRowInd = (int)gridRange.StartRowIndex;
+
+            var rowInd = startRowInd;
+
+            foreach (var row in rowsData)
+            {
+                var coordinatesInRow = new List<int[]>();
+                var columnInd = startColumnInd;
+
+                // if row full of null-cells
+                if (row.Values == null)
+                {
+                    var indexCoordinates = new int[] { -1, -1 };
+                    rowInd++;
+                    continue;
+                }
+
+                foreach (var cell in row.Values)
+                {
+                    var indexCoordinates = new int[2];
+
+                    indexCoordinates[0] = rowInd;
+                    indexCoordinates[1] = columnInd;
+
+                    coordinatesInRow.Add(indexCoordinates);
+
+                    columnInd++;
+                }
+
+                cellsIndexCoordinates.Add(coordinatesInRow);
+
+                rowInd++;
+            }
+
+            return cellsIndexCoordinates;
         }
 
         /// <summary>
