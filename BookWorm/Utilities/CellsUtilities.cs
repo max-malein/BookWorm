@@ -108,10 +108,54 @@ namespace BookWorm.Utilities
             return gridRange;
         }
 
-        internal static List<List<string>> GetCellCoordinates(List<RowData> rowData, string range)
+        /// <summary>
+        /// Gets the cells coordinates which represents their row and column indices.
+        /// </summary>
+        /// <param name="rowsData">Rows of cells in range.</param>
+        /// <param name="startRowInd">Index of first row in cells range.</param>
+        /// <param name="startColumnInd">Index of first column in cells range.</param>
+        /// <returns>Row and column indicies of the cells.</returns>
+        internal static List<List<int[]>> GetCellCoordinates(IList<RowData> rowsData, int startRowInd, int startColumnInd)
         {
-            return new List<List<string>>();
-            throw new NotImplementedException();
+            var coordinatesInGrid = new List<List<int[]>>();
+
+            var rowInd = startRowInd;
+
+            foreach (var row in rowsData)
+            {
+                var coordinatesInRow = new List<int[]>();
+                var columnInd = startColumnInd;
+
+                // If row full of null-cells
+                if (row.Values == null)
+                {
+                    coordinatesInRow = null;
+                    coordinatesInGrid.Add(coordinatesInRow);
+                    rowInd++;
+                    continue;
+                }
+
+                // Null-cell within right bound of non-null-cell is ok, so it also will get coordinate.
+                // So does rows. I.e. Rows and cells as "null-data-null-data-null" actually becomes "null-data-null-data" in response.
+                // Merged null-cells are considered as non-null-cells.
+                foreach (var cell in row.Values)
+                {
+                    var indexCoordinates = new int[2];
+
+                    indexCoordinates[0] = rowInd;
+                    indexCoordinates[1] = columnInd;
+
+                    coordinatesInRow.Add(indexCoordinates);
+
+                    columnInd++;
+                }
+
+                coordinatesInGrid.Add(coordinatesInRow);
+
+                rowInd++;
+            }
+
+            return coordinatesInGrid;
         }
 
         /// <summary>

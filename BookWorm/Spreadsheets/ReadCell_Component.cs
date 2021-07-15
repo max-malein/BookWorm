@@ -66,10 +66,12 @@ namespace BookWorm.Spreadsheets
             // Filter for quicker response.
             // If spreadsheet contains a lot of data you actually don't need data that you don't need.
             // If fields are set InclideGridData parameter is ignored.
-            request.Fields = "sheets(properties.sheetType,data.rowData,merges)";
+            request.Fields = "sheets(properties.sheetType,data,merges)";
             //request.IncludeGridData = true;
 
             var spreadsheet = request.Execute();
+
+            // Solver uses request range as item. So you always will get only one sheet and so on.
             Sheet sheet = spreadsheet.Sheets.FirstOrDefault();
 
             if (sheet == null)
@@ -84,53 +86,77 @@ namespace BookWorm.Spreadsheets
                 return;
             }
 
-            // Solver uses request range as item.
-            var rowDataPerRequest = sheet.Data.Select(d => d.RowData.ToList()).ToList();
-            var rowData = rowDataPerRequest[0];
-            List<List<CellCoordinates>> a1s = CellsUtilities.GetCellCoordinates(rowData, CellRange);
+            // Мерж ренжи
+            List<GridRange> merges = new List<GridRange>();
 
-            // Find merged gridRanges
-            List<GridRange> mergeData = GetMergedData(); // запрос на мерджи
+            if (sheet.Merges != null)
+            {
+                merges = sheet.Merges.ToList();
+            }
+
+            var gridData = sheet.Data.FirstOrDefault();
+
+            // Rows and cells as "null-data-null-data-null" actually becomes "null-data-null-data" in response.
+            // Merged null-cells are considered as non-null-cells.
+            var rowsData = gridData.RowData;
+
+            // if one tried read a range of null-cells
+            if (rowsData == null)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "The range contains only null-cells");
+                return;
+            }
+
+            var startRowInd = Convert.ToInt32(gridData.StartRow);
+            var startColumnInd = Convert.ToInt32(gridData.StartColumn);
+
+
+
+            var coord = CellsUtilities.GetCellCoordinates(rowsData, startRowInd, startColumnInd);
+
+
 
             var outputGhCells = new GH_Structure<GH_CellData>();
             var runCountIndex = RunCount - 1;
 
-            for (int i = 0; i < rowData.Count; i++)
+
+            for (int i = 0; i < rowsData.Count; i++)
             {
                 var path = new GH_Path(runCountIndex, i);
 
-                // Null-cell as the only cell in a row returns null-row, i.e. null instead of list of cells.
-                // So you can get null-exeption if user requests column.
-                //var ghCells = rowData[i].Values?.Select((cd, index) => new GH_CellData(cd, a1s[i, index] )).ToList();
                 var ghCells = new List<GH_CellData>();
-                for (int j = 0; j < rowData[i].Values.Count; j++)
+
+                // If row doesn't contain any cell with valid data.
+                if (rowsData[i].Values == null)
+                {
+                    outputGhCells.AppendRange(ghCells, path);
+                    continue;
+                }
+
+                for (int j = 0; j < rowsData[i].Values.Count; j++)
                 {
                     CellData value = null;
-                    if (duplicatedMerged)
-                    {
-                        Point? mergeOrigin = FindMergeOrigin(a1s[i][j].Coordinates, mergeData);
-                        if (mergeOrigin != null)
-                        {
-                            value = a1s.SelectMany(r => r.Where(v => v.Coordinates == mergeOrigin)).FirstOrDefault().Value; // needs to be tested
-                        }
-                        else
-                        {
-                            value = rowData[i].Values[j];
-                        }
-                    }
-                    else
-                    {
-                        value = rowData[i].Values[j];
-                    }
+
+                    //if (duplicatedMerged)
+                    //{
+                    //    Point? mergeOrigin = FindMergeOrigin(coord[i][j].Coordinates, mergeData);
+
+                    //    if (mergeOrigin != null)
+                    //    {
+                    //        value = coord.SelectMany(r => r.Where(v => v.Coordinates == mergeOrigin)).FirstOrDefault().Value; // needs to be tested
+                    //    }
+                    //    else
+                    //    {
+                    //        value = rowsData[i].Values[j];
+                    //    }
+                    //}
+                    //else
+                    //{
+                    value = rowsData[i].Values[j];
+                    //}
 
                     var ghCell = new GH_CellData(value);
                     ghCells.Add(ghCell);
-                }
-
-                // That stuff and "Values?" solve it.
-                if (ghCells == null)
-                {
-                    ghCells = new List<GH_CellData>();
                 }
 
                 outputGhCells.AppendRange(ghCells, path);
