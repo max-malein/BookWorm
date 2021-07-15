@@ -142,11 +142,11 @@ namespace BookWorm.Spreadsheets
         private Point? FindMergeOrigin(Point? coordinates, List<GridRange> mergeData)
         {
             var x = coordinates.Value.X;
-            var e = mergeData.Where(md => md.StartColumnIndex < x && md.EndColumnIndex > x).ToList();
+            var e = mergeData.Where(md => md.StartColumnIndex <= x && md.EndColumnIndex - 1 >= x).ToList();
             if (e == null)
                 return null;
             var y = coordinates.Value.Y;
-            var f = e.Where(md => md.StartRowIndex < y && md.EndRowIndex > y).FirstOrDefault();
+            var f = e.Where(md => md.StartRowIndex <= y && md.EndRowIndex - 1 >= y).FirstOrDefault();
             if (f == null)
                 return null;
             return new Point?(new Point(f.StartColumnIndex.Value, f.StartRowIndex.Value));
