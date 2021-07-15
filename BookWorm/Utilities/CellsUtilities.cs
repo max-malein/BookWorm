@@ -126,7 +126,7 @@ namespace BookWorm.Utilities
                 var coordinatesInRow = new List<int[]>();
                 var columnInd = startColumnInd;
 
-                // if row full of null-cells
+                // If row full of null-cells
                 if (row.Values == null)
                 {
                     coordinatesInRow = null;
@@ -135,7 +135,9 @@ namespace BookWorm.Utilities
                     continue;
                 }
 
-                // null-cell with non-null-cells is ok, so it also will get coordinate
+                // Null-cell within right bound of non-null-cell is ok, so it also will get coordinate.
+                // So does rows. I.e. Rows and cells as "null-data-null-data-null" actually becomes "null-data-null-data" in response.
+                // Merged null-cells are considered as non-null-cells.
                 foreach (var cell in row.Values)
                 {
                     var indexCoordinates = new int[2];

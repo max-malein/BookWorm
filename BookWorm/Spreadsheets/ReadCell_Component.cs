@@ -70,6 +70,8 @@ namespace BookWorm.Spreadsheets
             //request.IncludeGridData = true;
 
             var spreadsheet = request.Execute();
+
+            // Solver uses request range as item. So you always will get only one sheet and so on.
             Sheet sheet = spreadsheet.Sheets.FirstOrDefault();
 
             if (sheet == null)
@@ -92,8 +94,10 @@ namespace BookWorm.Spreadsheets
                 merges = sheet.Merges.ToList();
             }
 
-            // Solver uses request range as item.
             var gridData = sheet.Data.FirstOrDefault();
+
+            // Rows and cells as "null-data-null-data-null" actually becomes "null-data-null-data" in response.
+            // Merged null-cells are considered as non-null-cells.
             var rowsData = gridData.RowData;
 
             // if one tried read a range of null-cells
@@ -107,6 +111,7 @@ namespace BookWorm.Spreadsheets
             var startColumnInd = Convert.ToInt32(gridData.StartColumn);
 
 
+
             var coord = CellsUtilities.GetCellCoordinates(rowsData, startRowInd, startColumnInd);
 
 
@@ -114,17 +119,24 @@ namespace BookWorm.Spreadsheets
             var outputGhCells = new GH_Structure<GH_CellData>();
             var runCountIndex = RunCount - 1;
 
+
             for (int i = 0; i < rowsData.Count; i++)
             {
                 var path = new GH_Path(runCountIndex, i);
 
-                // Null-cell as the only cell in a row returns null-row, i.e. null instead of list of cells.
-                // So you can get null-exeption if user requests column.
-                //var ghCells = rowData[i].Values?.Select((cd, index) => new GH_CellData(cd, a1s[i, index] )).ToList();
                 var ghCells = new List<GH_CellData>();
+
+                // If row doesn't contain any cell with valid data.
+                if (rowsData[i].Values == null)
+                {
+                    outputGhCells.AppendRange(ghCells, path);
+                    continue;
+                }
+
                 for (int j = 0; j < rowsData[i].Values.Count; j++)
                 {
                     CellData value = null;
+
                     //if (duplicatedMerged)
                     //{
                     //    Point? mergeOrigin = FindMergeOrigin(coord[i][j].Coordinates, mergeData);
@@ -140,17 +152,11 @@ namespace BookWorm.Spreadsheets
                     //}
                     //else
                     //{
-                    //    value = rowsData[i].Values[j];
+                    value = rowsData[i].Values[j];
                     //}
 
                     var ghCell = new GH_CellData(value);
                     ghCells.Add(ghCell);
-                }
-
-                // That stuff and "Values?" solve it.
-                if (ghCells == null)
-                {
-                    ghCells = new List<GH_CellData>();
                 }
 
                 outputGhCells.AppendRange(ghCells, path);
