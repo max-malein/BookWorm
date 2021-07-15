@@ -33,19 +33,20 @@ namespace BookWorm.Utilities
 
             UserCredential credential;
 
-            using (var stream =
-                new FileStream(Path.Combine(assemblyLocation, "credentials.json"), FileMode.Open, FileAccess.Read))
+            string credPath = Path.Combine(assemblyLocation, "token.json");
+
+            var sec = new ClientSecrets()
             {
-                // The file token.json stores the user's access and refresh tokens, and is created
-                // automatically when the authorization flow completes for the first time.
-                string credPath = Path.Combine(assemblyLocation, "token.json");
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets,
-                    scopes,
-                    "user",
-                    CancellationToken.None,
-                    new FileDataStore(credPath, true)).Result;
-            }
+                ClientId = "631922160569-4klgvfht5ngpihjr7l2ovs4enp8ved8i.apps.googleusercontent.com",
+                ClientSecret = "Iu8Y5q82pLMXvN4y_6qPK9TP",
+            };
+
+            credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                sec,
+                scopes,
+                "user",
+                CancellationToken.None,
+                new FileDataStore(credPath, true)).Result;
 
             return credential;
         }

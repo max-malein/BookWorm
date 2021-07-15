@@ -136,9 +136,6 @@
     <Compile Include="Utilities\SheetsUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="credentials.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="stylecop.json" />
   </ItemGroup>
@@ -156,12 +153,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
-Copy "$(TargetDir)$(ProjectName).gha" "%25appdata%25\McNeel\Rhinoceros\packages\7.0\bookworm\0.6.2\$(ProjectName).gha"
-Copy "$(TargetDir)credentials.json" "%25appdata%25\McNeel\Rhinoceros\packages\7.0\bookworm\0.6.2\credentials.json"
-
-if $(ConfigurationName) NEQ Yak Exit
-yak build</PostBuildEvent>
+    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <FallbackCulture>en-US</FallbackCulture>
