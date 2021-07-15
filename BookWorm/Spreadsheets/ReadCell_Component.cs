@@ -135,7 +135,7 @@ namespace BookWorm.Spreadsheets
 
                 outputGhCells.AppendRange(ghCells, path);
             }
-
+            
             DA.SetDataTree(0, outputGhCells);
         }
 
@@ -143,13 +143,13 @@ namespace BookWorm.Spreadsheets
         {
             var x = coordinates.Value.X;
             var e = mergeData.Where(md => md.StartColumnIndex <= x && md.EndColumnIndex - 1 >= x).ToList();
-            if (e == null)
+            if (e.Count == 0)
                 return null;
             var y = coordinates.Value.Y;
-            var f = e.Where(md => md.StartRowIndex <= y && md.EndRowIndex - 1 >= y).FirstOrDefault();
-            if (f == null)
+            var f = e.Where(md => md.StartRowIndex <= y && md.EndRowIndex - 1 >= y).ToList();
+            if (f.Count == 0)
                 return null;
-            return new Point?(new Point(f.StartColumnIndex.Value, f.StartRowIndex.Value));
+            return new Point?(new Point(f[0].StartColumnIndex.Value, f[0].StartRowIndex.Value));
         }
 
         /// <inheritdoc/>
