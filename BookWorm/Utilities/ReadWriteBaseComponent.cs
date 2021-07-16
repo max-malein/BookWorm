@@ -43,7 +43,7 @@ namespace BookWorm.Utilities
 
             pManager.AddTextParameter(
                 "Cell Range",
-                "R",
+                "CR",
                 "Range of cells in \'a1\' notation. For example A1:B5 - range of cells, A15 - single cell, A:C - range of columns, etc.",
                 GH_ParamAccess.item);
         }

@@ -36,8 +36,15 @@ namespace BookWorm.Spreadsheets
         {
             base.RegisterInputParams(pManager);
 
-            pManager.AddBooleanParameter("Duplicate Merged", "M", "If true, all merged cells will have same value. If false, only the upper left cell will have a value", GH_ParamAccess.item, false);
+            pManager.AddBooleanParameter(
+                "Duplicate Merged",
+                "M",
+                "If true, all merged cells will have same value. If false, only the upper left cell will have a value",
+                GH_ParamAccess.item,
+                false);
+
             pManager.AddBooleanParameter("Same Length", "S", "All output rows will be the same length", GH_ParamAccess.item, false);
+
             pManager.AddBooleanParameter("Read", "R", "Read data from spreadsheet", GH_ParamAccess.item, false);
         }
 
@@ -52,11 +59,13 @@ namespace BookWorm.Spreadsheets
         {
             base.SolveInstance(DA);
 
-            bool duplicatedMerged;
-            bool read = false;
+            bool duplicateMerged = false;
             bool sameLength = false;
-            DA.GetData("Read", ref read);
+            bool read = false;
+
+            DA.GetData("Duplicate Merged", ref duplicateMerged);
             DA.GetData("Same Length", ref sameLength);
+            DA.GetData("Read", ref read);
 
             if (!read) return;
 
@@ -137,23 +146,26 @@ namespace BookWorm.Spreadsheets
                 {
                     CellData value = null;
 
-                    //if (duplicatedMerged)
-                    //{
-                    //    Point? mergeOrigin = FindMergeOrigin(coord[i][j].Coordinates, mergeData);
+                    if (duplicateMerged)
+                    {
+                        // x - columns, y - rows.
+                        var point = new Point(coord[i][j][1], coord[i][j][0]);
 
-                    //    if (mergeOrigin != null)
-                    //    {
-                    //        value = coord.SelectMany(r => r.Where(v => v.Coordinates == mergeOrigin)).FirstOrDefault().Value; // needs to be tested
-                    //    }
-                    //    else
-                    //    {
-                    //        value = rowsData[i].Values[j];
-                    //    }
-                    //}
-                    //else
-                    //{
-                    value = rowsData[i].Values[j];
-                    //}
+                        Point? mergeOrigin = FindMergeOrigin(point, merges);
+
+                        if (mergeOrigin != null)
+                        {
+                            value = rowsData[mergeOrigin.Value.Y].Values[mergeOrigin.Value.X]; // needs to be tested
+                        }
+                        else
+                        {
+                            value = rowsData[i].Values[j];
+                        }
+                    }
+                    else
+                    {
+                        value = rowsData[i].Values[j];
+                    }
 
                     var ghCell = new GH_CellData(value);
                     ghCells.Add(ghCell);
@@ -161,7 +173,7 @@ namespace BookWorm.Spreadsheets
 
                 outputGhCells.AppendRange(ghCells, path);
             }
-            
+
             DA.SetDataTree(0, outputGhCells);
         }
 
