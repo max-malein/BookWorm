@@ -1,14 +1,12 @@
-﻿using BookWorm.Goo;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using BookWorm.Goo;
 using BookWorm.Utilities;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 namespace BookWorm.Spreadsheets
 {
@@ -17,7 +15,6 @@ namespace BookWorm.Spreadsheets
     /// </summary>
     public class ReadCell_Component : ReadWriteBaseComponent
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ReadCell_Component"/> class.
         /// </summary>
@@ -95,8 +92,7 @@ namespace BookWorm.Spreadsheets
                 return;
             }
 
-            // Мерж ренжи
-            List<GridRange> merges = new List<GridRange>();
+            var merges = new List<GridRange>();
 
             if (sheet.Merges != null)
             {
@@ -151,7 +147,7 @@ namespace BookWorm.Spreadsheets
                         // x - columns, y - rows.
                         var point = new Point(coord[i][j][1], coord[i][j][0]);
 
-                        Point? mergeOrigin = FindMergeOrigin(point, merges);
+                        Point? mergeOrigin = SheetsUtilities.FindMergeOrigin(point, merges);
 
                         if (mergeOrigin != null)
                         {
@@ -175,19 +171,6 @@ namespace BookWorm.Spreadsheets
             }
 
             DA.SetDataTree(0, outputGhCells);
-        }
-
-        private Point? FindMergeOrigin(Point? coordinates, List<GridRange> mergeData)
-        {
-            var column = coordinates.Value.X;
-            var containsColumn = mergeData.Where(md => md.StartColumnIndex <= column && md.EndColumnIndex - 1 >= column).ToList();
-            if (containsColumn.Count == 0)
-                return null;
-            var row = coordinates.Value.Y;
-            var containsColumnAndRow = containsColumn.Where(md => md.StartRowIndex <= row && md.EndRowIndex - 1 >= row).ToList();
-            if (containsColumnAndRow.Count == 0)
-                return null;
-            return new Point?(new Point(containsColumnAndRow[0].StartColumnIndex.Value, containsColumnAndRow[0].StartRowIndex.Value));
         }
 
         /// <inheritdoc/>

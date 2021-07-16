@@ -30,8 +30,15 @@ namespace GoogleDocs.Spreadsheets
         {
             base.RegisterInputParams(pManager);
 
+            pManager.AddBooleanParameter(
+                "Duplicate Merged",
+                "M",
+                "If true, all merged cells will have same value. If false, only the upper left cell will have a value",
+                GH_ParamAccess.item,
+                false);
+
             pManager.AddBooleanParameter("Read", "R", "Read data from spreadsheet", GH_ParamAccess.item, false);
-            pManager.AddBooleanParameter("SameLength", "S", "All output rows will be the same length", GH_ParamAccess.item, false);
+            pManager.AddBooleanParameter("Same Length", "S", "All output rows will be the same length", GH_ParamAccess.item, false);
         }
 
         /// <inheritdoc/>
@@ -45,29 +52,51 @@ namespace GoogleDocs.Spreadsheets
         {
             base.SolveInstance(DA);
 
+            bool duplicateMerged = false;
             bool read = false;
             bool sameLength = false;
 
-            DA.GetData(3, ref read);
-            DA.GetData(4, ref sameLength);
+            DA.GetData("Duplicate Merged", ref duplicateMerged);
+            DA.GetData("Read", ref read);
+            DA.GetData("Same Length", ref sameLength);
 
             if (!read) return;
 
-            SpreadsheetsResource.ValuesResource.GetRequest request = Credentials.Service.Spreadsheets.Values.Get(SpreadsheetId, SpreadsheetRange);
-
+            var request = Credentials.Service.Spreadsheets.Values.Get(SpreadsheetId, SpreadsheetRange);
             ValueRange response = request.Execute();
 
             IList<IList<object>> values = response.Values;
 
+            var merges = new List<GridRange>();
+            var gridRange = new GridRange();
+
+            if (duplicateMerged)
+            {
+                merges = SheetsUtilities.GetMergeRanges(SpreadsheetId, SpreadsheetRange);
+                gridRange = CellsUtilities.GridRangeFromA1(CellRange, 0);
+            }
+
             if (values != null && values.Count > 0)
             {
                 var data = new GH_Structure<GH_String>();
+
                 for (int i = 0; i < values.Count; i++)
                 {
-                    var path = new GH_Path(RunCount - 1, i);
-                    var ghStrings = values[i].Select(s => new GH_String(s.ToString()));
+                    //for (int j = 0; j < values[i].Count; j++)
+                    //{
+                    //    if (duplicateMerged)
+                    //    {
 
-                    data.AppendRange(ghStrings, path);
+                    //    }
+                    //    else
+                    //    {
+                            var path = new GH_Path(RunCount - 1, i);
+                            var ghStrings = values[i].Select(s => new GH_String(s.ToString()));
+
+                            data.AppendRange(ghStrings, path);
+                    //    }
+                    //}
+                    
                 }
 
                 // same lenght for each row.

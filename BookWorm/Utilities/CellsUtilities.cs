@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Google.Apis.Sheets.v4.Data;
@@ -157,6 +158,9 @@ namespace BookWorm.Utilities
 
             return coordinatesInGrid;
         }
+
+
+
 
         /// <summary>
         /// Convert column letter to index.
