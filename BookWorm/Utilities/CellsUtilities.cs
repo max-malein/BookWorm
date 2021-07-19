@@ -159,9 +159,6 @@ namespace BookWorm.Utilities
             return coordinatesInGrid;
         }
 
-
-
-
         /// <summary>
         /// Convert column letter to index.
         /// </summary>

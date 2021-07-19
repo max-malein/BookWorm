@@ -146,8 +146,13 @@ namespace BookWorm.Spreadsheets
 
                         if (mergeOrigin != null)
                         {
-                            // если рендж начинается не с а1, случится отвал - строки и столбцы не связаны с координатами
-                            value = rowsData[mergeOrigin.Value.Y].Values[mergeOrigin.Value.X];
+                            var rowInd = mergeOrigin.Value.Y - startRowInd;
+                            var columnInd = mergeOrigin.Value.X - startColumnInd;
+
+                            if (rowInd >= 0 && columnInd >= 0)
+                            {
+                                value = rowsData[rowInd].Values[columnInd];
+                            }
                         }
                         else
                         {
