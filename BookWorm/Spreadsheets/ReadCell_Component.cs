@@ -115,15 +115,10 @@ namespace BookWorm.Spreadsheets
             var startRowInd = Convert.ToInt32(gridData.StartRow);
             var startColumnInd = Convert.ToInt32(gridData.StartColumn);
 
-
-
-            var coord = CellsUtilities.GetCellCoordinates(rowsData, startRowInd, startColumnInd);
-
-
+            var cellCoordinates = CellsUtilities.GetCellCoordinates(rowsData, startRowInd, startColumnInd);
 
             var outputGhCells = new GH_Structure<GH_CellData>();
             var runCountIndex = RunCount - 1;
-
 
             for (int i = 0; i < rowsData.Count; i++)
             {
@@ -145,13 +140,14 @@ namespace BookWorm.Spreadsheets
                     if (duplicateMerged)
                     {
                         // x - columns, y - rows.
-                        var point = new Point(coord[i][j][1], coord[i][j][0]);
+                        var point = new Point(cellCoordinates[i][j][1], cellCoordinates[i][j][0]);
 
                         Point? mergeOrigin = SheetsUtilities.FindMergeOrigin(point, merges);
 
                         if (mergeOrigin != null)
                         {
-                            value = rowsData[mergeOrigin.Value.Y].Values[mergeOrigin.Value.X]; // needs to be tested
+                            // если рендж начинается не с а1, случится отвал - строки и столбцы не связаны с координатами
+                            value = rowsData[mergeOrigin.Value.Y].Values[mergeOrigin.Value.X];
                         }
                         else
                         {
