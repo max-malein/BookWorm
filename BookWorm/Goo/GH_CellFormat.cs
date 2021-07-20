@@ -1,4 +1,4 @@
-﻿using System;
+﻿using BookWorm.Utilities;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel.Types;
 using Newtonsoft.Json;
@@ -37,7 +37,6 @@ namespace BookWorm.Goo
         {
             if (cellFormatGoo != null)
             {
-                // смекалОчка - у ячейки нет своего копирования.
                 var cellFormatJson = JsonConvert.SerializeObject(cellFormatGoo.Value, Formatting.Indented);
                 var cellFormat = JsonConvert.DeserializeObject<CellFormat>(cellFormatJson);
                 Value = cellFormat;
@@ -67,18 +66,13 @@ namespace BookWorm.Goo
                 return string.Empty;
             }
 
-            var colorString = string.Empty;
+            var formattedColor = string.Empty;
 
             if (Value.BackgroundColor != null)
             {
-                var color = Value.BackgroundColor;
+                var color = SheetsUtilities.GetSystemDrawingColor(Value.BackgroundColor);
 
-                var alpha = color.Alpha;
-                var red = color.Red;
-                var green = color.Green;
-                var blue = color.Blue;
-
-                colorString = $@"Background color: A:{alpha}, R:{red}, G:{green}, B:{blue}";
+                formattedColor = SheetsUtilities.GetFormattedARGB(color);
             }
 
             // Feels like displaying more info than color is fine idea but idk.
@@ -92,7 +86,12 @@ namespace BookWorm.Goo
 
             //}
 
-            return colorString;
+            //if (Value.Borders != null)
+            //{
+
+            //}
+
+            return $@"Background color: {formattedColor}";
         }
     }
 }

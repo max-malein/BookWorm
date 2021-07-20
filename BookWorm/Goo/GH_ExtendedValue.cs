@@ -1,5 +1,4 @@
-﻿using System;
-using Google.Apis.Sheets.v4.Data;
+﻿using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel.Types;
 using Newtonsoft.Json;
 
@@ -37,7 +36,6 @@ namespace BookWorm.Goo
         {
             if (extendedValueGoo != null)
             {
-                // смекалОчка - у ячейки нет своего копирования.
                 var extendedValueJson = JsonConvert.SerializeObject(extendedValueGoo.Value, Formatting.Indented);
                 var extendedValue = JsonConvert.DeserializeObject<ExtendedValue>(extendedValueJson);
                 Value = extendedValue;

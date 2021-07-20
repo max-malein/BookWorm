@@ -6,7 +6,7 @@
     using Newtonsoft.Json;
 
     /// <summary>
-    /// CellData Goo.
+    /// Cell Border Goo.
     /// </summary>
     public class GH_CellBorder : GH_Goo<Border>
     {
@@ -20,9 +20,9 @@
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GH_CellBorder"/> class.
-        /// CellData Goo.
+        /// CellBorder Goo.
         /// </summary>
-        /// <param name="cellBorder">CellData.</param>
+        /// <param name="cellBorder">Cell Border.</param>
         public GH_CellBorder(Border cellBorder)
         {
             this.Value = cellBorder;
@@ -32,13 +32,13 @@
         /// Initializes a new instance of the <see cref="GH_CellBorder"/> class.
         /// Deep copy of Goo.
         /// </summary>
-        /// <param name="cellBorderGoo">CellData Goo.</param>
+        /// <param name="cellBorderGoo">Cell Border Goo.</param>
         public GH_CellBorder(GH_CellBorder cellBorderGoo)
         {
             if (cellBorderGoo != null)
             {
-                var cellDataJson = JsonConvert.SerializeObject(cellBorderGoo.Value, Formatting.Indented);
-                var cellBorder = JsonConvert.DeserializeObject<Border>(cellDataJson);
+                var cellBorderJson = JsonConvert.SerializeObject(cellBorderGoo.Value, Formatting.Indented);
+                var cellBorder = JsonConvert.DeserializeObject<Border>(cellBorderJson);
                 this.Value = cellBorder;
             }
         }

@@ -94,24 +94,24 @@ namespace BookWorm.Utilities
                 }
 
                 // Case A5:A
-                if (endNumbers.Length == 0)
+                if (startLetters.Length != 0 && endNumbers.Length == 0)
                 {
-                    gridRange.StartRowIndex = ColumnNameToNumber(startLetters) - 1;
+                    gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
                     gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
                     gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
+                }
+
+                // Case B5:5
+                else if (startLetters.Length != 0 && endLetters.Length == 0)
+                {
+                    gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
+                    gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
+                    gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
                 }
 
                 // Case 2:4
                 else if (startLetters.Length == 0 && endLetters.Length == 0)
                 {
-                    gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
-                    gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
-                }
-
-                // Case 5:B5
-                else if (startLetters.Length == 0)
-                {
-                    gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
                     gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
                     gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
                 }

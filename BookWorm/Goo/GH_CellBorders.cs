@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace BookWorm.Goo
 {
     /// <summary>
-    /// CellData Goo.
+    /// Cell Borders Goo.
     /// </summary>
     public class GH_CellBorders : GH_Goo<Borders>
     {
@@ -19,25 +19,24 @@ namespace BookWorm.Goo
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GH_CellBorders"/> class.
-        /// CellData Goo.
+        /// Cell Borders Goo.
         /// </summary>
-        /// <param name="cellData">CellData.</param>
-        public GH_CellBorders(Borders borders)
+        /// <param name="cellBorders">Cell Borders.</param>
+        public GH_CellBorders(Borders cellBorders)
         {
-            Value = borders;
+            Value = cellBorders;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GH_CellBorders"/> class.
         /// Deep copy of Goo.
         /// </summary>
-        /// <param name="cellDataGoo">CellData Goo.</param>
-        public GH_CellBorders(GH_CellBorders bordersGoo)
+        /// <param name="cellBordersGoo">Cell Borders Goo.</param>
+        public GH_CellBorders(GH_CellBorders cellBordersGoo)
         {
-            if (bordersGoo != null)
+            if (cellBordersGoo != null)
             {
-                // смекалОчка - у ячейки нет своего копирования.
-                var bordersJson = JsonConvert.SerializeObject(bordersGoo.Value, Formatting.Indented);
+                var bordersJson = JsonConvert.SerializeObject(cellBordersGoo.Value, Formatting.Indented);
                 var borders = JsonConvert.DeserializeObject<Borders>(bordersJson);
                 Value = borders;
             }
@@ -70,31 +69,31 @@ namespace BookWorm.Goo
 
             if (Value.Top != null)
             {
-                top = $@"Formatted value: {Value.Top}";
+                top = $"Top\n{new GH_CellBorder(Value.Top)}\n\n";
             }
 
             var bottom = string.Empty;
 
             if (Value.Bottom != null)
             {
-                bottom = $@"Formatted value: {Value.Bottom}";
+                bottom = $"Bottom\n{new GH_CellBorder(Value.Bottom)}\n\n";
+            }
+
+            var left = string.Empty;
+
+            if (Value.Left != null)
+            {
+                left = $"Left\n{new GH_CellBorder(Value.Left)}\n\n";
             }
 
             var right = string.Empty;
 
             if (Value.Right != null)
             {
-                bottom = $@"Formatted value: {Value.Right}";
+                right = $"Right\n{new GH_CellBorder(Value.Right)}\n\n";
             }
 
-            var left = string.Empty;
-
-            if (Value.Right != null)
-            {
-                bottom = $@"Formatted value: {Value.Left}";
-            }
-
-            return $"{top} \n{bottom} \n {right} \n {left}";
+            return $"{top}{bottom}{left}{right}";
         }
     }
 }
