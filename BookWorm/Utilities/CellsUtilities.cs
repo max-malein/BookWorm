@@ -64,46 +64,67 @@ namespace BookWorm.Utilities
             var gridRange = new GridRange();
             gridRange.SheetId = sheetId;
 
-            bool letters = Regex.Matches(CellRangeA1, @"[a-zA-Z]").Count > 0;
-            bool numbers = CellRangeA1.Any(c => char.IsDigit(c));
+            //bool letters = Regex.Matches(CellRangeA1, @"[a-zA-Z]").Count > 0;
+            //bool numbers = CellRangeA1.Any(c => char.IsDigit(c));
 
+            //var rangeBounds = CellRangeA1.Split(':');
             var rangeBounds = CellRangeA1.Split(':');
+            string startLetters = Regex.Match(rangeBounds[0], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
+            string startNumbers = Regex.Match(rangeBounds[0], @"\d+").Value;
 
-            // Only columns case.
-            if (letters && !numbers)
+
+            CellRangeA1 = "D:A6";
+            if (!CellRangeA1.Contains(':'))
             {
-                gridRange.StartColumnIndex = ColumnNameToNumber(rangeBounds[0]) - 1;
-                gridRange.EndColumnIndex = ColumnNameToNumber(rangeBounds[1]);
+                // Case A5
+                gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
+                gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
+                // Case SheetName
             }
-
-            // Only rows case.
-            else if (numbers && !letters)
-            {
-                gridRange.StartRowIndex = Convert.ToInt32(rangeBounds[0]) - 1;
-                gridRange.EndRowIndex = Convert.ToInt32(rangeBounds[1]);
-            }
-
-            // Coordinate case.
-            // failed in A5:A type case that refers to all the cells of the first column, from row 5 onward.
             else
             {
-                var firstColName = Regex.Match(rangeBounds[0], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
-                gridRange.StartColumnIndex = ColumnNameToNumber(firstColName) - 1;
-                gridRange.StartRowIndex = Convert.ToInt32(Regex.Match(rangeBounds[0], @"\d+").Value) - 1;
+                string endLetters = Regex.Match(rangeBounds[1], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
+                string endNumbers = Regex.Match(rangeBounds[1], @"\d+").Value;
 
-                if (rangeBounds.Length > 1)
+                // Case A:B
+                if (startNumbers.Length == 0 && endNumbers.Length == 0)
                 {
-                    var secondColName = Regex.Match(rangeBounds[1], @"[A-Z]+", RegexOptions.IgnoreCase).Value;
-                    gridRange.EndColumnIndex = ColumnNameToNumber(secondColName);
-                    gridRange.EndRowIndex = Convert.ToInt32(Regex.Match(rangeBounds[1], @"\d+").Value);
+                    gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
+                    gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
                 }
 
-                // Only one cell needed.
+                // Case A5:A
+                if (endNumbers.Length == 0)
+                {
+                    gridRange.StartRowIndex = ColumnNameToNumber(startLetters) - 1;
+                    gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
+                    gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
+                }
+
+                // Case 2:4
+                else if (startLetters.Length == 0 && endLetters.Length == 0)
+                {
+                    gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
+                    gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
+                }
+
+                // Case 5:B5
+                else if (startLetters.Length == 0)
+                {
+                    gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
+                    gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
+                    gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
+                }
+
+                // Case A3:D4
                 else
                 {
-                    gridRange.EndColumnIndex = gridRange.StartColumnIndex + 1;
-                    gridRange.EndRowIndex = gridRange.StartRowIndex + 1;
+                    gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
+                    gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
+                    gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
+                    gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
                 }
+
             }
 
             return gridRange;
