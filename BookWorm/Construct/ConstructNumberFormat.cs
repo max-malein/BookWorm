@@ -1,9 +1,7 @@
-﻿using BookWorm.Goo;
+﻿using System;
+using BookWorm.Goo;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
 
 namespace BookWorm.Construct
 {
@@ -27,7 +25,19 @@ namespace BookWorm.Construct
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddIntegerParameter("NumberFormatType", "NumberFormatType", "The number format is not specified and is based on the contents of the cell. Do not explicitly use this. 0-TEXT, 1-NUMBER, 2-PERCENT, 3-CURRENCY, 4-DATE, 5-TIME, 6-DATE_TIME, 7-SCIENTIFIC", GH_ParamAccess.item);
+            pManager.AddIntegerParameter(
+                "NumberFormatType",
+                "NumberFormatType",
+                "0-TEXT\n "
+                + "1-NUMBER\n "
+                + "2-PERCENT\n "
+                + "3-CURRENCY\n "
+                + "4-DATE\n "
+                + "5-TIME\n "
+                + "6-DATE_TIME\n "
+                + "7-SCIENTIFIC",
+                GH_ParamAccess.item);
+
             pManager.AddTextParameter("Pattern", "Pattern", "Pattern", GH_ParamAccess.item);
 
             for (int i = 0; i < pManager.ParamCount; i++)
@@ -89,6 +99,19 @@ namespace BookWorm.Construct
             get { return new Guid("ce00f900-34f0-4a49-86c0-1c8c45db9d65"); }
         }
 
+        /// <summary>
+        /// The number format of the cell. In this documentation the locale is assumed to be en_US,
+        /// but the actual format depends on the locale of the spreadsheet.
+        ///
+        /// TEXT - Text formatting, e.g 1000.12
+        /// NUMBER - Number formatting, e.g, 1,000.12
+        /// PERCENT - Percent formatting, e.g 10.12%
+        /// CURRENCY - Currency formatting, e.g $1,000.12
+        /// DATE - Date formatting, e.g 9/26/2008
+        /// TIME - Time formatting, e.g 3:59:00 PM
+        /// DATE_TIME - Date+Time formatting, e.g 9/26/08 15:59:00
+        /// SCIENTIFIC - Scientific number formatting, e.g 1.01E+03
+        /// </summary>
         public enum NumberFormatType
         {
             TEXT,

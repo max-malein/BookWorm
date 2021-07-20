@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace BookWorm.Goo
 {
     /// <summary>
-    /// CellData Goo.
+    /// NumberFormat Goo.
     /// </summary>
     public class GH_NumberFormat : GH_Goo<NumberFormat>
     {
@@ -19,9 +19,9 @@ namespace BookWorm.Goo
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GH_NumberFormat"/> class.
-        /// CellData Goo.
+        /// NumberFormat Goo.
         /// </summary>
-        /// <param name="cellData">CellData.</param>
+        /// <param name="numberFormat">NumberFormat.</param>
         public GH_NumberFormat(NumberFormat numberFormat)
         {
             Value = numberFormat;
@@ -31,13 +31,12 @@ namespace BookWorm.Goo
         /// Initializes a new instance of the <see cref="GH_NumberFormat"/> class.
         /// Deep copy of Goo.
         /// </summary>
-        /// <param name="cellDataGoo">CellData Goo.</param>
-        public GH_NumberFormat(GH_NumberFormat NumberFormatGoo)
+        /// <param name="numberFormatGoo">NumberFormat Goo.</param>
+        public GH_NumberFormat(GH_NumberFormat numberFormatGoo)
         {
-            if (NumberFormatGoo != null)
+            if (numberFormatGoo != null)
             {
-                // смекалОчка - у ячейки нет своего копирования.
-                var numberFormatJson = JsonConvert.SerializeObject(NumberFormatGoo.Value, Formatting.Indented);
+                var numberFormatJson = JsonConvert.SerializeObject(numberFormatGoo.Value, Formatting.Indented);
                 var numberFormatData = JsonConvert.DeserializeObject<NumberFormat>(numberFormatJson);
                 Value = numberFormatData;
             }
@@ -71,7 +70,7 @@ namespace BookWorm.Goo
             // Only requested from spreadsheet cells got formatted value.
             if (Value.Type != null)
             {
-                typeStringValue = $@" Number format type: {Value.Type}";
+                typeStringValue = $@"Number format type: {Value.Type}";
             }
 
             return $"{typeStringValue}";

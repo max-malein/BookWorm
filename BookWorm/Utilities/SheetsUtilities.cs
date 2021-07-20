@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using Google.Apis.Sheets.v4.Data;
@@ -40,10 +41,16 @@ namespace BookWorm.Utilities
 
             if (googleSheetsColor != null)
             {
-                var alpha = (int)(googleSheetsColor.Alpha * 255);
-                var red = (int)(googleSheetsColor.Red * 255);
-                var green = (int)(googleSheetsColor.Green * 255);
-                var blue = (int)(googleSheetsColor.Blue * 255);
+                var alpha = 255;
+
+                if (googleSheetsColor.Alpha != null)
+                {
+                    alpha = Convert.ToInt32(googleSheetsColor.Alpha * 255);
+                }
+
+                var red = Convert.ToInt32(googleSheetsColor.Red * 255);
+                var green = Convert.ToInt32(googleSheetsColor.Green * 255);
+                var blue = Convert.ToInt32(googleSheetsColor.Blue * 255);
 
                 colorARGB = System.Drawing.Color.FromArgb(alpha, red, green, blue);
             }
