@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWorm", "BookWorm\BookWorm.csproj", "{B7B0F53F-5C81-405A-BBD0-98DAFDE044DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWormTests", "BookWormTests\BookWormTests.csproj", "{BD7625E1-2AA6-4554-86BD-7E4235BB6114}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +20,12 @@ Global
 		{B7B0F53F-5C81-405A-BBD0-98DAFDE044DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B7B0F53F-5C81-405A-BBD0-98DAFDE044DD}.Yak|Any CPU.ActiveCfg = Yak|Any CPU
 		{B7B0F53F-5C81-405A-BBD0-98DAFDE044DD}.Yak|Any CPU.Build.0 = Yak|Any CPU
+		{BD7625E1-2AA6-4554-86BD-7E4235BB6114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD7625E1-2AA6-4554-86BD-7E4235BB6114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD7625E1-2AA6-4554-86BD-7E4235BB6114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD7625E1-2AA6-4554-86BD-7E4235BB6114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD7625E1-2AA6-4554-86BD-7E4235BB6114}.Yak|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD7625E1-2AA6-4554-86BD-7E4235BB6114}.Yak|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
