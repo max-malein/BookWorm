@@ -13,23 +13,22 @@ namespace BookWorm.Utilities.Tests
     public class CellsUtilitiesTests
     {
         [Test()]
-        public void GridRangeFromA1Test()
+        [TestCase("Sheet!A1", 0, 1, 0, 1, TestName = "Single cell")]
+        [TestCase("Sheet1!B2:AA4", 1, 26, 1, 3, TestName = "Range of cells")]
+        [TestCase("Sheet1", 0, null, 0, null, TestName = "full sheet")]
+        public void GridRangeFromA1_CorrectValuesTest(
+            string code,
+            int? expectedColumnStart,
+            int? expectedColumnEnd,
+            int? expectedRowStart,
+            int? expectedRowEnd)
         {
-            var gridRange1 = CellsUtilities.GridRangeFromA1("A1", 0);
-            GridRange correctGridRange = SetGridRange(0, 1, 0, 1);
-            Assert.AreEqual(correctGridRange, gridRange1);
-        }
+            var gridRange = CellsUtilities.GridRangeFromA1(code, 0);
 
-        private GridRange SetGridRange(int columnStart, int columnEnd, int rowStart, int rowEnd)
-        {
-            return new GridRange()
-            {
-                StartColumnIndex = columnStart,
-                EndColumnIndex = columnEnd,
-                StartRowIndex = rowStart,
-                EndRowIndex = rowEnd,
-                SheetId = 0,
-            };
+            Assert.AreEqual(expectedColumnStart, gridRange.StartColumnIndex, "Column start index");
+            Assert.AreEqual(expectedColumnEnd, gridRange.EndColumnIndex, "Column end index");
+            Assert.AreEqual(expectedRowStart, gridRange.StartRowIndex, "Row start index");
+            Assert.AreEqual(expectedRowEnd, gridRange.EndRowIndex, "Row end index");
         }
     }
 }
