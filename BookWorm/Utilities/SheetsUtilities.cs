@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using Google.Apis.Sheets.v4.Data;
+using Color = Google.Apis.Sheets.v4.Data.Color;
 
 namespace BookWorm.Utilities
 {
@@ -126,6 +128,43 @@ namespace BookWorm.Utilities
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Gets ranges of merged cells on the sheet.
+        /// </summary>
+        /// <param name="spreadsheetId">Spreadsheet Id.</param>
+        /// <param name="spreadsheetRange">The range to retrieve from spreadsheet.</param>
+        /// <returns>The ranges that are merged together.</returns>
+        public static List<GridRange> GetMergeRanges(string spreadsheetId, string spreadsheetRange)
+        {
+            var request = Credentials.Service.Spreadsheets.Get(spreadsheetId);
+            request.Ranges = spreadsheetRange;
+            request.Fields = "sheets.merges";
+
+            var spreadsheet = request.Execute();
+            var sheet = spreadsheet.Sheets.FirstOrDefault();
+
+            return sheet.Merges.ToList();
+        }
+
+        /// <summary>
+        /// Gets top left cell coordinates in range of merged cells.
+        /// </summary>
+        /// <param name="coordinates"></param>
+        /// <param name="mergeData"></param>
+        /// <returns>Point representation of cell coordinates, where X - column index and Y - row index.</returns>
+        internal static Point? FindMergeOrigin(Point? coordinates, List<GridRange> mergeData)
+        {
+            var column = coordinates.Value.X;
+            var containsColumn = mergeData.Where(md => md.StartColumnIndex <= column && md.EndColumnIndex - 1 >= column).ToList();
+            if (containsColumn.Count == 0)
+                return null;
+            var row = coordinates.Value.Y;
+            var containsColumnAndRow = containsColumn.Where(md => md.StartRowIndex <= row && md.EndRowIndex - 1 >= row).ToList();
+            if (containsColumnAndRow.Count == 0)
+                return null;
+            return new Point?(new Point(containsColumnAndRow[0].StartColumnIndex.Value, containsColumnAndRow[0].StartRowIndex.Value));
         }
     }
 }

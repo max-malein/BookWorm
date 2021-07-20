@@ -121,6 +121,7 @@
     <Compile Include="Goo\GH_TextFormat.cs" />
     <Compile Include="Goo\GH_TextRotation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\CellWithCoordinates.cs" />
     <Compile Include="Spreadsheets\MergeCells.cs" />
     <Compile Include="Spreadsheets\UnmergeCells.cs" />
     <Compile Include="Spreadsheets\WriteCells.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Utilities\SheetsUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="stylecop.json" />
   </ItemGroup>
@@ -173,7 +175,7 @@ echo %25version%25 &gt; %25folder%25\manifest.txt</PostBuildEvent>
   <Import Project="..\packages\RhinoCommon.7.1.20343.9491\build\RhinoCommon.targets" Condition="Exists('..\packages\RhinoCommon.7.1.20343.9491\build\RhinoCommon.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\RhinoCommon.7.1.20343.9491\build\RhinoCommon.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\RhinoCommon.7.1.20343.9491\build\RhinoCommon.targets'))" />
     <Error Condition="!Exists('..\packages\Grasshopper.7.1.20343.9491\build\Grasshopper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grasshopper.7.1.20343.9491\build\Grasshopper.targets'))" />
