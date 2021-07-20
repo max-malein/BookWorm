@@ -15,7 +15,8 @@ namespace BookWorm.Utilities.Tests
         [Test()]
         [TestCase("Sheet!A1", 0, 1, 0, 1, TestName = "Single cell")]
         [TestCase("Sheet1!B2:AA4", 1, 26, 1, 3, TestName = "Range of cells")]
-        [TestCase("Sheet1", 0, null, 0, null, TestName = "full sheet")]
+        [TestCase("My Sheet 1", 0, null, 0, null, TestName = "full sheet")]
+        [TestCase("My Sheet 1!B:B", 1, 1, null, null, TestName = "single column")]
         public void GridRangeFromA1_CorrectValuesTest(
             string code,
             int? expectedColumnStart,
