@@ -1,7 +1,6 @@
 ﻿using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel.Types;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace BookWorm.Goo
 {
@@ -37,16 +36,10 @@ namespace BookWorm.Goo
         {
             if (cellDataGoo != null)
             {
-                // смекалОчка - у ячейки нет своего копирования.
                 var cellDataJson = JsonConvert.SerializeObject(cellDataGoo.Value, Formatting.Indented);
                 var cellData = JsonConvert.DeserializeObject<CellData>(cellDataJson);
                 Value = cellData;
             }
-        }
-
-        public GH_CellData(CellData cellData, string a1) : this(cellData)
-        {
-            A1 = a1;
         }
 
         /// <inheritdoc/>
@@ -57,11 +50,6 @@ namespace BookWorm.Goo
 
         /// <inheritdoc/>
         public override string TypeDescription => "Data about a specific Google Sheets Cell";
-
-        /// <summary>
-        /// a1 coordinates of the cell.
-        /// </summary>
-        public string A1 { get; set; }
 
         /// <inheritdoc/>
         public override IGH_Goo Duplicate()
@@ -98,6 +86,7 @@ namespace BookWorm.Goo
             if (Value.UserEnteredFormat != null)
             {
                 var cellFormatGoo = new GH_CellFormat(Value.UserEnteredFormat);
+
                 cellFormatString = $@"{cellFormatGoo}";
             }
 
