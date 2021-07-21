@@ -75,7 +75,7 @@ namespace BookWorm.Goo
 
                 var formattedColor = SheetsUtilities.GetFormattedARGB(color);
 
-                textColor = $"Background color: {formattedColor}\n";
+                textColor = $"Text color: {formattedColor}\n";
             }
 
             // Font family and size

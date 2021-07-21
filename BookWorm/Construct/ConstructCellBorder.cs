@@ -50,7 +50,7 @@
         /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("Border", "Border", "Border", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Border", "Border", "The border of the cell", GH_ParamAccess.item);
         }
 
         /// <inheritdoc/>

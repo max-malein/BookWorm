@@ -26,13 +26,13 @@
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("BorderTop", "Top", "Border", GH_ParamAccess.item);
+            pManager.AddGenericParameter("BorderTop", "Top", "Top border of the cell", GH_ParamAccess.item);
 
-            pManager.AddGenericParameter("BorderBottom", "Bottom", "Border", GH_ParamAccess.item);
+            pManager.AddGenericParameter("BorderBottom", "Bottom", "Bottom border of the cell", GH_ParamAccess.item);
 
-            pManager.AddGenericParameter("BorderLeft", "Left", "Border", GH_ParamAccess.item);
+            pManager.AddGenericParameter("BorderLeft", "Left", "Left border of the cell", GH_ParamAccess.item);
 
-            pManager.AddGenericParameter("BorderRight", "Right", "Border", GH_ParamAccess.item);
+            pManager.AddGenericParameter("BorderRight", "Right", "Right border of the cell", GH_ParamAccess.item);
 
             for (int i = 0; i < pManager.ParamCount; i++)
             {
@@ -43,7 +43,7 @@
         /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("Borders", "Borders", "Borders", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Borders", "Borders", "The borders of the cell", GH_ParamAccess.item);
         }
 
         /// <inheritdoc/>

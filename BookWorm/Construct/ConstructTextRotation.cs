@@ -39,7 +39,7 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("TextRotation", "TextRotation", "Text rotation", GH_ParamAccess.item);
+            pManager.AddGenericParameter("TextRotation", "TextRotation", "The rotation applied to text in a cell", GH_ParamAccess.item);
         }
 
         /// <inheritdoc/>
@@ -53,6 +53,12 @@ namespace BookWorm.Construct
             // Only one field can be set.
             if (DA.GetData(0, ref angle) && !DA.GetData(1, ref vertical))
             {
+                if (angle < -90 || angle > 90)
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Angle value must be between -90 and 90");
+                    return;
+                }
+
                 textRotation.Angle = angle;
             }
             else if (DA.GetData(1, ref vertical) && !DA.GetData(0, ref angle))
