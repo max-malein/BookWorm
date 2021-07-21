@@ -66,7 +66,7 @@ namespace BookWorm.Spreadsheets
             }
 
             var sheetId = SheetsUtilities.GetSheetId(SpreadsheetId, SheetName);
-            var gridRange = CellsUtilities.GridRangeFromA1(CellRange, (int)sheetId);
+            var gridRange = CellsUtilities.GridRangeFromA1(this.SpreadsheetRange, (int)sheetId);
 
             var requests = new List<Request>();
 

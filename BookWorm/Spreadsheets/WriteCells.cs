@@ -67,7 +67,7 @@ namespace BookWorm.Spreadsheets
                 sheetId = SheetsUtilities.CreateNewSheet(SpreadsheetId, SheetName);
             }
 
-            gridRange = CellsUtilities.GridRangeFromA1(this.CellRange, (int)sheetId);
+            gridRange = CellsUtilities.GridRangeFromA1(this.SpreadsheetRange, (int)sheetId);
 
             // Evenly distribute cells in rows range and set bounds explicitly.
             gridRange.FitRangeToCells(cells.Count);
