@@ -13,10 +13,17 @@ namespace BookWorm.Utilities.Tests
     public class CellsUtilitiesTests
     {
         [Test()]
+        [TestCase("", 0, null, 0, null, TestName = "Full Sheet")]
         [TestCase("Sheet!A1", 0, 1, 0, 1, TestName = "Single cell")]
-        [TestCase("Sheet1!B2:AA4", 1, 26, 1, 3, TestName = "Range of cells")]
-        [TestCase("My Sheet 1", 0, null, 0, null, TestName = "full sheet")]
-        [TestCase("My Sheet 1!B:B", 1, 1, null, null, TestName = "single column")]
+        [TestCase("Sheet1!B2:AA4", 1, 27, 1, 4, TestName = "Range of cells")]
+        [TestCase("My Sheet 1", 0, null, 0, null, TestName = "Full sheet")]
+        [TestCase("My Sheet 1!B:B", 1, 2, null, null, TestName = "Endless column from 0")]
+        [TestCase("Sheet 3!3:3", null, null, 2, 3, TestName = "Endless row from 0")]
+        [TestCase("My Sheet 1!B:e", 1, 5, null, null, TestName = "Endless columns from 0")]
+        [TestCase("Sheet 3!3:5", null, null, 2, 5, TestName = "Endless rows from 0")]
+        [TestCase("Sheet4!B1:B", 1, 2, 0, null, TestName = "Endless column from 1")]
+        [TestCase("Sheet!C3:3", 2, null, 2, 3, TestName ="Endless row from C")]
+    
         public void GridRangeFromA1_CorrectValuesTest(
             string code,
             int? expectedColumnStart,
