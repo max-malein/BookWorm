@@ -33,6 +33,7 @@ namespace BookWorm.Construct
                 GH_ParamAccess.item);
 
             pManager.AddGenericParameter("Cell Format", "CF", "The format of the cell", GH_ParamAccess.item);
+            pManager[1].Optional = true;
         }
 
         /// <inheritdoc/>
@@ -53,17 +54,15 @@ namespace BookWorm.Construct
                 return;
             }
 
-            if (!DA.GetData(1, ref userCellFormatGoo))
-            {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Null in CF input");
-                return;
-            }
+            DA.GetData(1, ref userCellFormatGoo);
 
             var cellData = new CellData
             {
                 UserEnteredValue = userEnteredValueGoo.Value,
-                UserEnteredFormat = userCellFormatGoo.Value,
             };
+
+            if (userCellFormatGoo != null)
+                cellData.UserEnteredFormat = userCellFormatGoo.Value;
 
             var cellDataGoo = new GH_CellData(cellData);
 
