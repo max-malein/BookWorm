@@ -65,7 +65,7 @@ namespace BookWorm.Utilities
         /// <returns>RGB-color as "R,G,B" string.</returns>
         public static string GetFormattedARGB(System.Drawing.Color colorARGB)
         {
-            return $"{colorARGB.R}, {colorARGB.G}, {colorARGB.B}";
+            return $"{colorARGB.R},{colorARGB.G},{colorARGB.B}";
         }
 
         /// <summary>

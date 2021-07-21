@@ -1,7 +1,7 @@
-﻿using BookWorm.Goo;
+﻿using System;
+using BookWorm.Goo;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
-using System;
 
 namespace BookWorm.Construct
 {
@@ -14,7 +14,7 @@ namespace BookWorm.Construct
           : base(
                 "ConstructPadding",
                 "ConPadding",
-                "Construct padding",
+                "The amount of padding around the cell, in pixels",
                 "BookWorm",
                 "Construct")
         {
@@ -23,10 +23,10 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddIntegerParameter("Top", "Top", "Top (int)", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Bottom", "Bottom", "Bottom (int)", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Left", "Left", "Left (int)", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Right", "Right", "Right (int)", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Top", "Top", "Top padding in pixels", GH_ParamAccess.item, 0);
+            pManager.AddIntegerParameter("Bottom", "Bottom", "Bottom padding in pixels", GH_ParamAccess.item, 0);
+            pManager.AddIntegerParameter("Left", "Left", "Left padding in pixels", GH_ParamAccess.item, 0);
+            pManager.AddIntegerParameter("Right", "Right", "Right padding in pixels", GH_ParamAccess.item, 0);
 
             for (int i = 0; i < pManager.ParamCount; i++)
             {
@@ -37,49 +37,46 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("Padding", "Padding", "Padding", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Padding", "Padding", "Paddings around the cell in pixels", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var padding = new Padding();
 
-            var bTop = 0;
-            var bBottom = 0;
-            var bLeft = 0;
-            var bRight = 0;
+            var top = 0;
+            var bottom = 0;
+            var left = 0;
+            var right = 0;
 
-            if (DA.GetData(0, ref bTop))
+            // Possibilities for negative pixel value sounds funny but nothing bad will happen on sheets side.
+            // Just strange results. Just as planned mb.
+            if (DA.GetData(0, ref top))
             {
-                padding.Top = bTop;
+                padding.Top = top;
             }
 
-            if (DA.GetData(1, ref bBottom))
+            if (DA.GetData(1, ref bottom))
             {
-                padding.Bottom = bBottom;
+                padding.Bottom = bottom;
             }
 
-            if (DA.GetData(0, ref bLeft))
+            if (DA.GetData(2, ref left))
             {
-                padding.Left = bLeft;
+                padding.Left = left;
             }
 
-            if (DA.GetData(1, ref bRight))
+            if (DA.GetData(3, ref right))
             {
-                padding.Right = bRight;
+                padding.Right = right;
             }
 
             var paddingGoo = new GH_Padding(padding);
             DA.SetData(0, paddingGoo);
         }
 
-        /// <summary>
-        /// Provides an Icon for the component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override System.Drawing.Bitmap Icon
         {
             get
@@ -90,9 +87,7 @@ namespace BookWorm.Construct
             }
         }
 
-        /// <summary>
-        /// Gets the unique ID for this component. Do not change this ID after release.
-        /// </summary>
+        /// <inheritdoc/>
         public override Guid ComponentGuid
         {
             get { return new Guid("d427cece-1160-4db4-815b-fedc48030a08"); }

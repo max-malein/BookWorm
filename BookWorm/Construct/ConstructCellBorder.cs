@@ -60,15 +60,18 @@
             var color = System.Drawing.Color.Empty;
             var border = new Border();
 
-            if (!DA.GetData(0, ref style) || (style < 0 || style > 6))
+            if (DA.GetData(0, ref style))
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The style type {style} does not exist");
-                return;
+                if (style < 0 || style > 6)
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The style type {style} does not exist");
+                    return;
+                }
+
+                border.Style = Enum.GetName(typeof(BorderStyle), style);
             }
 
-            border.Style = Enum.GetName(typeof(BorderStyle), style);
-
-            if (DA.GetData(1, ref color))
+            if (DA.GetData(1, ref color) && color != System.Drawing.Color.Empty)
             {
                 border.Color = SheetsUtilities.GetGoogleSheetsColor(color);
             }

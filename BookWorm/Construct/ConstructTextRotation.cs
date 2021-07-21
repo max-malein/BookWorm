@@ -20,9 +20,7 @@ namespace BookWorm.Construct
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddIntegerParameter("Angle", "Angle", "Angle in degrees between -90 and 90", GH_ParamAccess.item);
@@ -38,18 +36,13 @@ namespace BookWorm.Construct
             }
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddGenericParameter("TextRotation", "TextRotation", "Text rotation", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var angle = 90;
@@ -58,23 +51,25 @@ namespace BookWorm.Construct
             var textRotation = new TextRotation();
 
             // Only one field can be set.
-            if (DA.GetData(0, ref angle))
+            if (DA.GetData(0, ref angle) && !DA.GetData(1, ref vertical))
             {
                 textRotation.Angle = angle;
             }
-
-            else if (DA.GetData(1, ref vertical))
+            else if (DA.GetData(1, ref vertical) && !DA.GetData(0, ref angle))
             {
                 textRotation.Vertical = vertical;
+            }
+            else if (DA.GetData(0, ref angle) && DA.GetData(1, ref vertical))
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Only one parameter can be set");
+                return;
             }
 
             var textRotationGoo = new GH_TextRotation(textRotation);
             DA.SetData(0, textRotationGoo);
         }
 
-        /// <summary>
-        /// Provides an Icon for the component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override System.Drawing.Bitmap Icon
         {
             get
@@ -85,9 +80,7 @@ namespace BookWorm.Construct
             }
         }
 
-        /// <summary>
-        /// Gets the unique ID for this component. Do not change this ID after release.
-        /// </summary>
+        /// <inheritdoc/>
         public override Guid ComponentGuid
         {
             get { return new Guid("d361a5a9-5614-4da6-9bc2-aa32ec2dc24f"); }
