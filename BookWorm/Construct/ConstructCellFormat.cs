@@ -24,25 +24,49 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("Number Format", "NumberFormat", "Number format", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Number Format", "NumberFormat", "The number format of a cell", GH_ParamAccess.item);
 
-            pManager.AddColourParameter("Background colour", "Colour", "Background colour of the cell", GH_ParamAccess.item);
+            pManager.AddColourParameter("Background color", "Color", "Background color of the cell", GH_ParamAccess.item);
 
-            pManager.AddGenericParameter("Borders", "Borders", "Borders", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Borders", "Borders", "The borders of the cell", GH_ParamAccess.item);
 
-            pManager.AddGenericParameter("Padding", "Padding", "Padding", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Padding", "Padding", "Padding around the cell, in pixels", GH_ParamAccess.item);
 
-            pManager.AddTextParameter("Horizontal Aligment", "HorizontalAligment", "Horizontal aligment", GH_ParamAccess.item);
+            pManager.AddIntegerParameter(
+                "Horizontal Alignment",
+                "HorizontalAlign",
+                "0 - LEFT\n"
+                + "1 - CENTER\n"
+                + "2 - RIGHT",
+                GH_ParamAccess.item);
 
-            pManager.AddTextParameter("Vertical Aligment", "VerticalAligment", "Vertical aligment", GH_ParamAccess.item);
+            pManager.AddIntegerParameter(
+                "Vertical Alignment",
+                "VerticalAlign",
+                "0 - TOP\n"
+                + "1 - MIDDLE\n"
+                + "2 - BOTTOM",
+                GH_ParamAccess.item);
 
-            pManager.AddTextParameter("Wrap", "Wrap", "Wrap", GH_ParamAccess.item);
+            pManager.AddIntegerParameter(
+                "Wrap",
+                "Wrap",
+                "0 - OVERFLOW_CELL\n"
+                + "1 - LEGACY_WRAP\n"
+                + "2 - CLIP\n"
+                + "3 - WRAP",
+                GH_ParamAccess.item);
 
-            pManager.AddTextParameter("Text Direction", "TextDirection", "Text direction", GH_ParamAccess.item);
+            pManager.AddIntegerParameter(
+                "Text Direction",
+                "TextDirection",
+                "0 - LEFT_TO_RIGHT\n"
+                + "1 - RIGHT_TO_LEFT",
+                GH_ParamAccess.item);
 
-            pManager.AddGenericParameter("Text Format", "TextFormat", "Text format", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Text Format", "TextFormat", "The format of a run of text in a cell", GH_ParamAccess.item);
 
-            pManager.AddGenericParameter("Text Rotation", "TextRotation", "Text rotation", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Text Rotation", "TextRotation", "The rotation applied to text in a cell", GH_ParamAccess.item);
 
             for (int i = 0; i < pManager.ParamCount; i++)
             {
@@ -53,13 +77,10 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("CellFormat", "CellFormat", "Cell format", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Cell Format", "CellFormat", "The format of a cell", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var numberFormat = new GH_NumberFormat();
@@ -70,12 +91,12 @@ namespace BookWorm.Construct
 
             var padding = new GH_Padding();
 
-            var horizontalAligment = string.Empty;
-            var verticalAligment = string.Empty;
+            var horizontalAlign = 0;
+            var verticalAlign = 0;
 
-            var wrap = string.Empty;
+            var wrap = 0;
 
-            var textDirection = string.Empty;
+            var textDirection = 0;
             var textFormat = new GH_TextFormat();
             var textRotation = new GH_TextRotation();
 
@@ -101,24 +122,48 @@ namespace BookWorm.Construct
                 cellFormat.Padding = padding.Value;
             }
 
-            if (DA.GetData(4, ref horizontalAligment))
+            if (DA.GetData(4, ref horizontalAlign))
             {
-                cellFormat.HorizontalAlignment = horizontalAligment;
+                if (horizontalAlign < 0 || horizontalAlign > 2)
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The horizontal align type {horizontalAlign} does not exist");
+                    return;
+                }
+
+                cellFormat.HorizontalAlignment = Enum.GetName(typeof(HorizontalAlign), horizontalAlign);
             }
 
-            if (DA.GetData(5, ref verticalAligment))
+            if (DA.GetData(5, ref verticalAlign))
             {
-                cellFormat.VerticalAlignment = verticalAligment;
+                if (verticalAlign < 0 || verticalAlign > 2)
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The vertical align type {verticalAlign} does not exist");
+                    return;
+                }
+
+                cellFormat.VerticalAlignment = Enum.GetName(typeof(VerticalAlign), verticalAlign);
             }
 
             if (DA.GetData(6, ref wrap))
             {
-                cellFormat.WrapStrategy = wrap;
+                if (wrap < 0 || wrap > 3)
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The wrap strategy type {wrap} does not exist");
+                    return;
+                }
+
+                cellFormat.WrapStrategy = Enum.GetName(typeof(WrapStrategy), wrap);
             }
 
             if (DA.GetData(7, ref textDirection))
             {
-                cellFormat.TextDirection = textDirection;
+                if (textDirection < 0 || textDirection > 1)
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The text direction type {textDirection} does not exist");
+                    return;
+                }
+
+                cellFormat.TextDirection = Enum.GetName(typeof(TextDirection), textDirection);
             }
 
             if (DA.GetData(8, ref textFormat))
@@ -135,9 +180,7 @@ namespace BookWorm.Construct
             DA.SetData(0, cellFormatGoo);
         }
 
-        /// <summary>
-        /// Provides an Icon for the component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override System.Drawing.Bitmap Icon
         {
             get
@@ -148,12 +191,50 @@ namespace BookWorm.Construct
             }
         }
 
-        /// <summary>
-        /// Gets the unique ID for this component. Do not change this ID after release.
-        /// </summary>
+        /// <inheritdoc/>
         public override Guid ComponentGuid
         {
             get { return new Guid("4d32bb2d-ef10-4687-803f-e37bde2ae27a"); }
+        }
+
+        /// <summary>
+        /// The horizontal alignment of text in a cell.
+        /// </summary>
+        private enum HorizontalAlign
+        {
+            LEFT,
+            CENTER,
+            RIGHT,
+        }
+
+        /// <summary>
+        /// The vertical alignment of text in a cell.
+        /// </summary>
+        private enum VerticalAlign
+        {
+            TOP,
+            MIDDLE,
+            BOTTOM,
+        }
+
+        /// <summary>
+        /// How to wrap text in a cell.
+        /// </summary>
+        private enum WrapStrategy
+        {
+            OVERFLOW_CELL,
+            LEGACY_WRAP,
+            CLIP,
+            WRAP,
+        }
+
+        /// <summary>
+        /// The direction of text in a cell.
+        /// </summary>
+        private enum TextDirection
+        {
+            LEFT_TO_RIGHT,
+            RIGHT_TO_LEFT,
         }
     }
 }
