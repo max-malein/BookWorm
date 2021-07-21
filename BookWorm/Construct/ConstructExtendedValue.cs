@@ -1,9 +1,7 @@
-﻿using BookWorm.Goo;
+﻿using System;
+using BookWorm.Goo;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
 
 namespace BookWorm.Construct
 {
@@ -22,9 +20,7 @@ namespace BookWorm.Construct
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("Value", "Value", "Value", GH_ParamAccess.item);
@@ -35,18 +31,13 @@ namespace BookWorm.Construct
             }
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddGenericParameter("ExtendedValue", "ExtendedValue", "Extended value", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var ext = new ExtendedValue();
@@ -83,9 +74,7 @@ namespace BookWorm.Construct
             DA.SetData(0, extGoo);
         }
 
-        /// <summary>
-        /// Provides an Icon for the component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override System.Drawing.Bitmap Icon
         {
             get
@@ -96,9 +85,7 @@ namespace BookWorm.Construct
             }
         }
 
-        /// <summary>
-        /// Gets the unique ID for this component. Do not change this ID after release.
-        /// </summary>
+        /// <inheritdoc/>
         public override Guid ComponentGuid
         {
             get { return new Guid("36d6cbe5-83f3-4d7b-941d-a16a525da60a"); }

@@ -27,7 +27,7 @@
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddColourParameter("Foreground Colour", "Colour", "Foreground colour of text", GH_ParamAccess.item);
+            pManager.AddColourParameter("Foreground Color", "Color", "Foreground color of text", GH_ParamAccess.item);
 
             pManager.AddTextParameter("Font Family", "FontFamily", "Font family", GH_ParamAccess.item);
 
@@ -50,7 +50,7 @@
         /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("TextFormat", "TextFormat", "TextFormat", GH_ParamAccess.item);
+            pManager.AddGenericParameter("TextFormat", "TextFormat", "The format of a run of text in a cell", GH_ParamAccess.item);
         }
 
         /// <summary>
