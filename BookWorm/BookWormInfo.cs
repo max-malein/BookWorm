@@ -32,7 +32,7 @@ namespace GoogleDocs
         public override string Description => "GoogleDocs connector. The description is really long and thorough";
 
         /// <inheritdoc/>
-        public override string Version => "0.7.1";
+        public override string Version => "0.8.0";
 
         /// <inheritdoc/>
         public override Guid Id
