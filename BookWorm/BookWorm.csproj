@@ -126,6 +126,7 @@
     <Compile Include="Goo\GH_TextFormat.cs" />
     <Compile Include="Goo\GH_TextRotation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spreadsheets\DeleteSheet.cs" />
     <Compile Include="Utilities\CellWithCoordinates.cs" />
     <Compile Include="Spreadsheets\MergeCells.cs" />
     <Compile Include="Spreadsheets\UnmergeCells.cs" />
