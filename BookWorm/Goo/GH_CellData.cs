@@ -92,5 +92,20 @@ namespace BookWorm.Goo
 
             return $"{cellStringValue} \n{cellFormatString}";
         }
+
+        /// <inheritdoc/>
+        public override bool CastFrom(object source)
+        {
+            var sourceWrapper = source as GH_ObjectWrapper;
+            if (sourceWrapper.Value is CellData cellData)
+            {
+                this.Value = cellData;
+                return true;
+            }
+            else
+            {
+                return base.CastFrom(source);
+            }
+        }
     }
 }
