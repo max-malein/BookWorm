@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace BookWorm.Goo
 {
     /// <summary>
-    /// CellData Goo.
+    /// TextRotation Goo.
     /// </summary>
     public class GH_TextRotation : GH_Goo<TextRotation>
     {
@@ -19,9 +19,9 @@ namespace BookWorm.Goo
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GH_TextRotation"/> class.
-        /// CellData Goo.
+        /// TextRotaion Goo.
         /// </summary>
-        /// <param name="textRotation">CellData.</param>
+        /// <param name="textRotation">TextRotation.</param>
         public GH_TextRotation(TextRotation textRotation)
         {
             Value = textRotation;
@@ -31,12 +31,11 @@ namespace BookWorm.Goo
         /// Initializes a new instance of the <see cref="GH_TextRotation"/> class.
         /// Deep copy of Goo.
         /// </summary>
-        /// <param name="textRotationGoo">CellData Goo.</param>
+        /// <param name="textRotationGoo">TextRotation Goo.</param>
         public GH_TextRotation(GH_TextRotation textRotationGoo)
         {
             if (textRotationGoo != null)
             {
-                // смекалОчка - у ячейки нет своего копирования.
                 var textRotationJson = JsonConvert.SerializeObject(textRotationGoo.Value, Formatting.Indented);
                 var textRotation = JsonConvert.DeserializeObject<TextRotation>(textRotationJson);
                 Value = textRotation;
@@ -66,21 +65,20 @@ namespace BookWorm.Goo
                 return string.Empty;
             }
 
-            var angleString = string.Empty;
+            var outputString = string.Empty;
 
             if (Value.Angle != null)
             {
-                angleString = $@"Formatted value: {Value.Angle}";
+                var angleString = $"Rotation angle: {Value.Angle}";
+                outputString = angleString;
             }
-
-            var verticalString = string.Empty;
-
-            if (Value.Angle != null)
+            else if (Value.Vertical != null)
             {
-                verticalString = $@"Formatted value: {Value.Vertical}";
+                var verticalString = $"Vertical string: {Value.Vertical}";
+                outputString = verticalString;
             }
 
-            return $"{angleString} \n{verticalString}";
+            return outputString;
         }
     }
 }

@@ -27,7 +27,7 @@
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddColourParameter("Foreground Colour", "Colour", "Foreground colour of text", GH_ParamAccess.item);
+            pManager.AddColourParameter("Foreground Color", "Color", "Foreground color of text", GH_ParamAccess.item);
 
             pManager.AddTextParameter("Font Family", "FontFamily", "Font family", GH_ParamAccess.item);
 
@@ -50,13 +50,10 @@
         /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("TextFormat", "TextFormat", "TextFormat", GH_ParamAccess.item);
+            pManager.AddGenericParameter("TextFormat", "TextFormat", "The format of a run of text in a cell", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var colorARGB = System.Drawing.Color.Empty;
@@ -108,9 +105,7 @@
             DA.SetData(0, textFormatGoo);
         }
 
-        /// <summary>
-        /// Provides an Icon for the component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override System.Drawing.Bitmap Icon
         {
             get
@@ -121,9 +116,7 @@
             }
         }
 
-        /// <summary>
-        /// Gets the unique ID for this component. Do not change this ID after release.
-        /// </summary>
+        /// <inheritdoc/>
         public override Guid ComponentGuid
         {
             get { return new Guid("8322e28a-63ba-493a-9b56-f97f26711d59"); }

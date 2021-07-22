@@ -1,8 +1,4 @@
-﻿// <copyright file="ConstructCellBorders.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
-
-namespace BookWorm.Construct
+﻿namespace BookWorm.Construct
 {
     using System;
     using BookWorm.Goo;
@@ -30,13 +26,13 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("BorderTop", "BTop", "Border", GH_ParamAccess.item);
+            pManager.AddGenericParameter("BorderTop", "Top", "Top border of the cell", GH_ParamAccess.item);
 
-            pManager.AddGenericParameter("BorderBottom", "BBottom", "Border", GH_ParamAccess.item);
+            pManager.AddGenericParameter("BorderBottom", "Bottom", "Bottom border of the cell", GH_ParamAccess.item);
 
-            pManager.AddGenericParameter("BorderLeft", "BLeft", "Border", GH_ParamAccess.item);
+            pManager.AddGenericParameter("BorderLeft", "Left", "Left border of the cell", GH_ParamAccess.item);
 
-            pManager.AddGenericParameter("BorderRight", "BRight", "Border", GH_ParamAccess.item);
+            pManager.AddGenericParameter("BorderRight", "Right", "Right border of the cell", GH_ParamAccess.item);
 
             for (int i = 0; i < pManager.ParamCount; i++)
             {
@@ -47,13 +43,10 @@ namespace BookWorm.Construct
         /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("Borders", "Borders", "Borders", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Borders", "Borders", "The borders of the cell", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var borders = new Borders();
@@ -87,18 +80,14 @@ namespace BookWorm.Construct
             DA.SetData(0, borderGoo);
         }
 
-        /// <summary>
-        /// Gets provides an Icon for the component.
-        /// </summary>
+        /// <inheritdoc/>
         protected override System.Drawing.Bitmap Icon =>
 
                 // You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
                 null;
 
-        /// <summary>
-        /// Gets the unique ID for this component. Do not change this ID after release.
-        /// </summary>
+        /// <inheritdoc/>
         public override Guid ComponentGuid => new Guid("ee97311d-ecea-4261-9ef4-d17c0b125bfb");
     }
 }

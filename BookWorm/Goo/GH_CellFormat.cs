@@ -66,13 +66,15 @@ namespace BookWorm.Goo
                 return string.Empty;
             }
 
-            var formattedColor = string.Empty;
+            var backgroundColor = string.Empty;
 
             if (Value.BackgroundColor != null)
             {
                 var color = SheetsUtilities.GetSystemDrawingColor(Value.BackgroundColor);
 
-                formattedColor = SheetsUtilities.GetFormattedARGB(color);
+                var formattedColor = SheetsUtilities.GetFormattedARGB(color);
+
+                backgroundColor = $"Background color: {formattedColor}\n";
             }
 
             // Feels like displaying more info than color is fine idea but idk.
@@ -91,7 +93,7 @@ namespace BookWorm.Goo
 
             //}
 
-            return $@"Background color: {formattedColor}";
+            return $"{backgroundColor}";
         }
     }
 }

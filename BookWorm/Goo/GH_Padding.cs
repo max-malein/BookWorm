@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace BookWorm.Goo
 {
     /// <summary>
-    /// CellData Goo.
+    /// Cell Padding Goo.
     /// </summary>
     public class GH_Padding : GH_Goo<Padding>
     {
@@ -19,9 +19,9 @@ namespace BookWorm.Goo
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GH_Padding"/> class.
-        /// CellData Goo.
+        /// Cell Padding Goo.
         /// </summary>
-        /// <param name="padding">CellData.</param>
+        /// <param name="padding">Cell Padding.</param>
         public GH_Padding(Padding padding)
         {
             Value = padding;
@@ -31,12 +31,11 @@ namespace BookWorm.Goo
         /// Initializes a new instance of the <see cref="GH_Padding"/> class.
         /// Deep copy of Goo.
         /// </summary>
-        /// <param name="paddingGoo">CellData Goo.</param>
+        /// <param name="paddingGoo">Cell Padding Goo.</param>
         public GH_Padding(GH_Padding paddingGoo)
         {
             if (paddingGoo != null)
             {
-                // смекалОчка - у ячейки нет своего копирования.
                 var paddingJson = JsonConvert.SerializeObject(paddingGoo.Value, Formatting.Indented);
                 var padding = JsonConvert.DeserializeObject<Padding>(paddingJson);
                 Value = padding;
@@ -66,35 +65,35 @@ namespace BookWorm.Goo
                 return string.Empty;
             }
 
+            var top = string.Empty;
+
+            if (Value.Top != null)
+            {
+                top = $"Top padding: {Value.Top.Value}\n";
+            }
+
             var bottom = string.Empty;
 
             if (Value.Bottom != null)
             {
-                bottom = $@"Formatted value: {Value.Bottom.Value}";
-            }
-
-            var top = string.Empty;
-
-            if (Value.Bottom != null)
-            {
-                top = $@"Formatted value: {Value.Top.Value}";
-            }
-
-            var right = string.Empty;
-
-            if (Value.Right != null)
-            {
-                right = $@"Formatted value: {Value.Right.Value}";
+                bottom = $"Bottom padding: {Value.Bottom.Value}\n";
             }
 
             var left = string.Empty;
 
             if (Value.Left != null)
             {
-                left = $@"Formatted value: {Value.Left.Value}";
+                left = $"Left padding: {Value.Left.Value}\n";
             }
 
-            return $"{bottom} \n{top} \n{right} \n{left}";
+            var right = string.Empty;
+
+            if (Value.Right != null)
+            {
+                right = $"Right padding: {Value.Right.Value}\n";
+            }
+
+            return $"{top}{bottom}{left}{right}";
         }
     }
 }

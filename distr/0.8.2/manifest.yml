@@ -1,0 +1,9 @@
+---
+name: bookworm
+version: $version
+authors:
+- Max Malein
+description: Grasshopper GoogleDocs connector
+url: https://github.com/max-malein/BookWorm
+keywords:
+- guid:56dfe1a3-4e7b-425f-b169-965c0d1f7977

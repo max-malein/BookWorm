@@ -1,4 +1,4 @@
-﻿using System;
+﻿using BookWorm.Utilities;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel.Types;
 using Newtonsoft.Json;
@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace BookWorm.Goo
 {
     /// <summary>
-    /// CellFormat Goo.
+    /// TextFormat Goo.
     /// </summary>
     public class GH_TextFormat : GH_Goo<TextFormat>
     {
@@ -20,9 +20,9 @@ namespace BookWorm.Goo
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GH_TextFormat"/> class.
-        /// CellFormat Goo.
+        /// TextFormat Goo.
         /// </summary>
-        /// <param name="cellFormat">CellFormat.</param>
+        /// <param name="textFormat">TextFormat.</param>
         public GH_TextFormat(TextFormat textFormat)
         {
             Value = textFormat;
@@ -32,12 +32,11 @@ namespace BookWorm.Goo
         /// Initializes a new instance of the <see cref="GH_TextFormat"/> class.
         /// Deep copy of Goo.
         /// </summary>
-        /// <param name="cellFormatGoo">CellFormat Goo.</param>
+        /// <param name="textFormatGoo">TextFormat Goo.</param>
         public GH_TextFormat(GH_TextFormat textFormatGoo)
         {
             if (textFormatGoo != null)
             {
-                // смекалОчка - у ячейки нет своего копирования.
                 var textFormatJson = JsonConvert.SerializeObject(textFormatGoo.Value, Formatting.Indented);
                 var textFormat = JsonConvert.DeserializeObject<TextFormat>(textFormatJson);
                 Value = textFormat;
@@ -67,56 +66,67 @@ namespace BookWorm.Goo
                 return string.Empty;
             }
 
-            var textColorString = string.Empty;
+            // Text color
+            var textColor = string.Empty;
 
             if (Value.ForegroundColor != null)
             {
-                var color = Value.ForegroundColor;
+                var color = SheetsUtilities.GetSystemDrawingColor(Value.ForegroundColor);
 
-                var alpha = color.Alpha;
-                var red = color.Red;
-                var green = color.Green;
-                var blue = color.Blue;
+                var formattedColor = SheetsUtilities.GetFormattedARGB(color);
 
-                textColorString = $@"Background color: A:{alpha}, R:{red}, G:{green}, B:{blue}";
+                textColor = $"Text color: {formattedColor}\n";
             }
 
-            var boldString = string.Empty;
-
-            if (Value.Bold != null)
-            {
-                boldString = $@"Bold: {Value.Bold}";
-            }
-
+            // Font family and size
             var fontString = string.Empty;
 
             if (Value.FontFamily != null)
             {
-                fontString = $@"FontFamily: {Value.FontFamily}";
+                fontString = $"Font: {Value.FontFamily}\n";
             }
 
-            var fontSizeString = string.Empty;
+            // Font size
+            var fontSize = string.Empty;
 
             if (Value.FontSize != null)
             {
-                fontSizeString = $@"FontSize: {Value.FontSize}";
+                fontSize = $"Font size: {Value.FontSize}\n";
             }
 
+            // Bold
+            var boldString = string.Empty;
+
+            if (Value.Bold != null)
+            {
+                boldString = $"Bold: {Value.Bold}\n";
+            }
+
+            // Italic
             var italicString = string.Empty;
 
             if (Value.Italic != null)
             {
-                italicString = $@"FontSize: {Value.Italic}";
+                italicString = $"Italic: {Value.Italic}\n";
             }
 
+            // Strikethrought
             var strikethroughString = string.Empty;
 
             if (Value.Strikethrough != null)
             {
-                strikethroughString = $@"FontSize: {Value.Italic}";
+                strikethroughString = $"Strikethrought: {Value.Strikethrough}\n";
             }
 
-            return $"{textColorString} \n{boldString} \n{fontString} \n{fontSizeString} \n{italicString} \n{strikethroughString}";
+            // Underline
+            var underline = string.Empty;
+
+            if (Value.Underline != null)
+            {
+                underline = $"Underline: {Value.Strikethrough}\n";
+            }
+
+            return $"{textColor}{fontString}{fontSize}{boldString}{italicString}{strikethroughString}{underline}";
         }
     }
 }
