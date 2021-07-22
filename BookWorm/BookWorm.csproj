@@ -160,13 +160,20 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>SET version=0.8.1
+    <PostBuildEvent>SET version=0.8.2
 SET folder="%25appdata%25\McNeel\Rhinoceros\packages\7.0\bookworm\"
 
-Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
+copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
+xcopy "$(TargetDir)" "%25folder%25%25version%25\" /I /Y
+echo %25version%25 &gt; %25folder%25\manifest.txt
 
-xcopy $(TargetDir) "%25folder%25%25version%25\" /I /Y
-echo %25version%25 &gt; %25folder%25\manifest.txt</PostBuildEvent>
+if $(ConfigurationName) NEQ Yak exit
+
+xcopy "$(TargetDir)" "$(SolutionDir)\distr\%25version%25\" /I /Y
+copy "$(ProjectDir)\manifest-template.yml" "$(SolutionDir)\distr\%25version%25\manifest.yml"
+
+cd "$(SolutionDir)\distr\%25version%25\"
+yak build</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <FallbackCulture>en-US</FallbackCulture>
