@@ -24,10 +24,10 @@ namespace BookWorm.Spreadsheets
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            base.RegisterInputParams(pManager);
+            // There is a conflict with base calling, so InputParams just rewrited.
+            pManager.AddTextParameter("Spreadsheet URL", "U", "Google spreadsheet URL or spreadsheet ID", GH_ParamAccess.item);
 
-            var unregParam = this.Params.Input[2];
-            this.Params.UnregisterInputParameter(unregParam);
+            pManager.AddTextParameter("Sheet Name", "N", "Sheet Name", GH_ParamAccess.item);
 
             pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item, false);
         }
@@ -40,18 +40,30 @@ namespace BookWorm.Spreadsheets
         /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            base.SolveInstance(DA);
+            // There is a conflict with base calling, so SolveInstance also just rewrited.
+            string spreadsheetUrl = string.Empty;
+            var sheetName = string.Empty;
+            bool run = false;
 
-            var run = false;
+            if (!DA.GetData(0, ref spreadsheetUrl)) return;
 
-            DA.GetData("Run", ref run);
+            if (!DA.GetData(1, ref sheetName)) return;
+
+            DA.GetData(2, ref run);
 
             if (!run)
             {
                 return;
             }
 
-            var sheetId = SheetsUtilities.GetSheetId(SpreadsheetId, SheetName);
+            var spreadsheetId = Util.ParseUrl(spreadsheetUrl);
+            var sheetId = SheetsUtilities.GetSheetId(spreadsheetId, sheetName);
+
+            if (sheetId == null)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The sheet {sheetName} does not exist");
+                return;
+            }
 
             var requests = new List<Request>();
 
@@ -67,7 +79,7 @@ namespace BookWorm.Spreadsheets
             var requestBody = new BatchUpdateSpreadsheetRequest();
             requestBody.Requests = requests;
 
-            var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, SpreadsheetId);
+            var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, spreadsheetId);
 
             var response = request.Execute();
         }

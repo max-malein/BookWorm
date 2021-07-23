@@ -46,6 +46,8 @@ namespace BookWorm.Utilities
                 "CR",
                 "Range of cells in \'a1\' notation. For example A1:B5 - range of cells, A15 - single cell, A:C - range of columns, etc.",
                 GH_ParamAccess.item);
+
+            pManager[2].Optional = true;
         }
 
         /// <inheritdoc/>
@@ -61,13 +63,13 @@ namespace BookWorm.Utilities
             string range = string.Empty;
             SpreadsheetId = string.Empty;
 
-            if (!DA.GetData("Spreadsheet URL", ref spreadsheetUrl)) return;
+            if (!DA.GetData(0, ref spreadsheetUrl)) return;
             SpreadsheetId = Util.ParseUrl(spreadsheetUrl);
 
-            if (!DA.GetData("Sheet Name", ref sheetName)) return;
+            if (!DA.GetData(1, ref sheetName)) return;
             SheetName = sheetName;
 
-            if (!DA.GetData("Cell Range", ref range)) return;
+            if (!DA.GetData(2, ref range)) return;
             CellRange = range.ToUpper();
         }
 
