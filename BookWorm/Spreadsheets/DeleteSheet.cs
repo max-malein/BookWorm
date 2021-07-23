@@ -47,6 +47,7 @@ namespace BookWorm.Spreadsheets
 
             if (!DA.GetData(0, ref spreadsheetUrl)) return;
 
+            // Also there is matter point - delete sheet explicitly
             if (!DA.GetData(1, ref sheetName)) return;
 
             DA.GetData(2, ref run);

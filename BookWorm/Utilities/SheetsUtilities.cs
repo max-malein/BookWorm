@@ -69,6 +69,34 @@ namespace BookWorm.Utilities
         }
 
         /// <summary>
+        /// Gets spreadsheet range in A1 notation wich will retrive from the spreadsheet.
+        /// If range include only sheet name, its refer all cells in named sheet.
+        /// If range include only cell range its refer cells of the first visible sheet.
+        /// </summary>
+        /// <param name="sheetName">Sheet name.</param>
+        /// <param name="cellRange">Range of cells in A1 notaton.</param>
+        /// <returns>Spreadsheet range in A1 notation.</returns>
+        public static string GetSpreadsheetRange(string sheetName, string cellRange)
+        {
+            var spreadsheetRange = string.Empty;
+
+            if (!string.IsNullOrEmpty(sheetName) && !string.IsNullOrEmpty(cellRange))
+            {
+                spreadsheetRange = $"\'{sheetName}\'!{cellRange}";
+            }
+            else if (!string.IsNullOrEmpty(sheetName))
+            {
+                spreadsheetRange = sheetName;
+            }
+            else if (!string.IsNullOrEmpty(cellRange))
+            {
+                spreadsheetRange = cellRange;
+            }
+
+            return spreadsheetRange;
+        }
+
+        /// <summary>
         /// Add new sheet to the spreadsheet.
         /// </summary>
         /// <param name="spreadsheetId">Spreadsheet Id.</param>
