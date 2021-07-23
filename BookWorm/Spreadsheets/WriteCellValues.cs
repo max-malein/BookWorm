@@ -58,7 +58,7 @@ namespace GoogleDocs.Spreadsheets
             var valueRange = new ValueRange
             {
                 MajorDimension = "ROWS",
-                Range = this.CellRange,
+                Range = this.SpreadsheetRange,
                 Values = new List<IList<object>>() { new List<object>() },
             };
 
