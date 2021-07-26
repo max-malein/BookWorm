@@ -87,8 +87,6 @@ namespace BookWorm.Utilities
                 gridRange.EndColumnIndex = gridRange.StartColumnIndex + 1;
                 gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
                 gridRange.EndRowIndex = gridRange.StartRowIndex + 1;
-
-                return gridRange;
             }
 
             // Cases StartCoordinates:EndCoordinates
