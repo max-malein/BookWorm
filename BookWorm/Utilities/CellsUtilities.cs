@@ -64,33 +64,32 @@ namespace BookWorm.Utilities
             var gridRange = new GridRange();
             gridRange.SheetId = sheetId;
 
-            // Case SheetName
-            if (!CellRangeA1.Contains('!'))
+            // Case AllCells
+            if (string.IsNullOrEmpty(CellRangeA1))
             {
-                // Case AllCells
                 gridRange.StartColumnIndex = 0;
                 gridRange.StartRowIndex = 0;
             }
 
-            // Case SheetName!Coordinates
+            // Case Coordinates
             else
             {
-                var cellCoordinates = CellRangeA1.Split('!')[1];
+                var cellCoordinates = CellRangeA1;
 
-                // Case Sheet2!StartCoordinates
+                // Case StartCoordinates
                 if (!cellCoordinates.Contains(':'))
                 {
                     string startLetters = Regex.Match(cellCoordinates, @"[A-Za-z]+").Value;
                     string startNumbers = Regex.Match(cellCoordinates, @"\d+").Value;
 
-                    // Case Sheet2!A5
+                    // Case A5
                     gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
                     gridRange.EndColumnIndex = gridRange.StartColumnIndex + 1;
                     gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
                     gridRange.EndRowIndex = gridRange.StartRowIndex + 1;
                 }
 
-                // Cases Sheet2!StartCoordinates:EndCoordinates
+                // Cases StartCoordinates:EndCoordinates
                 else
                 {
                     var rangeBounds = cellCoordinates.Split(':');
@@ -99,14 +98,14 @@ namespace BookWorm.Utilities
                     string endLetters = Regex.Match(rangeBounds[1], @"[A-Za-z]+").Value;
                     string endNumbers = Regex.Match(rangeBounds[1], @"\d+").Value;
 
-                    // Case Sheet2!A:B
+                    // Case A:B
                     if (startNumbers.Length == 0 && endNumbers.Length == 0)
                     {
                         gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
                         gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
                     }
 
-                    // Case Sheet2!A5:A
+                    // Case A5:A
                     else if (startLetters.Length != 0 && endNumbers.Length == 0)
                     {
                         gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
@@ -114,7 +113,7 @@ namespace BookWorm.Utilities
                         gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
                     }
 
-                    // Case Sheet2!B5:5
+                    // Case B5:5
                     else if (startLetters.Length != 0 && endLetters.Length == 0)
                     {
                         gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
@@ -122,14 +121,14 @@ namespace BookWorm.Utilities
                         gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
                     }
 
-                    // Case Sheet2!2:4
+                    // Case 2:4
                     else if (startLetters.Length == 0 && endLetters.Length == 0)
                     {
                         gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
                         gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
                     }
 
-                    // Case Sheet2!A3:D4
+                    // Case A3:D4
                     else
                     {
                         gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
