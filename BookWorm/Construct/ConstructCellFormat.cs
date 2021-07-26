@@ -200,7 +200,7 @@ namespace BookWorm.Construct
         /// <summary>
         /// The horizontal alignment of text in a cell.
         /// </summary>
-        private enum HorizontalAlign
+        internal enum HorizontalAlign
         {
             LEFT,
             CENTER,
@@ -210,7 +210,7 @@ namespace BookWorm.Construct
         /// <summary>
         /// The vertical alignment of text in a cell.
         /// </summary>
-        private enum VerticalAlign
+        internal enum VerticalAlign
         {
             TOP,
             MIDDLE,
@@ -220,7 +220,7 @@ namespace BookWorm.Construct
         /// <summary>
         /// How to wrap text in a cell.
         /// </summary>
-        private enum WrapStrategy
+        internal enum WrapStrategy
         {
             OVERFLOW_CELL,
             LEGACY_WRAP,
@@ -231,7 +231,7 @@ namespace BookWorm.Construct
         /// <summary>
         /// The direction of text in a cell.
         /// </summary>
-        private enum TextDirection
+        internal enum TextDirection
         {
             LEFT_TO_RIGHT,
             RIGHT_TO_LEFT,
