@@ -122,8 +122,10 @@ namespace BookWorm.Utilities
 
             requests.Add(addSheetRequest);
 
-            var requestBody = new BatchUpdateSpreadsheetRequest();
-            requestBody.Requests = requests;
+            var requestBody = new BatchUpdateSpreadsheetRequest
+            {
+                Requests = requests,
+            };
 
             var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, spreadsheetId);
 
@@ -186,8 +188,8 @@ namespace BookWorm.Utilities
         /// <summary>
         /// Gets top left cell coordinates in range of merged cells.
         /// </summary>
-        /// <param name="coordinates"></param>
-        /// <param name="mergeData"></param>
+        /// <param name="coordinates">Coordinates of the cell in a form of a Point.</param>
+        /// <param name="mergeData">GridRange of merged cells.</param>
         /// <returns>Point representation of cell coordinates, where X - column index and Y - row index.</returns>
         internal static Point? FindMergeOrigin(Point? coordinates, List<GridRange> mergeData)
         {

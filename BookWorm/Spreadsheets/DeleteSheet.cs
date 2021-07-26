@@ -6,10 +6,16 @@ using Grasshopper.Kernel;
 
 namespace BookWorm.Spreadsheets
 {
+    /// <summary>
+    /// Delete sheet component.
+    /// </summary>
     public class DeleteSheet : ReadWriteBaseComponent
     {
+        /// <inheritdoc/>
+        public override Guid ComponentGuid => new Guid("fa2132f5-5623-450e-aae2-71f93e7d7227");
+
         /// <summary>
-        /// Initializes a new instance of the DeleteSpreadsheet class.
+        /// Initializes a new instance of the <see cref="DeleteSheet"/> class.
         /// </summary>
         public DeleteSheet()
           : base(
@@ -77,29 +83,13 @@ namespace BookWorm.Spreadsheets
             requests.Add(deleteSheetRequest);
 
             // Main request of matrioshka-request.
-            var requestBody = new BatchUpdateSpreadsheetRequest();
-            requestBody.Requests = requests;
+            var requestBody = new BatchUpdateSpreadsheetRequest
+            {
+                Requests = requests,
+            };
 
             var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, spreadsheetId);
-
-            var response = request.Execute();
-        }
-
-        /// <inheritdoc/>
-        protected override System.Drawing.Bitmap Icon
-        {
-            get
-            {
-                // You can add image files to your project resources and access them like this:
-                // return Resources.IconForThisComponent;
-                return null;
-            }
-        }
-
-        /// <inheritdoc/>
-        public override Guid ComponentGuid
-        {
-            get { return new Guid("fa2132f5-5623-450e-aae2-71f93e7d7227"); }
+            _ = request.Execute();
         }
     }
 }

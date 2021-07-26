@@ -4,30 +4,41 @@ using Grasshopper.Kernel;
 
 namespace BookWorm.Utilities
 {
+    /// <summary>
+    /// Base component for reading and writing spreadsheets.
+    /// </summary>
     public class ReadWriteBaseComponent : GH_Component
     {
         /// <summary>
-        /// Spreadsheet Id.
+        /// Gets spreadsheet Id.
         /// </summary>
         public string SpreadsheetId { get; private set; }
 
         /// <summary>
-        /// Sheet name.
+        /// Gets sheet name.
         /// </summary>
         public string SheetName { get; private set; }
 
         /// <summary>
-        /// Range of cells in A1 notaton.
+        /// Gets a range of cells in A1 notaton.
         /// </summary>
         public string CellRange { get; private set; }
 
         /// <summary>
-        /// Range of cells with given sheet name in A1 notation on a spreadsheet.
+        /// Gets a range of cells with given sheet name in A1 notation on a spreadsheet.
         /// If range include only sheet name, its refer all cells in named sheet.
         /// If range include only cell range its refer cells of the first visible sheet.
         /// </summary>
         public string SpreadsheetRange => SheetsUtilities.GetSpreadsheetRange(SheetName, CellRange);
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReadWriteBaseComponent"/> class.
+        /// </summary>
+        /// <param name="name">Name.</param>
+        /// <param name="nick">Nickname.</param>
+        /// <param name="desc">Description.</param>
+        /// <param name="tab">Tab.</param>
+        /// <param name="subTab">Group.</param>
         public ReadWriteBaseComponent(string name, string nick, string desc, string tab, string subTab)
             : base(name, nick, desc, tab, subTab)
         {
