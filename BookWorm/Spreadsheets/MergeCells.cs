@@ -116,8 +116,7 @@ namespace BookWorm.Spreadsheets
                     {
                         Range = gridRange,
                         MergeType = Enum.GetName(typeof(MergeTypes), mergeTypes[i]),
-                    }
-
+                    },
                 };
 
                 requests.Add(mergeCellRequest);

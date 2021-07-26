@@ -80,7 +80,7 @@ namespace BookWorm.Spreadsheets
 
                 var unmergeCellRequest = new Request
                 {
-                    UnmergeCells = new UnmergeCellsRequest { Range = gridRange }
+                    UnmergeCells = new UnmergeCellsRequest { Range = gridRange },
                 };
 
                 requests.Add(unmergeCellRequest);
