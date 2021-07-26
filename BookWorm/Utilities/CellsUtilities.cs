@@ -56,88 +56,90 @@ namespace BookWorm.Utilities
         /// <summary>
         /// Creates GridRange object from A1 notation range.
         /// </summary>
-        /// <param name="CellRangeA1">Cells range in A1 notation.</param>
+        /// <param name="cellRangeA1">Cells range in A1 notation.</param>
         /// <param name="sheetId">Sheet Id.</param>
         /// <returns>new Grid Range.</returns>
-        public static GridRange GridRangeFromA1(string CellRangeA1, int sheetId)
+        public static GridRange GridRangeFromA1(string cellRangeA1, int sheetId)
         {
             var gridRange = new GridRange();
             gridRange.SheetId = sheetId;
 
             // Case AllCells
-            if (string.IsNullOrEmpty(CellRangeA1))
+            if (string.IsNullOrEmpty(cellRangeA1))
             {
                 gridRange.StartColumnIndex = 0;
                 gridRange.StartRowIndex = 0;
+
+                return gridRange;
             }
 
             // Case Coordinates
+            var cellCoordinates = cellRangeA1;
+
+            // Case StartCoordinates
+            if (!cellCoordinates.Contains(':'))
+            {
+                string startLetters = Regex.Match(cellCoordinates, @"[A-Za-z]+").Value;
+                string startNumbers = Regex.Match(cellCoordinates, @"\d+").Value;
+
+                // Case A5
+                gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
+                gridRange.EndColumnIndex = gridRange.StartColumnIndex + 1;
+                gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
+                gridRange.EndRowIndex = gridRange.StartRowIndex + 1;
+
+                return gridRange;
+            }
+
+            // Cases StartCoordinates:EndCoordinates
             else
             {
-                var cellCoordinates = CellRangeA1;
+                var rangeBounds = cellCoordinates.Split(':');
+                string startLetters = Regex.Match(rangeBounds[0], @"[A-Za-z]+").Value;
+                string startNumbers = Regex.Match(rangeBounds[0], @"\d+").Value;
+                string endLetters = Regex.Match(rangeBounds[1], @"[A-Za-z]+").Value;
+                string endNumbers = Regex.Match(rangeBounds[1], @"\d+").Value;
 
-                // Case StartCoordinates
-                if (!cellCoordinates.Contains(':'))
+                // Case A:B
+                if (startNumbers.Length == 0 && endNumbers.Length == 0)
                 {
-                    string startLetters = Regex.Match(cellCoordinates, @"[A-Za-z]+").Value;
-                    string startNumbers = Regex.Match(cellCoordinates, @"\d+").Value;
-
-                    // Case A5
                     gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
-                    gridRange.EndColumnIndex = gridRange.StartColumnIndex + 1;
-                    gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
-                    gridRange.EndRowIndex = gridRange.StartRowIndex + 1;
+                    gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
                 }
 
-                // Cases StartCoordinates:EndCoordinates
+                // Case A5:A
+                else if (startLetters.Length != 0 && endNumbers.Length == 0)
+                {
+                    gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
+                    gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
+                    gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
+                }
+
+                // Case B5:5
+                else if (startLetters.Length != 0 && endLetters.Length == 0)
+                {
+                    gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
+                    gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
+                    gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
+                }
+
+                // Case 2:4
+                else if (startLetters.Length == 0 && endLetters.Length == 0)
+                {
+                    gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
+                    gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
+                }
+
+                // Case A3:D4
                 else
                 {
-                    var rangeBounds = cellCoordinates.Split(':');
-                    string startLetters = Regex.Match(rangeBounds[0], @"[A-Za-z]+").Value;
-                    string startNumbers = Regex.Match(rangeBounds[0], @"\d+").Value;
-                    string endLetters = Regex.Match(rangeBounds[1], @"[A-Za-z]+").Value;
-                    string endNumbers = Regex.Match(rangeBounds[1], @"\d+").Value;
-
-                    // Case A:B
-                    if (startNumbers.Length == 0 && endNumbers.Length == 0)
-                    {
-                        gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
-                        gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
-                    }
-
-                    // Case A5:A
-                    else if (startLetters.Length != 0 && endNumbers.Length == 0)
-                    {
-                        gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
-                        gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
-                        gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
-                    }
-
-                    // Case B5:5
-                    else if (startLetters.Length != 0 && endLetters.Length == 0)
-                    {
-                        gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
-                        gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
-                        gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
-                    }
-
-                    // Case 2:4
-                    else if (startLetters.Length == 0 && endLetters.Length == 0)
-                    {
-                        gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
-                        gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
-                    }
-
-                    // Case A3:D4
-                    else
-                    {
-                        gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
-                        gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
-                        gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
-                        gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
-                    }
+                    gridRange.StartColumnIndex = ColumnNameToNumber(startLetters) - 1;
+                    gridRange.EndColumnIndex = ColumnNameToNumber(endLetters);
+                    gridRange.StartRowIndex = Convert.ToInt32(startNumbers) - 1;
+                    gridRange.EndRowIndex = Convert.ToInt32(endNumbers);
                 }
             }
+
             return gridRange;
         }
 

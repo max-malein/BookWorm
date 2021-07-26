@@ -106,19 +106,13 @@ namespace BookWorm.Utilities
         {
             var requests = new List<Request>();
 
-            var addSheetRequest = new Request();
-
-            var sheetProperties = new SheetProperties
+            var addSheetRequest = new Request
             {
-                Title = sheetName,
+                AddSheet = new AddSheetRequest
+                {
+                    Properties = new SheetProperties { Title = sheetName },
+                },
             };
-
-            var addSheet = new AddSheetRequest
-            {
-                Properties = sheetProperties,
-            };
-
-            addSheetRequest.AddSheet = addSheet;
 
             requests.Add(addSheetRequest);
 

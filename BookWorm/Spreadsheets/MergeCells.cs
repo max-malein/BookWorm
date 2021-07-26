@@ -101,6 +101,13 @@ namespace BookWorm.Spreadsheets
             }
 
             var sheetId = SheetsUtilities.GetSheetId(spreadsheetId, sheetName);
+
+            if (sheetId == null)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The sheet {sheetName} does not exist");
+                return;
+            }
+
             var gridRanges = new List<GridRange>();
 
             var requests = new List<Request>();
