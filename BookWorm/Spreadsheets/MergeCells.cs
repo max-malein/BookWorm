@@ -110,15 +110,15 @@ namespace BookWorm.Spreadsheets
                 var gridRange = CellsUtilities.GridRangeFromA1(cellRangesFormatted[i], (int)sheetId);
                 gridRanges.Add(gridRange);
 
-                var mergeCellRequest = new Request();
-
-                var mergeCells = new MergeCellsRequest
+                var mergeCellRequest = new Request
                 {
-                    Range = gridRange,
-                    MergeType = Enum.GetName(typeof(MergeTypes), mergeTypes[i]),
-                };
+                    MergeCells = new MergeCellsRequest
+                    {
+                        Range = gridRange,
+                        MergeType = Enum.GetName(typeof(MergeTypes), mergeTypes[i]),
+                    }
 
-                mergeCellRequest.MergeCells = mergeCells;
+                };
 
                 requests.Add(mergeCellRequest);
             }
