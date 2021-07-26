@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BookWorm.Utilities;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
@@ -24,16 +25,24 @@ namespace BookWorm.Spreadsheets
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            base.RegisterInputParams(pManager);
+            pManager.AddTextParameter("Spreadsheet URL", "U", "Google spreadsheet URL or spreadsheet ID", GH_ParamAccess.item);
+
+            pManager.AddTextParameter("Sheet Name", "N", "Sheet Name", GH_ParamAccess.item);
+
+            pManager.AddTextParameter(
+                "Cell Ranges",
+                "CR",
+                "Ranges of cells in \'a1\' notation. For example A1:B5 - range of cells, A15 - single cell, A:C - range of columns, etc.",
+                GH_ParamAccess.list);
 
             pManager.AddIntegerParameter(
-                "Merge Type",
+                "Merge Types",
                 "MT",
                 "How the cells should be merged.\n\n"
                 + "0 - MERGE_ALL - сreate a single merge from the range.\n"
                 + "1 - MERGE_COLUMNS - сreate a merge for each column in the range.\n"
                 + "2 - MERGE_ROWS - сreate a merge for each row in the range.",
-                GH_ParamAccess.item);
+                GH_ParamAccess.list);
 
             pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item, false);
         }
@@ -46,16 +55,42 @@ namespace BookWorm.Spreadsheets
         /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            base.SolveInstance(DA);
+            string spreadsheetUrl = string.Empty;
+            var sheetName = string.Empty;
+            var ranges = new List<string>();
 
-            var mergeType = 0;
+            var mergeTypes = new List<int>();
 
             var run = false;
 
-            if (!DA.GetData(3, ref mergeType) || (mergeType < 0 || mergeType > 2))
+            if (!DA.GetData(0, ref spreadsheetUrl)) return;
+            var spreadsheetId = Util.ParseUrl(spreadsheetUrl);
+
+            if (!DA.GetData(1, ref sheetName)) return;
+
+            // Check ranges
+            if (!DA.GetDataList(2, ranges)) return;
+            var cellRangesFormatted = ranges.Select(str => str.ToUpper()).ToList();
+
+            var rangesCount = cellRangesFormatted.Count();
+
+            // Check merge types
+            if (DA.GetDataList(3, mergeTypes))
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The merge type {mergeType} does not exist");
-                return;
+                if (rangesCount != mergeTypes.Count)
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Count of cell ranges and merge types must be equal");
+                    return;
+                }
+
+                foreach (var mergeType in mergeTypes)
+                {
+                    if (mergeType < 0 || mergeType > 2)
+                    {
+                        AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The merge type {mergeType} does not exist");
+                        return;
+                    }
+                }
             }
 
             DA.GetData(4, ref run);
@@ -65,28 +100,34 @@ namespace BookWorm.Spreadsheets
                 return;
             }
 
-            var sheetId = SheetsUtilities.GetSheetId(SpreadsheetId, SheetName);
-            var gridRange = CellsUtilities.GridRangeFromA1(this.SpreadsheetRange, (int)sheetId);
+            var sheetId = SheetsUtilities.GetSheetId(spreadsheetId, sheetName);
+            var gridRanges = new List<GridRange>();
 
             var requests = new List<Request>();
 
-            var mergeCellRequest = new Request();
-
-            var mergeCells = new MergeCellsRequest
+            for (int i = 0; i < rangesCount; i++)
             {
-                Range = gridRange,
-                MergeType = Enum.GetName(typeof(MergeTypes), mergeType),
-            };
+                var gridRange = CellsUtilities.GridRangeFromA1(cellRangesFormatted[i], (int)sheetId);
+                gridRanges.Add(gridRange);
 
-            mergeCellRequest.MergeCells = mergeCells;
+                var mergeCellRequest = new Request();
 
-            requests.Add(mergeCellRequest);
+                var mergeCells = new MergeCellsRequest
+                {
+                    Range = gridRange,
+                    MergeType = Enum.GetName(typeof(MergeTypes), mergeTypes[i]),
+                };
+
+                mergeCellRequest.MergeCells = mergeCells;
+
+                requests.Add(mergeCellRequest);
+            }
 
             // Main request of matrioshka-request.
             var requestBody = new BatchUpdateSpreadsheetRequest();
             requestBody.Requests = requests;
 
-            var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, SpreadsheetId);
+            var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, spreadsheetId);
 
             var response = request.Execute();
         }
