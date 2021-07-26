@@ -161,7 +161,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>SET version=0.8.2
+    <PostBuildEvent>SET version=0.9.0
 SET folder="%25appdata%25\McNeel\Rhinoceros\packages\7.0\bookworm\"
 
 copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
