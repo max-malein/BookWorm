@@ -161,6 +161,16 @@ namespace BookWorm.Utilities
             return null;
         }
 
+        public static List<string> GetAllSheetNames( string spreadsheetId)
+        {
+            var request = Credentials.Service.Spreadsheets.Get(spreadsheetId);
+            request.Fields = "sheets.properties(title,sheetId)";
+            var spreadsheet = request.Execute();
+            var sheets = spreadsheet.Sheets;
+
+            return sheets.Select(s => s.Properties.Title).ToList();
+        }
+
         /// <summary>
         /// Gets ranges of merged cells on the sheet.
         /// </summary>

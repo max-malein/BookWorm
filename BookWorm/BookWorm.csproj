@@ -134,6 +134,7 @@
     <Compile Include="Spreadsheets\ReadCellValue_Component.cs" />
     <Compile Include="Spreadsheets\ReadCell_Component.cs" />
     <Compile Include="Spreadsheets\WriteCellValues.cs" />
+    <Compile Include="Spreadsheets\GetSheets_Component.cs" />
     <Compile Include="Utilities\ReadWriteBaseComponent.cs" />
     <Compile Include="Utilities\TestComponent.cs" />
     <Compile Include="Utilities\Util.cs" />
@@ -161,7 +162,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>SET version=0.9.1
+    <PostBuildEvent>SET version=0.10.1
 SET folder="%25appdata%25\McNeel\Rhinoceros\packages\7.0\bookworm\"
 
 copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"

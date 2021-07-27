@@ -53,7 +53,7 @@ namespace BookWorm.Spreadsheets
             var run = false;
 
             if (!DA.GetData(0, ref spreadsheetUrl)) return;
-            var spreadsheetId = Util.ParseUrl(spreadsheetUrl);
+            SpreadsheetId = Util.ParseUrl(spreadsheetUrl);
 
             if (!DA.GetData(1, ref sheetName)) return;
 
@@ -68,7 +68,7 @@ namespace BookWorm.Spreadsheets
                 return;
             }
 
-            var sheetId = SheetsUtilities.GetSheetId(spreadsheetId, sheetName);
+            var sheetId = SheetsUtilities.GetSheetId(SpreadsheetId, sheetName);
 
             if (sheetId == null)
             {
@@ -99,7 +99,7 @@ namespace BookWorm.Spreadsheets
                 Requests = requests,
             };
 
-            var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, spreadsheetId);
+            var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, SpreadsheetId);
 
             var response = request.Execute();
         }
