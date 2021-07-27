@@ -1,21 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using BookWorm.Utilities;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
 
 namespace BookWorm.Spreadsheets
 {
-    public class UnmergeCells : ReadWriteBaseComponent
+    /// <summary>
+    /// Delete sheet component.
+    /// </summary>
+    public class DeleteSheet : ReadWriteBaseComponent
     {
+        /// <inheritdoc/>
+        public override Guid ComponentGuid => new Guid("fa2132f5-5623-450e-aae2-71f93e7d7227");
+
         /// <summary>
-        /// Initializes a new instance of the UnmergeCells class.
+        /// Initializes a new instance of the <see cref="DeleteSheet"/> class.
         /// </summary>
-        public UnmergeCells()
+        public DeleteSheet()
           : base(
-                "Unmerge Cells",
-                "Nickname",
+                "Delete Sheet",
+                "DelSheet",
                 "Description",
                 "BookWorm",
                 "Spreadsheet")
@@ -25,15 +30,10 @@ namespace BookWorm.Spreadsheets
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            // There is a conflict with base calling, so InputParams just rewrited.
             pManager.AddTextParameter("Spreadsheet URL", "U", "Google spreadsheet URL or spreadsheet ID", GH_ParamAccess.item);
 
             pManager.AddTextParameter("Sheet Name", "N", "Sheet Name", GH_ParamAccess.item);
-
-            pManager.AddTextParameter(
-                "Cell Ranges",
-                "CR",
-                "Ranges of cells in \'a1\' notation. For example A1:B5 - range of cells, A15 - single cell, A:C - range of columns, etc.",
-                GH_ParamAccess.list);
 
             pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item, false);
         }
@@ -46,28 +46,24 @@ namespace BookWorm.Spreadsheets
         /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            // There is a conflict with base calling, so SolveInstance also just rewrited.
             string spreadsheetUrl = string.Empty;
             var sheetName = string.Empty;
-            var ranges = new List<string>();
-
-            var run = false;
+            bool run = false;
 
             if (!DA.GetData(0, ref spreadsheetUrl)) return;
-            var spreadsheetId = Util.ParseUrl(spreadsheetUrl);
 
+            // Also there is matter point - delete sheet explicitly
             if (!DA.GetData(1, ref sheetName)) return;
 
-            // Check ranges
-            if (!DA.GetDataList(2, ranges)) return;
-            var cellRangesFormatted = ranges.Select(str => str.ToUpper()).ToList();
-
-            DA.GetData(3, ref run);
+            DA.GetData(2, ref run);
 
             if (!run)
             {
                 return;
             }
 
+            var spreadsheetId = Util.ParseUrl(spreadsheetUrl);
             var sheetId = SheetsUtilities.GetSheetId(spreadsheetId, sheetName);
 
             if (sheetId == null)
@@ -76,22 +72,15 @@ namespace BookWorm.Spreadsheets
                 return;
             }
 
-            var gridRanges = new List<GridRange>();
-
             var requests = new List<Request>();
 
-            foreach (var cellRange in cellRangesFormatted)
-            {
-                var gridRange = CellsUtilities.GridRangeFromA1(cellRange, (int)sheetId);
-                gridRanges.Add(gridRange);
+            var deleteSheetRequest = new Request();
 
-                var unmergeCellRequest = new Request
-                {
-                    UnmergeCells = new UnmergeCellsRequest { Range = gridRange },
-                };
+            var deleteSheet = new DeleteSheetRequest { SheetId = sheetId };
 
-                requests.Add(unmergeCellRequest);
-            }
+            deleteSheetRequest.DeleteSheet = deleteSheet;
+
+            requests.Add(deleteSheetRequest);
 
             // Main request of matrioshka-request.
             var requestBody = new BatchUpdateSpreadsheetRequest
@@ -100,25 +89,7 @@ namespace BookWorm.Spreadsheets
             };
 
             var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, spreadsheetId);
-
-            var response = request.Execute();
-        }
-
-        /// <inheritdoc/>
-        protected override System.Drawing.Bitmap Icon
-        {
-            get
-            {
-                // You can add image files to your project resources and access them like this:
-                // return Resources.IconForThisComponent;
-                return null;
-            }
-        }
-
-        /// <inheritdoc/>
-        public override Guid ComponentGuid
-        {
-            get { return new Guid("00437ebd-fde8-4db1-80af-ae511a04b51e"); }
+            _ = request.Execute();
         }
     }
 }

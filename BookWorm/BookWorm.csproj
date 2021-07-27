@@ -126,6 +126,7 @@
     <Compile Include="Goo\GH_TextFormat.cs" />
     <Compile Include="Goo\GH_TextRotation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spreadsheets\DeleteSheet.cs" />
     <Compile Include="Utilities\CellWithCoordinates.cs" />
     <Compile Include="Spreadsheets\MergeCells.cs" />
     <Compile Include="Spreadsheets\UnmergeCells.cs" />
@@ -160,7 +161,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>SET version=0.8.2
+    <PostBuildEvent>SET version=0.9.1
 SET folder="%25appdata%25\McNeel\Rhinoceros\packages\7.0\bookworm\"
 
 copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
