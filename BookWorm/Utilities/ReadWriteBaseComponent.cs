@@ -12,7 +12,7 @@ namespace BookWorm.Utilities
         /// <summary>
         /// Gets spreadsheet Id.
         /// </summary>
-        public string SpreadsheetId { get; private set; }
+        public string SpreadsheetId { get; set; }
 
         /// <summary>
         /// Gets sheet name.
