@@ -134,6 +134,7 @@
     <Compile Include="Spreadsheets\ReadCellValue_Component.cs" />
     <Compile Include="Spreadsheets\ReadCell_Component.cs" />
     <Compile Include="Spreadsheets\WriteCellValues.cs" />
+    <Compile Include="Utilities\GH_GetSheets.cs" />
     <Compile Include="Utilities\ReadWriteBaseComponent.cs" />
     <Compile Include="Utilities\TestComponent.cs" />
     <Compile Include="Utilities\Util.cs" />
