@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BookWorm.Utilities;
 using Google.Apis.Sheets.v4.Data;
 using Grasshopper.Kernel;
@@ -24,7 +25,15 @@ namespace BookWorm.Spreadsheets
         /// <inheritdoc/>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            base.RegisterInputParams(pManager);
+            pManager.AddTextParameter("Spreadsheet URL", "U", "Google spreadsheet URL or spreadsheet ID", GH_ParamAccess.item);
+
+            pManager.AddTextParameter("Sheet Name", "N", "Sheet Name", GH_ParamAccess.item);
+
+            pManager.AddTextParameter(
+                "Cell Ranges",
+                "CR",
+                "Ranges of cells in \'a1\' notation. For example A1:B5 - range of cells, A15 - single cell, A:C - range of columns, etc.",
+                GH_ParamAccess.list);
 
             pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item, false);
         }
@@ -37,32 +46,52 @@ namespace BookWorm.Spreadsheets
         /// <inheritdoc/>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            base.SolveInstance(DA);
+            string spreadsheetUrl = string.Empty;
+            var sheetName = string.Empty;
+            var ranges = new List<string>();
 
             var run = false;
 
-            DA.GetData("Run", ref run);
+            if (!DA.GetData(0, ref spreadsheetUrl)) return;
+            var spreadsheetId = Util.ParseUrl(spreadsheetUrl);
+
+            if (!DA.GetData(1, ref sheetName)) return;
+
+            // Check ranges
+            if (!DA.GetDataList(2, ranges)) return;
+            var cellRangesFormatted = ranges.Select(str => str.ToUpper()).ToList();
+
+            DA.GetData(3, ref run);
 
             if (!run)
             {
                 return;
             }
 
-            var sheetId = SheetsUtilities.GetSheetId(SpreadsheetId, SheetName);
-            var gridRange = CellsUtilities.GridRangeFromA1(this.SpreadsheetRange, (int)sheetId);
+            var sheetId = SheetsUtilities.GetSheetId(spreadsheetId, sheetName);
+
+            if (sheetId == null)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, $"The sheet {sheetName} does not exist");
+                return;
+            }
+
+            var gridRanges = new List<GridRange>();
 
             var requests = new List<Request>();
 
-            var unmergeCellRequest = new Request();
-
-            var unmergeCells = new UnmergeCellsRequest
+            foreach (var cellRange in cellRangesFormatted)
             {
-                Range = gridRange,
-            };
+                var gridRange = CellsUtilities.GridRangeFromA1(cellRange, (int)sheetId);
+                gridRanges.Add(gridRange);
 
-            unmergeCellRequest.UnmergeCells = unmergeCells;
+                var unmergeCellRequest = new Request
+                {
+                    UnmergeCells = new UnmergeCellsRequest { Range = gridRange },
+                };
 
-            requests.Add(unmergeCellRequest);
+                requests.Add(unmergeCellRequest);
+            }
 
             // Main request of matrioshka-request.
             var requestBody = new BatchUpdateSpreadsheetRequest
@@ -70,7 +99,7 @@ namespace BookWorm.Spreadsheets
                 Requests = requests,
             };
 
-            var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, SpreadsheetId);
+            var request = Credentials.Service.Spreadsheets.BatchUpdate(requestBody, spreadsheetId);
 
             var response = request.Execute();
         }
