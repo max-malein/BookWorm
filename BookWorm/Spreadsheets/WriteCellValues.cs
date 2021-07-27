@@ -29,7 +29,12 @@ namespace GoogleDocs.Spreadsheets
         {
             base.RegisterInputParams(pManager);
 
-            pManager.AddTextParameter("Values", "V", "Values", GH_ParamAccess.list);
+            pManager.AddTextParameter(
+                "Values",
+                "V",
+                "For input, supported value types are: bool, string, and double. Null values will be skipped."
+                + "\nTo set a cell to an empty value, set the string value to an empty string.",
+                GH_ParamAccess.list);
             pManager.AddBooleanParameter("Append", "A", "If true, values will be added to the next possible empty row", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Write", "W", "Write data to spreadsheet", GH_ParamAccess.item, false);
         }
@@ -55,18 +60,21 @@ namespace GoogleDocs.Spreadsheets
 
             if (!write) return;
 
+            var gridRange = CellsUtilities.GridRangeFromA1(CellRange, 0);
+            var rows = CellsUtilities.GetRows(inputData, gridRange);
+
             var valueRange = new ValueRange
             {
                 MajorDimension = "ROWS",
                 Range = this.SpreadsheetRange,
-                Values = new List<IList<object>>() { new List<object>() },
+                Values = rows.ToArray(),
             };
 
-            // you need to explicitly set every value to string, otherwise doesn't work
-            for (int i = 0; i < inputData.Count; i++)
-            {
-                valueRange.Values[0].Add(inputData[i]);
-            }
+            //// you need to explicitly set every value to string, otherwise doesn't work
+            //for (int i = 0; i < inputData.Count; i++)
+            //{
+            //    valueRange.Values[0].Add(inputData[i]);
+            //}
 
             if (append)
             {

@@ -54,6 +54,40 @@ namespace BookWorm.Utilities
         }
 
         /// <summary>
+        /// Splits cells values list in rows by grid range.
+        /// </summary>
+        /// <param name="cellsValues">Cells values.</param>
+        /// <param name="gridRange">Grid range.</param>
+        /// <returns>Rows.</returns>
+        public static List<List<object>> GetRows(List<string> cellsValues, GridRange gridRange)
+        {
+            if (gridRange == null) return null;
+
+            var rowLength = gridRange.EndColumnIndex - gridRange.StartColumnIndex;
+
+            var rows = new List<List<object>>();
+            var rowValues = new List<object>();
+
+            for (int i = 0; i < cellsValues.Count; i++)
+            {
+                rowValues.Add(cellsValues[i]);
+
+                if ((i + 1) % rowLength == 0)
+                {
+                    rows.Add(rowValues);
+                    rowValues = new List<object>();
+                }
+            }
+
+            if (rowValues.Any())
+            {
+                rows.Add(rowValues);
+            }
+
+            return rows;
+        }
+
+        /// <summary>
         /// Creates GridRange object from A1 notation range.
         /// </summary>
         /// <param name="CellRangeA1">Cells range in A1 notation.</param>
