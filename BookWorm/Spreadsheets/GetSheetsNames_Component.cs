@@ -1,24 +1,22 @@
-﻿using BookWorm.Utilities;
+﻿using System;
+using BookWorm.Utilities;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
 
 namespace BookWorm.Spreadsheets
 {
     /// <summary>
     /// Component to get sheet names from a speadsheet.
     /// </summary>
-    public class GetSheets_Component : ReadWriteBaseComponent
+    public class GetSheetsNames_Component : ReadWriteBaseComponent
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetSheets_Component"/> class.
+        /// Initializes a new instance of the <see cref="GetSheetsNames_Component"/> class.
         /// </summary>
-        public GetSheets_Component()
+        public GetSheetsNames_Component()
           : base(
-                "Get Sheet Names",
-                "GetSheets",
-                "Get sheet names from a spreadsheet",
+                "Get Sheets Names",
+                "GetSheetsNames",
+                "Get sheets names from a spreadsheet",
                 "BookWorm",
                 "Spreadsheet")
         {
@@ -34,7 +32,7 @@ namespace BookWorm.Spreadsheets
         /// <inheritdoc/>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("Sheet Names", "N", "Names of all spreadsheet sheets", GH_ParamAccess.item);
+            pManager.AddTextParameter("Sheets Names", "N", "Names of all spreadsheet sheets", GH_ParamAccess.item);
         }
 
         /// <inheritdoc/>
@@ -49,9 +47,9 @@ namespace BookWorm.Spreadsheets
             DA.GetData(1, ref run);
             if (!run) return;
 
-            var sheetIds = SheetsUtilities.GetAllSheetNames(SpreadsheetId);
+            var sheetsNames = SheetsUtilities.GetAllSheetNames(SpreadsheetId);
 
-            DA.SetDataList(0, sheetIds);
+            DA.SetDataList(0, sheetsNames);
         }
 
         /// <inheritdoc/>

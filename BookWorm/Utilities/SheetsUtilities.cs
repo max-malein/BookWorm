@@ -161,10 +161,15 @@ namespace BookWorm.Utilities
             return null;
         }
 
-        public static List<string> GetAllSheetNames( string spreadsheetId)
+        /// <summary>
+        /// Gets all sheets names on the spreadsheet.
+        /// </summary>
+        /// <param name="spreadsheetId">Spreadsheet Id.</param>
+        /// <returns>Sheets names.</returns>
+        public static List<string> GetAllSheetNames(string spreadsheetId)
         {
             var request = Credentials.Service.Spreadsheets.Get(spreadsheetId);
-            request.Fields = "sheets.properties(title,sheetId)";
+            request.Fields = "sheets.properties.title";
             var spreadsheet = request.Execute();
             var sheets = spreadsheet.Sheets;
 

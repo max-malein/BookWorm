@@ -60,6 +60,14 @@ namespace GoogleDocs.Spreadsheets
 
             if (!write) return;
 
+            var sheetId = SheetsUtilities.GetSheetId(SpreadsheetId, SheetName);
+
+            if (sheetId == null)
+            {
+                SheetsUtilities.CreateNewSheet(SpreadsheetId, SheetName);
+            }
+
+            // In that case gridRange just a tool for splitting inputData
             var gridRange = CellsUtilities.GridRangeFromA1(CellRange, 0);
             gridRange.FitRangeToCells(inputData.Count);
 
