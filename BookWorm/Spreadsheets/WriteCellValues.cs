@@ -72,12 +72,6 @@ namespace GoogleDocs.Spreadsheets
                 Values = rows.ToArray(),
             };
 
-            //// you need to explicitly set every value to string, otherwise doesn't work
-            //for (int i = 0; i < inputData.Count; i++)
-            //{
-            //    valueRange.Values[0].Add(inputData[i]);
-            //}
-
             if (append)
             {
                 var request = Credentials.Service.Spreadsheets.Values.Append(valueRange, SpreadsheetId, SpreadsheetRange);
