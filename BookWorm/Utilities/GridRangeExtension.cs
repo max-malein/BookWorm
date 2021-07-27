@@ -13,14 +13,9 @@ namespace BookWorm.Utilities
         /// <returns>Fitted range.</returns>
         public static GridRange FitRangeToCells(this GridRange gridRange, int cellsCount)
         {
-
-            // Only columns case.
-            // Works fine without that because row length depends on columns indicies (for GetRows),
-            // so you don't actually need end row index. But explicit is better than implicit.
-
             // Case SheetName
             if (gridRange.EndColumnIndex == null && gridRange.EndRowIndex == null)
-            {;
+            {
                 gridRange.EndColumnIndex = (int)Math.Ceiling(Math.Sqrt(cellsCount));
                 gridRange.EndRowIndex = gridRange.EndColumnIndex;
             }

@@ -14,10 +14,10 @@ namespace GoogleDocs.Spreadsheets
         /// </summary>
         public WriteCellValues()
           : base(
-                "WriteCellValues",
+                "Write Cell Values",
                 "WriteCellValues",
                 "A very basic google spreadsheet writer. "
-                + "Writes a row of values, starting from a given cell index. "
+                + "Writes a rows of values, within a given range. "
                 + "For a more comprehensive solution, please use WriteCell component",
                 "BookWorm",
                 "Spreadsheet")
@@ -32,11 +32,11 @@ namespace GoogleDocs.Spreadsheets
             pManager.AddTextParameter(
                 "Values",
                 "V",
-                "For input, supported value types are: bool, string, and double. Null values will be skipped."
+                "Null values will be skipped."
                 + "\nTo set a cell to an empty value, set the string value to an empty string.",
                 GH_ParamAccess.list);
             pManager.AddBooleanParameter("Append", "A", "If true, values will be added to the next possible empty row", GH_ParamAccess.item, false);
-            pManager.AddBooleanParameter("Write", "W", "Write data to spreadsheet", GH_ParamAccess.item, false);
+            pManager.AddBooleanParameter("Run", "Run", "Run", GH_ParamAccess.item, false);
         }
 
         /// <inheritdoc/>
@@ -56,11 +56,13 @@ namespace GoogleDocs.Spreadsheets
 
             if (!DA.GetDataList("Values", inputData)) return;
             DA.GetData("Append", ref append);
-            DA.GetData("Write", ref write);
+            DA.GetData("Run", ref write);
 
             if (!write) return;
 
             var gridRange = CellsUtilities.GridRangeFromA1(CellRange, 0);
+            gridRange.FitRangeToCells(inputData.Count);
+
             var rows = CellsUtilities.GetRows(inputData, gridRange);
 
             var valueRange = new ValueRange

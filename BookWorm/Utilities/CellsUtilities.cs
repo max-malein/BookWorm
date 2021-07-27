@@ -58,7 +58,7 @@ namespace BookWorm.Utilities
         /// </summary>
         /// <param name="cellsValues">Cells values.</param>
         /// <param name="gridRange">Grid range.</param>
-        /// <returns>Rows.</returns>
+        /// <returns>Rows of cell values.</returns>
         public static List<List<object>> GetRows(List<string> cellsValues, GridRange gridRange)
         {
             if (gridRange == null) return null;
