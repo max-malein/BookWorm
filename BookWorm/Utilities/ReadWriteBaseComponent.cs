@@ -80,17 +80,22 @@ namespace BookWorm.Utilities
             if (!DA.GetData(0, ref spreadsheetUrl)) return;
             SpreadsheetId = Util.ParseUrl(spreadsheetUrl);
 
-            if (DA.GetData(1, ref sheetName))
+            if (DA.GetData(1, ref sheetName) && sheetName != string.Empty)
+            {
                 SheetName = sheetName;
+            }
+            else
+            {
+                var sheetId = Util.GetSheetIdFromUrl(spreadsheetUrl);
+
+                if (sheetId != null)
+                {
+                    SheetName = SheetsUtilities.GetSheetName(SpreadsheetId, (int)sheetId);
+                }
+            }
 
             if (DA.GetData(2, ref range))
                 CellRange = range.ToUpper();
-
-            if (string.IsNullOrEmpty(SpreadsheetRange))
-            {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "For correct request at least need sheet name or cells range");
-                return;
-            }
         }
 
         /// <inheritdoc/>

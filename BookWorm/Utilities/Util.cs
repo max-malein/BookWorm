@@ -1,6 +1,4 @@
-﻿using Google.Apis.Sheets.v4.Data;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Text.RegularExpressions;
 
 namespace BookWorm.Utilities
@@ -20,6 +18,23 @@ namespace BookWorm.Utilities
             var match = Regex.Match(spreadsheetUrl, @"(?<=docs\.google\.com\/spreadsheets\/d\/)[\w-]+");
 
             return match.Success ? match.Value : spreadsheetUrl;
+        }
+
+        /// <summary>
+        /// Extracts sheet Id from url.
+        /// </summary>
+        /// <param name="spreadsheetUrl">Spreadsheet URL.</param>
+        /// <returns>Sheet Id or null if pattern doesn't match.</returns>
+        public static int? GetSheetIdFromUrl(string spreadsheetUrl)
+        {
+            var match = Regex.Match(spreadsheetUrl, @"(?<=edit\#gid\=)[\d]+");
+
+            if (match.Success)
+            {
+                return Convert.ToInt32(match.Value);
+            }
+
+            return null;
         }
     }
 }

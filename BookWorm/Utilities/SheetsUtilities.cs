@@ -161,7 +161,34 @@ namespace BookWorm.Utilities
             return null;
         }
 
-        public static List<string> GetAllSheetNames( string spreadsheetId)
+        /// <summary>
+        /// Gets sheet name by it's Id.
+        /// </summary>
+        /// <param name="spreadsheetId">Spreadsheet Id.</param>
+        /// <param name="sheetId">Sheet Id.</param>
+        /// <returns>Sheet name or null if something goes wrong.</returns>
+        public static string GetSheetName(string spreadsheetId, int sheetId)
+        {
+            var request = Credentials.Service.Spreadsheets.Get(spreadsheetId);
+
+            request.Fields = "sheets.properties(title,sheetId)";
+
+            var spreadsheet = request.Execute();
+
+            var sheets = spreadsheet.Sheets;
+
+            foreach (var sheet in sheets)
+            {
+                if (sheet.Properties.SheetId == sheetId)
+                {
+                    return sheet.Properties.Title;
+                }
+            }
+
+            return null;
+        }
+
+        public static List<string> GetAllSheetNames(string spreadsheetId)
         {
             var request = Credentials.Service.Spreadsheets.Get(spreadsheetId);
             request.Fields = "sheets.properties(title,sheetId)";
