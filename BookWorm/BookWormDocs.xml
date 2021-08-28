@@ -1,0 +1,1251 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BookWorm</name>
+    </assembly>
+    <members>
+        <member name="T:BookWorm.Construct.ConstructCellBorder">
+            <summary>
+            Construct cell border.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructCellBorder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Construct.ConstructCellBorder"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructCellBorder.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructCellBorder.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructCellBorder.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructCellBorder.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructCellBorder.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Construct.ConstructCellBorder.BorderStyle">
+            <summary>
+            NONE - No border. Used only when updating a border in order to erase it.
+            DOTTED - The border is dotted.
+            DASHED - The border is dashed.
+            SOLID - The border is a thin solid line.
+            SOLID_MEDIUM - The border is a medium solid line.
+            SOLID_THICK - The border is a thick solid line.
+            DOUBLE - The border is two solid lines.
+            </summary>
+        </member>
+        <member name="T:BookWorm.Construct.ConstructCellBorders">
+            <summary>
+            Construct cell borders.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructCellBorders.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Construct.ConstructCellBorders"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructCellBorders.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructCellBorders.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructCellBorders.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructCellBorders.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructCellBorders.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructCellFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Construct.ConstructCellFormat"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructCellFormat.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructCellFormat.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructCellFormat.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructCellFormat.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructCellFormat.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Construct.ConstructCellFormat.HorizontalAlign">
+            <summary>
+            The horizontal alignment of text in a cell.
+            </summary>
+        </member>
+        <member name="T:BookWorm.Construct.ConstructCellFormat.VerticalAlign">
+            <summary>
+            The vertical alignment of text in a cell.
+            </summary>
+        </member>
+        <member name="T:BookWorm.Construct.ConstructCellFormat.WrapStrategy">
+            <summary>
+            How to wrap text in a cell.
+            </summary>
+        </member>
+        <member name="T:BookWorm.Construct.ConstructCellFormat.TextDirection">
+            <summary>
+            The direction of text in a cell.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructExtendedValue.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Construct.ConstructExtendedValue"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructExtendedValue.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructExtendedValue.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructExtendedValue.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructExtendedValue.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructExtendedValue.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructNumberFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Construct.ConstructNumberFormat"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructNumberFormat.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructNumberFormat.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructNumberFormat.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructNumberFormat.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructNumberFormat.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Construct.ConstructNumberFormat.NumberFormatType">
+             <summary>
+             The number format of the cell. In this documentation the locale is assumed to be en_US,
+             but the actual format depends on the locale of the spreadsheet.
+            
+             TEXT - Text formatting, e.g 1000.12.
+             NUMBER - Number formatting, e.g, 1,000.12.
+             PERCENT - Percent formatting, e.g 10.12%.
+             CURRENCY - Currency formatting, e.g $1,000.12.
+             DATE - Date formatting, e.g 9/26/2008.
+             TIME - Time formatting, e.g 3:59:00 PM.
+             DATE_TIME - Date+Time formatting, e.g 9/26/08 15:59:00.
+             SCIENTIFIC - Scientific number formatting, e.g 1.01E+03.
+             </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructPadding.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Construct.ConstructPadding"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructPadding.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructPadding.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructPadding.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructPadding.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructPadding.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Construct.ConstructTextFormat">
+            <summary>
+            Construct text format.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructTextFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Construct.ConstructTextFormat"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructTextFormat.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructTextFormat.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructTextFormat.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructTextFormat.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructTextFormat.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructTextRotation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Construct.ConstructTextRotation"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructTextRotation.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructTextRotation.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.ConstructTextRotation.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructTextRotation.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.ConstructTextRotation.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Construct.GhConstructCell">
+            <summary>
+            Construct GoogleSheets CellData from some of it's component parts.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.GhConstructCell.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Construct.GhConstructCell"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Construct.GhConstructCell.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.GhConstructCell.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Construct.GhConstructCell.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.GhConstructCell.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Construct.GhConstructCell.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructCellBorder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Deconstruct.DeconstructCellBorder"/> class.
+            Deconstruct cell border.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructCellBorder.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructCellBorder.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructCellBorder.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <summary>
+            This is the method that actually does the work.
+            </summary>
+            <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructCellBorder.Icon">
+            <summary>
+            Provides an Icon for the component.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructCellBorder.ComponentGuid">
+            <summary>
+            Gets the unique ID for this component. Do not change this ID after release.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructCellBorders.#ctor">
+            <summary>
+            Initializes a new instance of the DeconstructCellBorders class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructCellBorders.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructCellBorders.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructCellBorders.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <summary>
+            This is the method that actually does the work.
+            </summary>
+            <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructCellBorders.Icon">
+            <summary>
+            Provides an Icon for the component.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructCellBorders.ComponentGuid">
+            <summary>
+            Gets the unique ID for this component. Do not change this ID after release.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructCellFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Deconstruct.DeconstructCellFormat"/> class.
+            Deconstruct cell format.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructCellFormat.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructCellFormat.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructCellFormat.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructCellFormat.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructCellFormat.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructExtendedValue.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Deconstruct.DeconstructExtendedValue"/> class.
+            Deconstruct extended value.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructExtendedValue.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructExtendedValue.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructExtendedValue.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <summary>
+            This is the method that actually does the work.
+            </summary>
+            <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructExtendedValue.Icon">
+            <summary>
+            Provides an Icon for the component.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructExtendedValue.ComponentGuid">
+            <summary>
+            Gets the unique ID for this component. Do not change this ID after release.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructNumberFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Deconstruct.DeconstructNumberFormat"/> class.
+            Deconstruct number format.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructNumberFormat.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructNumberFormat.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructNumberFormat.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <summary>
+            This is the method that actually does the work.
+            </summary>
+            <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructNumberFormat.Icon">
+            <summary>
+            Provides an Icon for the component.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructNumberFormat.ComponentGuid">
+            <summary>
+            Gets the unique ID for this component. Do not change this ID after release.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructPadding.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Deconstruct.DeconstructPadding"/> class.
+            Deconstruct padding.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructPadding.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructPadding.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructPadding.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <summary>
+            This is the method that actually does the work.
+            </summary>
+            <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructPadding.Icon">
+            <summary>
+            Provides an Icon for the component.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructPadding.ComponentGuid">
+            <summary>
+            Gets the unique ID for this component. Do not change this ID after release.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructTextFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Deconstruct.DeconstructTextFormat"/> class.
+            Deconstruct text format.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructTextFormat.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructTextFormat.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructTextFormat.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <summary>
+            This is the method that actually does the work.
+            </summary>
+            <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructTextFormat.Icon">
+            <summary>
+            Provides an Icon for the component.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructTextFormat.ComponentGuid">
+            <summary>
+            Gets the unique ID for this component. Do not change this ID after release.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructTextRotation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Deconstruct.DeconstructTextRotation"/> class.
+            Deconstruct text rotation.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructTextRotation.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructTextRotation.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.DeconstructTextRotation.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <summary>
+            This is the method that actually does the work.
+            </summary>
+            <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructTextRotation.Icon">
+            <summary>
+            Provides an Icon for the component.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Deconstruct.DeconstructTextRotation.ComponentGuid">
+            <summary>
+            Gets the unique ID for this component. Do not change this ID after release.
+            </summary>
+        </member>
+        <member name="T:BookWorm.Deconstruct.GhDeconstructCell">
+            <summary>
+            Deconstruct GoogleSheets CellData by some of it's component parts.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.GhDeconstructCell.#ctor">
+            <summary>
+            Initializes a new instance of the GhDeconstructCell class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Deconstruct.GhDeconstructCell.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.GhDeconstructCell.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Deconstruct.GhDeconstructCell.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Deconstruct.GhDeconstructCell.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Deconstruct.GhDeconstructCell.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Goo.GH_CellBorder">
+            <summary>
+            Cell Border Goo.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellBorder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_CellBorder"/> class.
+            Default.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellBorder.#ctor(Google.Apis.Sheets.v4.Data.Border)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_CellBorder"/> class.
+            CellBorder Goo.
+            </summary>
+            <param name="cellBorder">Cell Border.</param>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellBorder.#ctor(BookWorm.Goo.GH_CellBorder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_CellBorder"/> class.
+            Deep copy of Goo.
+            </summary>
+            <param name="cellBorderGoo">Cell Border Goo.</param>
+        </member>
+        <member name="P:BookWorm.Goo.GH_CellBorder.IsValid">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_CellBorder.TypeName">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_CellBorder.TypeDescription">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellBorder.Duplicate">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellBorder.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Goo.GH_CellBorders">
+            <summary>
+            Cell Borders Goo.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellBorders.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_CellBorders"/> class.
+            Default.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellBorders.#ctor(Google.Apis.Sheets.v4.Data.Borders)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_CellBorders"/> class.
+            Cell Borders Goo.
+            </summary>
+            <param name="cellBorders">Cell Borders.</param>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellBorders.#ctor(BookWorm.Goo.GH_CellBorders)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_CellBorders"/> class.
+            Deep copy of Goo.
+            </summary>
+            <param name="cellBordersGoo">Cell Borders Goo.</param>
+        </member>
+        <member name="P:BookWorm.Goo.GH_CellBorders.IsValid">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_CellBorders.TypeName">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_CellBorders.TypeDescription">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellBorders.Duplicate">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellBorders.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Goo.GH_CellData">
+            <summary>
+            CellData Goo.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_CellData"/> class.
+            Default.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellData.#ctor(Google.Apis.Sheets.v4.Data.CellData)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_CellData"/> class.
+            CellData Goo.
+            </summary>
+            <param name="cellData">CellData.</param>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellData.#ctor(BookWorm.Goo.GH_CellData)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_CellData"/> class.
+            Deep copy of Goo.
+            </summary>
+            <param name="cellDataGoo">CellData Goo.</param>
+        </member>
+        <member name="P:BookWorm.Goo.GH_CellData.IsValid">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_CellData.TypeName">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_CellData.TypeDescription">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellData.Duplicate">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellData.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellData.CastFrom(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Goo.GH_CellFormat">
+            <summary>
+            CellFormat Goo.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_CellFormat"/> class.
+            Default.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellFormat.#ctor(Google.Apis.Sheets.v4.Data.CellFormat)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_CellFormat"/> class.
+            CellFormat Goo.
+            </summary>
+            <param name="cellFormat">CellFormat.</param>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellFormat.#ctor(BookWorm.Goo.GH_CellFormat)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_CellFormat"/> class.
+            Deep copy of Goo.
+            </summary>
+            <param name="cellFormatGoo">CellFormat Goo.</param>
+        </member>
+        <member name="P:BookWorm.Goo.GH_CellFormat.IsValid">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_CellFormat.TypeName">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_CellFormat.TypeDescription">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellFormat.Duplicate">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_CellFormat.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Goo.GH_ExtendedValue">
+            <summary>
+            ExtendedValue Goo.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_ExtendedValue.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_ExtendedValue"/> class.
+            Default.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_ExtendedValue.#ctor(Google.Apis.Sheets.v4.Data.ExtendedValue)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_ExtendedValue"/> class.
+            ExtendedValue Goo.
+            </summary>
+            <param name="extendedValue">ExtendedValue.</param>
+        </member>
+        <member name="M:BookWorm.Goo.GH_ExtendedValue.#ctor(BookWorm.Goo.GH_ExtendedValue)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_ExtendedValue"/> class.
+            Deep copy of Goo.
+            </summary>
+            <param name="extendedValueGoo">ExtendedValue Goo.</param>
+        </member>
+        <member name="P:BookWorm.Goo.GH_ExtendedValue.IsValid">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_ExtendedValue.TypeName">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_ExtendedValue.TypeDescription">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_ExtendedValue.Duplicate">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_ExtendedValue.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Goo.GH_NumberFormat">
+            <summary>
+            NumberFormat Goo.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_NumberFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_NumberFormat"/> class.
+            Default.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_NumberFormat.#ctor(Google.Apis.Sheets.v4.Data.NumberFormat)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_NumberFormat"/> class.
+            NumberFormat Goo.
+            </summary>
+            <param name="numberFormat">NumberFormat.</param>
+        </member>
+        <member name="M:BookWorm.Goo.GH_NumberFormat.#ctor(BookWorm.Goo.GH_NumberFormat)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_NumberFormat"/> class.
+            Deep copy of Goo.
+            </summary>
+            <param name="numberFormatGoo">NumberFormat Goo.</param>
+        </member>
+        <member name="P:BookWorm.Goo.GH_NumberFormat.IsValid">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_NumberFormat.TypeName">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_NumberFormat.TypeDescription">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_NumberFormat.Duplicate">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_NumberFormat.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Goo.GH_Padding">
+            <summary>
+            Cell Padding Goo.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_Padding.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_Padding"/> class.
+            Default.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_Padding.#ctor(Google.Apis.Sheets.v4.Data.Padding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_Padding"/> class.
+            Cell Padding Goo.
+            </summary>
+            <param name="padding">Cell Padding.</param>
+        </member>
+        <member name="M:BookWorm.Goo.GH_Padding.#ctor(BookWorm.Goo.GH_Padding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_Padding"/> class.
+            Deep copy of Goo.
+            </summary>
+            <param name="paddingGoo">Cell Padding Goo.</param>
+        </member>
+        <member name="P:BookWorm.Goo.GH_Padding.IsValid">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_Padding.TypeName">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_Padding.TypeDescription">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_Padding.Duplicate">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_Padding.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Goo.GH_TextFormat">
+            <summary>
+            TextFormat Goo.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_TextFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_TextFormat"/> class.
+            Default.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_TextFormat.#ctor(Google.Apis.Sheets.v4.Data.TextFormat)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_TextFormat"/> class.
+            TextFormat Goo.
+            </summary>
+            <param name="textFormat">TextFormat.</param>
+        </member>
+        <member name="M:BookWorm.Goo.GH_TextFormat.#ctor(BookWorm.Goo.GH_TextFormat)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_TextFormat"/> class.
+            Deep copy of Goo.
+            </summary>
+            <param name="textFormatGoo">TextFormat Goo.</param>
+        </member>
+        <member name="P:BookWorm.Goo.GH_TextFormat.IsValid">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_TextFormat.TypeName">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_TextFormat.TypeDescription">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_TextFormat.Duplicate">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_TextFormat.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Goo.GH_TextRotation">
+            <summary>
+            TextRotation Goo.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_TextRotation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_TextRotation"/> class.
+            Default.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Goo.GH_TextRotation.#ctor(Google.Apis.Sheets.v4.Data.TextRotation)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_TextRotation"/> class.
+            TextRotaion Goo.
+            </summary>
+            <param name="textRotation">TextRotation.</param>
+        </member>
+        <member name="M:BookWorm.Goo.GH_TextRotation.#ctor(BookWorm.Goo.GH_TextRotation)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Goo.GH_TextRotation"/> class.
+            Deep copy of Goo.
+            </summary>
+            <param name="textRotationGoo">TextRotation Goo.</param>
+        </member>
+        <member name="P:BookWorm.Goo.GH_TextRotation.IsValid">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_TextRotation.TypeName">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Goo.GH_TextRotation.TypeDescription">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_TextRotation.Duplicate">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Goo.GH_TextRotation.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Spreadsheets.DeleteSheet">
+            <summary>
+            Delete sheet component.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Spreadsheets.DeleteSheet.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.DeleteSheet.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Spreadsheets.DeleteSheet"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.DeleteSheet.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.DeleteSheet.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.DeleteSheet.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.MergeCells.#ctor">
+            <summary>
+            Initializes a new instance of the MergeCells class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.MergeCells.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.MergeCells.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.MergeCells.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Spreadsheets.MergeCells.MergeTypes">
+            <summary>
+            MERGE_ALL - сreate a single merge from the range.
+            MERGE_COLUMNS - сreate a merge for each column in the range.
+            MERGE_ROWS - сreate a merge for each row in the range.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Spreadsheets.MergeCells.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Spreadsheets.MergeCells.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.UnmergeCells.#ctor">
+            <summary>
+            Initializes a new instance of the UnmergeCells class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.UnmergeCells.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.UnmergeCells.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.UnmergeCells.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Spreadsheets.UnmergeCells.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Spreadsheets.UnmergeCells.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.WriteCells.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Spreadsheets.WriteCells"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.WriteCells.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.WriteCells.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.WriteCells.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Spreadsheets.WriteCells.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Spreadsheets.WriteCells.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Spreadsheets.ReadCell_Component">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.ReadCell_Component.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Spreadsheets.ReadCell_Component"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.ReadCell_Component.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.ReadCell_Component.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.ReadCell_Component.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Spreadsheets.ReadCell_Component.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Spreadsheets.ReadCell_Component.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Spreadsheets.GetSheets_Component">
+            <summary>
+            Component to get sheet names from a speadsheet.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.GetSheets_Component.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Spreadsheets.GetSheets_Component"/> class.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.GetSheets_Component.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.GetSheets_Component.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Spreadsheets.GetSheets_Component.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:BookWorm.Spreadsheets.GetSheets_Component.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Utilities.ReadWriteBaseComponent">
+            <summary>
+            Base component for reading and writing spreadsheets.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Utilities.ReadWriteBaseComponent.SpreadsheetId">
+            <summary>
+            Gets spreadsheet Id.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Utilities.ReadWriteBaseComponent.SheetName">
+            <summary>
+            Gets sheet name.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Utilities.ReadWriteBaseComponent.CellRange">
+            <summary>
+            Gets a range of cells in A1 notaton.
+            </summary>
+        </member>
+        <member name="P:BookWorm.Utilities.ReadWriteBaseComponent.SpreadsheetRange">
+            <summary>
+            Gets a range of cells with given sheet name in A1 notation on a spreadsheet.
+            If range include only sheet name, its refer all cells in named sheet.
+            If range include only cell range its refer cells of the first visible sheet.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Utilities.ReadWriteBaseComponent.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookWorm.Utilities.ReadWriteBaseComponent"/> class.
+            </summary>
+            <param name="name">Name.</param>
+            <param name="nick">Nickname.</param>
+            <param name="desc">Description.</param>
+            <param name="tab">Tab.</param>
+            <param name="subTab">Group.</param>
+        </member>
+        <member name="P:BookWorm.Utilities.ReadWriteBaseComponent.ComponentGuid">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Utilities.ReadWriteBaseComponent.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Utilities.ReadWriteBaseComponent.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Utilities.ReadWriteBaseComponent.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BookWorm.Utilities.ReadWriteBaseComponent.AppendAdditionalMenuItems(System.Windows.Forms.ToolStripDropDown)">
+            <inheritdoc/>
+        </member>
+        <member name="T:BookWorm.Utilities.Util">
+            <summary>
+            Utility functions.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Utilities.Util.ParseUrl(System.String)">
+            <summary>
+            Extracts spreadsheet id from url.
+            </summary>
+            <param name="spreadsheetUrl">Spreadsheet url.</param>
+            <returns>Spreadsheet id or original string if it doesn't match url pattern.</returns>
+        </member>
+        <member name="T:BookWorm.Utilities.CellsUtilities">
+            <summary>
+            Helper operations with Google Sheets data types for cells.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Utilities.CellsUtilities.GetRows(System.Collections.Generic.List{Google.Apis.Sheets.v4.Data.CellData},Google.Apis.Sheets.v4.Data.GridRange)">
+            <summary>
+            Splits cells list in rows by grid range.
+            </summary>
+            <param name="cells">Cells.</param>
+            <param name="gridRange">Grid range.</param>
+            <returns>Rows.</returns>
+        </member>
+        <member name="M:BookWorm.Utilities.CellsUtilities.GridRangeFromA1(System.String,System.Int32)">
+            <summary>
+            Creates GridRange object from A1 notation range.
+            </summary>
+            <param name="cellRangeA1">Cells range in A1 notation.</param>
+            <param name="sheetId">Sheet Id.</param>
+            <returns>new Grid Range.</returns>
+        </member>
+        <member name="M:BookWorm.Utilities.CellsUtilities.GetCellCoordinates(System.Collections.Generic.IList{Google.Apis.Sheets.v4.Data.RowData},System.Int32,System.Int32)">
+            <summary>
+            Gets the cells coordinates which represents their row and column indices.
+            </summary>
+            <param name="rowsData">Rows of cells in range.</param>
+            <param name="startRowInd">Index of first row in cells range.</param>
+            <param name="startColumnInd">Index of first column in cells range.</param>
+            <returns>Row and column indicies of the cells.</returns>
+        </member>
+        <member name="M:BookWorm.Utilities.CellsUtilities.ColumnNameToNumber(System.String)">
+            <summary>
+            Convert column letter to index.
+            </summary>
+            <param name="columnName">Column name.</param>
+            <returns>Column number for column name.</returns>
+        </member>
+        <member name="T:BookWorm.Utilities.Credentials">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BookWorm.Utilities.Credentials.Service">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BookWorm.Utilities.GridRangeExtension.FitRangeToCells(Google.Apis.Sheets.v4.Data.GridRange,System.Int32)">
+            <summary>
+            Evenly distributes cells in rows.
+            </summary>
+            <param name="gridRange">Grid range.</param>
+            <param name="cellsCount">Cells count.</param>
+            <returns>Fitted range.</returns>
+        </member>
+        <member name="T:BookWorm.Utilities.SheetsUtilities">
+            <summary>
+            Helper operations with Google Sheets data types for sheets.
+            </summary>
+        </member>
+        <member name="M:BookWorm.Utilities.SheetsUtilities.GetGoogleSheetsColor(System.Drawing.Color)">
+            <summary>
+            Convert System.Drawing.Color-type ARGB-color into Google.Apis.Sheets.v4.Data.Color-type color.
+            </summary>
+            <param name="colorARGB">System.Drawing.Color-type color.</param>
+            <returns>Google.Apis.Sheets.v4.Data.Color-type color.</returns>
+        </member>
+        <member name="M:BookWorm.Utilities.SheetsUtilities.GetSystemDrawingColor(Google.Apis.Sheets.v4.Data.Color)">
+            <summary>
+            Convert Google.Apis.Sheets.v4.Data.Color-type color into System.Drawing.Color-type ARGB-color.
+            </summary>
+            <param name="googleSheetsColor">Google.Apis.Sheets.v4.Data.Color-type color.</param>
+            <returns>System.Drawing.Color-type ARGB-color.</returns>
+        </member>
+        <member name="M:BookWorm.Utilities.SheetsUtilities.GetFormattedARGB(System.Drawing.Color)">
+            <summary>
+            Formats color for gh panel.
+            </summary>
+            <param name="colorARGB">System.Drawing.Color-type color.</param>
+            <returns>RGB-color as "R,G,B" string.</returns>
+        </member>
+        <member name="M:BookWorm.Utilities.SheetsUtilities.GetSpreadsheetRange(System.String,System.String)">
+            <summary>
+            Gets spreadsheet range in A1 notation wich will retrive from the spreadsheet.
+            If range include only sheet name, its refer all cells in named sheet.
+            If range include only cell range its refer cells of the first visible sheet.
+            </summary>
+            <param name="sheetName">Sheet name.</param>
+            <param name="cellRange">Range of cells in A1 notaton.</param>
+            <returns>Spreadsheet range in A1 notation.</returns>
+        </member>
+        <member name="M:BookWorm.Utilities.SheetsUtilities.CreateNewSheet(System.String,System.String)">
+            <summary>
+            Add new sheet to the spreadsheet.
+            </summary>
+            <param name="spreadsheetId">Spreadsheet Id.</param>
+            <param name="sheetName">Sheet Name.</param>
+            <returns>Sheet Id of created sheet.</returns>
+        </member>
+        <member name="M:BookWorm.Utilities.SheetsUtilities.GetSheetId(System.String,System.String)">
+            <summary>
+            Get sheet Id by it's name.
+            </summary>
+            <param name="spreadsheetId">Spreadsheet Id.</param>
+            <param name="sheetName">Sheet Name.</param>
+            <returns>Sheet Id or null if sheet doesn't exist.</returns>
+        </member>
+        <member name="M:BookWorm.Utilities.SheetsUtilities.GetMergeRanges(System.String,System.String)">
+            <summary>
+            Gets ranges of merged cells on the sheet.
+            </summary>
+            <param name="spreadsheetId">Spreadsheet Id.</param>
+            <param name="spreadsheetRange">The range to retrieve from spreadsheet.</param>
+            <returns>The ranges that are merged together.</returns>
+        </member>
+        <member name="M:BookWorm.Utilities.SheetsUtilities.FindMergeOrigin(System.Nullable{System.Drawing.Point},System.Collections.Generic.List{Google.Apis.Sheets.v4.Data.GridRange})">
+            <summary>
+            Gets top left cell coordinates in range of merged cells.
+            </summary>
+            <param name="coordinates">Coordinates of the cell in a form of a Point.</param>
+            <param name="mergeData">GridRange of merged cells.</param>
+            <returns>Point representation of cell coordinates, where X - column index and Y - row index.</returns>
+        </member>
+        <member name="T:GoogleDocs.BookWormInfo">
+            <summary>
+            Info.
+            </summary>
+        </member>
+        <member name="P:GoogleDocs.BookWormInfo.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:GoogleDocs.BookWormInfo.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:GoogleDocs.BookWormInfo.Description">
+            <inheritdoc/>
+        </member>
+        <member name="P:GoogleDocs.BookWormInfo.Version">
+            <inheritdoc/>
+        </member>
+        <member name="P:GoogleDocs.BookWormInfo.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:GoogleDocs.BookWormInfo.AuthorName">
+            <inheritdoc/>
+        </member>
+        <member name="P:GoogleDocs.BookWormInfo.AuthorContact">
+            <inheritdoc/>
+        </member>
+        <member name="M:GoogleDocs.Spreadsheets.ReadCellValue_Component.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GoogleDocs.Spreadsheets.ReadCellValue_Component"/> class.
+            </summary>
+        </member>
+        <member name="M:GoogleDocs.Spreadsheets.ReadCellValue_Component.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GoogleDocs.Spreadsheets.ReadCellValue_Component.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GoogleDocs.Spreadsheets.ReadCellValue_Component.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:GoogleDocs.Spreadsheets.ReadCellValue_Component.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:GoogleDocs.Spreadsheets.ReadCellValue_Component.ComponentGuid">
+            <summary>
+            Each component must have a unique Guid to identify it.
+            It is vital this Guid doesn't change otherwise old ghx files
+            that use the old ID will partially fail during loading.
+            </summary>
+        </member>
+        <member name="M:GoogleDocs.Spreadsheets.WriteCellValues.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GoogleDocs.Spreadsheets.WriteCellValues"/> class.
+            </summary>
+        </member>
+        <member name="M:GoogleDocs.Spreadsheets.WriteCellValues.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GoogleDocs.Spreadsheets.WriteCellValues.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GoogleDocs.Spreadsheets.WriteCellValues.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">
+            <inheritdoc/>
+        </member>
+        <member name="P:GoogleDocs.Spreadsheets.WriteCellValues.Icon">
+            <inheritdoc/>
+        </member>
+        <member name="P:GoogleDocs.Spreadsheets.WriteCellValues.ComponentGuid">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

@@ -185,6 +185,7 @@ yak build</PostBuildEvent>
     <StartArguments>
     </StartArguments>
     <StartAction>Program</StartAction>
+    <DocumentationFile>BookWormDocs.xml</DocumentationFile>
   </PropertyGroup>
   <Import Project="..\packages\RhinoCommon.7.1.20343.9491\build\RhinoCommon.targets" Condition="Exists('..\packages\RhinoCommon.7.1.20343.9491\build\RhinoCommon.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

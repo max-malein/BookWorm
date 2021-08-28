@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWorm", "BookWorm\BookWo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWormTests", "BookWormTests\BookWormTests.csproj", "{BD7625E1-2AA6-4554-86BD-7E4235BB6114}"
 EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "Documentation\Documentation.shfbproj", "{4BAB2549-C7DF-4603-871A-A2DD5399F6CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,11 @@ Global
 		{BD7625E1-2AA6-4554-86BD-7E4235BB6114}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BD7625E1-2AA6-4554-86BD-7E4235BB6114}.Yak|Any CPU.ActiveCfg = Debug|Any CPU
 		{BD7625E1-2AA6-4554-86BD-7E4235BB6114}.Yak|Any CPU.Build.0 = Debug|Any CPU
+		{4BAB2549-C7DF-4603-871A-A2DD5399F6CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BAB2549-C7DF-4603-871A-A2DD5399F6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BAB2549-C7DF-4603-871A-A2DD5399F6CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BAB2549-C7DF-4603-871A-A2DD5399F6CF}.Yak|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BAB2549-C7DF-4603-871A-A2DD5399F6CF}.Yak|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

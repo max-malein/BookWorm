@@ -1,0 +1,585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="AppendAdditionalMenuItems method" Url="html/M_BookWorm_Utilities_ReadWriteBaseComponent_AppendAdditionalMenuItems.htm" />
+  <HelpKINode Title="AuthorContact property" Url="html/P_GoogleDocs_BookWormInfo_AuthorContact.htm" />
+  <HelpKINode Title="AuthorName property" Url="html/P_GoogleDocs_BookWormInfo_AuthorName.htm" />
+  <HelpKINode Title="BookWorm.Construct namespace" Url="html/N_BookWorm_Construct.htm" />
+  <HelpKINode Title="BookWorm.Construct.ConstructCellBorder class" Url="html/T_BookWorm_Construct_ConstructCellBorder.htm" />
+  <HelpKINode Title="BookWorm.Construct.ConstructCellBorders class" Url="html/T_BookWorm_Construct_ConstructCellBorders.htm" />
+  <HelpKINode Title="BookWorm.Construct.ConstructCellFormat class" Url="html/T_BookWorm_Construct_ConstructCellFormat.htm" />
+  <HelpKINode Title="BookWorm.Construct.ConstructExtendedValue class" Url="html/T_BookWorm_Construct_ConstructExtendedValue.htm" />
+  <HelpKINode Title="BookWorm.Construct.ConstructNumberFormat class" Url="html/T_BookWorm_Construct_ConstructNumberFormat.htm" />
+  <HelpKINode Title="BookWorm.Construct.ConstructPadding class" Url="html/T_BookWorm_Construct_ConstructPadding.htm" />
+  <HelpKINode Title="BookWorm.Construct.ConstructTextFormat class" Url="html/T_BookWorm_Construct_ConstructTextFormat.htm" />
+  <HelpKINode Title="BookWorm.Construct.ConstructTextRotation class" Url="html/T_BookWorm_Construct_ConstructTextRotation.htm" />
+  <HelpKINode Title="BookWorm.Construct.GhConstructCell class" Url="html/T_BookWorm_Construct_GhConstructCell.htm" />
+  <HelpKINode Title="BookWorm.Deconstruct namespace" Url="html/N_BookWorm_Deconstruct.htm" />
+  <HelpKINode Title="BookWorm.Deconstruct.DeconstructCellBorder class" Url="html/T_BookWorm_Deconstruct_DeconstructCellBorder.htm" />
+  <HelpKINode Title="BookWorm.Deconstruct.DeconstructCellBorders class" Url="html/T_BookWorm_Deconstruct_DeconstructCellBorders.htm" />
+  <HelpKINode Title="BookWorm.Deconstruct.DeconstructCellFormat class" Url="html/T_BookWorm_Deconstruct_DeconstructCellFormat.htm" />
+  <HelpKINode Title="BookWorm.Deconstruct.DeconstructExtendedValue class" Url="html/T_BookWorm_Deconstruct_DeconstructExtendedValue.htm" />
+  <HelpKINode Title="BookWorm.Deconstruct.DeconstructNumberFormat class" Url="html/T_BookWorm_Deconstruct_DeconstructNumberFormat.htm" />
+  <HelpKINode Title="BookWorm.Deconstruct.DeconstructPadding class" Url="html/T_BookWorm_Deconstruct_DeconstructPadding.htm" />
+  <HelpKINode Title="BookWorm.Deconstruct.DeconstructTextFormat class" Url="html/T_BookWorm_Deconstruct_DeconstructTextFormat.htm" />
+  <HelpKINode Title="BookWorm.Deconstruct.DeconstructTextRotation class" Url="html/T_BookWorm_Deconstruct_DeconstructTextRotation.htm" />
+  <HelpKINode Title="BookWorm.Deconstruct.GhDeconstructCell class" Url="html/T_BookWorm_Deconstruct_GhDeconstructCell.htm" />
+  <HelpKINode Title="BookWorm.Goo namespace" Url="html/N_BookWorm_Goo.htm" />
+  <HelpKINode Title="BookWorm.Goo.GH_CellBorder class" Url="html/T_BookWorm_Goo_GH_CellBorder.htm" />
+  <HelpKINode Title="BookWorm.Goo.GH_CellBorders class" Url="html/T_BookWorm_Goo_GH_CellBorders.htm" />
+  <HelpKINode Title="BookWorm.Goo.GH_CellData class" Url="html/T_BookWorm_Goo_GH_CellData.htm" />
+  <HelpKINode Title="BookWorm.Goo.GH_CellFormat class" Url="html/T_BookWorm_Goo_GH_CellFormat.htm" />
+  <HelpKINode Title="BookWorm.Goo.GH_ExtendedValue class" Url="html/T_BookWorm_Goo_GH_ExtendedValue.htm" />
+  <HelpKINode Title="BookWorm.Goo.GH_NumberFormat class" Url="html/T_BookWorm_Goo_GH_NumberFormat.htm" />
+  <HelpKINode Title="BookWorm.Goo.GH_Padding class" Url="html/T_BookWorm_Goo_GH_Padding.htm" />
+  <HelpKINode Title="BookWorm.Goo.GH_TextFormat class" Url="html/T_BookWorm_Goo_GH_TextFormat.htm" />
+  <HelpKINode Title="BookWorm.Goo.GH_TextRotation class" Url="html/T_BookWorm_Goo_GH_TextRotation.htm" />
+  <HelpKINode Title="BookWorm.Spreadsheets namespace" Url="html/N_BookWorm_Spreadsheets.htm" />
+  <HelpKINode Title="BookWorm.Spreadsheets.DeleteSheet class" Url="html/T_BookWorm_Spreadsheets_DeleteSheet.htm" />
+  <HelpKINode Title="BookWorm.Spreadsheets.GetSheets_Component class" Url="html/T_BookWorm_Spreadsheets_GetSheets_Component.htm" />
+  <HelpKINode Title="BookWorm.Spreadsheets.MergeCells class" Url="html/T_BookWorm_Spreadsheets_MergeCells.htm" />
+  <HelpKINode Title="BookWorm.Spreadsheets.ReadCell_Component class" Url="html/T_BookWorm_Spreadsheets_ReadCell_Component.htm" />
+  <HelpKINode Title="BookWorm.Spreadsheets.UnmergeCells class" Url="html/T_BookWorm_Spreadsheets_UnmergeCells.htm" />
+  <HelpKINode Title="BookWorm.Spreadsheets.WriteCells class" Url="html/T_BookWorm_Spreadsheets_WriteCells.htm" />
+  <HelpKINode Title="BookWorm.Utilities namespace" Url="html/N_BookWorm_Utilities.htm" />
+  <HelpKINode Title="BookWorm.Utilities.CellsUtilities class" Url="html/T_BookWorm_Utilities_CellsUtilities.htm" />
+  <HelpKINode Title="BookWorm.Utilities.Credentials class" Url="html/T_BookWorm_Utilities_Credentials.htm" />
+  <HelpKINode Title="BookWorm.Utilities.GridRangeExtension class" Url="html/T_BookWorm_Utilities_GridRangeExtension.htm" />
+  <HelpKINode Title="BookWorm.Utilities.ReadWriteBaseComponent class" Url="html/T_BookWorm_Utilities_ReadWriteBaseComponent.htm" />
+  <HelpKINode Title="BookWorm.Utilities.SheetsUtilities class" Url="html/T_BookWorm_Utilities_SheetsUtilities.htm" />
+  <HelpKINode Title="BookWorm.Utilities.TestComponent class" Url="html/T_BookWorm_Utilities_TestComponent.htm" />
+  <HelpKINode Title="BookWorm.Utilities.Util class" Url="html/T_BookWorm_Utilities_Util.htm" />
+  <HelpKINode Title="BookWormInfo class">
+    <HelpKINode Title="BookWormInfo Class" Url="html/T_GoogleDocs_BookWormInfo.htm" />
+    <HelpKINode Title="constructor" Url="html/M_GoogleDocs_BookWormInfo__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_GoogleDocs_BookWormInfo.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_GoogleDocs_BookWormInfo.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BookWormInfo.AuthorContact property" Url="html/P_GoogleDocs_BookWormInfo_AuthorContact.htm" />
+  <HelpKINode Title="BookWormInfo.AuthorName property" Url="html/P_GoogleDocs_BookWormInfo_AuthorName.htm" />
+  <HelpKINode Title="BookWormInfo.BookWormInfo constructor" Url="html/M_GoogleDocs_BookWormInfo__ctor.htm" />
+  <HelpKINode Title="BookWormInfo.Description property" Url="html/P_GoogleDocs_BookWormInfo_Description.htm" />
+  <HelpKINode Title="BookWormInfo.Icon property" Url="html/P_GoogleDocs_BookWormInfo_Icon.htm" />
+  <HelpKINode Title="BookWormInfo.Id property" Url="html/P_GoogleDocs_BookWormInfo_Id.htm" />
+  <HelpKINode Title="BookWormInfo.Name property" Url="html/P_GoogleDocs_BookWormInfo_Name.htm" />
+  <HelpKINode Title="BookWormInfo.Version property" Url="html/P_GoogleDocs_BookWormInfo_Version.htm" />
+  <HelpKINode Title="CastFrom method" Url="html/M_BookWorm_Goo_GH_CellData_CastFrom.htm" />
+  <HelpKINode Title="CellRange property" Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_CellRange.htm" />
+  <HelpKINode Title="CellsUtilities class">
+    <HelpKINode Title="CellsUtilities Class" Url="html/T_BookWorm_Utilities_CellsUtilities.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Utilities_CellsUtilities.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CellsUtilities.GetRows method" Url="html/M_BookWorm_Utilities_CellsUtilities_GetRows.htm" />
+  <HelpKINode Title="CellsUtilities.GridRangeFromA1 method" Url="html/M_BookWorm_Utilities_CellsUtilities_GridRangeFromA1.htm" />
+  <HelpKINode Title="ComponentGuid property">
+    <HelpKINode Title="ConstructCellBorder.ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructCellBorder_ComponentGuid.htm" />
+    <HelpKINode Title="ConstructCellBorders.ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructCellBorders_ComponentGuid.htm" />
+    <HelpKINode Title="ConstructCellFormat.ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructCellFormat_ComponentGuid.htm" />
+    <HelpKINode Title="ConstructExtendedValue.ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructExtendedValue_ComponentGuid.htm" />
+    <HelpKINode Title="ConstructNumberFormat.ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructNumberFormat_ComponentGuid.htm" />
+    <HelpKINode Title="ConstructPadding.ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructPadding_ComponentGuid.htm" />
+    <HelpKINode Title="ConstructTextFormat.ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructTextFormat_ComponentGuid.htm" />
+    <HelpKINode Title="ConstructTextRotation.ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructTextRotation_ComponentGuid.htm" />
+    <HelpKINode Title="DeconstructCellBorder.ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructCellBorder_ComponentGuid.htm" />
+    <HelpKINode Title="DeconstructCellBorders.ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructCellBorders_ComponentGuid.htm" />
+    <HelpKINode Title="DeconstructCellFormat.ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructCellFormat_ComponentGuid.htm" />
+    <HelpKINode Title="DeconstructExtendedValue.ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructExtendedValue_ComponentGuid.htm" />
+    <HelpKINode Title="DeconstructNumberFormat.ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructNumberFormat_ComponentGuid.htm" />
+    <HelpKINode Title="DeconstructPadding.ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructPadding_ComponentGuid.htm" />
+    <HelpKINode Title="DeconstructTextFormat.ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructTextFormat_ComponentGuid.htm" />
+    <HelpKINode Title="DeconstructTextRotation.ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructTextRotation_ComponentGuid.htm" />
+    <HelpKINode Title="DeleteSheet.ComponentGuid Property " Url="html/P_BookWorm_Spreadsheets_DeleteSheet_ComponentGuid.htm" />
+    <HelpKINode Title="GetSheets_Component.ComponentGuid Property " Url="html/P_BookWorm_Spreadsheets_GetSheets_Component_ComponentGuid.htm" />
+    <HelpKINode Title="GhConstructCell.ComponentGuid Property " Url="html/P_BookWorm_Construct_GhConstructCell_ComponentGuid.htm" />
+    <HelpKINode Title="GhDeconstructCell.ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_GhDeconstructCell_ComponentGuid.htm" />
+    <HelpKINode Title="MergeCells.ComponentGuid Property " Url="html/P_BookWorm_Spreadsheets_MergeCells_ComponentGuid.htm" />
+    <HelpKINode Title="ReadCellValue_Component.ComponentGuid Property " Url="html/P_GoogleDocs_Spreadsheets_ReadCellValue_Component_ComponentGuid.htm" />
+    <HelpKINode Title="ReadCell_Component.ComponentGuid Property " Url="html/P_BookWorm_Spreadsheets_ReadCell_Component_ComponentGuid.htm" />
+    <HelpKINode Title="ReadWriteBaseComponent.ComponentGuid Property " Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_ComponentGuid.htm" />
+    <HelpKINode Title="TestComponent.ComponentGuid Property " Url="html/P_BookWorm_Utilities_TestComponent_ComponentGuid.htm" />
+    <HelpKINode Title="UnmergeCells.ComponentGuid Property " Url="html/P_BookWorm_Spreadsheets_UnmergeCells_ComponentGuid.htm" />
+    <HelpKINode Title="WriteCells.ComponentGuid Property " Url="html/P_BookWorm_Spreadsheets_WriteCells_ComponentGuid.htm" />
+    <HelpKINode Title="WriteCellValues.ComponentGuid Property " Url="html/P_GoogleDocs_Spreadsheets_WriteCellValues_ComponentGuid.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConstructCellBorder class">
+    <HelpKINode Title="ConstructCellBorder Class" Url="html/T_BookWorm_Construct_ConstructCellBorder.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Construct_ConstructCellBorder__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Construct_ConstructCellBorder.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Construct_ConstructCellBorder.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Construct_ConstructCellBorder.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConstructCellBorder.ComponentGuid property" Url="html/P_BookWorm_Construct_ConstructCellBorder_ComponentGuid.htm" />
+  <HelpKINode Title="ConstructCellBorder.ConstructCellBorder constructor" Url="html/M_BookWorm_Construct_ConstructCellBorder__ctor.htm" />
+  <HelpKINode Title="ConstructCellBorders class">
+    <HelpKINode Title="ConstructCellBorders Class" Url="html/T_BookWorm_Construct_ConstructCellBorders.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Construct_ConstructCellBorders__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Construct_ConstructCellBorders.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Construct_ConstructCellBorders.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Construct_ConstructCellBorders.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConstructCellBorders.ComponentGuid property" Url="html/P_BookWorm_Construct_ConstructCellBorders_ComponentGuid.htm" />
+  <HelpKINode Title="ConstructCellBorders.ConstructCellBorders constructor" Url="html/M_BookWorm_Construct_ConstructCellBorders__ctor.htm" />
+  <HelpKINode Title="ConstructCellFormat class">
+    <HelpKINode Title="ConstructCellFormat Class" Url="html/T_BookWorm_Construct_ConstructCellFormat.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Construct_ConstructCellFormat__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Construct_ConstructCellFormat.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Construct_ConstructCellFormat.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Construct_ConstructCellFormat.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConstructCellFormat.ComponentGuid property" Url="html/P_BookWorm_Construct_ConstructCellFormat_ComponentGuid.htm" />
+  <HelpKINode Title="ConstructCellFormat.ConstructCellFormat constructor" Url="html/M_BookWorm_Construct_ConstructCellFormat__ctor.htm" />
+  <HelpKINode Title="ConstructExtendedValue class">
+    <HelpKINode Title="ConstructExtendedValue Class" Url="html/T_BookWorm_Construct_ConstructExtendedValue.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Construct_ConstructExtendedValue__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Construct_ConstructExtendedValue.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Construct_ConstructExtendedValue.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Construct_ConstructExtendedValue.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConstructExtendedValue.ComponentGuid property" Url="html/P_BookWorm_Construct_ConstructExtendedValue_ComponentGuid.htm" />
+  <HelpKINode Title="ConstructExtendedValue.ConstructExtendedValue constructor" Url="html/M_BookWorm_Construct_ConstructExtendedValue__ctor.htm" />
+  <HelpKINode Title="ConstructNumberFormat class">
+    <HelpKINode Title="ConstructNumberFormat Class" Url="html/T_BookWorm_Construct_ConstructNumberFormat.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Construct_ConstructNumberFormat__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Construct_ConstructNumberFormat.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Construct_ConstructNumberFormat.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Construct_ConstructNumberFormat.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConstructNumberFormat.ComponentGuid property" Url="html/P_BookWorm_Construct_ConstructNumberFormat_ComponentGuid.htm" />
+  <HelpKINode Title="ConstructNumberFormat.ConstructNumberFormat constructor" Url="html/M_BookWorm_Construct_ConstructNumberFormat__ctor.htm" />
+  <HelpKINode Title="ConstructPadding class">
+    <HelpKINode Title="ConstructPadding Class" Url="html/T_BookWorm_Construct_ConstructPadding.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Construct_ConstructPadding__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Construct_ConstructPadding.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Construct_ConstructPadding.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Construct_ConstructPadding.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConstructPadding.ComponentGuid property" Url="html/P_BookWorm_Construct_ConstructPadding_ComponentGuid.htm" />
+  <HelpKINode Title="ConstructPadding.ConstructPadding constructor" Url="html/M_BookWorm_Construct_ConstructPadding__ctor.htm" />
+  <HelpKINode Title="ConstructTextFormat class">
+    <HelpKINode Title="ConstructTextFormat Class" Url="html/T_BookWorm_Construct_ConstructTextFormat.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Construct_ConstructTextFormat__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Construct_ConstructTextFormat.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Construct_ConstructTextFormat.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Construct_ConstructTextFormat.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConstructTextFormat.ComponentGuid property" Url="html/P_BookWorm_Construct_ConstructTextFormat_ComponentGuid.htm" />
+  <HelpKINode Title="ConstructTextFormat.ConstructTextFormat constructor" Url="html/M_BookWorm_Construct_ConstructTextFormat__ctor.htm" />
+  <HelpKINode Title="ConstructTextRotation class">
+    <HelpKINode Title="ConstructTextRotation Class" Url="html/T_BookWorm_Construct_ConstructTextRotation.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Construct_ConstructTextRotation__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Construct_ConstructTextRotation.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Construct_ConstructTextRotation.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Construct_ConstructTextRotation.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConstructTextRotation.ComponentGuid property" Url="html/P_BookWorm_Construct_ConstructTextRotation_ComponentGuid.htm" />
+  <HelpKINode Title="ConstructTextRotation.ConstructTextRotation constructor" Url="html/M_BookWorm_Construct_ConstructTextRotation__ctor.htm" />
+  <HelpKINode Title="CreateNewSheet method" Url="html/M_BookWorm_Utilities_SheetsUtilities_CreateNewSheet.htm" />
+  <HelpKINode Title="Credentials class">
+    <HelpKINode Title="Credentials Class" Url="html/T_BookWorm_Utilities_Credentials.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Utilities_Credentials__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Utilities_Credentials.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Utilities_Credentials.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Credentials.Credentials constructor" Url="html/M_BookWorm_Utilities_Credentials__ctor.htm" />
+  <HelpKINode Title="Credentials.Service property" Url="html/P_BookWorm_Utilities_Credentials_Service.htm" />
+  <HelpKINode Title="DeconstructCellBorder class">
+    <HelpKINode Title="DeconstructCellBorder Class" Url="html/T_BookWorm_Deconstruct_DeconstructCellBorder.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Deconstruct_DeconstructCellBorder__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructCellBorder.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructCellBorder.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructCellBorder.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DeconstructCellBorder.ComponentGuid property" Url="html/P_BookWorm_Deconstruct_DeconstructCellBorder_ComponentGuid.htm" />
+  <HelpKINode Title="DeconstructCellBorder.DeconstructCellBorder constructor" Url="html/M_BookWorm_Deconstruct_DeconstructCellBorder__ctor.htm" />
+  <HelpKINode Title="DeconstructCellBorders class">
+    <HelpKINode Title="DeconstructCellBorders Class" Url="html/T_BookWorm_Deconstruct_DeconstructCellBorders.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Deconstruct_DeconstructCellBorders__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructCellBorders.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructCellBorders.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructCellBorders.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DeconstructCellBorders.ComponentGuid property" Url="html/P_BookWorm_Deconstruct_DeconstructCellBorders_ComponentGuid.htm" />
+  <HelpKINode Title="DeconstructCellBorders.DeconstructCellBorders constructor" Url="html/M_BookWorm_Deconstruct_DeconstructCellBorders__ctor.htm" />
+  <HelpKINode Title="DeconstructCellFormat class">
+    <HelpKINode Title="DeconstructCellFormat Class" Url="html/T_BookWorm_Deconstruct_DeconstructCellFormat.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Deconstruct_DeconstructCellFormat__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructCellFormat.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructCellFormat.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructCellFormat.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DeconstructCellFormat.ComponentGuid property" Url="html/P_BookWorm_Deconstruct_DeconstructCellFormat_ComponentGuid.htm" />
+  <HelpKINode Title="DeconstructCellFormat.DeconstructCellFormat constructor" Url="html/M_BookWorm_Deconstruct_DeconstructCellFormat__ctor.htm" />
+  <HelpKINode Title="DeconstructExtendedValue class">
+    <HelpKINode Title="DeconstructExtendedValue Class" Url="html/T_BookWorm_Deconstruct_DeconstructExtendedValue.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Deconstruct_DeconstructExtendedValue__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructExtendedValue.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructExtendedValue.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructExtendedValue.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DeconstructExtendedValue.ComponentGuid property" Url="html/P_BookWorm_Deconstruct_DeconstructExtendedValue_ComponentGuid.htm" />
+  <HelpKINode Title="DeconstructExtendedValue.DeconstructExtendedValue constructor" Url="html/M_BookWorm_Deconstruct_DeconstructExtendedValue__ctor.htm" />
+  <HelpKINode Title="DeconstructNumberFormat class">
+    <HelpKINode Title="DeconstructNumberFormat Class" Url="html/T_BookWorm_Deconstruct_DeconstructNumberFormat.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Deconstruct_DeconstructNumberFormat__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructNumberFormat.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructNumberFormat.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructNumberFormat.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DeconstructNumberFormat.ComponentGuid property" Url="html/P_BookWorm_Deconstruct_DeconstructNumberFormat_ComponentGuid.htm" />
+  <HelpKINode Title="DeconstructNumberFormat.DeconstructNumberFormat constructor" Url="html/M_BookWorm_Deconstruct_DeconstructNumberFormat__ctor.htm" />
+  <HelpKINode Title="DeconstructPadding class">
+    <HelpKINode Title="DeconstructPadding Class" Url="html/T_BookWorm_Deconstruct_DeconstructPadding.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Deconstruct_DeconstructPadding__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructPadding.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructPadding.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructPadding.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DeconstructPadding.ComponentGuid property" Url="html/P_BookWorm_Deconstruct_DeconstructPadding_ComponentGuid.htm" />
+  <HelpKINode Title="DeconstructPadding.DeconstructPadding constructor" Url="html/M_BookWorm_Deconstruct_DeconstructPadding__ctor.htm" />
+  <HelpKINode Title="DeconstructTextFormat class">
+    <HelpKINode Title="DeconstructTextFormat Class" Url="html/T_BookWorm_Deconstruct_DeconstructTextFormat.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Deconstruct_DeconstructTextFormat__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructTextFormat.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructTextFormat.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructTextFormat.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DeconstructTextFormat.ComponentGuid property" Url="html/P_BookWorm_Deconstruct_DeconstructTextFormat_ComponentGuid.htm" />
+  <HelpKINode Title="DeconstructTextFormat.DeconstructTextFormat constructor" Url="html/M_BookWorm_Deconstruct_DeconstructTextFormat__ctor.htm" />
+  <HelpKINode Title="DeconstructTextRotation class">
+    <HelpKINode Title="DeconstructTextRotation Class" Url="html/T_BookWorm_Deconstruct_DeconstructTextRotation.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Deconstruct_DeconstructTextRotation__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructTextRotation.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructTextRotation.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructTextRotation.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DeconstructTextRotation.ComponentGuid property" Url="html/P_BookWorm_Deconstruct_DeconstructTextRotation_ComponentGuid.htm" />
+  <HelpKINode Title="DeconstructTextRotation.DeconstructTextRotation constructor" Url="html/M_BookWorm_Deconstruct_DeconstructTextRotation__ctor.htm" />
+  <HelpKINode Title="DeleteSheet class">
+    <HelpKINode Title="DeleteSheet Class" Url="html/T_BookWorm_Spreadsheets_DeleteSheet.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Spreadsheets_DeleteSheet__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Spreadsheets_DeleteSheet.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Spreadsheets_DeleteSheet.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Spreadsheets_DeleteSheet.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DeleteSheet.ComponentGuid property" Url="html/P_BookWorm_Spreadsheets_DeleteSheet_ComponentGuid.htm" />
+  <HelpKINode Title="DeleteSheet.DeleteSheet constructor" Url="html/M_BookWorm_Spreadsheets_DeleteSheet__ctor.htm" />
+  <HelpKINode Title="Description property" Url="html/P_GoogleDocs_BookWormInfo_Description.htm" />
+  <HelpKINode Title="Duplicate method">
+    <HelpKINode Title="GH_CellBorder.Duplicate Method " Url="html/M_BookWorm_Goo_GH_CellBorder_Duplicate.htm" />
+    <HelpKINode Title="GH_CellBorders.Duplicate Method " Url="html/M_BookWorm_Goo_GH_CellBorders_Duplicate.htm" />
+    <HelpKINode Title="GH_CellData.Duplicate Method " Url="html/M_BookWorm_Goo_GH_CellData_Duplicate.htm" />
+    <HelpKINode Title="GH_CellFormat.Duplicate Method " Url="html/M_BookWorm_Goo_GH_CellFormat_Duplicate.htm" />
+    <HelpKINode Title="GH_ExtendedValue.Duplicate Method " Url="html/M_BookWorm_Goo_GH_ExtendedValue_Duplicate.htm" />
+    <HelpKINode Title="GH_NumberFormat.Duplicate Method " Url="html/M_BookWorm_Goo_GH_NumberFormat_Duplicate.htm" />
+    <HelpKINode Title="GH_Padding.Duplicate Method " Url="html/M_BookWorm_Goo_GH_Padding_Duplicate.htm" />
+    <HelpKINode Title="GH_TextFormat.Duplicate Method " Url="html/M_BookWorm_Goo_GH_TextFormat_Duplicate.htm" />
+    <HelpKINode Title="GH_TextRotation.Duplicate Method " Url="html/M_BookWorm_Goo_GH_TextRotation_Duplicate.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FitRangeToCells method" Url="html/M_BookWorm_Utilities_GridRangeExtension_FitRangeToCells.htm" />
+  <HelpKINode Title="GetAllSheetNames method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetAllSheetNames.htm" />
+  <HelpKINode Title="GetFormattedARGB method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetFormattedARGB.htm" />
+  <HelpKINode Title="GetGoogleSheetsColor method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetGoogleSheetsColor.htm" />
+  <HelpKINode Title="GetMergeRanges method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetMergeRanges.htm" />
+  <HelpKINode Title="GetRows method" Url="html/M_BookWorm_Utilities_CellsUtilities_GetRows.htm" />
+  <HelpKINode Title="GetSheetId method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetSheetId.htm" />
+  <HelpKINode Title="GetSheets_Component class">
+    <HelpKINode Title="GetSheets_Component Class" Url="html/T_BookWorm_Spreadsheets_GetSheets_Component.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Spreadsheets_GetSheets_Component__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Spreadsheets_GetSheets_Component.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Spreadsheets_GetSheets_Component.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Spreadsheets_GetSheets_Component.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetSheets_Component.ComponentGuid property" Url="html/P_BookWorm_Spreadsheets_GetSheets_Component_ComponentGuid.htm" />
+  <HelpKINode Title="GetSheets_Component.GetSheets_Component constructor" Url="html/M_BookWorm_Spreadsheets_GetSheets_Component__ctor.htm" />
+  <HelpKINode Title="GetSpreadsheetRange method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetSpreadsheetRange.htm" />
+  <HelpKINode Title="GetSystemDrawingColor method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetSystemDrawingColor.htm" />
+  <HelpKINode Title="GhConstructCell class">
+    <HelpKINode Title="GhConstructCell Class" Url="html/T_BookWorm_Construct_GhConstructCell.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Construct_GhConstructCell__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Construct_GhConstructCell.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Construct_GhConstructCell.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Construct_GhConstructCell.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GhConstructCell.ComponentGuid property" Url="html/P_BookWorm_Construct_GhConstructCell_ComponentGuid.htm" />
+  <HelpKINode Title="GhConstructCell.GhConstructCell constructor" Url="html/M_BookWorm_Construct_GhConstructCell__ctor.htm" />
+  <HelpKINode Title="GhDeconstructCell class">
+    <HelpKINode Title="GhDeconstructCell Class" Url="html/T_BookWorm_Deconstruct_GhDeconstructCell.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Deconstruct_GhDeconstructCell__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Deconstruct_GhDeconstructCell.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Deconstruct_GhDeconstructCell.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Deconstruct_GhDeconstructCell.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GhDeconstructCell.ComponentGuid property" Url="html/P_BookWorm_Deconstruct_GhDeconstructCell_ComponentGuid.htm" />
+  <HelpKINode Title="GhDeconstructCell.GhDeconstructCell constructor" Url="html/M_BookWorm_Deconstruct_GhDeconstructCell__ctor.htm" />
+  <HelpKINode Title="GH_CellBorder class">
+    <HelpKINode Title="GH_CellBorder Class" Url="html/T_BookWorm_Goo_GH_CellBorder.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_BookWorm_Goo_GH_CellBorder__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Goo_GH_CellBorder.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Goo_GH_CellBorder.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GH_CellBorder.Duplicate method" Url="html/M_BookWorm_Goo_GH_CellBorder_Duplicate.htm" />
+  <HelpKINode Title="GH_CellBorder.GH_CellBorder constructor" Url="html/Overload_BookWorm_Goo_GH_CellBorder__ctor.htm" />
+  <HelpKINode Title="GH_CellBorder.IsValid property" Url="html/P_BookWorm_Goo_GH_CellBorder_IsValid.htm" />
+  <HelpKINode Title="GH_CellBorder.ToString method" Url="html/M_BookWorm_Goo_GH_CellBorder_ToString.htm" />
+  <HelpKINode Title="GH_CellBorder.TypeDescription property" Url="html/P_BookWorm_Goo_GH_CellBorder_TypeDescription.htm" />
+  <HelpKINode Title="GH_CellBorder.TypeName property" Url="html/P_BookWorm_Goo_GH_CellBorder_TypeName.htm" />
+  <HelpKINode Title="GH_CellBorders class">
+    <HelpKINode Title="GH_CellBorders Class" Url="html/T_BookWorm_Goo_GH_CellBorders.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_BookWorm_Goo_GH_CellBorders__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Goo_GH_CellBorders.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Goo_GH_CellBorders.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GH_CellBorders.Duplicate method" Url="html/M_BookWorm_Goo_GH_CellBorders_Duplicate.htm" />
+  <HelpKINode Title="GH_CellBorders.GH_CellBorders constructor" Url="html/Overload_BookWorm_Goo_GH_CellBorders__ctor.htm" />
+  <HelpKINode Title="GH_CellBorders.IsValid property" Url="html/P_BookWorm_Goo_GH_CellBorders_IsValid.htm" />
+  <HelpKINode Title="GH_CellBorders.ToString method" Url="html/M_BookWorm_Goo_GH_CellBorders_ToString.htm" />
+  <HelpKINode Title="GH_CellBorders.TypeDescription property" Url="html/P_BookWorm_Goo_GH_CellBorders_TypeDescription.htm" />
+  <HelpKINode Title="GH_CellBorders.TypeName property" Url="html/P_BookWorm_Goo_GH_CellBorders_TypeName.htm" />
+  <HelpKINode Title="GH_CellData class">
+    <HelpKINode Title="GH_CellData Class" Url="html/T_BookWorm_Goo_GH_CellData.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_BookWorm_Goo_GH_CellData__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Goo_GH_CellData.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Goo_GH_CellData.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GH_CellData.CastFrom method" Url="html/M_BookWorm_Goo_GH_CellData_CastFrom.htm" />
+  <HelpKINode Title="GH_CellData.Duplicate method" Url="html/M_BookWorm_Goo_GH_CellData_Duplicate.htm" />
+  <HelpKINode Title="GH_CellData.GH_CellData constructor" Url="html/Overload_BookWorm_Goo_GH_CellData__ctor.htm" />
+  <HelpKINode Title="GH_CellData.IsValid property" Url="html/P_BookWorm_Goo_GH_CellData_IsValid.htm" />
+  <HelpKINode Title="GH_CellData.ToString method" Url="html/M_BookWorm_Goo_GH_CellData_ToString.htm" />
+  <HelpKINode Title="GH_CellData.TypeDescription property" Url="html/P_BookWorm_Goo_GH_CellData_TypeDescription.htm" />
+  <HelpKINode Title="GH_CellData.TypeName property" Url="html/P_BookWorm_Goo_GH_CellData_TypeName.htm" />
+  <HelpKINode Title="GH_CellFormat class">
+    <HelpKINode Title="GH_CellFormat Class" Url="html/T_BookWorm_Goo_GH_CellFormat.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_BookWorm_Goo_GH_CellFormat__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Goo_GH_CellFormat.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Goo_GH_CellFormat.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GH_CellFormat.Duplicate method" Url="html/M_BookWorm_Goo_GH_CellFormat_Duplicate.htm" />
+  <HelpKINode Title="GH_CellFormat.GH_CellFormat constructor" Url="html/Overload_BookWorm_Goo_GH_CellFormat__ctor.htm" />
+  <HelpKINode Title="GH_CellFormat.IsValid property" Url="html/P_BookWorm_Goo_GH_CellFormat_IsValid.htm" />
+  <HelpKINode Title="GH_CellFormat.ToString method" Url="html/M_BookWorm_Goo_GH_CellFormat_ToString.htm" />
+  <HelpKINode Title="GH_CellFormat.TypeDescription property" Url="html/P_BookWorm_Goo_GH_CellFormat_TypeDescription.htm" />
+  <HelpKINode Title="GH_CellFormat.TypeName property" Url="html/P_BookWorm_Goo_GH_CellFormat_TypeName.htm" />
+  <HelpKINode Title="GH_ExtendedValue class">
+    <HelpKINode Title="GH_ExtendedValue Class" Url="html/T_BookWorm_Goo_GH_ExtendedValue.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_BookWorm_Goo_GH_ExtendedValue__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Goo_GH_ExtendedValue.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Goo_GH_ExtendedValue.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GH_ExtendedValue.Duplicate method" Url="html/M_BookWorm_Goo_GH_ExtendedValue_Duplicate.htm" />
+  <HelpKINode Title="GH_ExtendedValue.GH_ExtendedValue constructor" Url="html/Overload_BookWorm_Goo_GH_ExtendedValue__ctor.htm" />
+  <HelpKINode Title="GH_ExtendedValue.IsValid property" Url="html/P_BookWorm_Goo_GH_ExtendedValue_IsValid.htm" />
+  <HelpKINode Title="GH_ExtendedValue.ToString method" Url="html/M_BookWorm_Goo_GH_ExtendedValue_ToString.htm" />
+  <HelpKINode Title="GH_ExtendedValue.TypeDescription property" Url="html/P_BookWorm_Goo_GH_ExtendedValue_TypeDescription.htm" />
+  <HelpKINode Title="GH_ExtendedValue.TypeName property" Url="html/P_BookWorm_Goo_GH_ExtendedValue_TypeName.htm" />
+  <HelpKINode Title="GH_NumberFormat class">
+    <HelpKINode Title="GH_NumberFormat Class" Url="html/T_BookWorm_Goo_GH_NumberFormat.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_BookWorm_Goo_GH_NumberFormat__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Goo_GH_NumberFormat.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Goo_GH_NumberFormat.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GH_NumberFormat.Duplicate method" Url="html/M_BookWorm_Goo_GH_NumberFormat_Duplicate.htm" />
+  <HelpKINode Title="GH_NumberFormat.GH_NumberFormat constructor" Url="html/Overload_BookWorm_Goo_GH_NumberFormat__ctor.htm" />
+  <HelpKINode Title="GH_NumberFormat.IsValid property" Url="html/P_BookWorm_Goo_GH_NumberFormat_IsValid.htm" />
+  <HelpKINode Title="GH_NumberFormat.ToString method" Url="html/M_BookWorm_Goo_GH_NumberFormat_ToString.htm" />
+  <HelpKINode Title="GH_NumberFormat.TypeDescription property" Url="html/P_BookWorm_Goo_GH_NumberFormat_TypeDescription.htm" />
+  <HelpKINode Title="GH_NumberFormat.TypeName property" Url="html/P_BookWorm_Goo_GH_NumberFormat_TypeName.htm" />
+  <HelpKINode Title="GH_Padding class">
+    <HelpKINode Title="GH_Padding Class" Url="html/T_BookWorm_Goo_GH_Padding.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_BookWorm_Goo_GH_Padding__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Goo_GH_Padding.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Goo_GH_Padding.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GH_Padding.Duplicate method" Url="html/M_BookWorm_Goo_GH_Padding_Duplicate.htm" />
+  <HelpKINode Title="GH_Padding.GH_Padding constructor" Url="html/Overload_BookWorm_Goo_GH_Padding__ctor.htm" />
+  <HelpKINode Title="GH_Padding.IsValid property" Url="html/P_BookWorm_Goo_GH_Padding_IsValid.htm" />
+  <HelpKINode Title="GH_Padding.ToString method" Url="html/M_BookWorm_Goo_GH_Padding_ToString.htm" />
+  <HelpKINode Title="GH_Padding.TypeDescription property" Url="html/P_BookWorm_Goo_GH_Padding_TypeDescription.htm" />
+  <HelpKINode Title="GH_Padding.TypeName property" Url="html/P_BookWorm_Goo_GH_Padding_TypeName.htm" />
+  <HelpKINode Title="GH_TextFormat class">
+    <HelpKINode Title="GH_TextFormat Class" Url="html/T_BookWorm_Goo_GH_TextFormat.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_BookWorm_Goo_GH_TextFormat__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Goo_GH_TextFormat.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Goo_GH_TextFormat.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GH_TextFormat.Duplicate method" Url="html/M_BookWorm_Goo_GH_TextFormat_Duplicate.htm" />
+  <HelpKINode Title="GH_TextFormat.GH_TextFormat constructor" Url="html/Overload_BookWorm_Goo_GH_TextFormat__ctor.htm" />
+  <HelpKINode Title="GH_TextFormat.IsValid property" Url="html/P_BookWorm_Goo_GH_TextFormat_IsValid.htm" />
+  <HelpKINode Title="GH_TextFormat.ToString method" Url="html/M_BookWorm_Goo_GH_TextFormat_ToString.htm" />
+  <HelpKINode Title="GH_TextFormat.TypeDescription property" Url="html/P_BookWorm_Goo_GH_TextFormat_TypeDescription.htm" />
+  <HelpKINode Title="GH_TextFormat.TypeName property" Url="html/P_BookWorm_Goo_GH_TextFormat_TypeName.htm" />
+  <HelpKINode Title="GH_TextRotation class">
+    <HelpKINode Title="GH_TextRotation Class" Url="html/T_BookWorm_Goo_GH_TextRotation.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_BookWorm_Goo_GH_TextRotation__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Goo_GH_TextRotation.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Goo_GH_TextRotation.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GH_TextRotation.Duplicate method" Url="html/M_BookWorm_Goo_GH_TextRotation_Duplicate.htm" />
+  <HelpKINode Title="GH_TextRotation.GH_TextRotation constructor" Url="html/Overload_BookWorm_Goo_GH_TextRotation__ctor.htm" />
+  <HelpKINode Title="GH_TextRotation.IsValid property" Url="html/P_BookWorm_Goo_GH_TextRotation_IsValid.htm" />
+  <HelpKINode Title="GH_TextRotation.ToString method" Url="html/M_BookWorm_Goo_GH_TextRotation_ToString.htm" />
+  <HelpKINode Title="GH_TextRotation.TypeDescription property" Url="html/P_BookWorm_Goo_GH_TextRotation_TypeDescription.htm" />
+  <HelpKINode Title="GH_TextRotation.TypeName property" Url="html/P_BookWorm_Goo_GH_TextRotation_TypeName.htm" />
+  <HelpKINode Title="GoogleDocs namespace" Url="html/N_GoogleDocs.htm" />
+  <HelpKINode Title="GoogleDocs.BookWormInfo class" Url="html/T_GoogleDocs_BookWormInfo.htm" />
+  <HelpKINode Title="GoogleDocs.Spreadsheets namespace" Url="html/N_GoogleDocs_Spreadsheets.htm" />
+  <HelpKINode Title="GoogleDocs.Spreadsheets.ReadCellValue_Component class" Url="html/T_GoogleDocs_Spreadsheets_ReadCellValue_Component.htm" />
+  <HelpKINode Title="GoogleDocs.Spreadsheets.WriteCellValues class" Url="html/T_GoogleDocs_Spreadsheets_WriteCellValues.htm" />
+  <HelpKINode Title="GridRangeExtension class">
+    <HelpKINode Title="GridRangeExtension Class" Url="html/T_BookWorm_Utilities_GridRangeExtension.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Utilities_GridRangeExtension.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GridRangeExtension.FitRangeToCells method" Url="html/M_BookWorm_Utilities_GridRangeExtension_FitRangeToCells.htm" />
+  <HelpKINode Title="GridRangeFromA1 method" Url="html/M_BookWorm_Utilities_CellsUtilities_GridRangeFromA1.htm" />
+  <HelpKINode Title="Icon property" Url="html/P_GoogleDocs_BookWormInfo_Icon.htm" />
+  <HelpKINode Title="Id property" Url="html/P_GoogleDocs_BookWormInfo_Id.htm" />
+  <HelpKINode Title="IsValid property">
+    <HelpKINode Title="GH_CellBorder.IsValid Property " Url="html/P_BookWorm_Goo_GH_CellBorder_IsValid.htm" />
+    <HelpKINode Title="GH_CellBorders.IsValid Property " Url="html/P_BookWorm_Goo_GH_CellBorders_IsValid.htm" />
+    <HelpKINode Title="GH_CellData.IsValid Property " Url="html/P_BookWorm_Goo_GH_CellData_IsValid.htm" />
+    <HelpKINode Title="GH_CellFormat.IsValid Property " Url="html/P_BookWorm_Goo_GH_CellFormat_IsValid.htm" />
+    <HelpKINode Title="GH_ExtendedValue.IsValid Property " Url="html/P_BookWorm_Goo_GH_ExtendedValue_IsValid.htm" />
+    <HelpKINode Title="GH_NumberFormat.IsValid Property " Url="html/P_BookWorm_Goo_GH_NumberFormat_IsValid.htm" />
+    <HelpKINode Title="GH_Padding.IsValid Property " Url="html/P_BookWorm_Goo_GH_Padding_IsValid.htm" />
+    <HelpKINode Title="GH_TextFormat.IsValid Property " Url="html/P_BookWorm_Goo_GH_TextFormat_IsValid.htm" />
+    <HelpKINode Title="GH_TextRotation.IsValid Property " Url="html/P_BookWorm_Goo_GH_TextRotation_IsValid.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MergeCells class">
+    <HelpKINode Title="MergeCells Class" Url="html/T_BookWorm_Spreadsheets_MergeCells.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Spreadsheets_MergeCells__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Spreadsheets_MergeCells.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Spreadsheets_MergeCells.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Spreadsheets_MergeCells.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MergeCells.ComponentGuid property" Url="html/P_BookWorm_Spreadsheets_MergeCells_ComponentGuid.htm" />
+  <HelpKINode Title="MergeCells.MergeCells constructor" Url="html/M_BookWorm_Spreadsheets_MergeCells__ctor.htm" />
+  <HelpKINode Title="Name property" Url="html/P_GoogleDocs_BookWormInfo_Name.htm" />
+  <HelpKINode Title="ParseUrl method" Url="html/M_BookWorm_Utilities_Util_ParseUrl.htm" />
+  <HelpKINode Title="ReadCellValue_Component class">
+    <HelpKINode Title="ReadCellValue_Component Class" Url="html/T_GoogleDocs_Spreadsheets_ReadCellValue_Component.htm" />
+    <HelpKINode Title="constructor" Url="html/M_GoogleDocs_Spreadsheets_ReadCellValue_Component__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_GoogleDocs_Spreadsheets_ReadCellValue_Component.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_GoogleDocs_Spreadsheets_ReadCellValue_Component.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_GoogleDocs_Spreadsheets_ReadCellValue_Component.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ReadCellValue_Component.ComponentGuid property" Url="html/P_GoogleDocs_Spreadsheets_ReadCellValue_Component_ComponentGuid.htm" />
+  <HelpKINode Title="ReadCellValue_Component.ReadCellValue_Component constructor" Url="html/M_GoogleDocs_Spreadsheets_ReadCellValue_Component__ctor.htm" />
+  <HelpKINode Title="ReadCell_Component class">
+    <HelpKINode Title="ReadCell_Component Class" Url="html/T_BookWorm_Spreadsheets_ReadCell_Component.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Spreadsheets_ReadCell_Component__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Spreadsheets_ReadCell_Component.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Spreadsheets_ReadCell_Component.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Spreadsheets_ReadCell_Component.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ReadCell_Component.ComponentGuid property" Url="html/P_BookWorm_Spreadsheets_ReadCell_Component_ComponentGuid.htm" />
+  <HelpKINode Title="ReadCell_Component.ReadCell_Component constructor" Url="html/M_BookWorm_Spreadsheets_ReadCell_Component__ctor.htm" />
+  <HelpKINode Title="ReadWriteBaseComponent class">
+    <HelpKINode Title="ReadWriteBaseComponent Class" Url="html/T_BookWorm_Utilities_ReadWriteBaseComponent.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Utilities_ReadWriteBaseComponent__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Utilities_ReadWriteBaseComponent.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Utilities_ReadWriteBaseComponent.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Utilities_ReadWriteBaseComponent.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ReadWriteBaseComponent.AppendAdditionalMenuItems method" Url="html/M_BookWorm_Utilities_ReadWriteBaseComponent_AppendAdditionalMenuItems.htm" />
+  <HelpKINode Title="ReadWriteBaseComponent.CellRange property" Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_CellRange.htm" />
+  <HelpKINode Title="ReadWriteBaseComponent.ComponentGuid property" Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_ComponentGuid.htm" />
+  <HelpKINode Title="ReadWriteBaseComponent.ReadWriteBaseComponent constructor" Url="html/M_BookWorm_Utilities_ReadWriteBaseComponent__ctor.htm" />
+  <HelpKINode Title="ReadWriteBaseComponent.SheetName property" Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_SheetName.htm" />
+  <HelpKINode Title="ReadWriteBaseComponent.SpreadsheetId property" Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_SpreadsheetId.htm" />
+  <HelpKINode Title="ReadWriteBaseComponent.SpreadsheetRange property" Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_SpreadsheetRange.htm" />
+  <HelpKINode Title="Service property" Url="html/P_BookWorm_Utilities_Credentials_Service.htm" />
+  <HelpKINode Title="SheetName property" Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_SheetName.htm" />
+  <HelpKINode Title="SheetsUtilities class">
+    <HelpKINode Title="SheetsUtilities Class" Url="html/T_BookWorm_Utilities_SheetsUtilities.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Utilities_SheetsUtilities.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SheetsUtilities.CreateNewSheet method" Url="html/M_BookWorm_Utilities_SheetsUtilities_CreateNewSheet.htm" />
+  <HelpKINode Title="SheetsUtilities.GetAllSheetNames method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetAllSheetNames.htm" />
+  <HelpKINode Title="SheetsUtilities.GetFormattedARGB method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetFormattedARGB.htm" />
+  <HelpKINode Title="SheetsUtilities.GetGoogleSheetsColor method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetGoogleSheetsColor.htm" />
+  <HelpKINode Title="SheetsUtilities.GetMergeRanges method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetMergeRanges.htm" />
+  <HelpKINode Title="SheetsUtilities.GetSheetId method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetSheetId.htm" />
+  <HelpKINode Title="SheetsUtilities.GetSpreadsheetRange method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetSpreadsheetRange.htm" />
+  <HelpKINode Title="SheetsUtilities.GetSystemDrawingColor method" Url="html/M_BookWorm_Utilities_SheetsUtilities_GetSystemDrawingColor.htm" />
+  <HelpKINode Title="SpreadsheetId property" Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_SpreadsheetId.htm" />
+  <HelpKINode Title="SpreadsheetRange property" Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_SpreadsheetRange.htm" />
+  <HelpKINode Title="TestComponent class">
+    <HelpKINode Title="TestComponent Class" Url="html/T_BookWorm_Utilities_TestComponent.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Utilities_TestComponent__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Utilities_TestComponent.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Utilities_TestComponent.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Utilities_TestComponent.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TestComponent.ComponentGuid property" Url="html/P_BookWorm_Utilities_TestComponent_ComponentGuid.htm" />
+  <HelpKINode Title="TestComponent.TestComponent constructor" Url="html/M_BookWorm_Utilities_TestComponent__ctor.htm" />
+  <HelpKINode Title="ToString method">
+    <HelpKINode Title="GH_CellBorder.ToString Method " Url="html/M_BookWorm_Goo_GH_CellBorder_ToString.htm" />
+    <HelpKINode Title="GH_CellBorders.ToString Method " Url="html/M_BookWorm_Goo_GH_CellBorders_ToString.htm" />
+    <HelpKINode Title="GH_CellData.ToString Method " Url="html/M_BookWorm_Goo_GH_CellData_ToString.htm" />
+    <HelpKINode Title="GH_CellFormat.ToString Method " Url="html/M_BookWorm_Goo_GH_CellFormat_ToString.htm" />
+    <HelpKINode Title="GH_ExtendedValue.ToString Method " Url="html/M_BookWorm_Goo_GH_ExtendedValue_ToString.htm" />
+    <HelpKINode Title="GH_NumberFormat.ToString Method " Url="html/M_BookWorm_Goo_GH_NumberFormat_ToString.htm" />
+    <HelpKINode Title="GH_Padding.ToString Method " Url="html/M_BookWorm_Goo_GH_Padding_ToString.htm" />
+    <HelpKINode Title="GH_TextFormat.ToString Method " Url="html/M_BookWorm_Goo_GH_TextFormat_ToString.htm" />
+    <HelpKINode Title="GH_TextRotation.ToString Method " Url="html/M_BookWorm_Goo_GH_TextRotation_ToString.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TypeDescription property">
+    <HelpKINode Title="GH_CellBorder.TypeDescription Property " Url="html/P_BookWorm_Goo_GH_CellBorder_TypeDescription.htm" />
+    <HelpKINode Title="GH_CellBorders.TypeDescription Property " Url="html/P_BookWorm_Goo_GH_CellBorders_TypeDescription.htm" />
+    <HelpKINode Title="GH_CellData.TypeDescription Property " Url="html/P_BookWorm_Goo_GH_CellData_TypeDescription.htm" />
+    <HelpKINode Title="GH_CellFormat.TypeDescription Property " Url="html/P_BookWorm_Goo_GH_CellFormat_TypeDescription.htm" />
+    <HelpKINode Title="GH_ExtendedValue.TypeDescription Property " Url="html/P_BookWorm_Goo_GH_ExtendedValue_TypeDescription.htm" />
+    <HelpKINode Title="GH_NumberFormat.TypeDescription Property " Url="html/P_BookWorm_Goo_GH_NumberFormat_TypeDescription.htm" />
+    <HelpKINode Title="GH_Padding.TypeDescription Property " Url="html/P_BookWorm_Goo_GH_Padding_TypeDescription.htm" />
+    <HelpKINode Title="GH_TextFormat.TypeDescription Property " Url="html/P_BookWorm_Goo_GH_TextFormat_TypeDescription.htm" />
+    <HelpKINode Title="GH_TextRotation.TypeDescription Property " Url="html/P_BookWorm_Goo_GH_TextRotation_TypeDescription.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TypeName property">
+    <HelpKINode Title="GH_CellBorder.TypeName Property " Url="html/P_BookWorm_Goo_GH_CellBorder_TypeName.htm" />
+    <HelpKINode Title="GH_CellBorders.TypeName Property " Url="html/P_BookWorm_Goo_GH_CellBorders_TypeName.htm" />
+    <HelpKINode Title="GH_CellData.TypeName Property " Url="html/P_BookWorm_Goo_GH_CellData_TypeName.htm" />
+    <HelpKINode Title="GH_CellFormat.TypeName Property " Url="html/P_BookWorm_Goo_GH_CellFormat_TypeName.htm" />
+    <HelpKINode Title="GH_ExtendedValue.TypeName Property " Url="html/P_BookWorm_Goo_GH_ExtendedValue_TypeName.htm" />
+    <HelpKINode Title="GH_NumberFormat.TypeName Property " Url="html/P_BookWorm_Goo_GH_NumberFormat_TypeName.htm" />
+    <HelpKINode Title="GH_Padding.TypeName Property " Url="html/P_BookWorm_Goo_GH_Padding_TypeName.htm" />
+    <HelpKINode Title="GH_TextFormat.TypeName Property " Url="html/P_BookWorm_Goo_GH_TextFormat_TypeName.htm" />
+    <HelpKINode Title="GH_TextRotation.TypeName Property " Url="html/P_BookWorm_Goo_GH_TextRotation_TypeName.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UnmergeCells class">
+    <HelpKINode Title="UnmergeCells Class" Url="html/T_BookWorm_Spreadsheets_UnmergeCells.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Spreadsheets_UnmergeCells__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Spreadsheets_UnmergeCells.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Spreadsheets_UnmergeCells.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Spreadsheets_UnmergeCells.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UnmergeCells.ComponentGuid property" Url="html/P_BookWorm_Spreadsheets_UnmergeCells_ComponentGuid.htm" />
+  <HelpKINode Title="UnmergeCells.UnmergeCells constructor" Url="html/M_BookWorm_Spreadsheets_UnmergeCells__ctor.htm" />
+  <HelpKINode Title="Util class">
+    <HelpKINode Title="Util Class" Url="html/T_BookWorm_Utilities_Util.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Utilities_Util.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Util.ParseUrl method" Url="html/M_BookWorm_Utilities_Util_ParseUrl.htm" />
+  <HelpKINode Title="version">
+    <HelpKINode Title="1.0.0.0" Url="html/858b4613-dea0-40a9-a9c7-7bfb38541f58.htm" />
+    <HelpKINode Title="history" Url="html/147bc7c4-88e4-46b9-ba7c-4bb33c91e9cc.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Version property" Url="html/P_GoogleDocs_BookWormInfo_Version.htm" />
+  <HelpKINode Title="Welcome" Url="html/125d9893-29c1-49c8-aebb-735f1fbe620e.htm" />
+  <HelpKINode Title="WriteCells class">
+    <HelpKINode Title="WriteCells Class" Url="html/T_BookWorm_Spreadsheets_WriteCells.htm" />
+    <HelpKINode Title="constructor" Url="html/M_BookWorm_Spreadsheets_WriteCells__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_BookWorm_Spreadsheets_WriteCells.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_BookWorm_Spreadsheets_WriteCells.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_BookWorm_Spreadsheets_WriteCells.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WriteCells.ComponentGuid property" Url="html/P_BookWorm_Spreadsheets_WriteCells_ComponentGuid.htm" />
+  <HelpKINode Title="WriteCells.WriteCells constructor" Url="html/M_BookWorm_Spreadsheets_WriteCells__ctor.htm" />
+  <HelpKINode Title="WriteCellValues class">
+    <HelpKINode Title="WriteCellValues Class" Url="html/T_GoogleDocs_Spreadsheets_WriteCellValues.htm" />
+    <HelpKINode Title="constructor" Url="html/M_GoogleDocs_Spreadsheets_WriteCellValues__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_GoogleDocs_Spreadsheets_WriteCellValues.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_GoogleDocs_Spreadsheets_WriteCellValues.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_GoogleDocs_Spreadsheets_WriteCellValues.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WriteCellValues.ComponentGuid property" Url="html/P_GoogleDocs_Spreadsheets_WriteCellValues_ComponentGuid.htm" />
+  <HelpKINode Title="WriteCellValues.WriteCellValues constructor" Url="html/M_GoogleDocs_Spreadsheets_WriteCellValues__ctor.htm" />
+</HelpKI>

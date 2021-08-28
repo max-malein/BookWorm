@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Title="Welcome to the [TODO: Add project name]" Url="html/125d9893-29c1-49c8-aebb-735f1fbe620e.htm" />
+  <HelpTOCNode Id="c0976121-834a-493a-b3a4-3cb2f014eee4" Title="Version History" Url="html/147bc7c4-88e4-46b9-ba7c-4bb33c91e9cc.htm">
+    <HelpTOCNode Title="Version 1.0.0.0" Url="html/858b4613-dea0-40a9-a9c7-7bfb38541f58.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="6f84f52e-b387-4f42-acef-2d074f83997d" Title="BookWorm.Construct" Url="html/N_BookWorm_Construct.htm">
+    <HelpTOCNode Id="949bcd10-b814-498a-9924-fdc95c98e0c6" Title="ConstructCellBorder Class" Url="html/T_BookWorm_Construct_ConstructCellBorder.htm">
+      <HelpTOCNode Title="ConstructCellBorder Constructor " Url="html/M_BookWorm_Construct_ConstructCellBorder__ctor.htm" />
+      <HelpTOCNode Id="660f4f76-f9a6-4ac4-9534-501b8337393b" Title="ConstructCellBorder Properties" Url="html/Properties_T_BookWorm_Construct_ConstructCellBorder.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructCellBorder_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ConstructCellBorder Methods" Url="html/Methods_T_BookWorm_Construct_ConstructCellBorder.htm" />
+      <HelpTOCNode Title="ConstructCellBorder Events" Url="html/Events_T_BookWorm_Construct_ConstructCellBorder.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="a1b158b3-f7b7-44c7-ba3d-cedc738a768f" Title="ConstructCellBorders Class" Url="html/T_BookWorm_Construct_ConstructCellBorders.htm">
+      <HelpTOCNode Title="ConstructCellBorders Constructor " Url="html/M_BookWorm_Construct_ConstructCellBorders__ctor.htm" />
+      <HelpTOCNode Id="cbd980f0-720a-484e-86f5-38722c7f959c" Title="ConstructCellBorders Properties" Url="html/Properties_T_BookWorm_Construct_ConstructCellBorders.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructCellBorders_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ConstructCellBorders Methods" Url="html/Methods_T_BookWorm_Construct_ConstructCellBorders.htm" />
+      <HelpTOCNode Title="ConstructCellBorders Events" Url="html/Events_T_BookWorm_Construct_ConstructCellBorders.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="9c0c7be1-3af9-4ff6-9235-59b659dd4550" Title="ConstructCellFormat Class" Url="html/T_BookWorm_Construct_ConstructCellFormat.htm">
+      <HelpTOCNode Title="ConstructCellFormat Constructor " Url="html/M_BookWorm_Construct_ConstructCellFormat__ctor.htm" />
+      <HelpTOCNode Id="02bc5fc9-5756-49ff-b8b4-0b9763a5a81a" Title="ConstructCellFormat Properties" Url="html/Properties_T_BookWorm_Construct_ConstructCellFormat.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructCellFormat_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ConstructCellFormat Methods" Url="html/Methods_T_BookWorm_Construct_ConstructCellFormat.htm" />
+      <HelpTOCNode Title="ConstructCellFormat Events" Url="html/Events_T_BookWorm_Construct_ConstructCellFormat.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="f631d159-c585-491e-80c8-99c1b2e84153" Title="ConstructExtendedValue Class" Url="html/T_BookWorm_Construct_ConstructExtendedValue.htm">
+      <HelpTOCNode Title="ConstructExtendedValue Constructor " Url="html/M_BookWorm_Construct_ConstructExtendedValue__ctor.htm" />
+      <HelpTOCNode Id="a657f1e7-5d71-404f-ab8f-261298de3614" Title="ConstructExtendedValue Properties" Url="html/Properties_T_BookWorm_Construct_ConstructExtendedValue.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructExtendedValue_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ConstructExtendedValue Methods" Url="html/Methods_T_BookWorm_Construct_ConstructExtendedValue.htm" />
+      <HelpTOCNode Title="ConstructExtendedValue Events" Url="html/Events_T_BookWorm_Construct_ConstructExtendedValue.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="a090f17b-b180-4687-95c7-f39079d8ceb5" Title="ConstructNumberFormat Class" Url="html/T_BookWorm_Construct_ConstructNumberFormat.htm">
+      <HelpTOCNode Title="ConstructNumberFormat Constructor " Url="html/M_BookWorm_Construct_ConstructNumberFormat__ctor.htm" />
+      <HelpTOCNode Id="e8a49229-ac22-486f-bede-9746bdfdf0dd" Title="ConstructNumberFormat Properties" Url="html/Properties_T_BookWorm_Construct_ConstructNumberFormat.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructNumberFormat_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ConstructNumberFormat Methods" Url="html/Methods_T_BookWorm_Construct_ConstructNumberFormat.htm" />
+      <HelpTOCNode Title="ConstructNumberFormat Events" Url="html/Events_T_BookWorm_Construct_ConstructNumberFormat.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="38ff259c-33d6-4eb7-9df7-76031b4d7e25" Title="ConstructPadding Class" Url="html/T_BookWorm_Construct_ConstructPadding.htm">
+      <HelpTOCNode Title="ConstructPadding Constructor " Url="html/M_BookWorm_Construct_ConstructPadding__ctor.htm" />
+      <HelpTOCNode Id="994d4480-0f60-489c-b150-3a7a7a697790" Title="ConstructPadding Properties" Url="html/Properties_T_BookWorm_Construct_ConstructPadding.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructPadding_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ConstructPadding Methods" Url="html/Methods_T_BookWorm_Construct_ConstructPadding.htm" />
+      <HelpTOCNode Title="ConstructPadding Events" Url="html/Events_T_BookWorm_Construct_ConstructPadding.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="7b277916-b1cb-44f3-89e2-2dd0478bd674" Title="ConstructTextFormat Class" Url="html/T_BookWorm_Construct_ConstructTextFormat.htm">
+      <HelpTOCNode Title="ConstructTextFormat Constructor " Url="html/M_BookWorm_Construct_ConstructTextFormat__ctor.htm" />
+      <HelpTOCNode Id="15b31f0e-caa9-4fca-bb04-56719841b6b5" Title="ConstructTextFormat Properties" Url="html/Properties_T_BookWorm_Construct_ConstructTextFormat.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructTextFormat_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ConstructTextFormat Methods" Url="html/Methods_T_BookWorm_Construct_ConstructTextFormat.htm" />
+      <HelpTOCNode Title="ConstructTextFormat Events" Url="html/Events_T_BookWorm_Construct_ConstructTextFormat.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="fbc9601a-2bcc-42ab-ae65-f40f7cbd90b9" Title="ConstructTextRotation Class" Url="html/T_BookWorm_Construct_ConstructTextRotation.htm">
+      <HelpTOCNode Title="ConstructTextRotation Constructor " Url="html/M_BookWorm_Construct_ConstructTextRotation__ctor.htm" />
+      <HelpTOCNode Id="125925db-f1b6-420c-8190-5981ae8d9247" Title="ConstructTextRotation Properties" Url="html/Properties_T_BookWorm_Construct_ConstructTextRotation.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Construct_ConstructTextRotation_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ConstructTextRotation Methods" Url="html/Methods_T_BookWorm_Construct_ConstructTextRotation.htm" />
+      <HelpTOCNode Title="ConstructTextRotation Events" Url="html/Events_T_BookWorm_Construct_ConstructTextRotation.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="9e54d5cd-ad91-431d-aa56-6c9153972bd2" Title="GhConstructCell Class" Url="html/T_BookWorm_Construct_GhConstructCell.htm">
+      <HelpTOCNode Title="GhConstructCell Constructor " Url="html/M_BookWorm_Construct_GhConstructCell__ctor.htm" />
+      <HelpTOCNode Id="e8603fdf-6867-46b9-a394-c6a28ef63892" Title="GhConstructCell Properties" Url="html/Properties_T_BookWorm_Construct_GhConstructCell.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Construct_GhConstructCell_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="GhConstructCell Methods" Url="html/Methods_T_BookWorm_Construct_GhConstructCell.htm" />
+      <HelpTOCNode Title="GhConstructCell Events" Url="html/Events_T_BookWorm_Construct_GhConstructCell.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="3e754472-0c5e-42ea-9df4-655de0e65ec4" Title="BookWorm.Deconstruct" Url="html/N_BookWorm_Deconstruct.htm">
+    <HelpTOCNode Id="358ac142-06b0-4793-ae7a-1b32d35c247b" Title="DeconstructCellBorder Class" Url="html/T_BookWorm_Deconstruct_DeconstructCellBorder.htm">
+      <HelpTOCNode Title="DeconstructCellBorder Constructor " Url="html/M_BookWorm_Deconstruct_DeconstructCellBorder__ctor.htm" />
+      <HelpTOCNode Id="a88d1d3c-42f9-4506-b631-702f0c1ea25b" Title="DeconstructCellBorder Properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructCellBorder.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructCellBorder_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DeconstructCellBorder Methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructCellBorder.htm" />
+      <HelpTOCNode Title="DeconstructCellBorder Events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructCellBorder.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="7fdffeb7-607a-4940-9301-e36acc4ad27e" Title="DeconstructCellBorders Class" Url="html/T_BookWorm_Deconstruct_DeconstructCellBorders.htm">
+      <HelpTOCNode Title="DeconstructCellBorders Constructor " Url="html/M_BookWorm_Deconstruct_DeconstructCellBorders__ctor.htm" />
+      <HelpTOCNode Id="e510df0a-bef9-402f-84d7-86fedb951251" Title="DeconstructCellBorders Properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructCellBorders.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructCellBorders_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DeconstructCellBorders Methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructCellBorders.htm" />
+      <HelpTOCNode Title="DeconstructCellBorders Events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructCellBorders.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="c06873e5-a454-4590-9f16-80b8dbb2b91d" Title="DeconstructCellFormat Class" Url="html/T_BookWorm_Deconstruct_DeconstructCellFormat.htm">
+      <HelpTOCNode Title="DeconstructCellFormat Constructor " Url="html/M_BookWorm_Deconstruct_DeconstructCellFormat__ctor.htm" />
+      <HelpTOCNode Id="eb92ebba-025f-48c7-bf1e-9da9924894d9" Title="DeconstructCellFormat Properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructCellFormat.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructCellFormat_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DeconstructCellFormat Methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructCellFormat.htm" />
+      <HelpTOCNode Title="DeconstructCellFormat Events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructCellFormat.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="c0d75d89-2b31-4416-945d-a0860e4d364d" Title="DeconstructExtendedValue Class" Url="html/T_BookWorm_Deconstruct_DeconstructExtendedValue.htm">
+      <HelpTOCNode Title="DeconstructExtendedValue Constructor " Url="html/M_BookWorm_Deconstruct_DeconstructExtendedValue__ctor.htm" />
+      <HelpTOCNode Id="8a985c61-8de3-407b-9661-28d3a6b9e502" Title="DeconstructExtendedValue Properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructExtendedValue.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructExtendedValue_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DeconstructExtendedValue Methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructExtendedValue.htm" />
+      <HelpTOCNode Title="DeconstructExtendedValue Events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructExtendedValue.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="a81a9eab-f2bd-4198-ad2d-fa9ba936605b" Title="DeconstructNumberFormat Class" Url="html/T_BookWorm_Deconstruct_DeconstructNumberFormat.htm">
+      <HelpTOCNode Title="DeconstructNumberFormat Constructor " Url="html/M_BookWorm_Deconstruct_DeconstructNumberFormat__ctor.htm" />
+      <HelpTOCNode Id="2785fdca-f1c0-44c1-8149-dd841970afd1" Title="DeconstructNumberFormat Properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructNumberFormat.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructNumberFormat_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DeconstructNumberFormat Methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructNumberFormat.htm" />
+      <HelpTOCNode Title="DeconstructNumberFormat Events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructNumberFormat.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="a344f91d-bff0-42b1-91bc-54132e668b95" Title="DeconstructPadding Class" Url="html/T_BookWorm_Deconstruct_DeconstructPadding.htm">
+      <HelpTOCNode Title="DeconstructPadding Constructor " Url="html/M_BookWorm_Deconstruct_DeconstructPadding__ctor.htm" />
+      <HelpTOCNode Id="4bf19583-b72c-4308-a68c-4f64bd35860d" Title="DeconstructPadding Properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructPadding.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructPadding_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DeconstructPadding Methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructPadding.htm" />
+      <HelpTOCNode Title="DeconstructPadding Events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructPadding.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="08bb84e7-2c6c-4a30-8c8d-bce252f22981" Title="DeconstructTextFormat Class" Url="html/T_BookWorm_Deconstruct_DeconstructTextFormat.htm">
+      <HelpTOCNode Title="DeconstructTextFormat Constructor " Url="html/M_BookWorm_Deconstruct_DeconstructTextFormat__ctor.htm" />
+      <HelpTOCNode Id="c2016ae5-c4e5-4ae2-be21-08b608e66fa6" Title="DeconstructTextFormat Properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructTextFormat.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructTextFormat_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DeconstructTextFormat Methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructTextFormat.htm" />
+      <HelpTOCNode Title="DeconstructTextFormat Events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructTextFormat.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="8bd5c341-e7b6-480c-8592-88a1725b3613" Title="DeconstructTextRotation Class" Url="html/T_BookWorm_Deconstruct_DeconstructTextRotation.htm">
+      <HelpTOCNode Title="DeconstructTextRotation Constructor " Url="html/M_BookWorm_Deconstruct_DeconstructTextRotation__ctor.htm" />
+      <HelpTOCNode Id="b5a719dc-51e1-4ffa-b4e4-68722656ea79" Title="DeconstructTextRotation Properties" Url="html/Properties_T_BookWorm_Deconstruct_DeconstructTextRotation.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_DeconstructTextRotation_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DeconstructTextRotation Methods" Url="html/Methods_T_BookWorm_Deconstruct_DeconstructTextRotation.htm" />
+      <HelpTOCNode Title="DeconstructTextRotation Events" Url="html/Events_T_BookWorm_Deconstruct_DeconstructTextRotation.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="ee703564-3b78-4362-b37d-12511b13a0ff" Title="GhDeconstructCell Class" Url="html/T_BookWorm_Deconstruct_GhDeconstructCell.htm">
+      <HelpTOCNode Title="GhDeconstructCell Constructor " Url="html/M_BookWorm_Deconstruct_GhDeconstructCell__ctor.htm" />
+      <HelpTOCNode Id="8b7bfa48-7b05-4529-9ad5-9d31e672dbe2" Title="GhDeconstructCell Properties" Url="html/Properties_T_BookWorm_Deconstruct_GhDeconstructCell.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Deconstruct_GhDeconstructCell_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="GhDeconstructCell Methods" Url="html/Methods_T_BookWorm_Deconstruct_GhDeconstructCell.htm" />
+      <HelpTOCNode Title="GhDeconstructCell Events" Url="html/Events_T_BookWorm_Deconstruct_GhDeconstructCell.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="b958e72a-1979-42fe-8d5e-f4fdce5891e9" Title="BookWorm.Goo" Url="html/N_BookWorm_Goo.htm">
+    <HelpTOCNode Id="ad666840-209a-4bd6-ae25-816cbbc8dd67" Title="GH_CellBorder Class" Url="html/T_BookWorm_Goo_GH_CellBorder.htm">
+      <HelpTOCNode Id="17f9920e-b0ee-4514-a2ed-774af986843e" Title="GH_CellBorder Constructor " Url="html/Overload_BookWorm_Goo_GH_CellBorder__ctor.htm">
+        <HelpTOCNode Title="GH_CellBorder Constructor " Url="html/M_BookWorm_Goo_GH_CellBorder__ctor.htm" />
+        <HelpTOCNode Title="GH_CellBorder Constructor (Border)" Url="html/M_BookWorm_Goo_GH_CellBorder__ctor_2.htm" />
+        <HelpTOCNode Title="GH_CellBorder Constructor (GH_CellBorder)" Url="html/M_BookWorm_Goo_GH_CellBorder__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e3c2d13e-e747-4f1d-936f-0235b6fbd77b" Title="GH_CellBorder Properties" Url="html/Properties_T_BookWorm_Goo_GH_CellBorder.htm">
+        <HelpTOCNode Title="IsValid Property " Url="html/P_BookWorm_Goo_GH_CellBorder_IsValid.htm" />
+        <HelpTOCNode Title="TypeDescription Property " Url="html/P_BookWorm_Goo_GH_CellBorder_TypeDescription.htm" />
+        <HelpTOCNode Title="TypeName Property " Url="html/P_BookWorm_Goo_GH_CellBorder_TypeName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="de97425a-3c1f-41fe-9075-ba7c13678939" Title="GH_CellBorder Methods" Url="html/Methods_T_BookWorm_Goo_GH_CellBorder.htm">
+        <HelpTOCNode Title="Duplicate Method " Url="html/M_BookWorm_Goo_GH_CellBorder_Duplicate.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/M_BookWorm_Goo_GH_CellBorder_ToString.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="774e2fd3-90f4-4547-876a-82aec53903ff" Title="GH_CellBorders Class" Url="html/T_BookWorm_Goo_GH_CellBorders.htm">
+      <HelpTOCNode Id="3b9ad9d0-52f2-4bc1-942a-06ba6dcc5f05" Title="GH_CellBorders Constructor " Url="html/Overload_BookWorm_Goo_GH_CellBorders__ctor.htm">
+        <HelpTOCNode Title="GH_CellBorders Constructor " Url="html/M_BookWorm_Goo_GH_CellBorders__ctor.htm" />
+        <HelpTOCNode Title="GH_CellBorders Constructor (Borders)" Url="html/M_BookWorm_Goo_GH_CellBorders__ctor_2.htm" />
+        <HelpTOCNode Title="GH_CellBorders Constructor (GH_CellBorders)" Url="html/M_BookWorm_Goo_GH_CellBorders__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b9abff93-587b-4ba8-b760-375dbcbc9368" Title="GH_CellBorders Properties" Url="html/Properties_T_BookWorm_Goo_GH_CellBorders.htm">
+        <HelpTOCNode Title="IsValid Property " Url="html/P_BookWorm_Goo_GH_CellBorders_IsValid.htm" />
+        <HelpTOCNode Title="TypeDescription Property " Url="html/P_BookWorm_Goo_GH_CellBorders_TypeDescription.htm" />
+        <HelpTOCNode Title="TypeName Property " Url="html/P_BookWorm_Goo_GH_CellBorders_TypeName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="56f1688e-1d4b-43e9-a50c-578ed7fc8a36" Title="GH_CellBorders Methods" Url="html/Methods_T_BookWorm_Goo_GH_CellBorders.htm">
+        <HelpTOCNode Title="Duplicate Method " Url="html/M_BookWorm_Goo_GH_CellBorders_Duplicate.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/M_BookWorm_Goo_GH_CellBorders_ToString.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="026f1434-2120-48b2-a636-5ba3c7885489" Title="GH_CellData Class" Url="html/T_BookWorm_Goo_GH_CellData.htm">
+      <HelpTOCNode Id="75d37b41-c74a-47ec-835a-2fde7265bbbc" Title="GH_CellData Constructor " Url="html/Overload_BookWorm_Goo_GH_CellData__ctor.htm">
+        <HelpTOCNode Title="GH_CellData Constructor " Url="html/M_BookWorm_Goo_GH_CellData__ctor.htm" />
+        <HelpTOCNode Title="GH_CellData Constructor (CellData)" Url="html/M_BookWorm_Goo_GH_CellData__ctor_2.htm" />
+        <HelpTOCNode Title="GH_CellData Constructor (GH_CellData)" Url="html/M_BookWorm_Goo_GH_CellData__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b3a8b1a3-b39b-427b-8a0e-8585ea5bea45" Title="GH_CellData Properties" Url="html/Properties_T_BookWorm_Goo_GH_CellData.htm">
+        <HelpTOCNode Title="IsValid Property " Url="html/P_BookWorm_Goo_GH_CellData_IsValid.htm" />
+        <HelpTOCNode Title="TypeDescription Property " Url="html/P_BookWorm_Goo_GH_CellData_TypeDescription.htm" />
+        <HelpTOCNode Title="TypeName Property " Url="html/P_BookWorm_Goo_GH_CellData_TypeName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e77ea4cc-ad5a-41c8-af1f-a4f896e68368" Title="GH_CellData Methods" Url="html/Methods_T_BookWorm_Goo_GH_CellData.htm">
+        <HelpTOCNode Title="CastFrom Method " Url="html/M_BookWorm_Goo_GH_CellData_CastFrom.htm" />
+        <HelpTOCNode Title="Duplicate Method " Url="html/M_BookWorm_Goo_GH_CellData_Duplicate.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/M_BookWorm_Goo_GH_CellData_ToString.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="423c7eb4-dac8-4866-864c-e4625d82f94c" Title="GH_CellFormat Class" Url="html/T_BookWorm_Goo_GH_CellFormat.htm">
+      <HelpTOCNode Id="12e0745e-52c5-419c-ad9b-46e034fc78cf" Title="GH_CellFormat Constructor " Url="html/Overload_BookWorm_Goo_GH_CellFormat__ctor.htm">
+        <HelpTOCNode Title="GH_CellFormat Constructor " Url="html/M_BookWorm_Goo_GH_CellFormat__ctor.htm" />
+        <HelpTOCNode Title="GH_CellFormat Constructor (CellFormat)" Url="html/M_BookWorm_Goo_GH_CellFormat__ctor_2.htm" />
+        <HelpTOCNode Title="GH_CellFormat Constructor (GH_CellFormat)" Url="html/M_BookWorm_Goo_GH_CellFormat__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="824efa8e-93c3-4872-8d0f-24d5d01cffec" Title="GH_CellFormat Properties" Url="html/Properties_T_BookWorm_Goo_GH_CellFormat.htm">
+        <HelpTOCNode Title="IsValid Property " Url="html/P_BookWorm_Goo_GH_CellFormat_IsValid.htm" />
+        <HelpTOCNode Title="TypeDescription Property " Url="html/P_BookWorm_Goo_GH_CellFormat_TypeDescription.htm" />
+        <HelpTOCNode Title="TypeName Property " Url="html/P_BookWorm_Goo_GH_CellFormat_TypeName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ec5ae767-5fc8-46f4-baeb-11ee0c2c5475" Title="GH_CellFormat Methods" Url="html/Methods_T_BookWorm_Goo_GH_CellFormat.htm">
+        <HelpTOCNode Title="Duplicate Method " Url="html/M_BookWorm_Goo_GH_CellFormat_Duplicate.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/M_BookWorm_Goo_GH_CellFormat_ToString.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8d28aafe-55ab-4f57-ab87-7eaa06492283" Title="GH_ExtendedValue Class" Url="html/T_BookWorm_Goo_GH_ExtendedValue.htm">
+      <HelpTOCNode Id="0dd40505-4b81-4e66-b52b-dc7a3ed0f3f1" Title="GH_ExtendedValue Constructor " Url="html/Overload_BookWorm_Goo_GH_ExtendedValue__ctor.htm">
+        <HelpTOCNode Title="GH_ExtendedValue Constructor " Url="html/M_BookWorm_Goo_GH_ExtendedValue__ctor.htm" />
+        <HelpTOCNode Title="GH_ExtendedValue Constructor (ExtendedValue)" Url="html/M_BookWorm_Goo_GH_ExtendedValue__ctor_2.htm" />
+        <HelpTOCNode Title="GH_ExtendedValue Constructor (GH_ExtendedValue)" Url="html/M_BookWorm_Goo_GH_ExtendedValue__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="3bf1c65c-36a0-4183-aa56-ada671ef060f" Title="GH_ExtendedValue Properties" Url="html/Properties_T_BookWorm_Goo_GH_ExtendedValue.htm">
+        <HelpTOCNode Title="IsValid Property " Url="html/P_BookWorm_Goo_GH_ExtendedValue_IsValid.htm" />
+        <HelpTOCNode Title="TypeDescription Property " Url="html/P_BookWorm_Goo_GH_ExtendedValue_TypeDescription.htm" />
+        <HelpTOCNode Title="TypeName Property " Url="html/P_BookWorm_Goo_GH_ExtendedValue_TypeName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="9f11e3d0-7365-468f-ac96-1b27663b265a" Title="GH_ExtendedValue Methods" Url="html/Methods_T_BookWorm_Goo_GH_ExtendedValue.htm">
+        <HelpTOCNode Title="Duplicate Method " Url="html/M_BookWorm_Goo_GH_ExtendedValue_Duplicate.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/M_BookWorm_Goo_GH_ExtendedValue_ToString.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c67912b2-7a0f-4472-9d83-a27c899ed14a" Title="GH_NumberFormat Class" Url="html/T_BookWorm_Goo_GH_NumberFormat.htm">
+      <HelpTOCNode Id="41919736-1cbf-4396-8fdd-5e35c4f6ab1f" Title="GH_NumberFormat Constructor " Url="html/Overload_BookWorm_Goo_GH_NumberFormat__ctor.htm">
+        <HelpTOCNode Title="GH_NumberFormat Constructor " Url="html/M_BookWorm_Goo_GH_NumberFormat__ctor.htm" />
+        <HelpTOCNode Title="GH_NumberFormat Constructor (NumberFormat)" Url="html/M_BookWorm_Goo_GH_NumberFormat__ctor_2.htm" />
+        <HelpTOCNode Title="GH_NumberFormat Constructor (GH_NumberFormat)" Url="html/M_BookWorm_Goo_GH_NumberFormat__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7a9e60eb-0009-449e-902c-77181c496800" Title="GH_NumberFormat Properties" Url="html/Properties_T_BookWorm_Goo_GH_NumberFormat.htm">
+        <HelpTOCNode Title="IsValid Property " Url="html/P_BookWorm_Goo_GH_NumberFormat_IsValid.htm" />
+        <HelpTOCNode Title="TypeDescription Property " Url="html/P_BookWorm_Goo_GH_NumberFormat_TypeDescription.htm" />
+        <HelpTOCNode Title="TypeName Property " Url="html/P_BookWorm_Goo_GH_NumberFormat_TypeName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ff99844c-8aa6-4f65-8fdc-6c6dd5e5f847" Title="GH_NumberFormat Methods" Url="html/Methods_T_BookWorm_Goo_GH_NumberFormat.htm">
+        <HelpTOCNode Title="Duplicate Method " Url="html/M_BookWorm_Goo_GH_NumberFormat_Duplicate.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/M_BookWorm_Goo_GH_NumberFormat_ToString.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9984ea79-8a66-472a-b2ef-3ec9484917ab" Title="GH_Padding Class" Url="html/T_BookWorm_Goo_GH_Padding.htm">
+      <HelpTOCNode Id="31e619ea-77dd-4474-904b-ead24e68b404" Title="GH_Padding Constructor " Url="html/Overload_BookWorm_Goo_GH_Padding__ctor.htm">
+        <HelpTOCNode Title="GH_Padding Constructor " Url="html/M_BookWorm_Goo_GH_Padding__ctor.htm" />
+        <HelpTOCNode Title="GH_Padding Constructor (Padding)" Url="html/M_BookWorm_Goo_GH_Padding__ctor_2.htm" />
+        <HelpTOCNode Title="GH_Padding Constructor (GH_Padding)" Url="html/M_BookWorm_Goo_GH_Padding__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="3b547b69-f869-4f41-89e8-87b326c32660" Title="GH_Padding Properties" Url="html/Properties_T_BookWorm_Goo_GH_Padding.htm">
+        <HelpTOCNode Title="IsValid Property " Url="html/P_BookWorm_Goo_GH_Padding_IsValid.htm" />
+        <HelpTOCNode Title="TypeDescription Property " Url="html/P_BookWorm_Goo_GH_Padding_TypeDescription.htm" />
+        <HelpTOCNode Title="TypeName Property " Url="html/P_BookWorm_Goo_GH_Padding_TypeName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7357aa68-7c7f-4005-9b14-c5471a072715" Title="GH_Padding Methods" Url="html/Methods_T_BookWorm_Goo_GH_Padding.htm">
+        <HelpTOCNode Title="Duplicate Method " Url="html/M_BookWorm_Goo_GH_Padding_Duplicate.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/M_BookWorm_Goo_GH_Padding_ToString.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9a16b230-826e-48ee-8460-d6e05469d5c0" Title="GH_TextFormat Class" Url="html/T_BookWorm_Goo_GH_TextFormat.htm">
+      <HelpTOCNode Id="ee84e439-8b7b-44ae-83ab-98cd4936fc26" Title="GH_TextFormat Constructor " Url="html/Overload_BookWorm_Goo_GH_TextFormat__ctor.htm">
+        <HelpTOCNode Title="GH_TextFormat Constructor " Url="html/M_BookWorm_Goo_GH_TextFormat__ctor.htm" />
+        <HelpTOCNode Title="GH_TextFormat Constructor (TextFormat)" Url="html/M_BookWorm_Goo_GH_TextFormat__ctor_2.htm" />
+        <HelpTOCNode Title="GH_TextFormat Constructor (GH_TextFormat)" Url="html/M_BookWorm_Goo_GH_TextFormat__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1c94ec95-b151-4f7e-88fd-bf76693fc8f0" Title="GH_TextFormat Properties" Url="html/Properties_T_BookWorm_Goo_GH_TextFormat.htm">
+        <HelpTOCNode Title="IsValid Property " Url="html/P_BookWorm_Goo_GH_TextFormat_IsValid.htm" />
+        <HelpTOCNode Title="TypeDescription Property " Url="html/P_BookWorm_Goo_GH_TextFormat_TypeDescription.htm" />
+        <HelpTOCNode Title="TypeName Property " Url="html/P_BookWorm_Goo_GH_TextFormat_TypeName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="294fc933-bb74-4db5-969d-565054f64b21" Title="GH_TextFormat Methods" Url="html/Methods_T_BookWorm_Goo_GH_TextFormat.htm">
+        <HelpTOCNode Title="Duplicate Method " Url="html/M_BookWorm_Goo_GH_TextFormat_Duplicate.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/M_BookWorm_Goo_GH_TextFormat_ToString.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="4d7136f7-c36c-4624-a9ed-5d788f0f15c2" Title="GH_TextRotation Class" Url="html/T_BookWorm_Goo_GH_TextRotation.htm">
+      <HelpTOCNode Id="7ae741d6-beac-47c0-b022-6cc5b6828795" Title="GH_TextRotation Constructor " Url="html/Overload_BookWorm_Goo_GH_TextRotation__ctor.htm">
+        <HelpTOCNode Title="GH_TextRotation Constructor " Url="html/M_BookWorm_Goo_GH_TextRotation__ctor.htm" />
+        <HelpTOCNode Title="GH_TextRotation Constructor (TextRotation)" Url="html/M_BookWorm_Goo_GH_TextRotation__ctor_2.htm" />
+        <HelpTOCNode Title="GH_TextRotation Constructor (GH_TextRotation)" Url="html/M_BookWorm_Goo_GH_TextRotation__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="79ac0813-2d4d-4b0a-bfd4-6f839f611d73" Title="GH_TextRotation Properties" Url="html/Properties_T_BookWorm_Goo_GH_TextRotation.htm">
+        <HelpTOCNode Title="IsValid Property " Url="html/P_BookWorm_Goo_GH_TextRotation_IsValid.htm" />
+        <HelpTOCNode Title="TypeDescription Property " Url="html/P_BookWorm_Goo_GH_TextRotation_TypeDescription.htm" />
+        <HelpTOCNode Title="TypeName Property " Url="html/P_BookWorm_Goo_GH_TextRotation_TypeName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="348b1f64-6e1f-4ef4-92ca-262f4439aa46" Title="GH_TextRotation Methods" Url="html/Methods_T_BookWorm_Goo_GH_TextRotation.htm">
+        <HelpTOCNode Title="Duplicate Method " Url="html/M_BookWorm_Goo_GH_TextRotation_Duplicate.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/M_BookWorm_Goo_GH_TextRotation_ToString.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="9b963761-fcdf-4fc2-ac3e-51cf4f445f7b" Title="BookWorm.Spreadsheets" Url="html/N_BookWorm_Spreadsheets.htm">
+    <HelpTOCNode Id="ccfa7602-2e25-4c93-a20a-bb29a683988b" Title="DeleteSheet Class" Url="html/T_BookWorm_Spreadsheets_DeleteSheet.htm">
+      <HelpTOCNode Title="DeleteSheet Constructor " Url="html/M_BookWorm_Spreadsheets_DeleteSheet__ctor.htm" />
+      <HelpTOCNode Id="c04916bf-61ef-447d-bec6-ebd4673f487f" Title="DeleteSheet Properties" Url="html/Properties_T_BookWorm_Spreadsheets_DeleteSheet.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Spreadsheets_DeleteSheet_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DeleteSheet Methods" Url="html/Methods_T_BookWorm_Spreadsheets_DeleteSheet.htm" />
+      <HelpTOCNode Title="DeleteSheet Events" Url="html/Events_T_BookWorm_Spreadsheets_DeleteSheet.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="515c9915-9ebc-4f70-944d-5f55e7502d57" Title="GetSheets_Component Class" Url="html/T_BookWorm_Spreadsheets_GetSheets_Component.htm">
+      <HelpTOCNode Title="GetSheets_Component Constructor " Url="html/M_BookWorm_Spreadsheets_GetSheets_Component__ctor.htm" />
+      <HelpTOCNode Id="3cdb4f4e-7068-470d-87b1-b9cb6d99a5dd" Title="GetSheets_Component Properties" Url="html/Properties_T_BookWorm_Spreadsheets_GetSheets_Component.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Spreadsheets_GetSheets_Component_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="GetSheets_Component Methods" Url="html/Methods_T_BookWorm_Spreadsheets_GetSheets_Component.htm" />
+      <HelpTOCNode Title="GetSheets_Component Events" Url="html/Events_T_BookWorm_Spreadsheets_GetSheets_Component.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="f9788456-012e-4762-b434-1d3d74c950e9" Title="MergeCells Class" Url="html/T_BookWorm_Spreadsheets_MergeCells.htm">
+      <HelpTOCNode Title="MergeCells Constructor " Url="html/M_BookWorm_Spreadsheets_MergeCells__ctor.htm" />
+      <HelpTOCNode Id="234b5d86-3ec4-42bf-b8b9-205e55ce6832" Title="MergeCells Properties" Url="html/Properties_T_BookWorm_Spreadsheets_MergeCells.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Spreadsheets_MergeCells_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MergeCells Methods" Url="html/Methods_T_BookWorm_Spreadsheets_MergeCells.htm" />
+      <HelpTOCNode Title="MergeCells Events" Url="html/Events_T_BookWorm_Spreadsheets_MergeCells.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="c66ab4b4-28ce-410c-b819-a03235093b47" Title="ReadCell_Component Class" Url="html/T_BookWorm_Spreadsheets_ReadCell_Component.htm">
+      <HelpTOCNode Title="ReadCell_Component Constructor " Url="html/M_BookWorm_Spreadsheets_ReadCell_Component__ctor.htm" />
+      <HelpTOCNode Id="a403641f-4de2-45b9-8d9f-0b6bd0007e61" Title="ReadCell_Component Properties" Url="html/Properties_T_BookWorm_Spreadsheets_ReadCell_Component.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Spreadsheets_ReadCell_Component_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ReadCell_Component Methods" Url="html/Methods_T_BookWorm_Spreadsheets_ReadCell_Component.htm" />
+      <HelpTOCNode Title="ReadCell_Component Events" Url="html/Events_T_BookWorm_Spreadsheets_ReadCell_Component.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="7fafe796-2c08-46db-b442-80122045d63e" Title="UnmergeCells Class" Url="html/T_BookWorm_Spreadsheets_UnmergeCells.htm">
+      <HelpTOCNode Title="UnmergeCells Constructor " Url="html/M_BookWorm_Spreadsheets_UnmergeCells__ctor.htm" />
+      <HelpTOCNode Id="ab19346c-79b7-4389-bb50-1c722178d920" Title="UnmergeCells Properties" Url="html/Properties_T_BookWorm_Spreadsheets_UnmergeCells.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Spreadsheets_UnmergeCells_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="UnmergeCells Methods" Url="html/Methods_T_BookWorm_Spreadsheets_UnmergeCells.htm" />
+      <HelpTOCNode Title="UnmergeCells Events" Url="html/Events_T_BookWorm_Spreadsheets_UnmergeCells.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="7fa9d88f-72cb-42e7-8c52-53a1f12c6522" Title="WriteCells Class" Url="html/T_BookWorm_Spreadsheets_WriteCells.htm">
+      <HelpTOCNode Title="WriteCells Constructor " Url="html/M_BookWorm_Spreadsheets_WriteCells__ctor.htm" />
+      <HelpTOCNode Id="e13e3227-3409-42fb-bda4-46ec4c14dadd" Title="WriteCells Properties" Url="html/Properties_T_BookWorm_Spreadsheets_WriteCells.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Spreadsheets_WriteCells_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="WriteCells Methods" Url="html/Methods_T_BookWorm_Spreadsheets_WriteCells.htm" />
+      <HelpTOCNode Title="WriteCells Events" Url="html/Events_T_BookWorm_Spreadsheets_WriteCells.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="7ee80364-ffe8-4f66-bb01-316d9133be24" Title="BookWorm.Utilities" Url="html/N_BookWorm_Utilities.htm">
+    <HelpTOCNode Id="d3d52101-870c-46d9-93b0-fdfeedf94f9c" Title="CellsUtilities Class" Url="html/T_BookWorm_Utilities_CellsUtilities.htm">
+      <HelpTOCNode Id="feb365da-308a-49a9-b72f-fb1bdef1f5ca" Title="CellsUtilities Methods" Url="html/Methods_T_BookWorm_Utilities_CellsUtilities.htm">
+        <HelpTOCNode Title="GetRows Method " Url="html/M_BookWorm_Utilities_CellsUtilities_GetRows.htm" />
+        <HelpTOCNode Title="GridRangeFromA1 Method " Url="html/M_BookWorm_Utilities_CellsUtilities_GridRangeFromA1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="3c85394c-859c-4b62-9dd4-9a0ce090ddd6" Title="Credentials Class" Url="html/T_BookWorm_Utilities_Credentials.htm">
+      <HelpTOCNode Title="Credentials Constructor " Url="html/M_BookWorm_Utilities_Credentials__ctor.htm" />
+      <HelpTOCNode Id="c4ada534-172f-475e-8d59-f22775921dbc" Title="Credentials Properties" Url="html/Properties_T_BookWorm_Utilities_Credentials.htm">
+        <HelpTOCNode Title="Service Property " Url="html/P_BookWorm_Utilities_Credentials_Service.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Credentials Methods" Url="html/Methods_T_BookWorm_Utilities_Credentials.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="d818fa75-3ac2-4095-83bf-cf7e01a75498" Title="GridRangeExtension Class" Url="html/T_BookWorm_Utilities_GridRangeExtension.htm">
+      <HelpTOCNode Id="345fdc38-fd13-4581-ac45-055b8f3ab693" Title="GridRangeExtension Methods" Url="html/Methods_T_BookWorm_Utilities_GridRangeExtension.htm">
+        <HelpTOCNode Title="FitRangeToCells Method " Url="html/M_BookWorm_Utilities_GridRangeExtension_FitRangeToCells.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2a0e9141-3a8f-435e-8b9e-7ee2ed454d8b" Title="ReadWriteBaseComponent Class" Url="html/T_BookWorm_Utilities_ReadWriteBaseComponent.htm">
+      <HelpTOCNode Title="ReadWriteBaseComponent Constructor " Url="html/M_BookWorm_Utilities_ReadWriteBaseComponent__ctor.htm" />
+      <HelpTOCNode Id="19e45001-dcb1-4528-8459-757a78cd2b2a" Title="ReadWriteBaseComponent Properties" Url="html/Properties_T_BookWorm_Utilities_ReadWriteBaseComponent.htm">
+        <HelpTOCNode Title="CellRange Property " Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_CellRange.htm" />
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_ComponentGuid.htm" />
+        <HelpTOCNode Title="SheetName Property " Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_SheetName.htm" />
+        <HelpTOCNode Title="SpreadsheetId Property " Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_SpreadsheetId.htm" />
+        <HelpTOCNode Title="SpreadsheetRange Property " Url="html/P_BookWorm_Utilities_ReadWriteBaseComponent_SpreadsheetRange.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b6fbc111-395a-4f12-8648-f7f2f5461e2a" Title="ReadWriteBaseComponent Methods" Url="html/Methods_T_BookWorm_Utilities_ReadWriteBaseComponent.htm">
+        <HelpTOCNode Title="AppendAdditionalMenuItems Method " Url="html/M_BookWorm_Utilities_ReadWriteBaseComponent_AppendAdditionalMenuItems.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ReadWriteBaseComponent Events" Url="html/Events_T_BookWorm_Utilities_ReadWriteBaseComponent.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="efbd7f3d-671a-429a-a4c4-6f33cc4881e3" Title="SheetsUtilities Class" Url="html/T_BookWorm_Utilities_SheetsUtilities.htm">
+      <HelpTOCNode Id="0c4ec24c-e3ae-46cf-be24-441e49a5fba0" Title="SheetsUtilities Methods" Url="html/Methods_T_BookWorm_Utilities_SheetsUtilities.htm">
+        <HelpTOCNode Title="CreateNewSheet Method " Url="html/M_BookWorm_Utilities_SheetsUtilities_CreateNewSheet.htm" />
+        <HelpTOCNode Title="GetAllSheetNames Method " Url="html/M_BookWorm_Utilities_SheetsUtilities_GetAllSheetNames.htm" />
+        <HelpTOCNode Title="GetFormattedARGB Method " Url="html/M_BookWorm_Utilities_SheetsUtilities_GetFormattedARGB.htm" />
+        <HelpTOCNode Title="GetGoogleSheetsColor Method " Url="html/M_BookWorm_Utilities_SheetsUtilities_GetGoogleSheetsColor.htm" />
+        <HelpTOCNode Title="GetMergeRanges Method " Url="html/M_BookWorm_Utilities_SheetsUtilities_GetMergeRanges.htm" />
+        <HelpTOCNode Title="GetSheetId Method " Url="html/M_BookWorm_Utilities_SheetsUtilities_GetSheetId.htm" />
+        <HelpTOCNode Title="GetSpreadsheetRange Method " Url="html/M_BookWorm_Utilities_SheetsUtilities_GetSpreadsheetRange.htm" />
+        <HelpTOCNode Title="GetSystemDrawingColor Method " Url="html/M_BookWorm_Utilities_SheetsUtilities_GetSystemDrawingColor.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="367aa36b-f903-4c61-a2b6-521136c574b3" Title="TestComponent Class" Url="html/T_BookWorm_Utilities_TestComponent.htm">
+      <HelpTOCNode Title="TestComponent Constructor " Url="html/M_BookWorm_Utilities_TestComponent__ctor.htm" />
+      <HelpTOCNode Id="6e2ee1a2-df86-4045-9037-0bc874e4a194" Title="TestComponent Properties" Url="html/Properties_T_BookWorm_Utilities_TestComponent.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_BookWorm_Utilities_TestComponent_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="TestComponent Methods" Url="html/Methods_T_BookWorm_Utilities_TestComponent.htm" />
+      <HelpTOCNode Title="TestComponent Events" Url="html/Events_T_BookWorm_Utilities_TestComponent.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="b90a0f08-ca0b-4099-ac88-d5c110637162" Title="Util Class" Url="html/T_BookWorm_Utilities_Util.htm">
+      <HelpTOCNode Id="1cd01d73-b60a-4e23-8766-59db5d436b30" Title="Util Methods" Url="html/Methods_T_BookWorm_Utilities_Util.htm">
+        <HelpTOCNode Title="ParseUrl Method " Url="html/M_BookWorm_Utilities_Util_ParseUrl.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="eb9d3115-0ece-45fe-bd29-64336e710bec" Title="GoogleDocs" Url="html/N_GoogleDocs.htm">
+    <HelpTOCNode Id="99dd269a-9ecb-42d9-92d1-106c07745637" Title="BookWormInfo Class" Url="html/T_GoogleDocs_BookWormInfo.htm">
+      <HelpTOCNode Title="BookWormInfo Constructor " Url="html/M_GoogleDocs_BookWormInfo__ctor.htm" />
+      <HelpTOCNode Id="4d673d2b-2f2c-4819-b6f5-74e8aa3d99d7" Title="BookWormInfo Properties" Url="html/Properties_T_GoogleDocs_BookWormInfo.htm">
+        <HelpTOCNode Title="AuthorContact Property " Url="html/P_GoogleDocs_BookWormInfo_AuthorContact.htm" />
+        <HelpTOCNode Title="AuthorName Property " Url="html/P_GoogleDocs_BookWormInfo_AuthorName.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/P_GoogleDocs_BookWormInfo_Description.htm" />
+        <HelpTOCNode Title="Icon Property " Url="html/P_GoogleDocs_BookWormInfo_Icon.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P_GoogleDocs_BookWormInfo_Id.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_GoogleDocs_BookWormInfo_Name.htm" />
+        <HelpTOCNode Title="Version Property " Url="html/P_GoogleDocs_BookWormInfo_Version.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="BookWormInfo Methods" Url="html/Methods_T_GoogleDocs_BookWormInfo.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="2d8d7f8b-bc9d-4751-8df6-e003440c0a5a" Title="GoogleDocs.Spreadsheets" Url="html/N_GoogleDocs_Spreadsheets.htm">
+    <HelpTOCNode Id="aa36b0d9-dfd7-4872-81df-5eb2f95fc24f" Title="ReadCellValue_Component Class" Url="html/T_GoogleDocs_Spreadsheets_ReadCellValue_Component.htm">
+      <HelpTOCNode Title="ReadCellValue_Component Constructor " Url="html/M_GoogleDocs_Spreadsheets_ReadCellValue_Component__ctor.htm" />
+      <HelpTOCNode Id="f1dbbe9e-91d7-4df0-a382-8e560e5ef769" Title="ReadCellValue_Component Properties" Url="html/Properties_T_GoogleDocs_Spreadsheets_ReadCellValue_Component.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_GoogleDocs_Spreadsheets_ReadCellValue_Component_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ReadCellValue_Component Methods" Url="html/Methods_T_GoogleDocs_Spreadsheets_ReadCellValue_Component.htm" />
+      <HelpTOCNode Title="ReadCellValue_Component Events" Url="html/Events_T_GoogleDocs_Spreadsheets_ReadCellValue_Component.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="24621589-0f61-4ea7-9a62-90997d132ee4" Title="WriteCellValues Class" Url="html/T_GoogleDocs_Spreadsheets_WriteCellValues.htm">
+      <HelpTOCNode Title="WriteCellValues Constructor " Url="html/M_GoogleDocs_Spreadsheets_WriteCellValues__ctor.htm" />
+      <HelpTOCNode Id="9e4cb5bf-f352-4a51-a830-efe4a243962c" Title="WriteCellValues Properties" Url="html/Properties_T_GoogleDocs_Spreadsheets_WriteCellValues.htm">
+        <HelpTOCNode Title="ComponentGuid Property " Url="html/P_GoogleDocs_Spreadsheets_WriteCellValues_ComponentGuid.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="WriteCellValues Methods" Url="html/Methods_T_GoogleDocs_Spreadsheets_WriteCellValues.htm" />
+      <HelpTOCNode Title="WriteCellValues Events" Url="html/Events_T_GoogleDocs_Spreadsheets_WriteCellValues.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>
